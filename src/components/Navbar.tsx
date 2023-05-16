@@ -9,6 +9,7 @@ import {
 
 import LogoWhite from "../assets/LogoWhite.png";
 import LogoWhiteSingle from "../assets/LogoWhiteSingle.png";
+import { Link } from "react-router-dom";
 // import { Sun } from "@heroicons/react/20/solid";
 
 const user = {
@@ -18,9 +19,9 @@ const user = {
     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
 };
 const navigation = [
-  { name: "Swap", href: "#", current: true },
+  { name: "Swap", href: "/", current: true },
   { name: "Tokens", href: "#", current: false },
-  { name: "Pools", href: "#", current: false },
+  { name: "Pools", href: "/pools", current: false },
   { name: "Docs", href: "#", current: false },
 ];
 const userNavigation = [
@@ -66,9 +67,9 @@ export default function Navbar() {
               </div>
               <div className="hidden md:ml-6 md:flex md:items-center md:space-x-4">
                 {navigation.map((item) => (
-                  <a
+                  <Link
                     key={item.name}
-                    href={item.href}
+                    to={item.href}
                     className={classNames(
                       item.current
                         ? "text-purple-600"
@@ -78,7 +79,7 @@ export default function Navbar() {
                     aria-current={item.current ? "page" : undefined}
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
               <div className="flex items-center">
