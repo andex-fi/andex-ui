@@ -6,7 +6,7 @@ export const Liquiditypools: FC = () => {
       <div className="w-full md:w-[30rem] bg-white rounded-lg p-4">
         <div className="grid grid-cols-6">
           <h1 className="col-span-2 font-bold text-sm">Position Overview</h1>
-          <button className="bg-[#9645D7] px-2 py-1 rounded-xl text-white text-sm col-span-2 col-end-7 flex items-center justify-center gap-2">
+          <button className="bg-[#9645D7] px-2 py-1 rounded-2xl text-white text-sm col-span-2 col-end-7 flex items-center justify-center gap-2">
             <span>+</span>
             New Position
           </button>
