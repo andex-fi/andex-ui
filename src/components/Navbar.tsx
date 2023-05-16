@@ -38,7 +38,7 @@ export default function Navbar() {
     <Disclosure as="nav" className="bg-purple-950">
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 font-montserrat">
             <div className="flex h-16 justify-between">
               <div className="flex">
                 <div className="-ml-2 mr-2 flex items-center md:hidden">
@@ -132,7 +132,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          <Disclosure.Panel className="md:hidden">
+          <Disclosure.Panel className="md:hidden font-montserrat">
             <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
               {navigation.map((item) => (
                 <Disclosure.Button
