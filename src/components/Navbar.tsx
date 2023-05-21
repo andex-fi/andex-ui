@@ -35,7 +35,7 @@ function classNames(...classes: string[]) {
 
 export default function Navbar() {
   return (
-    <Disclosure as="nav" className="bg-purple-950">
+    <Disclosure as="nav" className="bg-purple-dark">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -71,7 +71,7 @@ export default function Navbar() {
                     href={item.href}
                     className={classNames(
                       item.current
-                        ? "text-purple-600"
+                        ? "text-purple-lightest"
                         : "text-gray-400 hover:text-gray-200",
                       "rounded-md px-3 py-2 text-sm font-medium"
                     )}
@@ -91,7 +91,7 @@ export default function Navbar() {
                   </button>
                   <button
                     type="button"
-                    className=" inline-flex items-center rounded-md bg-purple-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                    className=" inline-flex items-center rounded-md bg-purple-lightest px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
                   >
                     Connect Wallet
                   </button>
@@ -153,28 +153,22 @@ export default function Navbar() {
             </div>
             <div className="border-t border-gray-700 pb-3 pt-4">
               <div className="flex items-center px-5 sm:px-6">
-                <div className="flex-shrink-0">
+                {/* <div className="flex-shrink-0">
                   <img
                     className="h-10 w-10 rounded-full"
                     src={user.imageUrl}
                     alt=""
                   />
-                </div>
-                <div className="ml-3">
+                </div> */}
+                {/* <div className="">
                   <div className="text-base font-medium text-white">
                     {user.name}
                   </div>
                   <div className="text-sm font-medium text-gray-400">
                     {user.email}
                   </div>
-                </div>
-                <button
-                  type="button"
-                  className="ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                >
-                  <span className="sr-only">View notifications</span>
-                  <BellIcon className="h-6 w-6" aria-hidden="true" />
-                </button>
+                </div> */}
+               
               </div>
               <div className="mt-3 space-y-1 px-2 sm:px-3">
                 {userNavigation.map((item) => (
