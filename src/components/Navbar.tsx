@@ -9,6 +9,7 @@ import {
 
 import LogoWhite from "../assets/LogoWhite.png";
 import LogoWhiteSingle from "../assets/LogoWhiteSingle.png";
+import { Link } from "react-router-dom";
 // import { Sun } from "@heroicons/react/20/solid";
 
 const user = {
@@ -18,9 +19,9 @@ const user = {
     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
 };
 const navigation = [
-  { name: "Swap", href: "#", current: true },
+  { name: "Swap", href: "/", current: true },
   { name: "Tokens", href: "#", current: false },
-  { name: "Pools", href: "#", current: false },
+  { name: "Pools", href: "/pools", current: false },
   { name: "Docs", href: "#", current: false },
 ];
 const userNavigation = [
@@ -38,7 +39,7 @@ export default function Navbar() {
     <Disclosure as="nav" className="bg-purple-dark">
       {({ open }) => (
         <>
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 md:py-6 font-montserrat">
             <div className="flex h-16 justify-between">
               <div className="flex">
                 <div className="-ml-2 mr-2 flex items-center md:hidden">
@@ -66,19 +67,19 @@ export default function Navbar() {
               </div>
               <div className="hidden md:ml-6 md:flex md:items-center md:space-x-4">
                 {navigation.map((item) => (
-                  <a
+                  <Link
                     key={item.name}
-                    href={item.href}
+                    to={item.href}
                     className={classNames(
                       item.current
                         ? "text-purple-lightest"
                         : "text-gray-400 hover:text-gray-200",
-                      "rounded-md px-3 py-2 text-sm font-medium"
+                      "rounded-md px-3 py-2 text-md font-medium"
                     )}
                     aria-current={item.current ? "page" : undefined}
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 ))}
               </div>
               <div className="flex items-center">
@@ -91,7 +92,7 @@ export default function Navbar() {
                   </button>
                   <button
                     type="button"
-                    className=" inline-flex items-center rounded-md bg-purple-lightest px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                    className=" inline-flex items-center rounded-lg bg-purple-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
                   >
                     Connect Wallet
                   </button>
@@ -132,7 +133,7 @@ export default function Navbar() {
             </div>
           </div>
 
-          <Disclosure.Panel className="md:hidden">
+          <Disclosure.Panel className="md:hidden font-montserrat">
             <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
               {navigation.map((item) => (
                 <Disclosure.Button
