@@ -1,15 +1,15 @@
 import React, { FC } from "react";
 
 interface Props {
-  btnContent: string;
   btnStyles: string;
-  handleClick: React.MouseEventHandler<HTMLButtonElement>;
+  children: React.ReactNode;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
 }
 
-export const Button: FC<Props> = ({ btnContent, btnStyles, handleClick }) => {
+export const Button: FC<Props> = ({ btnStyles, onClick, children }) => {
   return (
-    <button className={btnStyles} onClick={handleClick}>
-      {btnContent}
+    <button className={btnStyles} onClick={onClick}>
+      {children}
     </button>
   );
 };
