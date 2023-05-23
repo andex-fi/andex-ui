@@ -15,7 +15,7 @@ export const Selecttoken: FC = () => {
           <select
             name="token"
             id="token"
-            className="rounded-full text-2xl font-bold  px-5 py-1 outline-none"
+            className="rounded-full text-md lg:text-2xl font-bold  px-5 py-1 outline-none"
             style={{
               background: `url(${Dropdown}) 99% no-repeat`,
               appearance: "none",

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 export const Addliquidity: FC = () => {
   return (
-    <div className="flex items-center justify-center w-full h-screen font-montserrat bg-[#E5E5E5]">
+    <div className="flex items-center justify-center w-full h-screen font-montserrat bg-[#E5E5E5] p-4">
       <div className="w-full md:w-[30rem] bg-white rounded-2xl p-6">
         <div className="w-full flex items-center justify-between">
           <Link to="/pools">
