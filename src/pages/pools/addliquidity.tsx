@@ -4,8 +4,10 @@ import { FiSettings } from "react-icons/fi";
 import { Selecttoken } from "./selecttoken";
 import { Button } from "../../components/Button";
 import { Link } from "react-router-dom";
+import { useAccountContext } from "../../hooks/accountContext";
 
 export const Addliquidity: FC = () => {
+  const { address, connect } = useAccountContext();
   return (
     <div className="flex items-center justify-center w-full h-screen font-montserrat bg-[#E5E5E5]">
       <div className="w-full md:w-[30rem] bg-white rounded-2xl p-6">
@@ -28,9 +30,20 @@ export const Addliquidity: FC = () => {
         <div>
           <Selecttoken />
         </div>
-        <Button btnStyles="bg-[#52058F] w-full flex items-center justify-center py-4 rounded-lg mt-4 text-white font-bold">
-          Connect wallet
-        </Button>
+        {address ? (
+          <Button btnStyles="bg-[#52058F] w-full flex items-center justify-center py-4 rounded-lg mt-4 text-white font-bold">
+            Supply
+          </Button>
+        ) : (
+          <Button
+            onClick={() => {
+              connect();
+            }}
+            btnStyles="bg-[#52058F] w-full flex items-center justify-center py-4 rounded-lg mt-4 text-white font-bold"
+          >
+            Connect wallet
+          </Button>
+        )}
       </div>
     </div>
   );

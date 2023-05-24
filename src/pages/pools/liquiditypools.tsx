@@ -1,12 +1,13 @@
 import React, { FC, useState } from "react";
 import { Button } from "../../components/Button";
 import { useNavigate } from "react-router-dom";
+import { useAccountContext } from "../../hooks/accountContext";
 
 export const Liquiditypools: FC = () => {
-  const [connected, setConnected] = useState<boolean>(false);
   const [positions, setPositions] = useState<boolean>(false);
+  const { address, connect } = useAccountContext();
   const handleConnectWallet = (): void => {
-    setConnected(true);
+    connect();
   };
 
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ export const Liquiditypools: FC = () => {
 
   return (
     <div className="flex items-center justify-center w-full h-screen font-montserrat bg-[#E5E5E5]">
-      {connected ? (
+      {address ? (
         <div className="w-full md:w-[30rem] bg-white rounded-lg p-4">
           <div className="grid grid-cols-6">
             <h1 className="col-span-2 font-bold text-sm">Pools Overview</h1>
@@ -43,10 +44,10 @@ export const Liquiditypools: FC = () => {
         <div className="w-full md:w-[30rem] bg-white rounded-lg p-4">
           <div className="grid grid-cols-6">
             <h1 className="col-span-2 font-bold text-sm">Pools Overview</h1>
-            <Button btnStyles="bg-[#9645D7] px-2 py-1 rounded-2xl text-white text-sm col-span-2 col-end-7 flex items-center justify-center gap-2 cursor-not-allowed opacity-50">
+            {/* <Button btnStyles="bg-[#9645D7] px-2 py-1 rounded-2xl text-white text-sm col-span-2 col-end-7 flex items-center justify-center gap-2 cursor-not-allowed opacity-50">
               <span>+</span>
               <p>New Position</p>
-            </Button>
+            </Button> */}
           </div>
 
           <Button
