@@ -12,12 +12,6 @@ import LogoWhiteSingle from "../assets/LogoWhiteSingle.png";
 import { Link } from "react-router-dom";
 // import { Sun } from "@heroicons/react/20/solid";
 
-const user = {
-  name: "Tom Cook",
-  email: "tom@example.com",
-  imageUrl:
-    "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-};
 const navigation = [
   { name: "Swap", href: "/", current: true },
   { name: "Tokens", href: "#", current: false },
@@ -73,7 +67,7 @@ export default function Navbar() {
                     className={classNames(
                       item.current
                         ? "text-purple-lightest"
-                        : "text-gray-400 hover:text-gray-200",
+                        : "text-grey hover:text-gray-200",
                       "rounded-md px-3 py-2 text-md font-medium"
                     )}
                     aria-current={item.current ? "page" : undefined}
@@ -86,13 +80,13 @@ export default function Navbar() {
                 <div className="flex">
                   <button
                     type="button"
-                    className="hidden items-center rounded-md bg-purple-900 mr-3 px-3 py-2 text-sm font-semibold text-white shadow-sm lg:block"
+                    className="hidden items-center rounded-md bg-purple-light mr-3 px-3 py-2 text-sm font-semibold text-white shadow-sm lg:block"
                   >
                     <SunIcon className="block h-6 w-6" aria-hidden="true" />
                   </button>
                   <button
                     type="button"
-                    className=" inline-flex items-center rounded-lg bg-purple-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                    className=" inline-flex items-center rounded-lg bg-purple-lightest px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-purple-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
                   >
                     Connect Wallet
                   </button>
@@ -154,21 +148,6 @@ export default function Navbar() {
             </div>
             <div className="border-t border-gray-700 pb-3 pt-4">
               <div className="flex items-center px-5 sm:px-6">
-                {/* <div className="flex-shrink-0">
-                  <img
-                    className="h-10 w-10 rounded-full"
-                    src={user.imageUrl}
-                    alt=""
-                  />
-                </div> */}
-                {/* <div className="">
-                  <div className="text-base font-medium text-white">
-                    {user.name}
-                  </div>
-                  <div className="text-sm font-medium text-gray-400">
-                    {user.email}
-                  </div>
-                </div> */}
                
               </div>
               <div className="mt-3 space-y-1 px-2 sm:px-3">
