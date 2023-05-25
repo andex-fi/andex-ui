@@ -1,6 +1,8 @@
+import { useAccountContext } from "../../hooks/accountContext";
 import DropdownComponent from "./Dropdown";
 
 const SwapCard = () => {
+  const { connect, address } = useAccountContext();
   return (
     <div className="flex justify-center items-center h-full m-auto drop-shadow-2xl ">
       <div className="w-[24rem] text-white md:w-[32rem]">
@@ -32,9 +34,20 @@ const SwapCard = () => {
               <span className="text-grey text-md mt-2">Balance: 0</span>
             </div>
           </div>
-          <button className="bg-purple-lightest m-6 p-4 rounded-xl font-bold">
-            Connect Wallet
-          </button>
+          {address ? (
+            <button className="bg-purple-lightest m-6 p-4 rounded-xl font-bold">
+              Swap
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                connect();
+              }}
+              className="bg-purple-lightest m-6 p-4 rounded-xl font-bold"
+            >
+              Connect Wallet
+            </button>
+          )}
         </div>
       </div>
     </div>
