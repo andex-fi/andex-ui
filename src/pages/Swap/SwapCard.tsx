@@ -2,8 +2,8 @@ import DropdownComponent from "./Dropdown";
 
 const SwapCard = () => {
   return (
-    <div className="flex justify-center items-cemter h-full m-auto drop-shadow-2xl ">
-      <div className="absolute mt-48 w-[24rem] text-white md:w-[32rem]">
+    <div className="flex justify-center items-center h-full m-auto drop-shadow-2xl ">
+      <div className="w-[24rem] text-white md:w-[32rem]">
         <div className="h-52 p-2 px-4 rounded-t-3xl bg-purple">
           <h2 className="m-6 text-xl">Swap</h2>
           <div className="m-6 flex justify-between mt-10">
