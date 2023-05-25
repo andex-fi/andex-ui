@@ -10,6 +10,7 @@ import LogoWhite from "../assets/LogoWhite.png";
 import LogoWhiteSingle from "../assets/LogoWhiteSingle.png";
 import { Link } from "react-router-dom";
 import { useAccountContext } from "../hooks/accountContext";
+import WalletDropDown from "./WalletDropDown";
 // import { Sun } from "@heroicons/react/20/solid";
 
 const navigation = [
@@ -29,7 +30,7 @@ function classNames(...classes: string[]) {
 }
 
 export default function Navbar() {
-  const { connect, address, disconnect } = useAccountContext();
+  const { address, connect } = useAccountContext();
   return (
     <Disclosure as="nav" className="bg-[#19102D]">
       {({ open }) => (
@@ -86,25 +87,12 @@ export default function Navbar() {
                     <SunIcon className="block h-6 w-6" aria-hidden="true" />
                   </button>
                   {address ? (
-                    <div className="flex gap-2">
-                      <div className="inline-flex items-center rounded-lg bg-purple-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">{`${address?.slice(
-                        0,
-                        5
-                      )}...${address?.slice(-3)}`}</div>
-                      <button
-                        onClick={() => {
-                          disconnect();
-                        }}
-                        className="inline-flex items-center rounded-lg bg-purple-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-                      >
-                        Disconnect
-                      </button>
-                    </div>
+                    <WalletDropDown />
                   ) : (
                     <button
                       type="button"
                       onClick={() => connect()}
-                      className=" inline-flex items-center rounded-lg bg-purple-lightest px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                      className=" inline-flex items-center rounded-lg bg-[#983BF6] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
                     >
                       Connect Wallet
                     </button>
