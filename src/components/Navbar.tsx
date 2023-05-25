@@ -68,7 +68,7 @@ export default function Navbar() {
                     className={classNames(
                       item.current
                         ? "text-[#983BF6]"
-                        : "text-gray-400 hover:text-gray-200",
+                        : "text-grey hover:text-purple-lightest",
                       "rounded-md px-3 py-2 text-md font-medium"
                     )}
                     aria-current={item.current ? "page" : undefined}
@@ -104,7 +104,7 @@ export default function Navbar() {
                     <button
                       type="button"
                       onClick={() => connect()}
-                      className=" inline-flex items-center rounded-lg bg-purple-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                      className=" inline-flex items-center rounded-lg bg-purple-lightest px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
                     >
                       Connect Wallet
                     </button>
