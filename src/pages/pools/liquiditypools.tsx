@@ -18,7 +18,11 @@ export const Liquiditypools: FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-full h-full font-montserrat bg-[#E5E5E5] p-4 py-10 md:py-24">
+    <div
+      className={`flex flex-col items-center justify-center w-full  ${
+        positions ? "h-full" : "h-screen"
+      } font-montserrat bg-[#E5E5E5] p-4 py-10 md:py-24`}
+    >
       {address ? (
         <>
           {" "}
@@ -168,7 +172,7 @@ export const Liquiditypools: FC = () => {
                 ))}
               </div>
 
-              <div className="flex items-center justify-center mt-4">
+              <div className="flex items-center justify-center mt-8">
                 <Button btnStyles="bg-[#9645D7] text-white py-2 px-3 rounded-3xl font-bold text-sm">
                   Load more
                 </Button>
