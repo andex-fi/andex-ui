@@ -28,3 +28,31 @@ export const Positions: position[] = [
         img: ImageTwo
     },
 ]
+
+interface pool {
+    name: string;
+    tvl: string;
+    vol24h: string;
+    vol7d: string;
+    img: string;
+    percentage?:string;
+}
+
+export const Pools: pool[] = [
+    {
+        name: "USDC/ETH",
+        tvl: "$12.54m",
+        vol24h: "$540.98m",
+        vol7d: "$98.15b",
+        img: ImageOne,
+        percentage: "0.3%"
+    },
+    {
+        name: "USDC/DAI",
+        tvl: "$12.54m",
+        vol24h: "$540.98m",
+        vol7d: "$98.15b",
+        img: ImageTwo
+    },
+   
+]
