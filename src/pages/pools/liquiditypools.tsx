@@ -18,7 +18,7 @@ export const Liquiditypools: FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center w-full h-screen font-montserrat bg-[#E5E5E5] p-4">
+    <div className="flex flex-col items-center justify-center w-full h-full font-montserrat bg-[#E5E5E5] p-4 py-10 md:py-24">
       {address ? (
         <>
           {" "}
