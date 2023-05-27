@@ -54,5 +54,19 @@ export const Pools: pool[] = [
         vol7d: "$98.15b",
         img: ImageTwo
     },
+    {
+        name: "DAI/ETH",
+        tvl: "$12.54m",
+        vol24h: "$540.98m",
+        vol7d: "$98.15b",
+        img: ImageTwo
+    },
+    {
+        name: "USDC/PARX",
+        tvl: "$12.54m",
+        vol24h: "$540.98m",
+        vol7d: "$98.15b",
+        img: ImageTwo
+    },
    
 ]
