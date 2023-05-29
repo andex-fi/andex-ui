@@ -6,8 +6,8 @@ import {
   SunIcon,
 } from "@heroicons/react/24/outline";
 
-import LogoWhite from "../assets/LogoWhite.png";
-import LogoWhiteSingle from "../assets/LogoWhiteSingle.png";
+import LogoLight from "../assets/LogoLight.png";
+import LogoLightSingle from "../assets/LogoLightSingle.png";
 import { Link } from "react-router-dom";
 import { useAccountContext } from "../hooks/accountContext";
 // import { Sun } from "@heroicons/react/20/solid";
@@ -53,10 +53,10 @@ export default function Navbar() {
                 </div>
                 <div className="flex flex-shrink-0 items-center">
                   <div className="block h-8 w-auto lg:hidden">
-                    <img src={LogoWhiteSingle} alt="Andex" className="h-8" />
+                    <img src={LogoLightSingle} alt="Andex" className="h-8" />
                   </div>
                   <div className="hidden h-8 w-auto lg:block">
-                    <img src={LogoWhite} alt="Andex" className="h-8" />
+                    <img src={LogoLight} alt="Andex" className="h-8" />
                   </div>
                 </div>
               </div>
