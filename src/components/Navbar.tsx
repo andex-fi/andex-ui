@@ -95,7 +95,7 @@ export default function Navbar() {
                   <button
                     type="button"
                     className={darkMode ?
-                    "hidden items-center rounded-md bg-[#D1D5FF] mr-3 px-3 py-2 text-sm font-semibold text-purple-darkest shadow-sm lg:block" :
+                    "hidden items-center rounded-md bg-[#D1D5FF] mr-3 px-3 py-2 text-sm font-semibold text-purple-light shadow-sm lg:block" :
                     "hidden items-center rounded-md bg-[#433282] mr-3 px-3 py-2 text-sm font-semibold text-white shadow-sm lg:block"}
                     onClick={() => handleDarkMode()}
                   > {
