@@ -2,7 +2,6 @@ import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import {
   Bars3CenterLeftIcon,
-  BellIcon,
   XMarkIcon,
   SunIcon,
 } from "@heroicons/react/24/outline";
@@ -10,14 +9,9 @@ import {
 import LogoWhite from "../assets/LogoWhite.png";
 import LogoWhiteSingle from "../assets/LogoWhiteSingle.png";
 import { Link } from "react-router-dom";
+import { useAccountContext } from "../hooks/accountContext";
 // import { Sun } from "@heroicons/react/20/solid";
 
-const user = {
-  name: "Tom Cook",
-  email: "tom@example.com",
-  imageUrl:
-    "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-};
 const navigation = [
   { name: "Swap", href: "/", current: true },
   { name: "Tokens", href: "#", current: false },
@@ -35,8 +29,9 @@ function classNames(...classes: string[]) {
 }
 
 export default function Navbar() {
+  const { connect, address, disconnect } = useAccountContext();
   return (
-    <Disclosure as="nav" className="bg-purple-dark">
+    <Disclosure as="nav" className="bg-[#19102D]">
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 md:py-6 font-montserrat">
@@ -72,8 +67,8 @@ export default function Navbar() {
                     to={item.href}
                     className={classNames(
                       item.current
-                        ? "text-purple-lightest"
-                        : "text-gray-400 hover:text-gray-200",
+                        ? "text-[#983BF6]"
+                        : "text-grey hover:text-purple-lightest",
                       "rounded-md px-3 py-2 text-md font-medium"
                     )}
                     aria-current={item.current ? "page" : undefined}
@@ -86,16 +81,34 @@ export default function Navbar() {
                 <div className="flex">
                   <button
                     type="button"
-                    className="hidden items-center rounded-md bg-purple-900 mr-3 px-3 py-2 text-sm font-semibold text-white shadow-sm lg:block"
+                    className="hidden items-center rounded-md bg-purple-light mr-3 px-3 py-2 text-sm font-semibold text-white shadow-sm lg:block"
                   >
                     <SunIcon className="block h-6 w-6" aria-hidden="true" />
                   </button>
-                  <button
-                    type="button"
-                    className=" inline-flex items-center rounded-lg bg-purple-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-                  >
-                    Connect Wallet
-                  </button>
+                  {address ? (
+                    <div className="flex gap-2">
+                      <div className="inline-flex items-center rounded-lg bg-purple-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">{`${address?.slice(
+                        0,
+                        5
+                      )}...${address?.slice(-3)}`}</div>
+                      <button
+                        onClick={() => {
+                          disconnect();
+                        }}
+                        className="inline-flex items-center rounded-lg bg-purple-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                      >
+                        Disconnect
+                      </button>
+                    </div>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => connect()}
+                      className=" inline-flex items-center rounded-lg bg-purple-lightest px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                    >
+                      Connect Wallet
+                    </button>
+                  )}
                 </div>
                 <div className="hidden md:ml-4 md:flex md:flex-shrink-0 md:items-center">
                   {/* Profile dropdown */}
@@ -154,22 +167,7 @@ export default function Navbar() {
             </div>
             <div className="border-t border-gray-700 pb-3 pt-4">
               <div className="flex items-center px-5 sm:px-6">
-                {/* <div className="flex-shrink-0">
-                  <img
-                    className="h-10 w-10 rounded-full"
-                    src={user.imageUrl}
-                    alt=""
-                  />
-                </div> */}
-                {/* <div className="">
-                  <div className="text-base font-medium text-white">
-                    {user.name}
-                  </div>
-                  <div className="text-sm font-medium text-gray-400">
-                    {user.email}
-                  </div>
-                </div> */}
-               
+                
               </div>
               <div className="mt-3 space-y-1 px-2 sm:px-3">
                 {userNavigation.map((item) => (

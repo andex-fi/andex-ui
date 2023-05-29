@@ -1,18 +1,21 @@
 import Navbar from "./components/Navbar";
 import { Routes, Route } from "react-router-dom";
-import { Home } from "./pages/Home";
-import { Liquiditypools } from "./pages/liquiditypools";
-
+import { Liquiditypools } from "./pages/pools/liquiditypools";
+import { Addliquidity } from "./pages/pools/addliquidity";
 import Swap from "./pages/Swap";
+import { Approveliquidity } from "./pages/pools/approveliquidity";
 
 export default function App() {
   return (
     <>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/pools" element={<Liquiditypools />} />
-        <Route path="/swap" element={<Swap />} />
+        <Route path="/" element={<Swap />} />
+        <Route path="pools">
+          <Route index={true} element={<Liquiditypools />} />
+        </Route>
+        <Route path="addliquidity" element={<Addliquidity />} />
+        <Route path="approveliquidity" element={<Approveliquidity />} />
       </Routes>
     </>
   );
