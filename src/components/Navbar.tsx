@@ -1,16 +1,21 @@
+import { useState } from "react";
+import "../index.css"
+
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import {
   Bars3CenterLeftIcon,
   XMarkIcon,
   SunIcon,
+  MoonIcon
 } from "@heroicons/react/24/outline";
 
 import LogoLight from "../assets/LogoLight.png";
 import LogoLightSingle from "../assets/LogoLightSingle.png";
+import LogoDark from "../assets/LogoDark.png";
+import LogoDarkSingle from "../assets/LogoDarkSingle.png";
 import { Link } from "react-router-dom";
 import { useAccountContext } from "../hooks/accountContext";
-// import { Sun } from "@heroicons/react/20/solid";
 
 const navigation = [
   { name: "Swap", href: "/", current: true },
@@ -30,8 +35,16 @@ function classNames(...classes: string[]) {
 
 export default function Navbar() {
   const { connect, address, disconnect } = useAccountContext();
+
+  const [darkMode, setDarkMode] = useState(false);
+
+  const handleDarkMode = () => {
+    setDarkMode(darkMode => !darkMode)
+    console.log(darkMode)
+  };
+
   return (
-    <Disclosure as="nav" className="bg-[#19102D]">
+    <Disclosure as="nav" className={darkMode ? "light" : "dark"}>
       {({ open }) => (
         <>
           <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 md:py-6 font-montserrat">
@@ -53,10 +66,10 @@ export default function Navbar() {
                 </div>
                 <div className="flex flex-shrink-0 items-center">
                   <div className="block h-8 w-auto lg:hidden">
-                    <img src={LogoLightSingle} alt="Andex" className="h-8" />
+                    <img src={darkMode ? LogoDarkSingle : LogoLightSingle} alt="Andex" className="h-8" />
                   </div>
                   <div className="hidden h-8 w-auto lg:block">
-                    <img src={LogoLight} alt="Andex" className="h-8" />
+                    <img src={darkMode ? LogoDark : LogoLight} alt="Andex" className="h-8" />
                   </div>
                 </div>
               </div>
@@ -82,8 +95,13 @@ export default function Navbar() {
                   <button
                     type="button"
                     className="hidden items-center rounded-md bg-purple-light mr-3 px-3 py-2 text-sm font-semibold text-white shadow-sm lg:block"
-                  >
+                    onClick={() => handleDarkMode()}
+                  > {
+                    darkMode ? 
+                    <MoonIcon className="block h-6 w-6" aria-hidden="true" />:
                     <SunIcon className="block h-6 w-6" aria-hidden="true" />
+                  }
+                    
                   </button>
                   {address ? (
                     <div className="flex gap-2">
@@ -104,7 +122,7 @@ export default function Navbar() {
                     <button
                       type="button"
                       onClick={() => connect()}
-                      className=" inline-flex items-center rounded-lg bg-purple-lightest px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                      className={ "inline-flex items-center rounded-lg px-3 py-2 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500" + (darkMode? "dark button" : "light button")}
                     >
                       Connect Wallet
                     </button>
@@ -155,8 +173,8 @@ export default function Navbar() {
                   href={item.href}
                   className={classNames(
                     item.current
-                      ? "bg-gray-900 text-white"
-                      : "text-gray-300 hover:bg-gray-700 hover:text-white",
+                      ? "bg-grey text-white"
+                      : "text-grey hover:bg-grey hover:text-white",
                     "block rounded-md px-3 py-2 text-base font-medium"
                   )}
                   aria-current={item.current ? "page" : undefined}
@@ -166,16 +184,14 @@ export default function Navbar() {
               ))}
             </div>
             <div className="border-t border-gray-700 pb-3 pt-4">
-              <div className="flex items-center px-5 sm:px-6">
-                
-              </div>
+              <div className="flex items-center px-5 sm:px-6"></div>
               <div className="mt-3 space-y-1 px-2 sm:px-3">
                 {userNavigation.map((item) => (
                   <Disclosure.Button
                     key={item.name}
                     as="a"
                     href={item.href}
-                    className="block rounded-md px-3 py-2 text-base font-medium text-gray-400 hover:bg-gray-700 hover:text-white"
+                    className="block rounded-md px-3 py-2 text-base font-medium text-grey hover:bg-gray-700 hover:text-white"
                   >
                     {item.name}
                   </Disclosure.Button>
