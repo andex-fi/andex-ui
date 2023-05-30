@@ -1,6 +1,7 @@
 import { FC } from "react";
 import { Button } from "../../components/Button";
 import ProtectImg from "../../assets/protectimg.png";
+import { motion } from "framer-motion";
 
 export const Protect: FC = () => {
   return (
@@ -10,7 +11,12 @@ export const Protect: FC = () => {
         background: "linear-gradient(90deg, #270A3E 0%, #100618 100%)",
       }}
     >
-      <div className="lg:flex items-center justify-center gap-10">
+      <motion.div
+        className="lg:flex items-center justify-center gap-10"
+        whileInView={{ y: 0, opacity: 1 }}
+        initial={{ y: 100, opacity: 0 }}
+        transition={{ type: "spring", stiffness: 20 }}
+      >
         <div>
           <div className="text-center lg:text-left">
             <h2 className="text-2xl lg:text-4xl font-extrabold mb-2">
@@ -40,7 +46,7 @@ export const Protect: FC = () => {
           alt="Supercharge img"
           className="w-full lg:w-[40%] mt-8 lg:mt-0"
         />
-      </div>
+      </motion.div>
     </div>
   );
 };

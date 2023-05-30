@@ -2,6 +2,7 @@ import React, { FC } from "react";
 import { Button } from "../../components/Button";
 import { Link } from "react-router-dom";
 import SeamlessImg from "../../assets/seamlessswap.png";
+import { motion } from "framer-motion";
 
 export const Seamless: FC = () => {
   return (
@@ -11,7 +12,12 @@ export const Seamless: FC = () => {
         background: "linear-gradient(180deg, #270A3E 0%, #100618 100%)",
       }}
     >
-      <div className="text-center lg:text-left">
+      <motion.div
+        className="text-center lg:text-left"
+        whileInView={{ x: 0, opacity: 1 }}
+        initial={{ x: -100, opacity: 0 }}
+        transition={{ type: "spring", stiffness: 20 }}
+      >
         <div>
           <h1 className="text-2xl lg:text-4xl font-extrabold mb-2">
             Seamless Swaps and{" "}
@@ -36,12 +42,15 @@ export const Seamless: FC = () => {
             Learn more
           </Button>
         </div>
-      </div>
+      </motion.div>
 
-      <img
+      <motion.img
         src={SeamlessImg}
         alt="SeamlessImg"
         className="w-full lg:w-[50%] mt-6 lg:mt-0"
+        whileInView={{ x: 0, opacity: 1 }}
+        initial={{ x: 100, opacity: 0 }}
+        transition={{ type: "spring", stiffness: 20 }}
       />
     </div>
   );
