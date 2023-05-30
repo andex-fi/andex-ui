@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/438c813c-48fd-4d75-bc0a-fc870c1e8bfd/deploy-status)](https://app.netlify.com/sites/andex-demo/deploys)
+
 # andex-interface
 Frontend Interface of Andex Protocol
 
