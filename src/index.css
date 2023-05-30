@@ -3,3 +3,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.dark {
+    background-color: #19102D;
+    color: #ffffff;
+}
+
+.light {
+    background-color:  #E5E5E5;;
+    color: #282828;
+}
+
+.dark .button {
+    background-color: #983bf6;
+    color: #ffffff;
+}
+
+.light .button {
+    background-color: #28133f;
+    color: #ffffff;
+}
+
