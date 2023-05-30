@@ -53,12 +53,16 @@ export default function Navbar() {
                   </Disclosure.Button>
                 </div>
                 <div className="flex flex-shrink-0 items-center">
-                  <div className="block h-8 w-auto lg:hidden">
-                    <img src={LogoWhiteSingle} alt="Andex" className="h-8" />
-                  </div>
-                  <div className="hidden h-8 w-auto lg:block">
-                    <img src={LogoWhite} alt="Andex" className="h-8" />
-                  </div>
+                  <Link to="/">
+                    <div className="block h-8 w-auto lg:hidden">
+                      <img src={LogoWhiteSingle} alt="Andex" className="h-8" />
+                    </div>
+                  </Link>
+                  <Link to="/">
+                    <div className="hidden h-8 w-auto lg:block">
+                      <img src={LogoWhite} alt="Andex" className="h-8" />
+                    </div>
+                  </Link>
                 </div>
               </div>
               <div className="hidden md:ml-6 md:flex md:items-center md:space-x-4">
@@ -154,9 +158,7 @@ export default function Navbar() {
               ))}
             </div>
             <div className="border-t border-gray-700 pb-3 pt-4">
-              <div className="flex items-center px-5 sm:px-6">
-                
-              </div>
+              <div className="flex items-center px-5 sm:px-6"></div>
               <div className="mt-3 space-y-1 px-2 sm:px-3">
                 {userNavigation.map((item) => (
                   <Disclosure.Button
