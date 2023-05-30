@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { Button } from "../../components/Button";
 import { Link } from "react-router-dom";
 import SeamlessImg from "../../assets/seamlessswap.png";
@@ -15,7 +15,7 @@ export const Seamless: FC = () => {
       <motion.div
         className="text-center lg:text-left"
         whileInView={{ x: 0, opacity: 1 }}
-        initial={{ x: -100, opacity: 0 }}
+        initial={{ x: -50, opacity: 0 }}
         transition={{ type: "spring", stiffness: 20 }}
       >
         <div>
@@ -49,7 +49,7 @@ export const Seamless: FC = () => {
         alt="SeamlessImg"
         className="w-full lg:w-[50%] mt-6 lg:mt-0"
         whileInView={{ x: 0, opacity: 1 }}
-        initial={{ x: 100, opacity: 0 }}
+        initial={{ x: 50, opacity: 0 }}
         transition={{ type: "spring", stiffness: 20 }}
       />
     </div>
