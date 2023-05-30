@@ -1,6 +1,6 @@
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import { Button } from "../../components/Button";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import { Pools, Positions } from "./positions";
 import { useAccountContext } from "../../hooks/accountContext";
 
@@ -11,7 +11,7 @@ export const Liquiditypools: FC = () => {
     connect();
   };
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleAddPosition = (): void => {
     setPositions(true);

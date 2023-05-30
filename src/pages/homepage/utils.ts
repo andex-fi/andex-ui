@@ -1,6 +1,6 @@
 interface navLink {
     name: string;
-    link?: string;
+    link: string;
 }
 
 export const navLinks: navLink[] = [

@@ -3,8 +3,8 @@ import eth from "../assets/eth.png";
 import arrow from "../assets/arrow.png";
 import { MdOutlineCheck, MdOutlineClose } from "react-icons/md";
 
-const activities = {
-  ["Today"]: [
+const activities: Record<string, Array<any>> = {
+  "Today": [
     {
       tokenIn: "USDC",
       tokenOut: "ETH",
@@ -39,7 +39,7 @@ const activities = {
       tokenOutLogo: usdc,
     },
   ],
-  ["25 May"]: [
+  "25 May": [
     {
       tokenIn: "USDC",
       tokenOut: "ETH",
@@ -113,10 +113,11 @@ const ActivityIcon = ({
 const Activities = () => {
   return (
     <div className="flex flex-col gap-2 pr-5">
-      {Object.keys(activities).map((value) => (
+      {Object.keys(activities).map((value: string) => (
         <div>
           <h4 className="color-[#7F8FA9] text-[12px] mb-1">{value}</h4>
           <div className="flex flex-col gap-1">
+            
             {activities[value]?.map((data) => (
               <div className="flex gap-2 text-[13px] justify-between">
                 <ActivityIcon

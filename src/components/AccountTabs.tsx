@@ -1,5 +1,5 @@
 import { Tab } from "@headlessui/react";
-import React from "react";
+//import React from "react";
 import usdc from "../assets/usdc.png";
 import eth from "../assets/eth.png";
 import pax from "../assets/pax.png";
