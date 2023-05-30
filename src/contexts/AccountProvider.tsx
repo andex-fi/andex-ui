@@ -1,7 +1,7 @@
 import {
   ReactNode,
   createContext,
-  useContext,
+  // useContext,
   useEffect,
   useState,
 } from "react";
@@ -11,6 +11,7 @@ interface AccountContextType {
   connect: () => Promise<void>;
   disconnect: () => Promise<void>;
   address?: string;
+  balance?: any;
 }
 
 const initialState = {
@@ -21,6 +22,7 @@ const initialState = {
     return;
   },
   address: "",
+  balance: 0,
 };
 
 export const AccountContext = createContext<AccountContextType>(initialState);
@@ -30,11 +32,23 @@ const AccountProvider = ({ children }: { children: ReactNode }) => {
   const [venomConnect, setVenomConnect] = useState<any>();
   const [venomProvider, setVenomProvider] = useState<any>(venomConnect);
   const [address, setAddress] = useState<string | undefined>();
+  const [balance, setBalance] = useState<any>();
 
   const getAddress = async (provider: any) => {
     const providerState = await provider?.getProviderState?.();
     return providerState?.permissions.accountInteraction?.address.toString();
   };
+
+  const getBalance = async (provider: any, _address: string) => {
+    try {
+      const providerBalance = await provider?.getBalance?.(_address);
+
+      return providerBalance;
+    } catch (error) {
+      return undefined;
+    }
+  };
+
   // Any interaction with venom-wallet (address fetching is included) needs to be authentificated
   const checkAuth = async (_venomConnect: any) => {
     const auth = await _venomConnect?.checkAuth();
@@ -43,11 +57,11 @@ const AccountProvider = ({ children }: { children: ReactNode }) => {
 
   const check = async (_provider: any) => {
     const _address = _provider ? await getAddress(_provider) : undefined;
-    // const _balance =
-    //   _provider && _address ? await getBalance(_provider, _address) : undefined;
+    const _balance =
+      _provider && _address ? await getBalance(_provider, _address) : undefined;
 
     setAddress(_address);
-    // setBalance(_balance);
+    setBalance(_balance);
 
     if (_provider && _address)
       setTimeout(() => {
@@ -104,7 +118,7 @@ const AccountProvider = ({ children }: { children: ReactNode }) => {
     }
   };
   return (
-    <AccountContext.Provider value={{ connect, address, disconnect }}>
+    <AccountContext.Provider value={{ connect, address, disconnect, balance }}>
       {children}
     </AccountContext.Provider>
   );

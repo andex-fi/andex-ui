@@ -16,9 +16,11 @@ import LogoDark from "../assets/LogoDark.png";
 import LogoDarkSingle from "../assets/LogoDarkSingle.png";
 import { Link } from "react-router-dom";
 import { useAccountContext } from "../hooks/accountContext";
+import WalletDropDown from "./WalletDropDown";
+// import { Sun } from "@heroicons/react/20/solid";
 
 const navigation = [
-  { name: "Swap", href: "/", current: true },
+  { name: "Swap", href: "/swap", current: true },
   { name: "Tokens", href: "#", current: false },
   { name: "Pools", href: "/pools", current: false },
   { name: "Docs", href: "#", current: false },
@@ -34,7 +36,7 @@ function classNames(...classes: string[]) {
 }
 
 export default function Navbar() {
-  const { connect, address, disconnect } = useAccountContext();
+  const { address, connect } = useAccountContext();
 
   const [darkMode, setDarkMode] = useState(false);
 
@@ -65,12 +67,16 @@ export default function Navbar() {
                   </Disclosure.Button>
                 </div>
                 <div className="flex flex-shrink-0 items-center">
-                  <div className="block h-8 w-auto lg:hidden">
-                    <img src={darkMode ? LogoDarkSingle : LogoLightSingle} alt="Andex" className="h-8" />
-                  </div>
-                  <div className="hidden h-8 w-auto lg:block">
-                    <img src={darkMode ? LogoDark : LogoLight} alt="Andex" className="h-8" />
-                  </div>
+                  <Link to="/">
+                    <div className="block h-8 w-auto lg:hidden">
+                      <img src={darkMode ? LogoDarkSingle : LogoLightSingle} alt="Andex" className="h-8" />
+                    </div>
+                  </Link>
+                  <Link to="/">
+                    <div className="hidden h-8 w-auto lg:block">
+                      <img src={darkMode ? LogoDark : LogoLight} alt="Andex" className="h-8" />
+                    </div>
+                  </Link>
                 </div>
               </div>
               <div className="hidden md:ml-6 md:flex md:items-center md:space-x-4">
@@ -106,20 +112,7 @@ export default function Navbar() {
                     
                   </button>
                   {address ? (
-                    <div className="flex gap-2">
-                      <div className="inline-flex items-center rounded-lg bg-purple-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500">{`${address?.slice(
-                        0,
-                        5
-                      )}...${address?.slice(-3)}`}</div>
-                      <button
-                        onClick={() => {
-                          disconnect();
-                        }}
-                        className="inline-flex items-center rounded-lg bg-purple-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-purple-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
-                      >
-                        Disconnect
-                      </button>
-                    </div>
+                    <WalletDropDown />
                   ) : (
                     <button
                       type="button"
