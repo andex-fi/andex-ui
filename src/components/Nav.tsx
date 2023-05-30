@@ -1,24 +1,70 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import Logo from "../assets/LogoWhite.png";
 import LogoWhite from "../assets/LogoWhiteSingle.png";
 import { navLinks } from "../pages/homepage/utils";
 import { Link, NavLink } from "react-router-dom";
 import { Button } from "./Button";
-import { SunIcon } from "@heroicons/react/24/outline";
+import {
+  SunIcon,
+  Bars3CenterLeftIcon,
+  XMarkIcon,
+} from "@heroicons/react/24/outline";
 
 export const Nav: FC = () => {
+  const [open, setOpen] = useState<boolean>(false);
+
+  const handleOpenMenu = (): void => {
+    setOpen(!open);
+  };
+
   const activeLink = "text-[#fff]  font-bold hover:text-[#fff]";
   const normalLink = "text-[#A086C0] font-bold  hover:text-[#fff]";
   return (
-    <div className="bg-[#240939] text-white lg:flex items-center justify-between px-4 md:px-10 lg:px-20 py-6">
-      <img src={Logo} alt="andex logo" className="hidden md:block lg:w-[8%]" />
+    <div className="bg-[#240939] text-white flex flex-col gap-8 lg:gap-0 lg:flex-row lg:items-center lg:justify-between px-4 md:px-10 lg:px-20 py-6">
+      <img
+        src={Logo}
+        alt="andex logo"
+        className="hidden md:block md:w-[20%] lg:w-[8%]"
+      />
       <img
         src={LogoWhite}
         alt="andex logo"
         className="block md:hidden w-[10%]"
       />
 
-      <ul className="flex items-center gap-4 lg:gap-8">
+      {open ? (
+        <div className="block lg:hidden ">
+          <ul className="flex flex-col items-center gap-4 lg:gap-8">
+            {navLinks.map((navlink, index) => (
+              <NavLink
+                to={navlink.link}
+                key={index}
+                className={({ isActive }) =>
+                  isActive ? activeLink : normalLink
+                }
+              >
+                <li>{navlink.name}</li>
+              </NavLink>
+            ))}
+          </ul>
+
+          <div className="flex flex-col mt-4 items-center gap-4">
+            <div
+              className="p-2 rounded-lg cursor-pointer"
+              style={{ background: "rgba(67, 50, 83, 0.29)" }}
+            >
+              <SunIcon className="w-6 h-6" />
+            </div>
+            <Link to="/swap">
+              <Button btnStyles="bg-[#983BF6] px-4 py-2 flex items-center justify-center rounded-lg font-bold text-sm">
+                Launch Dapp
+              </Button>
+            </Link>
+          </div>
+        </div>
+      ) : null}
+
+      <ul className="hidden lg:flex items-center gap-4 lg:gap-8">
         {navLinks.map((navlink, index) => (
           <NavLink
             to={navlink.link}
@@ -30,7 +76,7 @@ export const Nav: FC = () => {
         ))}
       </ul>
 
-      <div className="flex items-center gap-4">
+      <div className="hidden lg:flex items-center gap-4">
         <div
           className="p-2 rounded-lg cursor-pointer"
           style={{ background: "rgba(67, 50, 83, 0.29)" }}
@@ -43,6 +89,18 @@ export const Nav: FC = () => {
           </Button>
         </Link>
       </div>
+
+      {open ? (
+        <XMarkIcon
+          className="w-8 h-8 block lg:hidden absolute top-6 right-4"
+          onClick={handleOpenMenu}
+        />
+      ) : (
+        <Bars3CenterLeftIcon
+          className="w-8 h-8 block lg:hidden absolute top-6 right-4"
+          onClick={handleOpenMenu}
+        />
+      )}
     </div>
   );
 };

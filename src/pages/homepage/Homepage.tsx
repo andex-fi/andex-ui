@@ -1,6 +1,12 @@
-import React, { FC } from "react";
-import { Nav } from "../../components/Nav";
+import { FC } from "react";
+import { Hero } from "./hero";
+import { Seamless } from "./seamless";
 
 export const Homepage: FC = () => {
-  return <div></div>;
+  return (
+    <div>
+      <Hero />
+      <Seamless />
+    </div>
+  );
 };

@@ -14,7 +14,7 @@ import WalletDropDown from "./WalletDropDown";
 // import { Sun } from "@heroicons/react/20/solid";
 
 const navigation = [
-  { name: "Swap", href: "/", current: true },
+  { name: "Swap", href: "/swap", current: true },
   { name: "Tokens", href: "#", current: false },
   { name: "Pools", href: "/pools", current: false },
   { name: "Docs", href: "#", current: false },
