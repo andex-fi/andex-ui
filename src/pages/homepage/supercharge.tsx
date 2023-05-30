@@ -2,16 +2,22 @@ import { FC } from "react";
 import { Button } from "../../components/Button";
 import SuperchargeImg from "../../assets/superchargeimg.png";
 import UnlockImg from "../../assets/unlockimg.png";
+import { motion } from "framer-motion";
 
 export const Supercharge: FC = () => {
   return (
     <div
       className="px-4 md:px-10 lg:px-48 py-20 text-white"
       style={{
-        background: "linear-gradient(90deg, #270A3E 0%, #100618 100%)",
+        background: "linear-gradient(180deg, #270A3E 0%, #100618 100%)",
       }}
     >
-      <div className="lg:flex items-center justify-center gap-10">
+      <motion.div
+        className="lg:flex items-center justify-center gap-10"
+        whileInView={{ y: 0, opacity: 1 }}
+        initial={{ y: 100, opacity: 0 }}
+        transition={{ type: "spring", stiffness: 20 }}
+      >
         <div>
           <div className="text-center lg:text-left">
             <h2 className="text-2xl lg:text-4xl font-extrabold mb-2">
@@ -44,11 +50,21 @@ export const Supercharge: FC = () => {
           alt="Supercharge img"
           className="w-full lg:w-[40%] mt-8 lg:mt-0"
         />
-      </div>
-      <div className="flex flex-col-reverse lg:flex-row items-center justify-center gap-10 mt-20">
-        <img src={UnlockImg} alt="UnlockImg" />
+      </motion.div>
+      <div className="flex flex-col-reverse lg:flex-row items-center justify-center gap-10 mt-28">
+        <motion.img
+          src={UnlockImg}
+          alt="UnlockImg"
+          whileInView={{ x: 0, opacity: 1 }}
+          initial={{ x: -100, opacity: 0 }}
+          transition={{ type: "spring", stiffness: 20 }}
+        />
 
-        <div>
+        <motion.div
+          whileInView={{ x: 0, opacity: 1 }}
+          initial={{ x: 100, opacity: 0 }}
+          transition={{ type: "spring", stiffness: 20 }}
+        >
           <div className="text-center lg:text-left">
             <h2 className="text-2xl lg:text-4xl font-extrabold mb-2">
               Unlock Limitless
@@ -74,7 +90,7 @@ export const Supercharge: FC = () => {
               Learn more
             </Button>
           </div>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
