@@ -10,7 +10,7 @@ import settings from "../assets/Setting_line_light.png";
 import out from "../assets/Out_light.png";
 import power from "../assets/On_button_light.png";
 import AccountTabs from "./AccountTabs";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   icon: string;

@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import { FC, useState } from "react";
 import Logo from "../assets/LogoWhite.png";
 import LogoWhite from "../assets/LogoWhiteSingle.png";
 import { navLinks } from "../pages/homepage/utils";

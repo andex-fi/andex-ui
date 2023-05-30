@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import Dropdown from "../../assets/dropdown.png";
 
 export const Selecttoken: FC = () => {

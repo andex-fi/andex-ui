@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { FiSettings } from "react-icons/fi";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { Link } from "react-router-dom";
