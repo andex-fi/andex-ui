@@ -33,8 +33,8 @@ export const Nav: FC = () => {
       />
 
       {open ? (
-        <div className="block lg:hidden ">
-          <ul className="flex flex-col items-center gap-4 lg:gap-8">
+        <div className="block lg:hidden absolute top-20 left-0 w-full bg-[#240939] py-10 z-10">
+          <ul className="flex flex-col items-center gap-10 lg:gap-8">
             {navLinks.map((navlink, index) => (
               <NavLink
                 to={navlink.link}
@@ -48,7 +48,7 @@ export const Nav: FC = () => {
             ))}
           </ul>
 
-          <div className="flex flex-col mt-4 items-center gap-4">
+          <div className="flex flex-col mt-4 items-center gap-10">
             <div
               className="p-2 rounded-lg cursor-pointer"
               style={{ background: "rgba(67, 50, 83, 0.29)" }}
