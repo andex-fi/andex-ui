@@ -3,12 +3,17 @@ import { Button } from "../../components/Button";
 import { Link } from "react-router-dom";
 import VenomBall from "../../assets/venomball.png";
 import Cube from "../../assets/cube.png";
+import HeroBg from "../../assets/herobg.png";
 
 export const Hero: FC = () => {
   return (
     <section
       className="text-center text-white px-4 md:px-10 lg:px-20 py-10 md:pt-24 pb-0"
       style={{
+        backgroundImage: `url(${HeroBg})`,
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
         background: "linear-gradient(90deg, #270A3E 0%, #100618 100%)",
       }}
     >
@@ -44,7 +49,11 @@ export const Hero: FC = () => {
         </Button>
       </div>
       <div className="flex flex-col items-center justify-center gap-0 mt-10">
-        <img src={VenomBall} alt="venomball" className="animate-bounce" />
+        <img
+          src={VenomBall}
+          alt="venomball"
+          className="motion-safe:animate-bounce"
+        />
         <img src={Cube} alt="cube" />
       </div>
     </section>
