@@ -3,7 +3,7 @@ import SwapCard from "./SwapCard";
 
 export default function Swap() {
   return (
-    <section className="h-screen w-full bg-purple">
+    <section className="h-screen w-full bg-[#EBF1FF] dark:bg-purple-dark">
       <SwapCard />
     </section>
   );

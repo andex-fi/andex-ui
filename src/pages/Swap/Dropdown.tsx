@@ -10,7 +10,7 @@ export default function DropdownComponent() {
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
-        <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-3xl bg-purple-lightest px-3 py-2 text-lg font-semibold text-white shadow-sm ring-1 ring-inset ring-purple">
+        <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-3xl bg-[#F3F3F3] dark:bg-[#482168] px-4 py-3 text-lg font-semibold text-black  dark:text-white shadow-sm drop-shadow-xl  ">
           CRYPTO
           <ChevronDownIcon className="-mr-1 h-7 w-7 text-gray-400" aria-hidden="true" />
         </Menu.Button>
