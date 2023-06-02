@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react-hooks/rules-of-hooks */
 import type {
   Address,
   DecodedAbiFunctionOutputs,
@@ -9,24 +11,24 @@ import type {
 } from "everscale-inpage-provider";
 import { LT_COLLATOR } from "everscale-inpage-provider";
 
-import { useRpc, useStaticRpc } from "@/hooks";
+import { useRpc, useStaticRpc } from "../hooks";
 import { DexAbi } from "../constants/abi";
-import { dexAccountContract, getFullContractState } from "@/misc/contracts";
+import { dexAccountContract, getFullContractState } from "../helpers/contracts";
 import type {
   SendMessageCallback,
   TransactionCallbacks,
   TransactionFailureReason,
   TransactionSuccessResult,
-} from "@/misc/types";
-import { DexUtils } from "@/misc/utils/DexUtils";
-import { TokenWalletUtils } from "@/misc/utils/TokenWalletUtils";
-import type { TokenWalletTransferToWalletParams } from "@/misc/utils/TokenWalletUtils";
+} from "./types";
+import { DexUtils } from "./DexUtils";
+import { TokenWalletUtils } from "./TokenWalletUtils";
+import type { TokenWalletTransferToWalletParams } from "./TokenWalletUtils";
 import {
   addressesComparer,
   debug,
   getSafeProcessingId,
-  resolveEverscaleAddress,
-} from "@/utils";
+  resolveVenomAddress,
+} from ".";
 
 export type DexAccountAddPairParams = {
   leftRootAddress: Address | string;
@@ -140,8 +142,8 @@ export abstract class DexAccountUtils {
   ): Promise<DelayedMessageExecution> {
     return dexAccountContract(dexAccountAddress, useRpc())
       .methods.addPair({
-        left_root: resolveEverscaleAddress(params.leftRootAddress),
-        right_root: resolveEverscaleAddress(params.rightRootAddress),
+        left_root: resolveVenomAddress(params.leftRootAddress),
+        right_root: resolveVenomAddress(params.rightRootAddress),
       })
       .sendDelayed({
         amount: "3000000000",
@@ -188,17 +190,17 @@ export abstract class DexAccountUtils {
       .methods.depositLiquidity({
         auto_change: params.autoChange,
         call_id: params.callId,
-        expected_lp_root: resolveEverscaleAddress(params.expectedLpAddress),
+        expected_lp_root: resolveVenomAddress(params.expectedLpAddress),
         left_amount: params.leftAmount,
-        left_root: resolveEverscaleAddress(params.leftRootAddress),
+        left_root: resolveVenomAddress(params.leftRootAddress),
         right_amount: params.rightAmount,
-        right_root: resolveEverscaleAddress(params.rightRootAddress),
-        send_gas_to: resolveEverscaleAddress(params.sendGasTo),
+        right_root: resolveVenomAddress(params.rightRootAddress),
+        send_gas_to: resolveVenomAddress(params.sendGasTo),
       })
       .sendDelayed({
         amount: "2600000000",
         bounce: false,
-        from: resolveEverscaleAddress(params.sendGasTo),
+        from: resolveVenomAddress(params.sendGasTo),
         ...args,
       });
   }
@@ -220,13 +222,13 @@ export abstract class DexAccountUtils {
         _callId: params.callId,
         _expected: params.expected,
         _operations: params.operations,
-        _referrer: resolveEverscaleAddress(params.referrer),
-        _remainingGasTo: resolveEverscaleAddress(params.remainingGasTo),
+        _referrer: resolveVenomAddress(params.referrer),
+        _remainingGasTo: resolveVenomAddress(params.remainingGasTo),
       })
       .sendDelayed({
         amount: "2600000000",
         bounce: false,
-        from: resolveEverscaleAddress(params.remainingGasTo),
+        from: resolveVenomAddress(params.remainingGasTo),
         ...args,
       });
   }
@@ -247,14 +249,14 @@ export abstract class DexAccountUtils {
         amount: params.amount,
         call_id: params.callId,
         deploy_wallet_grams: params.deployWalletGrams ?? "100000000",
-        recipient_address: resolveEverscaleAddress(params.recipientAddress),
-        send_gas_to: resolveEverscaleAddress(params.sendGasTo),
-        token_root: resolveEverscaleAddress(params.tokenAddress),
+        recipient_address: resolveVenomAddress(params.recipientAddress),
+        send_gas_to: resolveVenomAddress(params.sendGasTo),
+        token_root: resolveVenomAddress(params.tokenAddress),
       })
       .sendDelayed({
         amount: "2100000000",
         bounce: false,
-        from: resolveEverscaleAddress(params.sendGasTo),
+        from: resolveVenomAddress(params.sendGasTo),
         ...args,
       });
   }
@@ -273,16 +275,16 @@ export abstract class DexAccountUtils {
     return dexAccountContract(dexAccountAddress, useRpc())
       .methods.withdrawLiquidity({
         call_id: params.callId,
-        left_root: resolveEverscaleAddress(params.leftRootAddress),
+        left_root: resolveVenomAddress(params.leftRootAddress),
         lp_amount: params.amount,
-        lp_root: resolveEverscaleAddress(params.lpRootAddress),
-        right_root: resolveEverscaleAddress(params.rightRootAddress),
-        send_gas_to: resolveEverscaleAddress(params.sendGasTo),
+        lp_root: resolveVenomAddress(params.lpRootAddress),
+        right_root: resolveVenomAddress(params.rightRootAddress),
+        send_gas_to: resolveVenomAddress(params.sendGasTo),
       })
       .sendDelayed({
         amount: "2700000000",
         bounce: false,
-        from: resolveEverscaleAddress(params.sendGasTo),
+        from: resolveVenomAddress(params.sendGasTo),
         ...args,
       });
   }
@@ -317,7 +319,7 @@ export abstract class DexAccountUtils {
 
     try {
       const stream = await subscriber
-        .transactions(resolveEverscaleAddress(dexAccountAddress))
+        .transactions(resolveVenomAddress(dexAccountAddress))
         .flatMap((item) => item.transactions)
         .filter(
           (tx) =>
@@ -345,13 +347,13 @@ export abstract class DexAccountUtils {
             senderTokenWalletAddress !== undefined &&
             addressesComparer(
               data.sender_wallet,
-              resolveEverscaleAddress(senderTokenWalletAddress)
+              resolveVenomAddress(senderTokenWalletAddress)
             );
           const isSameToken =
             params.tokenAddress !== undefined &&
             addressesComparer(
               data.token_root,
-              resolveEverscaleAddress(params.tokenAddress)
+              resolveVenomAddress(params.tokenAddress)
             );
 
           if (isSameToken || isSameSender) {
@@ -388,7 +390,7 @@ export abstract class DexAccountUtils {
         amount: params.amount,
         callId,
         tokenAddress: params.tokenAddress
-          ? resolveEverscaleAddress(params.tokenAddress)
+          ? resolveVenomAddress(params.tokenAddress)
           : undefined,
       });
 
@@ -429,7 +431,7 @@ export abstract class DexAccountUtils {
 
     try {
       const stream = await subscriber
-        .transactions(resolveEverscaleAddress(dexAccountAddress))
+        .transactions(resolveVenomAddress(dexAccountAddress))
         .flatMap((item) => item.transactions)
         .filter(
           (tx) =>
@@ -456,7 +458,7 @@ export abstract class DexAccountUtils {
           if (
             addressesComparer(
               data.root,
-              resolveEverscaleAddress(params.tokenAddress)
+              resolveVenomAddress(params.tokenAddress)
             )
           ) {
             debug("WithdrawTokens", event);
@@ -493,7 +495,7 @@ export abstract class DexAccountUtils {
       await params.onSend?.(message, {
         amount: params.amount,
         callId,
-        tokenAddress: resolveEverscaleAddress(params.tokenAddress),
+        tokenAddress: resolveVenomAddress(params.tokenAddress),
       });
 
       transaction = await message.transaction;
@@ -562,7 +564,7 @@ export abstract class DexAccountUtils {
       await dexAccountContract(dexAccountAddress)
         .methods.getWalletData({
           answerId: 0,
-          token_root: resolveEverscaleAddress(tokenAddress),
+          token_root: resolveVenomAddress(tokenAddress),
         })
         .call({ cachedState })
     ).balance;

@@ -1,17 +1,16 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import type {
   Address,
   DecodedAbiFunctionOutputs,
   DelayedMessageExecution,
   FullContractState,
-  ProviderRpcClient,
   SendInternalParams,
 } from "everscale-inpage-provider";
 
 import { TokenAbi } from "../constants/abi";
 import { tokenRootContract, tokenWalletContract } from "../helpers/contracts";
-import { sliceAddress } from "./sliceAddress";
-import { debug } from "./console";
-import { resolveEverscaleAddress } from "./resolve-everscale-address";
+import { resolveVenomAddress, debug, sliceAddress } from ".";
+import { useRpc, useStaticRpc } from "../hooks";
 
 export type TokenWalletOwnerParams = {
   tokenRootAddress: Address | string;
@@ -49,22 +48,21 @@ export abstract class TokenWalletUtils {
   public static async transfer(
     tokenWalletAddress: Address | string,
     params: TokenWalletTransferParams,
-    provider: ProviderRpcClient,
     args?: Partial<SendInternalParams>
   ): Promise<DelayedMessageExecution> {
-    return tokenWalletContract(tokenWalletAddress, provider)
+    return tokenWalletContract(tokenWalletAddress, useRpc())
       .methods.transfer({
         amount: params.amount,
         deployWalletValue: params.deployWalletValue || "0",
         notify: params.notify ?? true,
         payload: params.payload || "",
-        recipient: resolveEverscaleAddress(params.recipient),
-        remainingGasTo: resolveEverscaleAddress(params.remainingGasTo),
+        recipient: resolveVenomAddress(params.recipient),
+        remainingGasTo: resolveVenomAddress(params.remainingGasTo),
       })
       .sendDelayed({
         amount: "500000000",
         bounce: true,
-        from: resolveEverscaleAddress(params.remainingGasTo),
+        from: resolveVenomAddress(params.remainingGasTo),
         ...args,
       });
   }
@@ -78,23 +76,20 @@ export abstract class TokenWalletUtils {
   public static async transferToWallet(
     tokenWalletAddress: Address | string,
     params: TokenWalletTransferToWalletParams,
-    provider: ProviderRpcClient,
     args?: Partial<SendInternalParams>
   ): Promise<DelayedMessageExecution> {
-    return tokenWalletContract(tokenWalletAddress, provider)
+    return tokenWalletContract(tokenWalletAddress, useRpc())
       .methods.transferToWallet({
         amount: params.amount,
         notify: params.notify ?? true,
         payload: params.payload || "",
-        recipientTokenWallet: resolveEverscaleAddress(
-          params.recipientTokenWallet
-        ),
-        remainingGasTo: resolveEverscaleAddress(params.remainingGasTo),
+        recipientTokenWallet: resolveVenomAddress(params.recipientTokenWallet),
+        remainingGasTo: resolveVenomAddress(params.remainingGasTo),
       })
       .sendDelayed({
         amount: "500000000",
         bounce: true,
-        from: resolveEverscaleAddress(params.remainingGasTo),
+        from: resolveVenomAddress(params.remainingGasTo),
         ...args,
       });
   }
@@ -106,7 +101,6 @@ export abstract class TokenWalletUtils {
    */
   public static async balance(
     params: TokenWalletOwnerParams,
-    provider: ProviderRpcClient,
     cachedState?: FullContractState
   ): Promise<
     DecodedAbiFunctionOutputs<typeof TokenAbi.Wallet, "balance">["value0"]
@@ -118,7 +112,6 @@ export abstract class TokenWalletUtils {
    */
   public static async balance(
     params: TokenWalletOwnerWalletParams,
-    provider: ProviderRpcClient,
     cachedState?: FullContractState
   ): Promise<
     DecodedAbiFunctionOutputs<typeof TokenAbi.Wallet, "balance">["value0"]
@@ -131,7 +124,6 @@ export abstract class TokenWalletUtils {
    */
   public static async balance(
     params: TokenWalletOwnerParams | TokenWalletOwnerWalletParams,
-    provider: ProviderRpcClient,
     cachedState?: FullContractState
   ): Promise<
     DecodedAbiFunctionOutputs<typeof TokenAbi.Wallet, "balance">["value0"]
@@ -140,12 +132,11 @@ export abstract class TokenWalletUtils {
 
     if (tokenWalletAddress == null) {
       tokenWalletAddress = await TokenWalletUtils.walletAddress(
-        params as TokenWalletOwnerParams,
-        provider
+        params as TokenWalletOwnerParams
       );
     }
 
-    return tokenWalletContract(tokenWalletAddress, provider)
+    return tokenWalletContract(tokenWalletAddress, useStaticRpc())
       .methods.balance({ answerId: 0 })
       .call({ cachedState })
       .then(({ value0 }) => {
@@ -171,15 +162,14 @@ export abstract class TokenWalletUtils {
    */
   public static async walletAddress(
     params: TokenWalletOwnerParams,
-    provider: ProviderRpcClient,
     cachedState?: FullContractState
   ): Promise<
     DecodedAbiFunctionOutputs<typeof TokenAbi.Root, "walletOf">["value0"]
   > {
-    return tokenRootContract(params.tokenRootAddress, provider)
+    return tokenRootContract(params.tokenRootAddress)
       .methods.walletOf({
         answerId: 0,
-        walletOwner: resolveEverscaleAddress(params.walletOwnerAddress),
+        walletOwner: resolveVenomAddress(params.walletOwnerAddress),
       })
       .call({ cachedState })
       .then(({ value0 }) => {

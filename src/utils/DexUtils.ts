@@ -1,15 +1,16 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import type {
   Address,
   DecodedAbiFunctionOutputs,
   DelayedMessageExecution,
   FullContractState,
-  ProviderRpcClient,
   SendInternalParams,
 } from "everscale-inpage-provider";
 
+import { useRpc } from "../hooks";
 import { DexAbi } from "../constants/abi";
 import { dexRootContract } from "../helpers/contracts";
-import { resolveEverscaleAddress } from "./resolve-everscale-address";
+import { resolveVenomAddress } from ".";
 
 export type DexDeployAccountParams = {
   dexAccountOwnerAddress: Address | string;
@@ -38,19 +39,18 @@ export abstract class DexUtils {
   public static async deployAccount(
     dexRootAddress: Address | string,
     params: DexDeployAccountParams,
-    provider: ProviderRpcClient,
     args?: Partial<SendInternalParams>
   ): Promise<DelayedMessageExecution> {
-    const accountOwner = resolveEverscaleAddress(params.dexAccountOwnerAddress);
+    const accountOwner = resolveVenomAddress(params.dexAccountOwnerAddress);
     const senderAddress = params.senderAddress
-      ? resolveEverscaleAddress(params.senderAddress)
+      ? resolveVenomAddress(params.senderAddress)
       : undefined;
     const sendGasTo = params.sendGasTo
-      ? resolveEverscaleAddress(params.sendGasTo)
+      ? resolveVenomAddress(params.sendGasTo)
       : undefined;
-    return dexRootContract(dexRootAddress, provider)
+    return dexRootContract(dexRootAddress, useRpc())
       .methods.deployAccount({
-        account_owner: resolveEverscaleAddress(params.dexAccountOwnerAddress),
+        account_owner: resolveVenomAddress(params.dexAccountOwnerAddress),
         send_gas_to: sendGasTo ?? senderAddress ?? accountOwner,
       })
       .sendDelayed({
@@ -70,19 +70,18 @@ export abstract class DexUtils {
   public static async deployPair(
     dexRootAddress: Address | string,
     params: DexDeployPairParams,
-    provider: ProviderRpcClient,
     args?: Partial<SendInternalParams>
   ): Promise<DelayedMessageExecution> {
-    return dexRootContract(dexRootAddress, provider)
+    return dexRootContract(dexRootAddress, useRpc())
       .methods.deployPair({
-        left_root: resolveEverscaleAddress(params.leftRootAddress),
-        right_root: resolveEverscaleAddress(params.rightRootAddress),
-        send_gas_to: resolveEverscaleAddress(params.sendGasTo),
+        left_root: resolveVenomAddress(params.leftRootAddress),
+        right_root: resolveVenomAddress(params.rightRootAddress),
+        send_gas_to: resolveVenomAddress(params.sendGasTo),
       })
       .sendDelayed({
         amount: "15000000000",
         bounce: false,
-        from: resolveEverscaleAddress(params.sendGasTo),
+        from: resolveVenomAddress(params.sendGasTo),
         ...args,
       });
   }
@@ -90,7 +89,6 @@ export abstract class DexUtils {
   public static async getExpectedAccountAddress(
     dexRootAddress: Address | string,
     dexAccountOwnerAddress: Address | string,
-    provider: ProviderRpcClient,
     cachedState?: FullContractState
   ): Promise<
     DecodedAbiFunctionOutputs<
@@ -99,9 +97,9 @@ export abstract class DexUtils {
     >["value0"]
   > {
     return (
-      await dexRootContract(dexRootAddress, provider)
+      await dexRootContract(dexRootAddress)
         .methods.getExpectedAccountAddress({
-          account_owner: resolveEverscaleAddress(dexAccountOwnerAddress),
+          account_owner: resolveVenomAddress(dexAccountOwnerAddress),
           answerId: 0,
         })
         .call({ cachedState })
@@ -112,7 +110,6 @@ export abstract class DexUtils {
     dexRootAddress: Address | string,
     leftRootAddress: Address | string,
     rightRootAddress: Address | string,
-    provider: ProviderRpcClient,
     cachedState?: FullContractState
   ): Promise<
     DecodedAbiFunctionOutputs<
@@ -121,11 +118,11 @@ export abstract class DexUtils {
     >["value0"]
   > {
     return (
-      await dexRootContract(dexRootAddress, provider)
+      await dexRootContract(dexRootAddress)
         .methods.getExpectedPairAddress({
           answerId: 0,
-          left_root: resolveEverscaleAddress(leftRootAddress),
-          right_root: resolveEverscaleAddress(rightRootAddress),
+          left_root: resolveVenomAddress(leftRootAddress),
+          right_root: resolveVenomAddress(rightRootAddress),
         })
         .call({ cachedState })
     ).value0;
@@ -134,7 +131,6 @@ export abstract class DexUtils {
   public static async getExpectedPoolAddress(
     dexRootAddress: Address | string,
     roots: (Address | string)[],
-    provider: ProviderRpcClient,
     cachedState?: FullContractState
   ): Promise<
     DecodedAbiFunctionOutputs<
@@ -143,9 +139,9 @@ export abstract class DexUtils {
     >["value0"]
   > {
     return (
-      await dexRootContract(dexRootAddress, provider)
+      await dexRootContract(dexRootAddress)
         .methods.getExpectedPoolAddress({
-          _roots: roots.map((root) => resolveEverscaleAddress(root)),
+          _roots: roots.map((root) => resolveVenomAddress(root)),
           answerId: 0,
         })
         .call({ cachedState })
