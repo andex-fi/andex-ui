@@ -11,7 +11,7 @@ interface DexAccount {
   connectOrDepoloy?: () => void;
 }
 
-const DexAccountContext = createContext<DexAccount>({});
+export const DexAccountContext = createContext<DexAccount>({});
 
 function DexAccountProvider({ children }: { children: ReactNode }) {
   const [dexAccount, setDexAccount] = useState<Address | string | undefined>();
