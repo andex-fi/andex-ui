@@ -1,53 +1,76 @@
-import React, { ReactNode, createContext, useState } from "react";
-import { useAccountContext, useRpc, useStaticRpc } from "../hooks";
-import { DexAbi } from "../constants/abi";
+import { ReactNode, createContext, useState } from "react";
+import { useAccountContext } from "../hooks";
 import { DexRootAddress } from "../constants/dev";
-import { dexRootContract, getFullContractState } from "../helpers/contracts";
+import { getFullContractState } from "../helpers/contracts";
+import { DexUtils } from "../utils/DexUtils";
+import { DexAccountUtils } from "../utils/DexAccountUtils";
+import { Address } from "everscale-inpage-provider";
 
 interface DexAccount {
-  address?: string;
+  dexAccount?: Address | string;
   connectOrDepoloy?: () => void;
 }
 
 const DexAccountContext = createContext<DexAccount>({});
 
 function DexAccountProvider({ children }: { children: ReactNode }) {
-  const [address, setAddress] = useState<string | undefined>();
+  const [dexAccount, setDexAccount] = useState<Address | string | undefined>();
+  const { address } = useAccountContext();
 
-  const staticRpc = useStaticRpc();
-  const rpc = useRpc();
-  const connect = async () => {
-    const contract = dexRootContract(DexRootAddress, staticRpc);
-    const dexRootState = await getFullContractState(DexRootAddress, staticRpc);
-    const address = (
-      await contract?.methods
-        .getExpectedAccountAddress({
-          account_owner: DexRootAddress,
-          answerId: 0,
-        })
-        .call({ cachedState: dexRootState })
-    )?.value0;
-    const dexAccountAddress = await getFullContractState(address, staticRpc);
+  const connectDexAccount = async () => {
+    const dexRootState = await getFullContractState(DexRootAddress);
+    const dexAccountAddress = await DexUtils.getExpectedAccountAddress(
+      DexRootAddress,
+      address as string,
+      dexRootState
+    );
+
     if (!dexAccountAddress) {
       return undefined;
     }
 
-    const state = await getFullContractState(dexAccountAddress, staticRpc);
+    const state = await getFullContractState(dexAccountAddress);
 
     if (!state?.isDeployed) {
       return undefined;
     }
 
     try {
-      // await DexAccountUtils.version(dexAccountAddress, state);
+      await DexAccountUtils.version(dexAccountAddress, state);
+      setDexAccount(dexAccountAddress);
       return dexAccountAddress;
     } catch (e) {
       return undefined;
     }
   };
 
+  const deployDexAccount = async () => {
+    if (address === undefined) {
+      return undefined;
+    }
+
+    const message = await DexUtils.deployAccount(DexRootAddress, {
+      dexAccountOwnerAddress: address,
+    });
+
+    return message.transaction;
+  };
+  const connectOrDepoloy = async () => {
+    if (address === undefined) {
+      return;
+    }
+
+    await connectDexAccount();
+
+    if (dexAccount === undefined) {
+      await deployDexAccount();
+    }
+
+    await connectDexAccount();
+  };
+
   return (
-    <DexAccountContext.Provider value={{}}>
+    <DexAccountContext.Provider value={{ dexAccount, connectOrDepoloy }}>
       {children}
     </DexAccountContext.Provider>
   );
