@@ -4,11 +4,7 @@ import LogoWhite from "../assets/LogoLightSingle.png";
 import { navLinks } from "../pages/homepage/utils";
 import { Link, NavLink } from "react-router-dom";
 import { Button } from "./Button";
-import {
-  SunIcon,
-  Bars3CenterLeftIcon,
-  XMarkIcon,
-} from "@heroicons/react/24/outline";
+import { Bars3CenterLeftIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 export const Nav: FC = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -49,12 +45,6 @@ export const Nav: FC = () => {
           </ul>
 
           <div className="flex flex-col mt-4 items-center gap-10">
-            <div
-              className="p-2 rounded-lg cursor-pointer"
-              style={{ background: "rgba(67, 50, 83, 0.29)" }}
-            >
-              <SunIcon className="w-6 h-6" />
-            </div>
             <Link to="/swap">
               <Button btnStyles="bg-[#983BF6] px-4 py-2 flex items-center justify-center rounded-lg font-bold text-sm">
                 Launch Dapp
@@ -77,12 +67,6 @@ export const Nav: FC = () => {
       </ul>
 
       <div className="hidden lg:flex items-center gap-4">
-        <div
-          className="p-2 rounded-lg cursor-pointer"
-          style={{ background: "rgba(67, 50, 83, 0.29)" }}
-        >
-          <SunIcon className="w-6 h-6" />
-        </div>
         <Link to="/swap">
           <Button btnStyles="bg-[#983BF6] px-4 py-2 flex items-center justify-center rounded-lg font-bold text-sm">
             Launch Dapp
