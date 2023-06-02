@@ -1,32 +1,13 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useState } from "react";
 import Logo from "../assets/LogoLight.png";
 import LogoWhite from "../assets/LogoLightSingle.png";
 import { navLinks } from "../pages/homepage/utils";
 import { Link, NavLink } from "react-router-dom";
 import { Button } from "./Button";
-import {
-  SunIcon,
-  Bars3CenterLeftIcon,
-  XMarkIcon,
-  MoonIcon,
-} from "@heroicons/react/24/outline";
+import { Bars3CenterLeftIcon, XMarkIcon } from "@heroicons/react/24/outline";
 
 export const Nav: FC = () => {
   const [open, setOpen] = useState<boolean>(false);
-
-  const [darkMode, setDarkMode] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [darkMode]);
-
-  const handleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
 
   const handleOpenMenu = (): void => {
     setOpen(!open);
@@ -64,17 +45,6 @@ export const Nav: FC = () => {
           </ul>
 
           <div className="flex flex-col mt-4 items-center gap-10">
-            <div
-              className="p-2 rounded-lg cursor-pointer"
-              style={{ background: "rgba(67, 50, 83, 0.29)" }}
-              onClick={handleDarkMode}
-            >
-              {darkMode ? (
-                <SunIcon className="block h-6 w-6" aria-hidden="true" />
-              ) : (
-                <MoonIcon className="block h-6 w-6" aria-hidden="true" />
-              )}
-            </div>
             <Link to="/swap">
               <Button btnStyles="bg-[#983BF6] px-4 py-2 flex items-center justify-center rounded-lg font-bold text-sm">
                 Launch Dapp
@@ -97,17 +67,6 @@ export const Nav: FC = () => {
       </ul>
 
       <div className="hidden lg:flex items-center gap-4">
-        <div
-          className="p-2 rounded-lg cursor-pointer"
-          style={{ background: "rgba(67, 50, 83, 0.29)" }}
-          onClick={handleDarkMode}
-        >
-          {darkMode ? (
-            <SunIcon className="block h-6 w-6" aria-hidden="true" />
-          ) : (
-            <MoonIcon className="block h-6 w-6" aria-hidden="true" />
-          )}
-        </div>
         <Link to="/swap">
           <Button btnStyles="bg-[#983BF6] px-4 py-2 flex items-center justify-center rounded-lg font-bold text-sm">
             Launch Dapp
