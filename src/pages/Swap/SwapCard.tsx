@@ -1,4 +1,4 @@
-import { useAccountContext } from "../../hooks/accountContext";
+import { useAccountContext } from "../../hooks/useAccountContext";
 import DropdownComponent from "./Dropdown";
 
 const SwapCard = () => {

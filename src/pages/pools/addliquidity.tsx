@@ -4,7 +4,7 @@ import { FiSettings } from "react-icons/fi";
 import { Selecttoken } from "./selecttoken";
 import { Button } from "../../components/Button";
 import { Link } from "react-router-dom";
-import { useAccountContext } from "../../hooks/accountContext";
+import { useAccountContext } from "../../hooks/useAccountContext";
 
 export const Addliquidity: FC = () => {
   const { address, connect } = useAccountContext();

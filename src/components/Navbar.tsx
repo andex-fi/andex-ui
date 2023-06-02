@@ -15,7 +15,7 @@ import LogoLightSingle from "../assets/LogoLightSingle.png";
 import LogoDark from "../assets/LogoDark.png";
 import LogoDarkSingle from "../assets/LogoDarkSingle.png";
 import { Link } from "react-router-dom";
-import { useAccountContext } from "../hooks/accountContext";
+import { useAccountContext } from "../hooks/useAccountContext";
 import WalletDropDown from "./WalletDropDown";
 // import { Sun } from "@heroicons/react/20/solid";
 
