@@ -20,7 +20,7 @@ export const Liquiditypools: FC = () => {
 
   return (
     <div
-      className={`flex flex-col items-center justify-center w-full font-montserrat bg-[#E5E5E5] dark:bg-purple-dark p-4 py-10 md:py-24`}
+      className={`flex flex-col items-center justify-center w-full font-montserrat bg-[#EBF1FF] dark:bg-purple-dark p-4 py-10 md:py-24`}
     >
       <div
         className={`w-full md:w-[60%] bg-white dark:bg-purple-darkest rounded-lg p-4`}
