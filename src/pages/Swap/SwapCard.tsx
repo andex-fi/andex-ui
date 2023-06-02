@@ -1,12 +1,12 @@
-import { useAccountContext } from "../../hooks/accountContext";
+import { useAccountContext } from "../../hooks/useAccountContext";
 import DropdownComponent from "./Dropdown";
 
 const SwapCard = () => {
   const { connect, address } = useAccountContext();
   return (
     <div className="flex justify-center items-center h-full m-auto drop-shadow-2xl ">
-      <div className="w-[24rem] text-white md:w-[32rem]">
-        <div className="h-52 p-2 px-4 rounded-t-3xl bg-purple">
+      <div className="w-[24rem] text-blck dark:text-white md:w-[32rem]">
+        <div className="h-52 p-2 px-4 rounded-t-3xl bg-[#F4F5FA] dark:bg-purple">
           <h2 className="m-6 text-xl">Swap</h2>
           <div className="m-6 flex justify-between mt-10">
             <div className="flex flex-col">
@@ -21,7 +21,7 @@ const SwapCard = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col w-full p-2 px-4 rounded-b-3xl bg-purple-dark">
+        <div className="flex flex-col w-full p-2 px-4 rounded-b-3xl bg-[#FFFFFF] dark:bg-purple-darkest">
           <div className="mx-7 flex justify-between mt-10">
             <div className="flex flex-col">
               <span className="text-5xl">0</span>
@@ -35,7 +35,7 @@ const SwapCard = () => {
             </div>
           </div>
           {address ? (
-            <button className="bg-purple-lightest m-6 p-4 rounded-xl font-bold">
+            <button className="dark:bg-purple-lightest m-6 p-4 rounded-xl font-bold">
               Swap
             </button>
           ) : (
@@ -43,7 +43,7 @@ const SwapCard = () => {
               onClick={() => {
                 connect();
               }}
-              className="bg-purple-lightest m-6 p-4 rounded-xl font-bold"
+              className="bg-purple-light text-white dark:bg-purple-lightest dark:text-white m-6 p-4 rounded-xl font-bold"
             >
               Connect Wallet
             </button>
