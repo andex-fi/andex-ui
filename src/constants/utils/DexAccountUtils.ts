@@ -11,15 +11,15 @@ import type {
 } from "everscale-inpage-provider";
 import { LT_COLLATOR } from "everscale-inpage-provider";
 
-import { useRpc, useStaticRpc } from "../hooks";
-import { DexAbi } from "../constants/abi";
-import { dexAccountContract, getFullContractState } from "../helpers/contracts";
+import { useRpc, useStaticRpc } from "../../hooks";
+import { DexAbi } from "../abi";
+import { dexAccountContract, getFullContractState } from "../contracts";
 import type {
   SendMessageCallback,
   TransactionCallbacks,
   TransactionFailureReason,
   TransactionSuccessResult,
-} from "./types";
+} from "../../utils/types";
 import { DexUtils } from "./DexUtils";
 import { TokenWalletUtils } from "./TokenWalletUtils";
 import type { TokenWalletTransferToWalletParams } from "./TokenWalletUtils";
@@ -28,7 +28,7 @@ import {
   debug,
   getSafeProcessingId,
   resolveVenomAddress,
-} from ".";
+} from "../../utils";
 
 export type DexAccountAddPairParams = {
   leftRootAddress: Address | string;

@@ -7,10 +7,10 @@ import type {
   SendInternalParams,
 } from "everscale-inpage-provider";
 
-import { TokenAbi } from "../constants/abi";
-import { tokenRootContract, tokenWalletContract } from "../helpers/contracts";
-import { resolveVenomAddress, debug, sliceAddress } from ".";
-import { useRpc, useStaticRpc } from "../hooks";
+import { TokenAbi } from "../abi";
+import { tokenRootContract, tokenWalletContract } from "../contracts";
+import { resolveVenomAddress, debug, sliceAddress } from "../../utils";
+import { useRpc, useStaticRpc } from "../../hooks";
 
 export type TokenWalletOwnerParams = {
   tokenRootAddress: Address | string;

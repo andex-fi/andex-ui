@@ -7,10 +7,10 @@ import type {
   SendInternalParams,
 } from "everscale-inpage-provider";
 
-import { useRpc } from "../hooks";
-import { DexAbi } from "../constants/abi";
-import { dexRootContract } from "../helpers/contracts";
-import { resolveVenomAddress } from ".";
+import { useRpc } from "../../hooks";
+import { DexAbi } from "../abi";
+import { dexRootContract } from "../contracts";
+import { resolveVenomAddress } from "../../utils";
 
 export type DexDeployAccountParams = {
   dexAccountOwnerAddress: Address | string;

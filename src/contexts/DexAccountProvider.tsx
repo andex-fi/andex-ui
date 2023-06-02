@@ -1,9 +1,9 @@
 import { ReactNode, createContext, useState } from "react";
 import { useAccountContext } from "../hooks";
-import { DexRootAddress } from "../constants/dev";
-import { getFullContractState } from "../helpers/contracts";
-import { DexUtils } from "../utils/DexUtils";
-import { DexAccountUtils } from "../utils/DexAccountUtils";
+import { DexRootAddress } from "../constants/config";
+import { getFullContractState } from "../constants/contracts";
+import { DexUtils } from "../constants/utils/DexUtils";
+import { DexAccountUtils } from "../constants/utils/DexAccountUtils";
 import { Address } from "everscale-inpage-provider";
 
 interface DexAccount {
