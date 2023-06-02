@@ -1,10 +1,26 @@
 import {
   Address,
   Contract,
+  FullContractState,
   ProviderRpcClient,
 } from "everscale-inpage-provider";
 import { DexAbi, EverAbi, TokenAbi } from "../constants/abi";
 import { resolveEverscaleAddress } from "../utils/resolve-everscale-address";
+
+export async function getFullContractState(
+  address: Address | string,
+  provider: ProviderRpcClient
+): Promise<FullContractState | undefined> {
+  try {
+    return (
+      await provider?.getFullContractState({
+        address: resolveEverscaleAddress(address),
+      })
+    )?.state;
+  } catch (e) {
+    return undefined;
+  }
+}
 
 export function dexAccountCallbacksContract(
   address: Address | string,
