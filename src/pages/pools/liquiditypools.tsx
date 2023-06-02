@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Button } from "../../components/Button";
 // import { useNavigate } from "react-router-dom";
 import { Pools, Positions } from "./positions";
-import { useAccountContext } from "../../hooks/accountContext";
+import { useAccountContext } from "../../hooks/useAccountContext";
 import { useNavigate } from "react-router-dom";
 
 export const Liquiditypools: FC = () => {

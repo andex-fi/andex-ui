@@ -1,7 +1,7 @@
 import { Menu } from "@headlessui/react";
 import jazzicon from "@metamask/jazzicon";
 import { useEffect, useRef, ButtonHTMLAttributes } from "react";
-import { useAccountContext } from "../hooks/accountContext";
+import { useAccountContext } from "../hooks/useAccountContext";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/20/solid";
 // import { MdOutlineSettings } from "react-icons/md";
 
