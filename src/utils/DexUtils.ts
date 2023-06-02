@@ -8,7 +8,7 @@ import type {
 } from "everscale-inpage-provider";
 
 import { DexAbi } from "../constants/abi";
-import { dexRootContract } from "../helpers/contracts";
+import { dexRootContract } from "../constants/contracts";
 import { resolveEverscaleAddress } from "./resolve-everscale-address";
 
 export type DexDeployAccountParams = {

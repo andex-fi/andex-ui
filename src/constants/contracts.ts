@@ -2,7 +2,7 @@
 import type { Address, Contract, FullContractState } from "everscale-inpage-provider";
 
 import { useRpc, useStaticRpc } from '../hooks'
-import { DexAbi, EverAbi, TokenAbi } from "../constants/abi";
+import { DexAbi, EverAbi, TokenAbi } from "./abi";
 import { resolveVenomAddress } from "../utils";
 
 const rpc = useRpc()
