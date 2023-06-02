@@ -14,6 +14,7 @@
     "@headlessui/react": "^1.7.14",
     "@heroicons/react": "^2.0.18",
     "@metamask/jazzicon": "^2.0.0",
+    "bignumber.js": "^9.1.1",
     "everscale-inpage-provider": "^0.3.60",
     "everscale-standalone-client": "^2.1.19",
     "framer-motion": "^10.12.16",
