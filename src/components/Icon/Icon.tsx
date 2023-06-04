@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import library from "./lib";
+import library from "./Lib";
 import { camelify } from "../../utils";
 
 type DefaultLibraryType = typeof library

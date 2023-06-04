@@ -9,6 +9,7 @@ import {
     hasEverscaleProvider,
     Permissions,
     Subscription,
+    ProviderRpcClient
 } from 'everscale-inpage-provider'
 import {
     action,
@@ -459,7 +460,7 @@ export class WalletService extends BaseStore<WalletData, WalletState> {
      * @returns {Promise<void>}
      * @protected
      */
-    protected async onAccountChange(account?: Account): Promise<void> {
+    protected async onAccountChange(account?: Account, provider?: ProviderRpcClient): Promise<void> {
         if (this.contractSubscriber !== undefined) {
             if (account !== undefined) {
                 try {
@@ -479,7 +480,7 @@ export class WalletService extends BaseStore<WalletData, WalletState> {
         this.setState('isUpdatingContract', true)
 
         try {
-            const state = await getFullContractState(account.address)
+            const state = await getFullContractState(account.address, provider)
 
             this.setData('contract', state)
             this.setState('isUpdatingContract', false)

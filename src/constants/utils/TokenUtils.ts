@@ -4,6 +4,7 @@ import type {
     FullContractState,
     SendInternalParams,
     Transaction,
+    ProviderRpcClient
 } from 'everscale-inpage-provider'
 
 import { useRpc } from '../../hooks'
@@ -103,8 +104,9 @@ export abstract class TokenUtils {
     public static async getDetails(
         address: Address | string,
         cachedState?: FullContractState,
+        provider?: ProviderRpcClient
     ): Promise<VenomTokenData | undefined> {
-        const state = cachedState ?? await getFullContractState(address)
+        const state = cachedState ?? await getFullContractState(address, provider)
 
         if (!state) {
             return undefined
@@ -158,8 +160,8 @@ export abstract class TokenUtils {
             .value0
     }
 
-    public static async isNewTip3(address: Address | string): Promise<boolean> {
-        const state = await getFullContractState(address)
+    public static async isNewTip3(address: Address | string, provider?: ProviderRpcClient): Promise<boolean> {
+        const state = await getFullContractState(address, provider)
         if (!state || !state.isDeployed) {
             return false
         }
