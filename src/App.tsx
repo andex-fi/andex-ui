@@ -1,7 +1,7 @@
 import Navbar from "./components/Navbar";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { Liquiditypools } from "./pages/pools/liquiditypools";
-import { Addliquidity } from "./pages/pools/addliquidity";
+// import { Addliquidity } from "./pages/pools/addliquidity";
 import Swap from "./pages/Swap";
 import { Approveliquidity } from "./pages/pools/approveliquidity";
 import { Homepage } from "./pages/homepage/Homepage";
@@ -19,7 +19,7 @@ export default function App() {
         <Route path="pools">
           <Route index={true} element={<Liquiditypools />} />
         </Route>
-        <Route path="addliquidity" element={<Addliquidity />} />
+        <Route path="addliquidity" element={<Approveliquidity />} />
         <Route path="approveliquidity" element={<Approveliquidity />} />
       </Routes>
     </>

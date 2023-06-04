@@ -6,6 +6,7 @@ import type {
   DecodedEvent,
   DelayedMessageExecution,
   FullContractState,
+  ProviderRpcClient,
   SendInternalParams,
   Transaction,
 } from "everscale-inpage-provider";
@@ -521,7 +522,8 @@ export abstract class DexAccountUtils {
   public static async address(
     dexRootAddress: Address | string,
     dexAccountOwnerAddress: Address | string,
-    cachedState?: FullContractState
+    cachedState?: FullContractState,
+    provider?: ProviderRpcClient
   ): Promise<
     | DecodedAbiFunctionOutputs<
         typeof DexAbi.Root,
@@ -539,7 +541,7 @@ export abstract class DexAccountUtils {
       return undefined;
     }
 
-    const state = await getFullContractState(dexAccountAddress);
+    const state = await getFullContractState(dexAccountAddress, provider);
 
     if (!state?.isDeployed) {
       return undefined;
@@ -587,12 +589,13 @@ export abstract class DexAccountUtils {
 
   public static async version(
     dexAccountAddress: Address | string,
-    cachedState?: FullContractState
+    cachedState?: FullContractState,
+    provider?: ProviderRpcClient
   ): Promise<
     DecodedAbiFunctionOutputs<typeof DexAbi.Account, "getVersion">["value0"]
   > {
     return (
-      await dexAccountContract(dexAccountAddress)
+      await dexAccountContract(dexAccountAddress, provider)
         .methods.getVersion({ answerId: 0 })
         .call({ cachedState })
     ).value0;
