@@ -8,10 +8,13 @@ import {
   useState,
 } from "react";
 import { initVenomConnect } from "../helpers/accountConnection";
+import { ProviderRpcClient } from "everscale-inpage-provider";
 
 interface AccountContextType {
   connect: () => Promise<void>;
   disconnect: () => Promise<void>;
+  standalone?: ProviderRpcClient;
+  venomProvider?: ProviderRpcClient;
   address?: string;
   balance?: any;
 }
@@ -32,9 +35,12 @@ export const AccountContext = createContext<AccountContextType>(initialState);
 const AccountProvider = ({ children }: { children: ReactNode }) => {
   //   const venomConnect = initVenomConnect();
   const [venomConnect, setVenomConnect] = useState<any>();
-  const [venomProvider, setVenomProvider] = useState<any>(venomConnect);
+  const [venomProvider, setVenomProvider] = useState<
+    ProviderRpcClient | undefined
+  >();
   const [address, setAddress] = useState<string | undefined>();
   const [balance, setBalance] = useState<any>();
+  const [standalone, setStandalone] = useState<ProviderRpcClient | undefined>();
 
   const getAddress = async (provider: any) => {
     const providerState = await provider?.getProviderState?.();
@@ -104,6 +110,15 @@ const AccountProvider = ({ children }: { children: ReactNode }) => {
     initiate();
   }, []);
 
+  useEffect(() => {
+    const getstandalone = async () => {
+      const standalone: ProviderRpcClient | undefined =
+        await venomConnect?.getStandalone("venomwallet");
+      setStandalone(standalone);
+    };
+    getstandalone();
+  }, [venomConnect]);
+
   //   useEffect(() => {
   //     checkAuth(venomConnect);
   //     onProviderReady(venomConnect);
@@ -120,7 +135,16 @@ const AccountProvider = ({ children }: { children: ReactNode }) => {
     }
   };
   return (
-    <AccountContext.Provider value={{ connect, address, disconnect, balance }}>
+    <AccountContext.Provider
+      value={{
+        venomProvider,
+        standalone,
+        connect,
+        address,
+        disconnect,
+        balance,
+      }}
+    >
       {children}
     </AccountContext.Provider>
   );
