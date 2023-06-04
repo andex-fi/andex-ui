@@ -61,7 +61,7 @@ function WalletDropDown() {
                 )}
               </div>
             </Menu.Button>
-            <Menu.Items className="absolute z-10 p-6 right-0 mt-6 w-[380px] origin-top-right divide-y divide-gray-100 rounded-xl bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+            <Menu.Items className="absolute z-10 p-6 right-0 mt-6 w-[380px] origin-top-right divide-y divide-gray-100 rounded-xl bg-white dark:bg-purple-light shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
               <div className="flex flex-col gap-3 ">
                 <Menu.Item>
                   <div className="flex justify-between items-center">

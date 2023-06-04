@@ -15,6 +15,13 @@ export function isGoodBignumber(
   );
 }
 
+export function camelify(string: string): string {
+    return string.replace(
+        /[-_/](\w)/g,
+        (_, str) => (str ? str.toUpperCase() : ''),
+    )
+}
+
 export function resolveVenomAddress(address: Address | string): Address {
   return address instanceof Address ? address : new Address(address);
 }
@@ -117,3 +124,6 @@ export function zip<A, B>(a: Array<A>, b: Array<B>): Array<[A, B]> {
 
 export * from "./console";
 export * from "./debounce";
+export * from "./formattedAmount";
+export * from "./formattedBalance";
+export * from "./storage";
