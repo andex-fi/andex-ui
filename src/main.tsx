@@ -5,6 +5,8 @@ import "./index.css";
 import { BrowserRouter } from "react-router-dom";
 import AccountProvider from "./contexts/AccountProvider.tsx";
 import DexAccountProvider from "./contexts/DexAccountProvider.tsx";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
@@ -12,6 +14,7 @@ ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
       <AccountProvider>
         <DexAccountProvider>
           <App />
+          <ToastContainer position="bottom-right" />
         </DexAccountProvider>
       </AccountProvider>
     </BrowserRouter>
