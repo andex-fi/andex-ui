@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "../index.css"
+import "../index.css";
 
 import { Fragment } from "react";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
@@ -7,7 +7,7 @@ import {
   Bars3CenterLeftIcon,
   XMarkIcon,
   SunIcon,
-  MoonIcon
+  MoonIcon,
 } from "@heroicons/react/24/outline";
 
 import LogoLight from "../assets/LogoLight.png";
@@ -49,8 +49,7 @@ export default function Navbar() {
   }, [darkMode]);
 
   const handleDarkMode = () => {
-    setDarkMode(!darkMode)
-    console.log(darkMode)
+    setDarkMode(!darkMode);
   };
 
   return (
@@ -77,12 +76,20 @@ export default function Navbar() {
                 <div className="flex flex-shrink-0 items-center">
                   <Link to="/">
                     <div className="block h-8 w-auto lg:hidden">
-                      <img src={darkMode ? LogoLightSingle : LogoDarkSingle} alt="Andex" className="h-8" />
+                      <img
+                        src={darkMode ? LogoLightSingle : LogoDarkSingle}
+                        alt="Andex"
+                        className="h-8"
+                      />
                     </div>
                   </Link>
                   <Link to="/">
                     <div className="hidden h-8 w-auto lg:block">
-                      <img src={darkMode ? LogoLight : LogoDark} alt="Andex" className="h-8" />
+                      <img
+                        src={darkMode ? LogoLight : LogoDark}
+                        alt="Andex"
+                        className="h-8"
+                      />
                     </div>
                   </Link>
                 </div>
@@ -108,14 +115,15 @@ export default function Navbar() {
                 <div className="flex">
                   <button
                     type="button"
-                    className="hidden items-center rounded-md bg-[#D1D5FF] mr-3 px-3 py-2 text-sm font-semibold text-purple-lightest shadow-sm lg:block dark:bg-purple/75" 
+                    className="hidden items-center rounded-md bg-[#D1D5FF] mr-3 px-3 py-2 text-sm font-semibold text-purple-lightest shadow-sm lg:block dark:bg-purple/75"
                     onClick={() => handleDarkMode()}
-                  > {
-                    darkMode ? <SunIcon className="block h-6 w-6" aria-hidden="true" />:
-                    <MoonIcon className="block h-6 w-6" aria-hidden="true" />
-                    
-                  }
-                    
+                  >
+                    {" "}
+                    {darkMode ? (
+                      <SunIcon className="block h-6 w-6" aria-hidden="true" />
+                    ) : (
+                      <MoonIcon className="block h-6 w-6" aria-hidden="true" />
+                    )}
                   </button>
                   {address ? (
                     <WalletDropDown />
@@ -123,7 +131,7 @@ export default function Navbar() {
                     <button
                       type="button"
                       onClick={() => connect()}
-                      className="inline-flex items-center rounded-lg px-3 py-2 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 bg-purple text-white dark:bg-purple-lightest" 
+                      className="inline-flex items-center rounded-lg px-3 py-2 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 bg-purple text-white dark:bg-purple-lightest"
                     >
                       Connect Wallet
                     </button>
