@@ -26,6 +26,27 @@ export function resolveVenomAddress(address: Address | string): Address {
   return address instanceof Address ? address : new Address(address);
 }
 
+export function throttle<T>(
+  fn: (...args: T[]) => unknown,
+  limit: number,
+): (...args: T[]) => void {
+  let wait = false
+
+  return (...args: T[]) => {
+      if (!wait) {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          fn.apply(this, args)
+
+          wait = true
+
+          setTimeout(() => {
+              wait = false
+          }, limit)
+      }
+  }
+}
+
 export function getSafeProcessingId(
   bits: 8 | 16 | 32 | 64 | 128 | 160 | 256 = 32
 ): string {

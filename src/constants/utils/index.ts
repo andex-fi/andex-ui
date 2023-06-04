@@ -1,4 +1,6 @@
 export * from './DexAccountUtils'
 export * from './DexUtils'
+export * from './LiquidityPoolUtils'
+export * from './PairUtils'
 export * from './TokenUtils'
 export * from './TokenWalletUtils'
