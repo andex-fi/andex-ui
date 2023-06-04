@@ -38,7 +38,9 @@ function AccountTabs() {
           {["Activity", "Token"].map((item) => (
             <Tab
               className={({ selected }) =>
-                `${selected ? "text-[#52058F]" : "text-[#6D87AC]"} font-[600]`
+                `${
+                  selected ? "text-[#52058F] dark:text-white" : "text-[#6D87AC]"
+                } font-[600]`
               }
             >
               {item}
