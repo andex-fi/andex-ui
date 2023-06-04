@@ -14,6 +14,7 @@ import { Address } from "everscale-inpage-provider";
 import { toast } from "react-toastify";
 
 interface DexAccount {
+  dexAccountLoading?: boolean;
   dexAccount?: Address | string;
   connectOrDepoloy?: () => void;
 }
@@ -25,6 +26,7 @@ export const DexAccountContext = createContext<DexAccount>({
 function DexAccountProvider({ children }: { children: ReactNode }) {
   const [dexAccount, setDexAccount] = useState<Address | string | undefined>();
   const { address, venomProvider } = useAccountContext();
+  const [dexAccountLoading, setLoading] = useState<boolean | undefined>();
 
   const connectDexAccount = useCallback(async () => {
     const dexRootState = await getFullContractState(
@@ -66,6 +68,7 @@ function DexAccountProvider({ children }: { children: ReactNode }) {
   }, [address, venomProvider]);
 
   const deployDexAccount = async () => {
+    setLoading(true);
     if (address === undefined) {
       return undefined;
     }
@@ -86,12 +89,16 @@ function DexAccountProvider({ children }: { children: ReactNode }) {
         autoClose: 5000,
       });
       return message.transaction;
-    } catch {
+    } catch (error: any) {
       toast.update(toastId, {
-        render: "Account creation failed",
+        render:
+          error?.code === 3
+            ? "Transaction canceled by the user"
+            : "Account creation failed",
         type: toast.TYPE.ERROR,
         autoClose: 5000,
       });
+      setLoading(false);
       return undefined;
     }
   };
@@ -108,16 +115,24 @@ function DexAccountProvider({ children }: { children: ReactNode }) {
     }
 
     await connectDexAccount();
+    setLoading(false);
   };
 
   useEffect(() => {
     if (address) {
-      connectDexAccount();
+      const checkConnection = async () => {
+        setLoading(true);
+        await connectDexAccount();
+        setLoading(false);
+      };
+      checkConnection();
     }
   }, [address, connectDexAccount]);
 
   return (
-    <DexAccountContext.Provider value={{ dexAccount, connectOrDepoloy }}>
+    <DexAccountContext.Provider
+      value={{ dexAccountLoading, dexAccount, connectOrDepoloy }}
+    >
       {children}
     </DexAccountContext.Provider>
   );
