@@ -11,6 +11,7 @@ import { getFullContractState } from "../constants/contracts";
 import { DexUtils } from "../constants/utils/DexUtils";
 import { DexAccountUtils } from "../constants/utils/DexAccountUtils";
 import { Address } from "everscale-inpage-provider";
+import { toast } from "react-toastify";
 
 interface DexAccount {
   dexAccount?: Address | string;
@@ -50,6 +51,7 @@ function DexAccountProvider({ children }: { children: ReactNode }) {
     console.log("dex account state:", state);
     console.log("checking if address is deployed.....");
     if (!state?.isDeployed) {
+      setDexAccount(undefined);
       return undefined;
     }
 
@@ -68,15 +70,30 @@ function DexAccountProvider({ children }: { children: ReactNode }) {
       return undefined;
     }
 
-    const message = await DexUtils.deployAccount(
-      DexRootAddress,
-      {
-        dexAccountOwnerAddress: address,
-      },
-      venomProvider
-    );
+    const toastId = toast.info("Creating DEX Account", { autoClose: false });
 
-    return message.transaction;
+    try {
+      const message = await DexUtils.deployAccount(
+        DexRootAddress,
+        {
+          dexAccountOwnerAddress: address,
+        },
+        venomProvider
+      );
+      toast.update(toastId, {
+        render: "Account created successfully",
+        type: toast.TYPE.SUCCESS,
+        autoClose: 5000,
+      });
+      return message.transaction;
+    } catch {
+      toast.update(toastId, {
+        render: "Account creation failed",
+        type: toast.TYPE.ERROR,
+        autoClose: 5000,
+      });
+      return undefined;
+    }
   };
   const connectOrDepoloy = async () => {
     if (address === undefined) {
