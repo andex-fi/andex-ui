@@ -4,10 +4,11 @@ import type {
   DecodedAbiFunctionOutputs,
   DelayedMessageExecution,
   FullContractState,
+  ProviderRpcClient,
   SendInternalParams,
 } from "everscale-inpage-provider";
 
-import { useRpc } from "../../hooks";
+import { useRpc, useStaticRpc } from "../../hooks";
 import { DexAbi } from "../abi";
 import { dexRootContract } from "../contracts";
 import { resolveVenomAddress } from "../../utils";
@@ -39,6 +40,7 @@ export abstract class DexUtils {
   public static async deployAccount(
     dexRootAddress: Address | string,
     params: DexDeployAccountParams,
+    provider: ProviderRpcClient = useRpc(),
     args?: Partial<SendInternalParams>
   ): Promise<DelayedMessageExecution> {
     const accountOwner = resolveVenomAddress(params.dexAccountOwnerAddress);
@@ -48,7 +50,7 @@ export abstract class DexUtils {
     const sendGasTo = params.sendGasTo
       ? resolveVenomAddress(params.sendGasTo)
       : undefined;
-    return dexRootContract(dexRootAddress, useRpc())
+    return dexRootContract(dexRootAddress, provider)
       .methods.deployAccount({
         account_owner: resolveVenomAddress(params.dexAccountOwnerAddress),
         send_gas_to: sendGasTo ?? senderAddress ?? accountOwner,
@@ -89,7 +91,8 @@ export abstract class DexUtils {
   public static async getExpectedAccountAddress(
     dexRootAddress: Address | string,
     dexAccountOwnerAddress: Address | string,
-    cachedState?: FullContractState
+    cachedState?: FullContractState,
+    provider: ProviderRpcClient = useStaticRpc()
   ): Promise<
     DecodedAbiFunctionOutputs<
       typeof DexAbi.Root,
@@ -97,7 +100,7 @@ export abstract class DexUtils {
     >["value0"]
   > {
     return (
-      await dexRootContract(dexRootAddress)
+      await dexRootContract(dexRootAddress, provider)
         .methods.getExpectedAccountAddress({
           account_owner: resolveVenomAddress(dexAccountOwnerAddress),
           answerId: 0,

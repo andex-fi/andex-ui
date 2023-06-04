@@ -4,8 +4,12 @@ import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { Selecttoken } from "./selecttoken";
 import { Button } from "../../components/Button";
+import { useAccountContext } from "../../hooks";
+import { useDexAccountContext } from "../../hooks/useDexAccountContext";
 
 export const Approveliquidity: FC = () => {
+  const { address, connect } = useAccountContext();
+  const { dexAccount, connectOrDepoloy } = useDexAccountContext();
   return (
     <div className="flex items-center justify-center w-full h-screen font-montserrat bg-[#E5E5E5]">
       <div className="w-full md:w-[30rem] bg-white rounded-2xl p-6">
@@ -48,9 +52,27 @@ export const Approveliquidity: FC = () => {
             </div>
           </div>
         </div>
-        <Button btnStyles="bg-[#52058F] text-white flex items-center justify-center w-full rounded-lg py-3 mt-4">
-          Approve
-        </Button>
+        {!address ? (
+          <Button
+            onClick={() => {
+              connect();
+            }}
+            btnStyles="bg-[#52058F] text-white flex items-center justify-center w-full rounded-lg py-3 mt-4"
+          >
+            Connect Wallet
+          </Button>
+        ) : dexAccount ? (
+          <Button btnStyles="bg-[#52058F] text-white flex items-center justify-center w-full rounded-lg py-3 mt-4">
+            Supply
+          </Button>
+        ) : (
+          <Button
+            onClick={connectOrDepoloy}
+            btnStyles="bg-[#52058F] text-white flex items-center justify-center w-full rounded-lg py-3 mt-4"
+          >
+            Create DEX Account
+          </Button>
+        )}
       </div>
     </div>
   );
