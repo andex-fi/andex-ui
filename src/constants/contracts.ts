@@ -10,8 +10,8 @@ import { useRpc, useStaticRpc } from "../hooks";
 import { DexAbi, EverAbi, TokenAbi } from "./abi";
 import { resolveVenomAddress } from "../utils";
 
-const rpc = useRpc();
-const staticRpc = useStaticRpc();
+// const rpc = useRpc();
+// const staticRpc = useStaticRpc();
 
 export async function getFullContractState(
   address: Address | string,
@@ -31,7 +31,7 @@ export async function getFullContractState(
 
 export function dexAccountCallbacksContract(
   address: Address | string,
-  provider = staticRpc
+  provider = useStaticRpc()
 ): Contract<typeof DexAbi.DexAccountCallbacks> {
   return new provider.Contract(
     DexAbi.DexAccountCallbacks,
@@ -41,14 +41,14 @@ export function dexAccountCallbacksContract(
 
 export function dexAccountContract(
   address: Address | string,
-  provider = staticRpc
+  provider = useStaticRpc()
 ): Contract<typeof DexAbi.Account> {
   return new provider.Contract(DexAbi.Account, resolveVenomAddress(address));
 }
 
 export function dexPairCallbacksContract(
   address: Address | string,
-  provider = staticRpc
+  provider = useStaticRpc()
 ): Contract<typeof DexAbi.DexPairCallbacks> {
   return new provider.Contract(
     DexAbi.DexPairCallbacks,
@@ -58,35 +58,35 @@ export function dexPairCallbacksContract(
 
 export function dexPairContract(
   address: Address | string,
-  provider = staticRpc
+  provider = useStaticRpc()
 ): Contract<typeof DexAbi.Pair> {
   return new provider.Contract(DexAbi.Pair, resolveVenomAddress(address));
 }
 
 export function dexRootContract(
   address: Address | string,
-  provider = staticRpc
+  provider = useStaticRpc()
 ): Contract<typeof DexAbi.Root> {
   return new provider.Contract(DexAbi.Root, resolveVenomAddress(address));
 }
 
 export function dexStablePairContract(
   address: Address | string,
-  provider = staticRpc
+  provider = useStaticRpc()
 ): Contract<typeof DexAbi.StablePair> {
   return new provider.Contract(DexAbi.StablePair, resolveVenomAddress(address));
 }
 
 export function dexStablePoolContract(
   address: Address | string,
-  provider = staticRpc
+  provider = useStaticRpc()
 ): Contract<typeof DexAbi.StablePool> {
   return new provider.Contract(DexAbi.StablePool, resolveVenomAddress(address));
 }
 
 export function swapCallbacksContract(
   address: Address | string,
-  provider = staticRpc
+  provider = useStaticRpc()
 ): Contract<typeof DexAbi.SwapCallbacks> {
   return new provider.Contract(
     DexAbi.SwapCallbacks,
@@ -96,21 +96,21 @@ export function swapCallbacksContract(
 
 export function tokenRootContract(
   address: Address | string,
-  provider = staticRpc
+  provider = useStaticRpc()
 ): Contract<typeof TokenAbi.Root> {
   return new provider.Contract(TokenAbi.Root, resolveVenomAddress(address));
 }
 
 export function tokenWalletContract(
   address: Address | string,
-  provider = rpc
+  provider = useRpc()
 ): Contract<typeof TokenAbi.Wallet> {
   return new provider.Contract(TokenAbi.Wallet, resolveVenomAddress(address));
 }
 
 export function wrappedCoinVaultContract(
   address: Address | string,
-  provider = rpc
+  provider = useRpc()
 ): Contract<typeof EverAbi.WeverVault> {
   return new provider.Contract(
     EverAbi.WeverVault,

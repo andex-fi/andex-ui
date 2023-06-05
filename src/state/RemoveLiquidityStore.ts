@@ -52,7 +52,6 @@ export type RemoveLiquidityFormStoreState = {
 
 
 const staticRpc = useStaticRpc()
-const { venomProvider } = useAccountContext()
 
 
 export class RemoveLiquidityFormStore extends BaseStore<RemoveLiquidityFormStoreData, RemoveLiquidityFormStoreState> {
@@ -244,6 +243,7 @@ export class RemoveLiquidityFormStore extends BaseStore<RemoveLiquidityFormStore
     }
 
     protected async syncPool(): Promise<void> {
+        const { venomProvider } = useAccountContext()
         if (this.isSyncingPool) {
             return
         }
@@ -341,6 +341,8 @@ export class RemoveLiquidityFormStore extends BaseStore<RemoveLiquidityFormStore
                 if (this.pool === undefined) {
                     return
                 }
+
+                const { venomProvider } = useAccountContext()
 
                 const pool = { ...toJS(this.pool) }
                 pool.state = await getFullContractState(event.address, venomProvider)

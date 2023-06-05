@@ -38,7 +38,6 @@ export type DexAccountState = {
 
 
 const staticRpc = useStaticRpc()
-const { venomProvider } = useAccountContext()
 
 export class DexAccountService extends BaseStore<DexAccountData, DexAccountState> {
 
@@ -68,6 +67,7 @@ export class DexAccountService extends BaseStore<DexAccountData, DexAccountState
     }
 
     public async init(): Promise<void> {
+        const { venomProvider } = useAccountContext()
         this.accountDisposer = reaction(() => this.address, this.handleAccountChange, {
             equals: addressesComparer,
             fireImmediately: true,
@@ -260,6 +260,7 @@ export class DexAccountService extends BaseStore<DexAccountData, DexAccountState
     }
 
     protected async handleAccountChange(address?: Address): Promise<void> {
+        const { venomProvider } = useAccountContext()
         if (address === undefined) {
             await this.unsubscribe()
             return
@@ -319,6 +320,7 @@ export class DexAccountService extends BaseStore<DexAccountData, DexAccountState
                     'color: #c5e4f3',
                     event,
                 )
+                const { venomProvider } = useAccountContext()
 
                 const state = await getFullContractState(event.address, venomProvider)
 
