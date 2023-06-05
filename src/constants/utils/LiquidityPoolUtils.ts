@@ -158,10 +158,11 @@ export abstract class LiquidityPoolUtils {
   public static async connect(
     params: LiquidityPoolConnectParams,
     args: Pick<SendInternalParams, "from"> &
-      Omit<Partial<SendInternalParams>, "from">
+      Omit<Partial<SendInternalParams>, "from">,
+    provider: ProviderRpcClient = staticRpc
   ): Promise<Transaction | undefined> {
     const callId = params.callId ?? getSafeProcessingId();
-    const subscriber = new staticRpc.Subscriber();
+    const subscriber = new provider.Subscriber();
     let transaction: Transaction | undefined;
 
     try {
@@ -353,10 +354,11 @@ export abstract class LiquidityPoolUtils {
    */
   public static async depositLiquidity(
     params: LiquidityPoolDepositParams,
-    args?: Partial<SendInternalParams>
+    args?: Partial<SendInternalParams>,
+    provider: ProviderRpcClient = staticRpc
   ): Promise<Transaction | undefined> {
     const callId = params.callId ?? getSafeProcessingId();
-    const subscriber = new staticRpc.Subscriber();
+    const subscriber = new provider.Subscriber();
     let transaction: Transaction | undefined;
 
     try {
