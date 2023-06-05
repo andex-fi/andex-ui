@@ -17,7 +17,7 @@ import LogoDarkSingle from "../assets/LogoDarkSingle.png";
 import { Link } from "react-router-dom";
 import { useAccountContext } from "../hooks/useAccountContext";
 import WalletDropDown from "./WalletDropDown";
-import { onToggleThemeButtonClick } from '../contexts/AccountProvider'
+import { VenomConnect } from "@andex/wallet-kit";
 // import { Sun } from "@heroicons/react/20/solid";
 
 const navigation = [
@@ -36,11 +36,36 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
+const themesList = ["light", "dark"]
+
 export default function Navbar() {
   const { address, connect } = useAccountContext();
+  const [venomConnect] = useState<any>();
+  const [ theme, setTheme ] = useState("light");
 
   const [darkMode, setDarkMode] = useState(false);
 
+  const getTheme = () =>
+      venomConnect?.getInfo()?.themeConfig?.name?.toString?.() || "...";
+
+  const onToggleThemeButtonClick = async () => {
+      const currentTheme = getTheme();
+  
+      const lastIndex = themesList.length - 1;
+  
+      const currentThemeIndex = themesList.findIndex(
+        (item) => item === currentTheme
+      );
+  
+      const theme =
+        currentThemeIndex >= lastIndex || !~currentThemeIndex || !~lastIndex
+          ? themesList[0]
+          : themesList[currentThemeIndex + 1];
+  
+      await venomConnect?.updateTheme(theme);
+  
+      setTheme(getTheme());
+  };
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
