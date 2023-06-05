@@ -42,6 +42,28 @@ const AccountProvider = ({ children }: { children: ReactNode }) => {
   const [balance, setBalance] = useState<any>();
   const [standalone, setStandalone] = useState<ProviderRpcClient | undefined>();
 
+  const getTheme = () =>
+      venomConnect?.getInfo()?.themeConfig?.name?.toString?.() || "...";
+  
+  export const onToggleThemeButtonClick = async () => {
+      const currentTheme = getTheme();
+  
+      const lastIndex = themesList.length - 1;
+  
+      const currentThemeIndex = themesList.findIndex(
+        (item) => item === currentTheme
+      );
+  
+      const theme =
+        currentThemeIndex >= lastIndex || !~currentThemeIndex || !~lastIndex
+          ? themesList[0]
+          : themesList[currentThemeIndex + 1];
+  
+      await venomConnect?.updateTheme(theme);
+  
+      setTheme(getTheme());
+    };
+
   const getAddress = async (provider: any) => {
     const providerState = await provider?.getProviderState?.();
     return providerState?.permissions.accountInteraction?.address.toString();

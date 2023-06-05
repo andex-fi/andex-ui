@@ -17,6 +17,7 @@ import LogoDarkSingle from "../assets/LogoDarkSingle.png";
 import { Link } from "react-router-dom";
 import { useAccountContext } from "../hooks/useAccountContext";
 import WalletDropDown from "./WalletDropDown";
+import { onToggleThemeButtonClick } from '../contexts/AccountProvider'
 // import { Sun } from "@heroicons/react/20/solid";
 
 const navigation = [
@@ -50,6 +51,7 @@ export default function Navbar() {
 
   const handleDarkMode = () => {
     setDarkMode(!darkMode);
+    onToggleThemeButtonClick()
   };
 
   return (
