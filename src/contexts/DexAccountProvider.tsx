@@ -11,8 +11,10 @@ import { getFullContractState } from "../constants/contracts";
 import { DexUtils } from "../constants/utils/DexUtils";
 import { DexAccountUtils } from "../constants/utils/DexAccountUtils";
 import { Address } from "everscale-inpage-provider";
+import { toast } from "react-toastify";
 
 interface DexAccount {
+  dexAccountLoading?: boolean;
   dexAccount?: Address | string;
   connectOrDepoloy?: () => void;
 }
@@ -24,6 +26,7 @@ export const DexAccountContext = createContext<DexAccount>({
 function DexAccountProvider({ children }: { children: ReactNode }) {
   const [dexAccount, setDexAccount] = useState<Address | string | undefined>();
   const { address, venomProvider } = useAccountContext();
+  const [dexAccountLoading, setLoading] = useState<boolean | undefined>();
 
   const connectDexAccount = useCallback(async () => {
     const dexRootState = await getFullContractState(
@@ -50,6 +53,7 @@ function DexAccountProvider({ children }: { children: ReactNode }) {
     console.log("dex account state:", state);
     console.log("checking if address is deployed.....");
     if (!state?.isDeployed) {
+      setDexAccount(undefined);
       return undefined;
     }
 
@@ -64,19 +68,40 @@ function DexAccountProvider({ children }: { children: ReactNode }) {
   }, [address, venomProvider]);
 
   const deployDexAccount = async () => {
+    setLoading(true);
     if (address === undefined) {
       return undefined;
     }
 
-    const message = await DexUtils.deployAccount(
-      DexRootAddress,
-      {
-        dexAccountOwnerAddress: address,
-      },
-      venomProvider
-    );
+    const toastId = toast.info("Creating DEX Account", { autoClose: false });
 
-    return message.transaction;
+    try {
+      const message = await DexUtils.deployAccount(
+        DexRootAddress,
+        {
+          dexAccountOwnerAddress: address,
+        },
+        venomProvider
+      );
+      toast.update(toastId, {
+        render: "Account created successfully",
+        type: toast.TYPE.SUCCESS,
+        autoClose: 5000,
+      });
+      return message.transaction;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } catch (error: any) {
+      toast.update(toastId, {
+        render:
+          error?.code === 3
+            ? "Transaction canceled by the user"
+            : "Account creation failed",
+        type: toast.TYPE.ERROR,
+        autoClose: 5000,
+      });
+      setLoading(false);
+      return undefined;
+    }
   };
   const connectOrDepoloy = async () => {
     if (address === undefined) {
@@ -91,16 +116,24 @@ function DexAccountProvider({ children }: { children: ReactNode }) {
     }
 
     await connectDexAccount();
+    setLoading(false);
   };
 
   useEffect(() => {
     if (address) {
-      connectDexAccount();
+      const checkConnection = async () => {
+        setLoading(true);
+        await connectDexAccount();
+        setLoading(false);
+      };
+      checkConnection();
     }
   }, [address, connectDexAccount]);
 
   return (
-    <DexAccountContext.Provider value={{ dexAccount, connectOrDepoloy }}>
+    <DexAccountContext.Provider
+      value={{ dexAccountLoading, dexAccount, connectOrDepoloy }}
+    >
       {children}
     </DexAccountContext.Provider>
   );

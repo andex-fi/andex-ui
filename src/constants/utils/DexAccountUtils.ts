@@ -299,11 +299,12 @@ export abstract class DexAccountUtils {
   public static async depositToken(
     dexAccountAddress: Address | string,
     params: DexAccountDepositTokenParams,
-    args?: Partial<SendInternalParams>
+    args?: Partial<SendInternalParams>,
+    provider: ProviderRpcClient = staticRpc
   ): Promise<Transaction | undefined> {
     const callId = params.callId ?? getSafeProcessingId();
     let transaction: Transaction | undefined;
-    const subscriber = new staticRpc.Subscriber();
+    const subscriber = new provider.Subscriber();
 
     const senderTokenWalletAddress =
       params.senderTokenWalletAddress ??
@@ -424,11 +425,12 @@ export abstract class DexAccountUtils {
   public static async withdrawToken(
     dexAccountAddress: Address | string,
     params: DexAccountWithdrawTokenParams,
-    args?: Partial<SendInternalParams>
+    args?: Partial<SendInternalParams>,
+    provider: ProviderRpcClient = staticRpc
   ): Promise<Transaction | undefined> {
     const callId = params.callId ?? getSafeProcessingId();
     let transaction: Transaction | undefined;
-    const subscriber = new staticRpc.Subscriber();
+    const subscriber = new provider.Subscriber();
 
     try {
       const stream = await subscriber

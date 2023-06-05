@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Address } from "everscale-inpage-provider";
 import BigNumber from "bignumber.js";
 
@@ -12,6 +13,12 @@ export function isGoodBignumber(
     !valueBN.isNaN() &&
     valueBN.isPositive() &&
     (nonZeroCheck ? !valueBN.isZero() : true)
+  );
+}
+
+export function camelify(string: string): string {
+  return string.replace(/[-_/](\w)/g, (_, str) =>
+    str ? str.toUpperCase() : ""
   );
 }
 
@@ -115,5 +122,28 @@ export function zip<A, B>(a: Array<A>, b: Array<B>): Array<[A, B]> {
   return a.map((e, i) => [e, b[i]]);
 }
 
+export function throttle<T>(
+  fn: (...args: T[]) => unknown,
+  limit: number
+): (...args: T[]) => void {
+  let wait = false;
+
+  return (...args: T[]) => {
+    if (!wait) {
+      // @ts-ignore
+      fn.apply(this, args);
+
+      wait = true;
+
+      setTimeout(() => {
+        wait = false;
+      }, limit);
+    }
+  };
+}
+
 export * from "./console";
 export * from "./debounce";
+export * from "./formattedAmount";
+export * from "./formattedBalance";
+export * from "./storage";
