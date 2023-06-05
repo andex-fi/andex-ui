@@ -156,26 +156,6 @@ export function zip<A, B>(a: Array<A>, b: Array<B>): Array<[A, B]> {
   return a.map((e, i) => [e, b[i]]);
 }
 
-export function throttle<T>(
-  fn: (...args: T[]) => unknown,
-  limit: number
-): (...args: T[]) => void {
-  let wait = false;
-
-  return (...args: T[]) => {
-    if (!wait) {
-      // @ts-ignore
-      fn.apply(this, args);
-
-      wait = true;
-
-      setTimeout(() => {
-        wait = false;
-      }, limit);
-    }
-  };
-}
-
 export * from "./console";
 export * from "./debounce";
 export * from "./formattedAmount";
