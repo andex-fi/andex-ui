@@ -1,5 +1,7 @@
 import { FC, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
+import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
+import { FiSettings } from "react-icons/fi";
 import BigNumber from "bignumber.js";
 import { reaction } from "mobx";
 import { Observer } from "mobx-react-lite";
@@ -54,13 +56,15 @@ export const RemoveLiquidity: FC = () => {
     }, [])
 
     return (
-        <div className="">
-            <div>
-                <header>
-                    <h2>
-                        Remove Liquidity
-                    </h2>
-                </header>
+        <div className="flex items-center justify-center w-full h-screen font-montserrat bg-[#EBF1FF] dark:bg-purple-dark p-4 py-10 ">
+            <div className="w-full md:w-[30rem] bg-white dark:bg-purple-darkest rounded-2xl p-6">
+                <div className="w-full flex items-center justify-between">
+                    <Link to="/pools">
+                        <MdOutlineKeyboardArrowLeft />
+                    </Link>
+                    <h3 className="font-extrabold">Remove Liquidity</h3>
+                    <FiSettings />
+                </div>
 
                 <Observer>
                     {() => {
@@ -71,7 +75,7 @@ export const RemoveLiquidity: FC = () => {
                         )
                         
                         return (
-                            <div>
+                            <div className="dark:bg-purple-dark">
                                 <div>
                                     <div>
                                        Select Pair 
