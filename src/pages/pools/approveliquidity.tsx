@@ -13,8 +13,8 @@ export const Approveliquidity: FC = () => {
   const { dexAccount, connectOrDepoloy, dexAccountLoading } =
     useDexAccountContext();
   return (
-    <div className="flex items-center justify-center w-full h-screen font-montserrat bg-[#E5E5E5]">
-      <div className="w-full md:w-[30rem] bg-white rounded-2xl p-6">
+    <div className="flex items-center justify-center w-full h-screen font-montserrat bg-[#EBF1FF] dark:bg-purple-dark">
+      <div className="w-full md:w-[30rem] bg-white dark:bg-purple-light rounded-2xl p-6">
         <div className="w-full flex items-center justify-between">
           <Link to="/pools">
             <MdOutlineKeyboardArrowLeft />
@@ -27,7 +27,7 @@ export const Approveliquidity: FC = () => {
           <Selecttoken />
         </div>
         <div className="flex items-center justify-center  w-full mt-8">
-          <div className="w-5 h-5 rounded-full bg-[#E5E5E5] flex items-center justify-center">
+          <div className="w-5 h-5 rounded-full bg-[#E5E5E5] dark:bg-purple-dark flex items-center justify-center">
             <p className="text-[#3189EE] text-lg">+</p>
           </div>
         </div>
@@ -41,16 +41,28 @@ export const Approveliquidity: FC = () => {
           </h4>
           <div className="mt-2 flex items-center justify-between w-full">
             <div>
-              <h3 className="text-[#13173E] font-extrabold">960.7826</h3>
-              <p className="text-[#7F8FA9] text-sm">BUSD per ETH</p>
+              <h3 className="text-[#13173E] dark:text-white font-extrabold">
+                960.7826
+              </h3>
+              <p className="text-[#7F8FA9] dark:text-white dark:opacity-80 text-sm">
+                BUSD per ETH
+              </p>
             </div>
             <div>
-              <h3 className="text-[#13173E] font-extrabold">0.001040818</h3>
-              <p className="text-[#7F8FA9] text-sm">ETH per BUSD</p>
+              <h3 className="text-[#13173E] dark:text-white font-extrabold">
+                0.001040818
+              </h3>
+              <p className="text-[#7F8FA9] dark:text-white dark:opacity-80 text-sm">
+                ETH per BUSD
+              </p>
             </div>
             <div>
-              <h3 className="text-[#13173E] font-extrabold">16%</h3>
-              <p className="text-[#7F8FA9] text-sm">Share of pool</p>
+              <h3 className="text-[#13173E] dark:text-white font-extrabold">
+                16%
+              </h3>
+              <p className="text-[#7F8FA9] dark:text-white dark:opacity-80 text-sm">
+                Share of pool
+              </p>
             </div>
           </div>
         </div>
@@ -59,12 +71,12 @@ export const Approveliquidity: FC = () => {
             onClick={() => {
               connect();
             }}
-            btnStyles="bg-[#52058F] text-white flex items-center justify-center w-full rounded-lg py-3 mt-4"
+            btnStyles="bg-[#52058F] dark:bg-purple-lightest text-white flex items-center justify-center w-full rounded-lg py-3 mt-4"
           >
             Connect Wallet
           </Button>
         ) : dexAccountLoading ? (
-          <Button btnStyles="bg-[#52058F] text-white flex items-center justify-center w-full rounded-lg py-3 mt-4">
+          <Button btnStyles="bg-[#52058F] dark:bg-purple-lightest text-white flex items-center justify-center w-full rounded-lg py-3 mt-4">
             <Oval
               height={20}
               width={20}
@@ -75,13 +87,13 @@ export const Approveliquidity: FC = () => {
             />
           </Button>
         ) : dexAccount ? (
-          <Button btnStyles="bg-[#52058F] text-white flex items-center justify-center w-full rounded-lg py-3 mt-4">
+          <Button btnStyles="bg-[#52058F] dark:bg-purple-lightest text-white flex items-center justify-center w-full rounded-lg py-3 mt-4">
             Supply
           </Button>
         ) : (
           <Button
             onClick={connectOrDepoloy}
-            btnStyles="bg-[#52058F] text-white flex items-center justify-center w-full rounded-lg py-3 mt-4"
+            btnStyles="bg-[#52058F] dark:bg-purple-lightest text-white flex items-center justify-center w-full rounded-lg py-3 mt-4"
           >
             Create DEX Account
           </Button>

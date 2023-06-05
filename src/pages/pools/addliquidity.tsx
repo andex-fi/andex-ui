@@ -9,7 +9,7 @@ import { useAccountContext } from "../../hooks/useAccountContext";
 export const Addliquidity: FC = () => {
   const { address, connect } = useAccountContext();
   return (
-    <div className="flex items-center justify-center w-full h-screen font-montserrat bg-[#EBF1FF] dark:bg-purple-dark">
+    <div className="flex items-center justify-center w-full h-screen font-montserrat bg-[#EBF1FF] dark:bg-purple-dark p-4 py-10 ">
       <div className="w-full md:w-[30rem] bg-white dark:bg-purple-darkest rounded-2xl p-6">
         <div className="w-full flex items-center justify-between">
           <Link to="/pools">
@@ -19,11 +19,11 @@ export const Addliquidity: FC = () => {
           <FiSettings />
         </div>
 
-        <div className="">
+        <div className="dark:bg-purple-dark">
           <Selecttoken />
         </div>
         <div className="flex items-center justify-center  w-full mt-8">
-          <div className="w-5 h-5 rounded-full bg-[#E5E5E5] dark:bg-purple-light flex items-center justify-center">
+          <div className="w-5 h-5 rounded-full bg-[#E5E5E5] dark:bg-purple-dark flex items-center justify-center">
             <p className="text-[#3189EE] text-lg">+</p>
           </div>
         </div>
@@ -31,7 +31,7 @@ export const Addliquidity: FC = () => {
           <Selecttoken />
         </div>
         {address ? (
-          <Button btnStyles="bg-[#52058F] w-full flex items-center justify-center py-4 rounded-lg mt-4 text-white font-bold">
+          <Button btnStyles="bg-[#52058F] dark:bg-purple-lightest w-full flex items-center justify-center py-4 rounded-lg mt-4 text-white font-bold">
             Supply
           </Button>
         ) : (
@@ -39,7 +39,7 @@ export const Addliquidity: FC = () => {
             onClick={() => {
               connect();
             }}
-            btnStyles="bg-[#52058F] w-full flex items-center justify-center py-4 rounded-lg mt-4 text-white font-bold"
+            btnStyles="bg-[#52058F] dark:bg-purple-lightest w-full flex items-center justify-center py-4 rounded-lg mt-4 text-white font-bold"
           >
             Connect wallet
           </Button>
