@@ -89,6 +89,7 @@ function DexAccountProvider({ children }: { children: ReactNode }) {
         autoClose: 5000,
       });
       return message.transaction;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } catch (error: any) {
       toast.update(toastId, {
         render:
