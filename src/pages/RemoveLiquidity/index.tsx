@@ -3,7 +3,7 @@ import { RemoveLiquidityFormStoreProvider } from "../../contexts";
 
 export default function RemoveLiquidityPage(): JSX.Element {
     return (
-        <div className="container container--small">
+        <div>
             <RemoveLiquidityFormStoreProvider>
                 <RemoveLiquidity />
             </RemoveLiquidityFormStoreProvider>

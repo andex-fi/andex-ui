@@ -62,36 +62,45 @@ export function TokenSelector({
     }, [root])
 
     return (
-        <>
-            <Button
-                disabled={disabled}
-                btnStyles=""
-                onClick={open}
-            >
-                <span
-                    className="token-selector__value"
-                    title={token ? token.symbol : placeholder}
+        <div className='mt-8 dark:bg-purple-light'>
+            <div className="flex item-center justify-between w-full">
+                <div
+                    className="w-[50%] h-14 bg-[#F3F3F3] dark:bg-purple-dark flex items-center justify-start rounded-full"
+                    style={{
+                        boxShadow: "0px 4px 8px rgba(50, 14, 79, 0.15)",
+                    }}
                 >
-                    {showIcon && token && (
-                        <TokenIcon
-                            size="small"
-                            address={token.root}
-                            icon={token.icon}
+                    <Button
+                        disabled={disabled}
+                        btnStyles=""
+                        onClick={open}
+                    >
+                        <span
+                            className="rounded-full dark:bg-purple-dark text-md lg:text-xl font-bold  px-5 py-1 outline-none"
+                            title={token ? token.symbol : placeholder}
+                        >
+                            {showIcon && token && (
+                                <TokenIcon
+                                    size="small"
+                                    address={token.root}
+                                    icon={token.icon}
+                                />
+                            )}
+                            <span className="token-selector__symbol">
+                                {token ? token.symbol : placeholder}
+                            </span>
+                        </span>
+                        <Icon icon="arrowDown" />
+                    </Button>
+
+                    {listVisible && (
+                        <TokensList
+                            onDismiss={close}
+                            onSelectToken={select}
                         />
                     )}
-                    <span className="token-selector__symbol">
-                        {token ? token.symbol : placeholder}
-                    </span>
-                </span>
-                <Icon icon="arrowDown" />
-            </Button>
-
-            {listVisible && (
-                <TokensList
-                    onDismiss={close}
-                    onSelectToken={select}
-                />
-            )}
-        </>
+                </div>
+            </div>
+        </div>
     )
 }
