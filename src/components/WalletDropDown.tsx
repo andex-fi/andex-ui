@@ -51,7 +51,7 @@ function WalletDropDown() {
         {({ open }) => (
           <>
             <Menu.Button
-              className="items-center flex-row w-auto rounded-3xl bg-[#EBF1FF]  dark:bg-[#983BF6] gap-1 p-1 text-sm font-semibold text-[#13173E] dark:text-white flex"
+              className="items-center flex-row w-auto rounded-3xl border border-[#6D87AC] dark:border-[#A086C0] bg-[#EBF1FF]  dark:bg-[#34184B] gap-1 p-1 text-sm font-semibold text-[#13173E] dark:text-white flex"
               style={{ border: "1px solid #6D87AC" }}
             >
               <div className="flex items-center gap-2">
