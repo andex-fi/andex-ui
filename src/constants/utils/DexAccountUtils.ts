@@ -126,7 +126,7 @@ export type DexAccountWithdrawLiquidityParams = {
   sendGasTo: Address | string;
 };
 
-const staticRpc = useStaticRpc();
+// const staticRpc = useStaticRpc();
 
 export abstract class DexAccountUtils {
   /**
@@ -300,9 +300,10 @@ export abstract class DexAccountUtils {
     dexAccountAddress: Address | string,
     params: DexAccountDepositTokenParams,
     args?: Partial<SendInternalParams>,
-    provider: ProviderRpcClient = staticRpc
+    provider: ProviderRpcClient = useStaticRpc()
   ): Promise<Transaction | undefined> {
     const callId = params.callId ?? getSafeProcessingId();
+
     let transaction: Transaction | undefined;
     const subscriber = new provider.Subscriber();
 
@@ -426,7 +427,7 @@ export abstract class DexAccountUtils {
     dexAccountAddress: Address | string,
     params: DexAccountWithdrawTokenParams,
     args?: Partial<SendInternalParams>,
-    provider: ProviderRpcClient = staticRpc
+    provider: ProviderRpcClient = useStaticRpc()
   ): Promise<Transaction | undefined> {
     const callId = params.callId ?? getSafeProcessingId();
     let transaction: Transaction | undefined;

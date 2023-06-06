@@ -11,7 +11,7 @@ interface Props extends Partial<NativeButtonProps> {
   btnStyles: string;
   children: React.ReactNode;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  type?: 'primary' | 'link' | 'icon' | 'accept';
+  type?: 'primary' | 'secondary' | 'link' | 'icon' | 'accept';
   size?: 'xs' | 'sm' | 'md' | 'lg';
   submit?: boolean;
 }

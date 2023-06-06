@@ -4,6 +4,7 @@ import { Liquiditypools } from "./pages/pools/liquiditypools";
 // import { Addliquidity } from "./pages/pools/addliquidity";
 import Swap from "./pages/Swap";
 import { Approveliquidity } from "./pages/pools/approveliquidity";
+import RemoveLiquidityPage from "./pages/RemoveLiquidity";
 import { Homepage } from "./pages/homepage/Homepage";
 import { Nav } from "./components/Nav";
 
@@ -21,6 +22,7 @@ export default function App() {
         </Route>
         <Route path="addliquidity" element={<Approveliquidity />} />
         <Route path="approveliquidity" element={<Approveliquidity />} />
+        <Route path="removeliquidity" element={<RemoveLiquidityPage />} />
       </Routes>
     </>
   );
