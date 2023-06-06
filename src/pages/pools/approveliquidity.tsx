@@ -4,14 +4,14 @@ import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { Selecttoken } from "./selecttoken";
 import { Button } from "../../components/Button";
-import { useAccountContext } from "../../hooks";
-import { useDexAccountContext } from "../../hooks/useDexAccountContext";
 import { Oval } from "react-loader-spinner";
+import { useWallet } from "../../state/WalletService";
+import { Observer } from "mobx-react-lite";
+import { useDexAccount } from "../../state/DexAccountService";
 
 export const Approveliquidity: FC = () => {
-  const { address, connect } = useAccountContext();
-  const { dexAccount, connectOrDepoloy, dexAccountLoading } =
-    useDexAccountContext();
+  const { account, connect } = useWallet();
+  const { address, connectOrCreate } = useDexAccount();
   return (
     <div className="flex items-center justify-center w-full h-screen font-montserrat bg-[#EBF1FF] dark:bg-purple-dark">
       <div className="w-full md:w-[30rem] bg-white dark:bg-purple-light rounded-2xl p-6">
@@ -66,38 +66,31 @@ export const Approveliquidity: FC = () => {
             </div>
           </div>
         </div>
-        {!address ? (
-          <Button
-            onClick={() => {
-              connect();
-            }}
-            btnStyles="bg-[#52058F] dark:bg-purple-lightest text-white flex items-center justify-center w-full rounded-lg py-3 mt-4"
-          >
-            Connect Wallet
-          </Button>
-        ) : dexAccountLoading ? (
-          <Button btnStyles="bg-[#52058F] dark:bg-purple-lightest text-white flex items-center justify-center w-full rounded-lg py-3 mt-4">
-            <Oval
-              height={20}
-              width={20}
-              strokeWidth={5}
-              strokeWidthSecondary={5}
-              color={"rgba(255, 255, 255)"}
-              secondaryColor="rgba(255, 255, 255, 0.1)"
-            />
-          </Button>
-        ) : dexAccount ? (
-          <Button btnStyles="bg-[#52058F] dark:bg-purple-lightest text-white flex items-center justify-center w-full rounded-lg py-3 mt-4">
-            Supply
-          </Button>
-        ) : (
-          <Button
-            onClick={connectOrDepoloy}
-            btnStyles="bg-[#52058F] dark:bg-purple-lightest text-white flex items-center justify-center w-full rounded-lg py-3 mt-4"
-          >
-            Create DEX Account
-          </Button>
-        )}
+        <Observer>
+          {() =>
+            !account ? (
+              <Button
+                onClick={() => {
+                  connect();
+                }}
+                btnStyles="bg-[#52058F] dark:bg-purple-lightest text-white flex items-center justify-center w-full rounded-lg py-3 mt-4"
+              >
+                Connect Wallet
+              </Button>
+            ) : address ? (
+              <Button btnStyles="bg-[#52058F] dark:bg-purple-lightest text-white flex items-center justify-center w-full rounded-lg py-3 mt-4">
+                Supply
+              </Button>
+            ) : (
+              <Button
+                onClick={connectOrCreate}
+                btnStyles="bg-[#52058F] dark:bg-purple-lightest text-white flex items-center justify-center w-full rounded-lg py-3 mt-4"
+              >
+                Create DEX Account
+              </Button>
+            )
+          }
+        </Observer>
       </div>
     </div>
   );
