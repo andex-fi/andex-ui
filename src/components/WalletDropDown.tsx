@@ -50,14 +50,17 @@ function WalletDropDown() {
       <Menu as="div" className="relative text-left w-auto inline-block">
         {({ open }) => (
           <>
-            <Menu.Button className="items-center flex-row w-auto rounded-3xl bg-[#983BF6] gap-1 p-1 text-sm font-semibold text-white flex">
+            <Menu.Button
+              className="items-center flex-row w-auto rounded-3xl bg-[#EBF1FF]  dark:bg-[#983BF6] gap-1 p-1 text-sm font-semibold text-[#13173E] dark:text-white flex"
+              style={{ border: "1px solid #6D87AC" }}
+            >
               <div className="flex items-center gap-2">
                 <Identicon width={30} />
                 <div>{`${address?.slice(0, 6)}...${address?.slice(-5)}`}</div>
                 {open ? (
-                  <ChevronUpIcon className="block w-5 h-5 text-white" />
+                  <ChevronUpIcon className="block w-5 h-5 text-[#6D87AC] dark:text-white" />
                 ) : (
-                  <ChevronDownIcon className="block w-5 h-5 text-white" />
+                  <ChevronDownIcon className="block w-5 h-5 text-[#6D87AC] dark:text-white" />
                 )}
               </div>
             </Menu.Button>
