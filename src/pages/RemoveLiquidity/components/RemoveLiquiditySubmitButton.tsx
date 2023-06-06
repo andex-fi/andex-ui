@@ -19,7 +19,7 @@ function SubmitButton(): JSX.Element {
     ) {
         return (
             <Button
-                btnStyles=''
+                btnStyles='bg-[#52058F] dark:bg-purple-lightest w-full flex items-center justify-center py-4 rounded-lg mt-4 text-white font-bold'
                 aria-disabled="true"
                 block
                 disabled
@@ -68,7 +68,7 @@ function SubmitButton(): JSX.Element {
 
     return (
         <Button
-            btnStyles=''
+            btnStyles='bg-[#52058F] dark:bg-purple-lightest w-full flex items-center justify-center py-4 rounded-lg mt-4 text-white font-bold'
             aria-disabled={buttonProps.disabled}
             block
             size="lg"

@@ -2,7 +2,7 @@ import { ProviderRpcClient } from 'everscale-inpage-provider'
 
 import { debug } from '../utils/console'
 
-let rpc: ProviderRpcClient | undefined
+let rpc: ProviderRpcClient
 
 export function useRpc(): ProviderRpcClient {
     if (rpc === undefined) {
