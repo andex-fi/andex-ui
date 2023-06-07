@@ -21,7 +21,7 @@ import {
   resolveVenomAddress,
   sliceAddress,
 } from "../../utils";
-import { useStaticRpc } from "../../hooks";
+// import { useStaticRpc } from "../../hooks";
 
 export type DexPairDepositLiquiditySuccess = DecodedAbiFunctionInputs<
   typeof DexAbi.DexPairCallbacks,
@@ -403,7 +403,7 @@ export abstract class PairUtils {
     dexRootAddress: Address | string,
     leftRootAddress: Address | string,
     rightRootAddress: Address | string,
-    provider: ProviderRpcClient = useStaticRpc(),
+    provider: ProviderRpcClient,
     dexRootCachedState?: FullContractState
   ): Promise<Address | undefined> {
     let pairAddress!: Address, pairState: FullContractState | undefined;

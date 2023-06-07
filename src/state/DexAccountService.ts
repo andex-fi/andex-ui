@@ -10,7 +10,7 @@ import type {
 import { Subscription } from "everscale-inpage-provider";
 
 // import { DexRootAddress } from "../constants/dexConstants";
-import { useStaticRpc } from "../hooks";
+import { useRpc } from "../hooks";
 import { DexAccountUtils, DexUtils } from "../constants/utils";
 import { BaseStore } from "./BaseStore";
 import { useWallet } from "./WalletService";
@@ -31,7 +31,7 @@ export type DexAccountState = {
   dexState?: FullContractState;
 };
 
-const staticRpc = useStaticRpc();
+const staticRpc = useRpc();
 
 export class DexAccountService extends BaseStore<
   DexAccountData,
@@ -86,10 +86,7 @@ export class DexAccountService extends BaseStore<
     );
 
     try {
-      const state = await getFullContractState(
-        this.dexRootAddress,
-        this.provider
-      );
+      const state = await getFullContractState(this.dexRootAddress, staticRpc);
       this.setState("dexState", state);
       debug("Sync DEX Root Contract state", state);
     } catch (e) {
@@ -125,7 +122,8 @@ export class DexAccountService extends BaseStore<
     const address = await DexAccountUtils.address(
       this.dexRootAddress,
       this.wallet.address,
-      this.state.dexState
+      this.state.dexState,
+      staticRpc
     );
 
     if (!addressesComparer(address, this.address)) {
@@ -143,9 +141,13 @@ export class DexAccountService extends BaseStore<
       return undefined;
     }
 
-    const message = await DexUtils.deployAccount(this.dexRootAddress, {
-      dexAccountOwnerAddress: this.wallet.address,
-    });
+    const message = await DexUtils.deployAccount(
+      this.dexRootAddress,
+      {
+        dexAccountOwnerAddress: this.wallet.address,
+      },
+      staticRpc
+    );
 
     return message.transaction;
   }
@@ -272,7 +274,7 @@ export class DexAccountService extends BaseStore<
     }
 
     try {
-      const state = await getFullContractState(address, this.provider);
+      const state = await getFullContractState(address, staticRpc);
       this.setState("accountState", state);
       debug("Sync DEX Account Contract state", state);
     } catch (e) {
@@ -308,7 +310,8 @@ export class DexAccountService extends BaseStore<
       (await DexUtils.getExpectedAccountAddress(
         this.dexRootAddress,
         this.wallet.address,
-        toJS(this.state.dexState)
+        toJS(this.state.dexState),
+        staticRpc
       ));
 
     if (address === undefined) {
@@ -332,10 +335,7 @@ export class DexAccountService extends BaseStore<
             event
           );
 
-          const state = await getFullContractState(
-            event.address,
-            this.provider
-          );
+          const state = await getFullContractState(event.address, staticRpc);
 
           this.setState("accountState", state);
 

@@ -1,7 +1,8 @@
+import { observer } from "mobx-react-lite";
 import { useAccountContext } from "../../hooks/useAccountContext";
 import DropdownComponent from "./Dropdown";
 
-const SwapCard = () => {
+const SwapCard = observer(() => {
   const { connect, address } = useAccountContext();
   return (
     <div className="flex justify-center items-center h-full m-auto drop-shadow-2xl ">
@@ -52,6 +53,6 @@ const SwapCard = () => {
       </div>
     </div>
   );
-};
+});
 
 export default SwapCard;

@@ -20,6 +20,7 @@ import WalletDropDown from "./WalletDropDown";
 import { VenomConnect } from "@andex/wallet-kit";
 import { EverscaleStandaloneClient } from "everscale-standalone-client";
 import { ProviderRpcClient } from "everscale-inpage-provider";
+import { Observer, observer } from "mobx-react-lite";
 // import { Sun } from "@heroicons/react/20/solid";
 
 const navigation = [
@@ -45,22 +46,22 @@ const standaloneFallback = () =>
       group: "venom_devnet",
       type: "jrpc",
       data: {
-        endpoint: "https://jrpc-devnet.venom.foundation/"
+        endpoint: "https://jrpc-devnet.venom.foundation/",
         // endpoint: "https://jrpc.venom.foundation/rpc",
       },
     },
   });
 
-
-export default function Navbar() {
+export const Navbar = observer(() => {
   const initTheme = "light" as const;
   const themesList = ["light", "dark"];
-  
+
   const { address, connect } = useAccountContext();
+  console.log(address);
 
   const [darkMode, setDarkMode] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [setTheme] = useState<any>(initTheme)
+  const [setTheme] = useState<any>(initTheme);
 
   const connection = () => {
     return new VenomConnect({
@@ -83,7 +84,7 @@ export default function Navbar() {
                 fallback: standaloneFallback,
                 forceUseFallback: true,
               },
-  
+
               // Setup
               id: "extension",
               type: "extension",
@@ -99,28 +100,29 @@ export default function Navbar() {
       },
     });
   };
-  
-  const getTheme = () => connection().getInfo().themeConfig.name.toString() || "...";
-  
+
+  const getTheme = () =>
+    connection().getInfo().themeConfig.name.toString() || "...";
+
   const onToggleThemeButtonClick = async () => {
     const currentTheme = getTheme();
-    
+
     const lastIndex = themesList.length - 1;
-    
+
     const currentThemeIndex = themesList.findIndex(
       (item) => item === currentTheme
     );
-  
+
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const theme: any =
-        currentThemeIndex >= lastIndex || !~currentThemeIndex || !~lastIndex
-          ? themesList[0]
-          : themesList[currentThemeIndex + 1];
-  
-      await connection().updateTheme(theme);
-  
-      setTheme(getTheme());
-  }
+      currentThemeIndex >= lastIndex || !~currentThemeIndex || !~lastIndex
+        ? themesList[0]
+        : themesList[currentThemeIndex + 1];
+
+    await connection().updateTheme(theme);
+
+    setTheme(getTheme());
+  };
 
   useEffect(() => {
     if (darkMode) {
@@ -208,17 +210,21 @@ export default function Navbar() {
                       <MoonIcon className="block h-6 w-6" aria-hidden="true" />
                     )}
                   </button>
-                  {address ? (
-                    <WalletDropDown />
-                  ) : (
-                    <button
-                      type="button"
-                      onClick={() => connect()}
-                      className="inline-flex items-center rounded-lg px-3 py-2 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 bg-purple text-white dark:bg-purple-lightest"
-                    >
-                      Connect Wallet
-                    </button>
-                  )}
+                  <Observer>
+                    {() =>
+                      address ? (
+                        <WalletDropDown />
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() => connect()}
+                          className="inline-flex items-center rounded-lg px-3 py-2 text-sm font-semibold shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 bg-purple text-white dark:bg-purple-lightest"
+                        >
+                          Connect Wallet
+                        </button>
+                      )
+                    }
+                  </Observer>
                 </div>
                 <div className="hidden md:ml-4 md:flex md:flex-shrink-0 md:items-center">
                   {/* Profile dropdown */}
@@ -295,4 +301,5 @@ export default function Navbar() {
       )}
     </Disclosure>
   );
-}
+});
+export default Navbar;
