@@ -8,6 +8,7 @@ import {
   FullContractState,
   hasEverscaleProvider,
   Permissions,
+  ProviderRpcClient,
   Subscription,
 } from "everscale-inpage-provider";
 import { action, computed, makeObservable, reaction } from "mobx";
@@ -76,17 +77,27 @@ const getAccount = async (provider: any) => {
 
 const staticRpc = useRpc();
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-// let connectedProvider: ProviderRpcClient = staticRpc;
+let connectedProvider: ProviderRpcClient = staticRpc;
 const rpc = useRpc();
 let initiatedVenomConnect: VenomConnect;
 
-const check = async (_provider: any) => {
-  const _account = _provider ? await getAccount(_provider) : undefined;
-  return _account;
-};
-// const onConnect = async (provider: any) => {
-//   connectedProvider = provider;
+// const check = async (_provider: any) => {
+//   const _account = _provider ? await getAccount(_provider) : undefined;
+//   return _account;
 // };
+const checkAuth = async (_venomConnect: any) => {
+  const auth = await _venomConnect?.checkAuth();
+  console.log("auth: ", auth);
+  if (auth) {
+    const account = await getAccount(auth);
+    console.log(account);
+    return account;
+  }
+  return undefined;
+};
+const onConnect = async (provider: any) => {
+  connectedProvider = provider;
+};
 export async function connect(): Promise<
   Permissions["accountInteraction"] | undefined
 > {
@@ -96,8 +107,8 @@ export async function connect(): Promise<
     if (initiatedVenomConnect === undefined) {
       initiatedVenomConnect = await initVenomConnect();
     }
-    const provider = await initiatedVenomConnect.connect();
-    const account = await getAccount(provider);
+    await initiatedVenomConnect.connect();
+    const account = await checkAuth(initiatedVenomConnect);
 
     return account;
   }
@@ -411,7 +422,7 @@ export class WalletService extends BaseStore<WalletData, WalletState> {
 
     try {
       initiatedVenomConnect = await initVenomConnect();
-      // initiatedVenomConnect.on("connect", onConnect);
+      initiatedVenomConnect.on("connect", onConnect);
     } catch (e) {
       this.setState({
         hasProvider: false,
@@ -451,7 +462,7 @@ export class WalletService extends BaseStore<WalletData, WalletState> {
       return;
     }
 
-    const account = await check(rpc);
+    const account = await checkAuth(initiatedVenomConnect);
 
     this.setData({
       account,
