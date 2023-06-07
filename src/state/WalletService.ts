@@ -8,7 +8,7 @@ import {
   FullContractState,
   hasEverscaleProvider,
   Permissions,
-  ProviderRpcClient,
+  // ProviderRpcClient,
   Subscription,
 } from "everscale-inpage-provider";
 import { action, computed, makeObservable, reaction } from "mobx";
@@ -77,7 +77,8 @@ const getAccount = async (provider: any) => {
 
 const staticRpc = useRpc();
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-let connectedProvider: ProviderRpcClient = staticRpc;
+// let connectedProvider: ProviderRpcClient = staticRpc;
+
 const rpc = useRpc();
 let initiatedVenomConnect: VenomConnect;
 
@@ -95,9 +96,9 @@ const checkAuth = async (_venomConnect: any) => {
   }
   return undefined;
 };
-const onConnect = async (provider: any) => {
-  connectedProvider = provider;
-};
+// const onConnect = async (provider: any) => {
+//   connectedProvider = provider;
+// };
 export async function connect(): Promise<
   Permissions["accountInteraction"] | undefined
 > {
@@ -422,7 +423,6 @@ export class WalletService extends BaseStore<WalletData, WalletState> {
 
     try {
       initiatedVenomConnect = await initVenomConnect();
-      initiatedVenomConnect.on("connect", onConnect);
     } catch (e) {
       this.setState({
         hasProvider: false,
