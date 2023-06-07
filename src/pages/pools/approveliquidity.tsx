@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import { Selecttoken } from "./selecttoken";
 import { Button } from "../../components/Button";
 import { useAccountContext } from "../../hooks";
-import { useDexAccountContext } from "../../hooks/useDexAccountContext";
 import { Observer, observer } from "mobx-react-lite";
+import { useAddLiquidityFormStoreContext } from "../../contexts/AddLiquidityFormStoreContext";
 
 export const Approveliquidity = observer(() => {
   const { address, connect } = useAccountContext();
-  const { address: dexAccount, connectOrCreate } = useDexAccountContext();
+  const formStore = useAddLiquidityFormStoreContext();
   return (
     <div className="flex items-center justify-center w-full h-screen font-montserrat bg-[#EBF1FF] dark:bg-purple-dark">
       <div className="w-full md:w-[30rem] bg-white dark:bg-purple-light rounded-2xl p-6">
@@ -75,13 +75,13 @@ export const Approveliquidity = observer(() => {
               >
                 Connect Wallet
               </Button>
-            ) : dexAccount ? (
+            ) : formStore.dex.address ? (
               <Button btnStyles="bg-[#52058F] dark:bg-purple-lightest text-white flex items-center justify-center w-full rounded-lg py-3 mt-4">
                 Supply
               </Button>
             ) : (
               <Button
-                onClick={connectOrCreate}
+                onClick={formStore.connectDexAccount}
                 btnStyles="bg-[#52058F] dark:bg-purple-lightest text-white flex items-center justify-center w-full rounded-lg py-3 mt-4"
               >
                 Create DEX Account
