@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { FiSettings } from "react-icons/fi";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { Link } from "react-router-dom";
@@ -6,7 +5,6 @@ import { Selecttoken } from "./selecttoken";
 import { Button } from "../../components/Button";
 import { useAccountContext } from "../../hooks";
 import { useDexAccountContext } from "../../hooks/useDexAccountContext";
-import { Oval } from "react-loader-spinner";
 import { Observer, observer } from "mobx-react-lite";
 
 export const Approveliquidity = observer(() => {

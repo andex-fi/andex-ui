@@ -10,7 +10,7 @@ import type {
 import { Subscription } from "everscale-inpage-provider";
 
 // import { DexRootAddress } from "../constants/dexConstants";
-import { useRpc, useStaticRpc } from "../hooks";
+import { useRpc } from "../hooks";
 import { DexAccountUtils, DexUtils } from "../constants/utils";
 import { BaseStore } from "./BaseStore";
 import { useWallet } from "./WalletService";

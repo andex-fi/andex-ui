@@ -8,7 +8,6 @@ import {
 } from "everscale-inpage-provider";
 
 import { useRpc } from "../hooks";
-import { useStaticRpc } from "../hooks";
 import { TokenAbi } from "./abi";
 import { debug, error, sliceAddress } from "../utils";
 import { SupportedInterfaceDetection } from "./supportedInterfaceDetection";

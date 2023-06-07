@@ -1,27 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import {
-  ReactNode,
-  createContext,
-  useCallback,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import { useAccountContext } from "../hooks";
-import { DexRootAddress } from "../constants/config";
-import { getFullContractState } from "../constants/contracts";
-import { DexUtils } from "../constants/utils/DexUtils";
-import { DexAccountUtils } from "../constants/utils/DexAccountUtils";
-import { Address } from "everscale-inpage-provider";
-import { toast } from "react-toastify";
-// import { WalletService, useWallet } from "../state/WalletService";
+import { ReactNode, createContext, useRef } from "react";
 import { DexAccountService, useDexAccount } from "../state/DexAccountService";
 
-// interface DexAccount {
-//   dexAccountLoading?: boolean;
-//   dexAccount?: Address | string;
-//   connectOrDepoloy?: () => void;
-// }
 //@ts-ignore
 export const DexAccountContext = createContext<DexAccountService>();
 

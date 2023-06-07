@@ -9,7 +9,6 @@ import {
   hasEverscaleProvider,
   Permissions,
   Subscription,
-  ProviderRpcClient,
 } from "everscale-inpage-provider";
 import { action, computed, makeObservable, reaction } from "mobx";
 
