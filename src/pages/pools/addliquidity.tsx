@@ -4,10 +4,11 @@ import { FiSettings } from "react-icons/fi";
 import { Selecttoken } from "./selecttoken";
 import { Button } from "../../components/Button";
 import { Link } from "react-router-dom";
-import { useAccountContext } from "../../hooks/useAccountContext";
+import { useWallet } from "../../state/WalletService";
+import { observer } from "mobx-react-lite";
 
-export const Addliquidity: FC = () => {
-  const { address, connect } = useAccountContext();
+export const Addliquidity = observer(() => {
+  const { address, connect } = useWallet();
   return (
     <div className="flex items-center justify-center w-full h-screen font-montserrat bg-[#EBF1FF] dark:bg-purple-dark p-4 py-10 ">
       <div className="w-full md:w-[30rem] bg-white dark:bg-purple-darkest rounded-2xl p-6">
@@ -47,4 +48,4 @@ export const Addliquidity: FC = () => {
       </div>
     </div>
   );
-};
+});

@@ -1,11 +1,11 @@
-import { FC } from "react";
 import { Button } from "../../components/Button";
 // import { useNavigate } from "react-router-dom";
 import { Pools, Positions } from "./positions";
 import { useAccountContext } from "../../hooks/useAccountContext";
 import { useNavigate } from "react-router-dom";
+import { observer } from "mobx-react-lite";
 
-export const Liquiditypools: FC = () => {
+export const Liquiditypools = observer(() => {
   // const [positions, setPositions] = useState<boolean>(false);
   const { address, connect } = useAccountContext();
   const handleConnectWallet = (): void => {
@@ -181,4 +181,4 @@ export const Liquiditypools: FC = () => {
       </div>
     </div>
   );
-};
+});
