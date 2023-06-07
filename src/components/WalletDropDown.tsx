@@ -10,6 +10,7 @@ import settings from "../assets/Setting_line_light.png";
 import out from "../assets/Out_light.png";
 import power from "../assets/On_button_light.png";
 import AccountTabs from "./AccountTabs";
+import { Observer, observer } from "mobx-react-lite";
 // import { useNavigate } from "react-router-dom";
 
 interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -43,7 +44,7 @@ const Identicon = ({ width }: { width: number }) => {
   );
 };
 
-function WalletDropDown() {
+const WalletDropDown = observer(() => {
   const { address, balance, disconnect } = useAccountContext();
   return (
     <div>
@@ -53,7 +54,13 @@ function WalletDropDown() {
             <Menu.Button className="items-center flex-row w-auto rounded-3xl bg-[#983BF6] gap-1 p-1 text-sm font-semibold text-white flex">
               <div className="flex items-center gap-2">
                 <Identicon width={30} />
-                <div>{`${address?.slice(0, 6)}...${address?.slice(-5)}`}</div>
+                <Observer>
+                  {() => (
+                    <div>{`${address?.slice(0, 6)}...${address?.slice(
+                      -5
+                    )}`}</div>
+                  )}
+                </Observer>
                 {open ? (
                   <ChevronUpIcon className="block w-5 h-5 text-white" />
                 ) : (
@@ -67,22 +74,30 @@ function WalletDropDown() {
                   <div className="flex justify-between items-center">
                     <div className="flex gap-1 text-[16px] font-[600] items-center">
                       <Identicon width={24} />
-                      <div>{`${address?.slice(0, 6)}...${address?.slice(
-                        -5
-                      )}`}</div>
+                      <Observer>
+                        {() => (
+                          <div>{`${address?.slice(0, 6)}...${address?.slice(
+                            -5
+                          )}`}</div>
+                        )}
+                      </Observer>
                     </div>
                     <div className="flex gap-1">
                       <IconButtons icon={settings} />
                       <IconButtons icon={copy} />
-                      <IconButtons
-                        onClick={() => {
-                          window.open(
-                            `https://devnet.venomscan.com/accounts/${address}`,
-                            "_blank"
-                          );
-                        }}
-                        icon={out}
-                      />
+                      <Observer>
+                        {() => (
+                          <IconButtons
+                            onClick={() => {
+                              window.open(
+                                `https://devnet.venomscan.com/accounts/${address}`,
+                                "_blank"
+                              );
+                            }}
+                            icon={out}
+                          />
+                        )}
+                      </Observer>
                       <IconButtons
                         onClick={() => {
                           disconnect();
@@ -93,10 +108,14 @@ function WalletDropDown() {
                   </div>
                 </Menu.Item>
                 <Menu.Item>
-                  <div className="font-[600] text-[25px]">{`${(
-                    balance /
-                    10 ** 9
-                  ).toFixed(2)} VENOM`}</div>
+                  <Observer>
+                    {() => (
+                      <div className="font-[600] text-[25px]">{`${(
+                        Number(balance) /
+                        10 ** 9
+                      ).toFixed(2)} VENOM`}</div>
+                    )}
+                  </Observer>
                 </Menu.Item>
                 <Menu.Item>
                   <AccountTabs />
@@ -108,6 +127,5 @@ function WalletDropDown() {
       </Menu>
     </div>
   );
-}
-
+});
 export default WalletDropDown;

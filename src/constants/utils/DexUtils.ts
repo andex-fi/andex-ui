@@ -8,7 +8,7 @@ import type {
   SendInternalParams,
 } from "everscale-inpage-provider";
 
-import { useRpc, useStaticRpc } from "../../hooks";
+import { useRpc } from "../../hooks";
 import { DexAbi } from "../abi";
 import { dexRootContract } from "../contracts";
 import { resolveVenomAddress } from "../../utils";
@@ -92,7 +92,7 @@ export abstract class DexUtils {
     dexRootAddress: Address | string,
     dexAccountOwnerAddress: Address | string,
     cachedState?: FullContractState,
-    provider: ProviderRpcClient = useStaticRpc()
+    provider: ProviderRpcClient = useRpc()
   ): Promise<
     DecodedAbiFunctionOutputs<
       typeof DexAbi.Root,

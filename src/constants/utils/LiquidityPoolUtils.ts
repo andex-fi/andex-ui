@@ -48,8 +48,9 @@ import {
   resolveVenomAddress,
 } from "../../utils";
 import { DexAbi } from "..";
-import { useStaticRpc } from "../../hooks";
+import { useRpc } from "../../hooks";
 
+const rpc = useRpc();
 export type LiquidityPoolTokenData = {
   address: Address;
   balance?: string;
@@ -147,7 +148,7 @@ export type LiquidityPoolWithdrawParams = {
 } & LiquidityPoolWithdrawCallbacks &
   PairWithdrawLiquidityParams;
 
-const staticRpc = useStaticRpc();
+// const staticRpc = rpc();
 
 export abstract class LiquidityPoolUtils {
   /**
@@ -159,7 +160,7 @@ export abstract class LiquidityPoolUtils {
     params: LiquidityPoolConnectParams,
     args: Pick<SendInternalParams, "from"> &
       Omit<Partial<SendInternalParams>, "from">,
-    provider: ProviderRpcClient = staticRpc
+    provider: ProviderRpcClient = rpc
   ): Promise<Transaction | undefined> {
     const callId = params.callId ?? getSafeProcessingId();
     const subscriber = new provider.Subscriber();
@@ -242,7 +243,7 @@ export abstract class LiquidityPoolUtils {
   public static async create(
     params: LiquidityPoolCreateParams,
     args?: Partial<SendInternalParams>,
-    provider: ProviderRpcClient = useStaticRpc()
+    provider: ProviderRpcClient = rpc
   ): Promise<Transaction | undefined> {
     const callId = params.callId ?? getSafeProcessingId();
     let transaction: Transaction | undefined;
@@ -355,7 +356,7 @@ export abstract class LiquidityPoolUtils {
   public static async depositLiquidity(
     params: LiquidityPoolDepositParams,
     args?: Partial<SendInternalParams>,
-    provider: ProviderRpcClient = staticRpc
+    provider: ProviderRpcClient = rpc
   ): Promise<Transaction | undefined> {
     const callId = params.callId ?? getSafeProcessingId();
     const subscriber = new provider.Subscriber();
@@ -482,7 +483,7 @@ export abstract class LiquidityPoolUtils {
   public static async withdrawLiquidity(
     params: LiquidityPoolWithdrawParams,
     args?: Partial<SendInternalParams>,
-    provider: ProviderRpcClient = useStaticRpc()
+    provider: ProviderRpcClient = rpc
   ): Promise<Transaction | undefined> {
     const callId = params.callId ?? getSafeProcessingId();
     const subscriber = new provider.Subscriber();
@@ -587,7 +588,7 @@ export abstract class LiquidityPoolUtils {
   public static async get(
     address: Address | string,
     walletOwnerAddress?: Address | string,
-    provider: ProviderRpcClient = useStaticRpc()
+    provider: ProviderRpcClient = rpc
   ): Promise<LiquidityPoolData> {
     const details = await PairUtils.getDetails(address, provider);
     const lpState =

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
@@ -5,32 +6,15 @@ import {
   createContext,
   // useContext,
   useEffect,
+  useRef,
   useState,
 } from "react";
 import { initVenomConnect } from "../helpers/accountConnection";
 import { ProviderRpcClient } from "everscale-inpage-provider";
+import { WalletService, useWallet } from "../state/WalletService";
 
-interface AccountContextType {
-  connect: () => Promise<void>;
-  disconnect: () => Promise<void>;
-  standalone?: ProviderRpcClient;
-  venomProvider?: ProviderRpcClient;
-  address?: string;
-  balance?: any;
-}
-
-const initialState = {
-  connect: async () => {
-    return;
-  },
-  disconnect: async () => {
-    return;
-  },
-  address: "",
-  balance: 0,
-};
-
-export const AccountContext = createContext<AccountContextType>(initialState);
+//@ts-ignore
+export const AccountContext = createContext<WalletService>();
 
 const AccountProvider = ({ children }: { children: ReactNode }) => {
   //   const venomConnect = initVenomConnect();
@@ -40,12 +24,14 @@ const AccountProvider = ({ children }: { children: ReactNode }) => {
   >();
   const [address, setAddress] = useState<string | undefined>();
   const [balance, setBalance] = useState<any>();
-  const [standalone, setStandalone] = useState<ProviderRpcClient | undefined>();
+  // const [standalone, setStandalone] = useState<ProviderRpcClient | undefined>();
 
   const getAddress = async (provider: any) => {
     const providerState = await provider?.getProviderState?.();
     return providerState?.permissions.accountInteraction?.address.toString();
   };
+  const { current: context } = useRef(useWallet());
+  console.log("context: ", context);
 
   const getBalance = async (provider: any, _address: string) => {
     try {
@@ -110,14 +96,14 @@ const AccountProvider = ({ children }: { children: ReactNode }) => {
     initiate();
   }, []);
 
-  useEffect(() => {
-    const getstandalone = async () => {
-      const standalone: ProviderRpcClient | undefined =
-        await venomConnect?.getStandalone("venomwallet");
-      setStandalone(standalone);
-    };
-    getstandalone();
-  }, [venomConnect]);
+  // useEffect(() => {
+  //   const getstandalone = async () => {
+  //     const standalone: ProviderRpcClient | undefined =
+  //       await venomConnect?.getStandalone("venomwallet");
+  //     setStandalone(standalone);
+  //   };
+  //   getstandalone();
+  // }, [venomConnect]);
 
   //   useEffect(() => {
   //     checkAuth(venomConnect);
@@ -135,16 +121,7 @@ const AccountProvider = ({ children }: { children: ReactNode }) => {
     }
   };
   return (
-    <AccountContext.Provider
-      value={{
-        venomProvider,
-        standalone,
-        connect,
-        address,
-        disconnect,
-        balance,
-      }}
-    >
+    <AccountContext.Provider value={context}>
       {children}
     </AccountContext.Provider>
   );

@@ -12,7 +12,7 @@ import type {
 } from "everscale-inpage-provider";
 import { LT_COLLATOR } from "everscale-inpage-provider";
 
-import { useRpc, useStaticRpc } from "../../hooks";
+import { useRpc } from "../../hooks";
 import { DexAbi } from "../abi";
 import { dexAccountContract, getFullContractState } from "../contracts";
 import type {
@@ -126,7 +126,7 @@ export type DexAccountWithdrawLiquidityParams = {
   sendGasTo: Address | string;
 };
 
-const staticRpc = useStaticRpc();
+const staticRpc = useRpc();
 
 export abstract class DexAccountUtils {
   /**
@@ -536,7 +536,8 @@ export abstract class DexAccountUtils {
     const dexAccountAddress = await DexUtils.getExpectedAccountAddress(
       dexRootAddress,
       dexAccountOwnerAddress,
-      cachedState
+      cachedState,
+      staticRpc
     );
 
     if (!dexAccountAddress) {

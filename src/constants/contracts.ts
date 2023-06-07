@@ -6,12 +6,12 @@ import type {
   ProviderRpcClient,
 } from "everscale-inpage-provider";
 
-import { useRpc, useStaticRpc } from "../hooks";
+import { useRpc } from "../hooks";
 import { DexAbi, EverAbi, TokenAbi } from "./abi";
 import { resolveVenomAddress } from "../utils";
 
 const rpc = useRpc();
-const staticRpc = useStaticRpc();
+const staticRpc = useRpc();
 
 export async function getFullContractState(
   address: Address | string,
