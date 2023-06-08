@@ -66,7 +66,7 @@ export function RemoveLiquidity(): JSX.Element {
   }, [])
 
   return (
-    <div className="flex items-center justify-center w-full h-screen font-montserrat bg-[#EBF1FF] dark:bg-purple-dark p-4 py-10 ">
+    <div className="flex items-center justify-center w-full h-screen font-montserrat bg-[#EBF1FF] dark:bg-purple-dark p-4 py-10">
       <div className="w-full md:w-[40rem] bg-white dark:bg-purple-light rounded-2xl p-6">
         <div className="w-full flex items-center justify-between">
           <Link to="/pools">
@@ -350,21 +350,6 @@ export function RemoveLiquidity(): JSX.Element {
                     </div>
                 )
             }}
-            {/*
-            {address ? (
-            <Button btnStyles="bg-[#52058F] dark:bg-purple-lightest w-full flex items-center justify-center py-4 rounded-lg mt-4 text-white font-bold">
-            Remove Liquidity
-            </Button>
-            ) : (
-            <Button
-                onClick={() => {
-                connect();
-                }}
-                btnStyles="bg-[#52058F] dark:bg-purple-lightest w-full flex items-center justify-center py-4 rounded-lg mt-4 text-white font-bold"
-            >
-                Connect wallet
-            </Button>
-            )}*/}
         </Observer>
         <RemoveLiquiditySubmitButton />
       </div>

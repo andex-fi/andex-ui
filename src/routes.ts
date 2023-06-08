@@ -27,5 +27,5 @@ export class Route<P extends Params> {
 
 export const appRoutes = {
     home: new Route('/'),
-    liquidityRemove: new Route<URLTokensParams>('/liquidity/remove/:leftTokenRoot([0][:][0-9a-f]{64})?/:rightTokenRoot([0][:][0-9a-f]{64})?')
+    liquidityRemove: new Route<URLTokensParams>('/removeliquidity/:leftTokenRoot([0][:][0-9a-f]{64})?/:rightTokenRoot([0][:][0-9a-f]{64})?')
 }
