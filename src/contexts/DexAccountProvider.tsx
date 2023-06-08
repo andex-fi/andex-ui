@@ -11,7 +11,7 @@ import { DexRootAddress } from "../constants/config";
 import { getFullContractState } from "../constants/contracts";
 import { DexUtils } from "../constants/utils/DexUtils";
 import { DexAccountUtils } from "../constants/utils/DexAccountUtils";
-import { Address } from "everscale-inpage-provider";
+import { Address } from "@andex/provider";
 import { toast } from "react-toastify";
 
 interface DexAccount {
@@ -32,7 +32,6 @@ function DexAccountProvider({ children }: { children: ReactNode }) {
   const connectDexAccount = useCallback(async () => {
     const dexRootState = await getFullContractState(
       DexRootAddress,
-      venomProvider
     );
     console.log("Dexroot state", dexRootState);
     console.log("trying to getExpectedAdress.....");
@@ -49,7 +48,7 @@ function DexAccountProvider({ children }: { children: ReactNode }) {
       return undefined;
     }
 
-    const state = await getFullContractState(dexAccountAddress, venomProvider);
+    const state = await getFullContractState(dexAccountAddress);
 
     console.log("dex account state:", state);
     console.log("checking if address is deployed.....");

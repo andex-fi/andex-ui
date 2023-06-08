@@ -11,7 +11,7 @@ import {
 } from 'mobx'
 import type { IReactionDisposer } from 'mobx'
 
-import { useStaticRpc, useAccountContext } from '../hooks'
+import { useStaticRpc } from '../hooks'
 import {
     DexUtils,
     getFullContractState,
@@ -243,7 +243,7 @@ export class RemoveLiquidityFormStore extends BaseStore<RemoveLiquidityFormStore
     }
 
     protected async syncPool(): Promise<void> {
-        const { venomProvider } = useAccountContext()
+        // const { venomProvider } = useAccountContext()
         if (this.isSyncingPool) {
             return
         }
@@ -260,7 +260,6 @@ export class RemoveLiquidityFormStore extends BaseStore<RemoveLiquidityFormStore
                 this.dex.dexRootAddress,
                 this.data.leftToken,
                 this.data.rightToken,
-                venomProvider,
                 toJS(this.dex.dexState),
             )
 
@@ -342,10 +341,8 @@ export class RemoveLiquidityFormStore extends BaseStore<RemoveLiquidityFormStore
                     return
                 }
 
-                const { venomProvider } = useAccountContext()
-
                 const pool = { ...toJS(this.pool) }
-                pool.state = await getFullContractState(event.address, venomProvider)
+                pool.state = await getFullContractState(event.address)
                 const balances = await PairUtils.balances(event.address, pool.state)
 
                 pool.left.balance = balances.left

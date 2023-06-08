@@ -282,7 +282,6 @@ export abstract class LiquidityPoolUtils {
             params.dexRootAddress,
             data.roots[0],
             data.roots[1],
-            provider
           );
 
           if (
@@ -557,7 +556,6 @@ export abstract class LiquidityPoolUtils {
           rightRootUserWalletAddress: params.rightRootUserWalletAddress,
           userAddress: params.userAddress,
         },
-        provider,
         args
       );
 
@@ -587,13 +585,12 @@ export abstract class LiquidityPoolUtils {
   public static async get(
     address: Address | string,
     walletOwnerAddress?: Address | string,
-    provider: ProviderRpcClient = useStaticRpc()
   ): Promise<LiquidityPoolData> {
-    const details = await PairUtils.getDetails(address, provider);
+    const details = await PairUtils.getDetails(address);
     const lpState =
       details.lpState ??
       (details.roots?.lp
-        ? await getFullContractState(details.roots.lp, provider)
+        ? await getFullContractState(details.roots.lp)
         : undefined);
     let userWalletAddress: Address | undefined, userBalance: string | undefined;
 
