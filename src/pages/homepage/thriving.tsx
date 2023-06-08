@@ -1,5 +1,6 @@
 import { FC } from "react";
 import { Button } from "../../components/Button";
+import { Link } from "react-router-dom";
 
 export const Thriving: FC = () => {
   return (
@@ -24,9 +25,11 @@ export const Thriving: FC = () => {
         visionaries. Together, we can shape the future of decentralized finance.
       </p>
       <div className="flex items-center justify-center">
-        <Button btnStyles="bg-[#983BF6] text-white flex items-center justify-center font-bold px-4 py-2 text-sm rounded-lg">
-          Join Community
-        </Button>
+        <Link to="https://discord.gg/kmvpvBWT" target={"_blank"}>
+          <Button btnStyles="bg-[#983BF6] text-white flex items-center justify-center font-bold px-4 py-2 text-sm rounded-lg">
+            Join Community
+          </Button>
+        </Link>
       </div>
     </div>
   );
