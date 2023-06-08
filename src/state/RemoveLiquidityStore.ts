@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import BigNumber from 'bignumber.js'
-import type { Address, Subscription } from 'everscale-inpage-provider'
+import type { Address, Subscription } from '@andex/provider'
 import {
     action,
     comparer,

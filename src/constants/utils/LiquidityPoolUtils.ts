@@ -1,13 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-hooks/rules-of-hooks */
-import { LT_COLLATOR, ProviderRpcClient } from "everscale-inpage-provider";
+import { LT_COLLATOR, ProviderRpcClient } from "@andex/provider";
 import type {
   Address,
   DecodedEvent,
   FullContractState,
   SendInternalParams,
   Transaction,
-} from "everscale-inpage-provider";
+} from "@andex/provider";
 
 import {
   dexAccountContract,

@@ -4,7 +4,7 @@ import type {
   Address,
   ProviderRpcClient,
   Subscription,
-} from "everscale-inpage-provider";
+} from "@andex/provider";
 import {
   action,
   comparer,

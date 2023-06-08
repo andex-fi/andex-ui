@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-types */
-import type { Address, DelayedMessageExecution, Transaction } from 'everscale-inpage-provider'
+import type { Address, DelayedMessageExecution, Transaction } from '@andex/provider'
 
 export type VenomTokenData = {
     decimals: number;

@@ -9,8 +9,8 @@ import type {
   ProviderRpcClient,
   SendInternalParams,
   Transaction,
-} from "everscale-inpage-provider";
-import { LT_COLLATOR } from "everscale-inpage-provider";
+} from "@andex/provider";
+import { LT_COLLATOR } from "@andex/provider";
 
 import { useRpc, useStaticRpc } from "../../hooks";
 import { DexAbi } from "../abi";
@@ -526,7 +526,6 @@ export abstract class DexAccountUtils {
     dexRootAddress: Address | string,
     dexAccountOwnerAddress: Address | string,
     cachedState?: FullContractState,
-    provider?: ProviderRpcClient
   ): Promise<
     | DecodedAbiFunctionOutputs<
         typeof DexAbi.Root,
@@ -544,7 +543,7 @@ export abstract class DexAccountUtils {
       return undefined;
     }
 
-    const state = await getFullContractState(dexAccountAddress, provider);
+    const state = await getFullContractState(dexAccountAddress);
 
     if (!state?.isDeployed) {
       return undefined;

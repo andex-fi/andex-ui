@@ -4,7 +4,7 @@ import {
     Address, DelayedMessageExecution,
     FullContractState,
     TransactionId,
-} from 'everscale-inpage-provider'
+} from '@andex/provider'
 
 import { useRpc } from '../hooks'
 import { useStaticRpc } from '../hooks'

@@ -7,7 +7,7 @@ import type {
   FullContractState,
   ProviderRpcClient,
   SendInternalParams,
-} from "everscale-inpage-provider";
+} from "@andex/provider";
 
 import { DexAbi } from "..";
 import { dexPairContract, getFullContractState } from "../contracts";

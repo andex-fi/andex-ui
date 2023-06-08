@@ -5,7 +5,7 @@ import type {
   ProviderRpcClient,
   SendInternalParams,
   Transaction,
-} from "everscale-inpage-provider";
+} from "@andex/provider";
 
 import { getFullContractState, tokenRootContract } from "../contracts";
 import type { EverscaleTokenData } from "../../utils/types";

@@ -1,4 +1,4 @@
-import type { Address } from 'everscale-inpage-provider'
+import type { Address } from '@andex/provider'
 import type { CommonTokenTransactionReceipt } from '../types/LiquidityTypes'
 
 export * from './abi'

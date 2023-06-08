@@ -1,7 +1,8 @@
-import { ProviderRpcClient } from "everscale-inpage-provider";
-import { EverscaleStandaloneClient } from "everscale-standalone-client";
+import { ProviderRpcClient } from '@andex/provider'
+import { VenomStandaloneClient } from '@andex/client'
 
-import { debug } from "../utils/console";
+import { debug } from '../utils'
+
 
 let rpc: ProviderRpcClient
 
@@ -9,20 +10,14 @@ export function useStaticRpc(): ProviderRpcClient {
     if (rpc === undefined) {
         debug(
             '%cCreated a new one ProviderRpcClient instance as a static provider to interacts with contracts',
-            'color: #8301e7',
+            'color: #bae701',
         )
         rpc = new ProviderRpcClient({
-            fallback: () => EverscaleStandaloneClient.create({
-                connection: {
-                    id: 1002,
-                    group: "venom_devnet",
-                    type: "jrpc",
-                    data: {
-                      endpoint: "https://jrpc-devnet.venom.foundation/",
-                    },
-                },
-            }),
             forceUseFallback: true,
+            fallback: () => VenomStandaloneClient.create({
+                connection: 'devnetJrpc',
+                initInput: '../../node_modules/nekoton-wasm/nekoton_wasm_bg.wasm'
+            }),
         })
     }
     return rpc

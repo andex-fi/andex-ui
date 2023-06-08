@@ -18,8 +18,8 @@ import { Link } from "react-router-dom";
 import { useAccountContext } from "../hooks/useAccountContext";
 import WalletDropDown from "./WalletDropDown";
 import { VenomConnect } from "@andex/wallet-kit";
-import { EverscaleStandaloneClient } from "everscale-standalone-client";
-import { ProviderRpcClient } from "everscale-inpage-provider";
+import { VenomStandaloneClient } from "@andex/client";
+import { ProviderRpcClient } from "@andex/provider";
 // import { Sun } from "@heroicons/react/20/solid";
 
 const navigation = [
@@ -39,7 +39,7 @@ function classNames(...classes: string[]) {
 }
 
 const standaloneFallback = () =>
-  EverscaleStandaloneClient.create({
+  VenomStandaloneClient.create({
     connection: {
       id: 1002,
       group: "venom_devnet",
@@ -49,6 +49,7 @@ const standaloneFallback = () =>
         // endpoint: "https://jrpc.venom.foundation/rpc",
       },
     },
+    initInput: '../../node_modules/nekoton-wasm/nekoton_wasm_bg.wasm',
   });
 
 

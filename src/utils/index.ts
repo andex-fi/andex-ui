@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { Address } from "everscale-inpage-provider";
+import { Address } from "@andex/provider";
 import BigNumber from "bignumber.js";
 
 export function isGoodBignumber(

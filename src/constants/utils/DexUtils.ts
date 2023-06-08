@@ -6,7 +6,7 @@ import type {
   FullContractState,
   ProviderRpcClient,
   SendInternalParams,
-} from "everscale-inpage-provider";
+} from "@andex/provider";
 
 import { useRpc, useStaticRpc } from "../../hooks";
 import { DexAbi } from "../abi";

@@ -8,7 +8,7 @@ import {
   useState,
 } from "react";
 import { initVenomConnect } from "../helpers/accountConnection";
-import { ProviderRpcClient } from "everscale-inpage-provider";
+import { ProviderRpcClient } from "@andex/provider";
 
 interface AccountContextType {
   connect: () => Promise<void>;

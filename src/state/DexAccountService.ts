@@ -6,8 +6,8 @@ import type {
   FullContractState,
   ProviderRpcClient,
   Transaction,
-} from "everscale-inpage-provider";
-import { Subscription } from "everscale-inpage-provider";
+} from "@andex/provider";
+import { Subscription } from "@andex/provider";
 
 // import { DexRootAddress } from "../constants/dexConstants";
 import { useStaticRpc } from "../hooks";

@@ -1,6 +1,6 @@
 import { VenomConnect } from "@andex/wallet-kit";
-import { ProviderRpcClient } from "everscale-inpage-provider";
-import { EverscaleStandaloneClient } from "everscale-standalone-client";
+import { ProviderRpcClient } from "@andex/provider";
+import { VenomStandaloneClient } from "@andex/client";
 
 export const initVenomConnect = async () =>
   new VenomConnect({
@@ -25,7 +25,7 @@ export const initVenomConnect = async () =>
             },
             packageOptionsStandalone: {
               fallback: () =>
-                EverscaleStandaloneClient.create({
+                VenomStandaloneClient.create({
                   connection: {
                     id: 1002,
                     group: "venom_devnet",
@@ -34,6 +34,7 @@ export const initVenomConnect = async () =>
                       endpoint: "https://jrpc-devnet.venom.foundation/",
                     },
                   },
+                  initInput: '../../node_modules/nekoton-wasm/nekoton_wasm_bg.wasm',
                 }),
               forceUseFallback: true,
             },

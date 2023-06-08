@@ -1,4 +1,4 @@
-import type { Address } from "everscale-inpage-provider";
+import type { Address } from "@andex/provider";
 
 import type {
   DexAccountDepositTokenCallbacks,

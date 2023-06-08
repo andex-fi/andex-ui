@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import type {
   Address,
   DelayedMessageExecution,
   Transaction,
-} from "everscale-inpage-provider";
+} from "@andex/provider";
 
 export type EverscaleTokenData = {
   decimals: number;

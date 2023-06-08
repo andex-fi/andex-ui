@@ -10,13 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@andex/wallet-kit": "^0.1.4",
+    "@andex/client": "^1.2.1",
+    "@andex/provider": "^1.0.0",
+    "@andex/wallet-kit": "0.2.3",
     "@headlessui/react": "^1.7.14",
     "@heroicons/react": "^2.0.18",
     "@metamask/jazzicon": "^2.0.0",
     "bignumber.js": "^9.1.1",
-    "everscale-inpage-provider": "^0.3.60",
-    "everscale-standalone-client": "^2.1.19",
     "framer-motion": "^10.12.16",
     "history": "4.10.1",
     "mobx": "6.8.0",
