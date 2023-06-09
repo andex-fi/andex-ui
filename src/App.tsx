@@ -4,13 +4,14 @@ import { Liquiditypools } from "./pages/pools/liquiditypools";
 // import { Addliquidity } from "./pages/pools/addliquidity";
 import Swap from "./pages/Swap";
 import { Play } from "./pages/playground";
-import { Approveliquidity } from "./pages/pools/approveliquidity";
+// import { Approveliquidity } from "./pages/AddLiquidity/components/approveliquidity";
 import RemoveLiquidityPage from "./pages/RemoveLiquidity";
 import { Homepage } from "./pages/homepage/Homepage";
 import { Nav } from "./components/Nav";
 import CreatePage from "./pages/Launch/Create";
 import BuilderPage from "./pages/Launch";
 import TokenPage from "./pages/Launch/Token";
+import AddLiquidityPage from "./pages/AddLiquidity";
 
 export default function App() {
   const location = useLocation();
@@ -25,8 +26,11 @@ export default function App() {
         <Route path="pools">
           <Route index={true} element={<Liquiditypools />} />
         </Route>
-        <Route path="addliquidity" element={<Approveliquidity />} />
-        <Route path="approveliquidity" element={<Approveliquidity />} />
+        <Route
+          path="addliquidity/:leftTokenRoot/:rightTokenRoot"
+          element={<AddLiquidityPage />}
+        />
+        <Route path="addliquidity" element={<AddLiquidityPage />} />
         <Route path="removeliquidity" element={<RemoveLiquidityPage />} />
         <Route path="builder" element={<BuilderPage />} />
         <Route path="builder/create" element={<CreatePage />} />

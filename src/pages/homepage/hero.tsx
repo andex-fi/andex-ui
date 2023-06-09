@@ -3,6 +3,7 @@ import { Button } from "../../components/Button";
 import { Link } from "react-router-dom";
 import VenomBall from "../../assets/venomball.png";
 import Cube from "../../assets/cube.png";
+import VenomShadow from "../../assets/venomshadow.png";
 
 export const Hero: FC = () => {
   return (
@@ -33,21 +34,26 @@ export const Hero: FC = () => {
         </p>
       </div>
 
-      <div className="flex items-center gap-6 justify-center mt-6">
+      <div className="flex items-center gap-4 justify-center mt-8">
         <Link to="/swap">
-          <Button btnStyles="bg-[#983BF6] text-white flex items-center justify-center font-bold px-4 py-2 text-sm rounded-lg">
+          <Button btnStyles="bg-[#983BF6] text-white flex items-center justify-center font-bold px-8 py-3 text-sm rounded-lg">
             Launch Dapp
           </Button>
         </Link>
-        <Button btnStyles="bg-[#3B1F5E] text-white flex items-center justify-center font-bold px-4 py-2 text-sm rounded-lg">
+        <Button btnStyles="bg-[#3B1F5E] text-white flex items-center justify-center font-bold px-8 py-3 text-sm rounded-lg">
           Learn more
         </Button>
       </div>
-      <div className="flex flex-col items-center justify-center gap-0 mt-10">
+      <div className="flex flex-col items-center justify-center gap-0 mt-[13rem] lg:mt-[10rem] relative">
         <img
           src={VenomBall}
           alt="venomball"
-          className="motion-safe:animate-bounce"
+          className="motion-safe:animate-bounce absolute bottom-[25%] md:bottom-[45%] lg:bottom-[50%]"
+        />
+        <img
+          src={VenomShadow}
+          alt="VenomShadow"
+          className="absolute bottom-[70%] md:bottom-[75%] lg:bottom-[80%]"
         />
         <img src={Cube} alt="cube" />
       </div>

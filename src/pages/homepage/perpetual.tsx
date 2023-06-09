@@ -39,11 +39,11 @@ export const Perpetual: FC = () => {
           advantage of price movements, hedge risks, and engage in leveraged
           trading, all within a secure and reliable environment
         </p>
-        <div className="flex items-center justify-center lg:justify-normal gap-3">
-          <Button btnStyles="bg-[#983BF6] text-white flex items-center justify-center font-bold px-4 py-2 text-sm rounded-lg">
+        <div className="flex items-center justify-center mt-2 lg:justify-normal gap-3">
+          <Button btnStyles="bg-[#983BF6] text-white flex items-center justify-center font-bold px-8 py-3 text-sm rounded-lg">
             Coming soon
           </Button>
-          <Button btnStyles="bg-[#3B1F5E] text-white flex items-center justify-center font-bold px-4 py-2 text-sm rounded-lg">
+          <Button btnStyles="bg-[#3B1F5E] text-white flex items-center justify-center font-bold px-8 py-3 text-sm rounded-lg">
             Learn more
           </Button>
         </div>
