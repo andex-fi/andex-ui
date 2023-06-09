@@ -2,8 +2,6 @@ import classNames from 'classnames'
 
 import { Icon } from '../Icon'
 
-import './index.scss'
-
 type Props = {
     className?: string;
     slim?: boolean

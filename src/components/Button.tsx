@@ -21,7 +21,7 @@ interface Props<S = H.LocationState>  extends Partial<NativeButtonProps> {
   children: React.ReactNode;
   link?: H.LocationDescriptor<S> | ((location: H.Location<S>) => H.LocationDescriptor<S>) | any;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  type?: 'primary' | 'secondary' | 'link' | 'icon' | 'accept';
+  type?: 'primary' | 'secondary' | 'tertiary' | 'link' | 'icon' | 'accept' | 'danger';
   size?: 'xs' | 'sm' | 'md' | 'lg';
   submit?: boolean;
 }
@@ -33,14 +33,12 @@ export const Button: FC<Props> = ({
   href,
   children,
   submit
-}, ref) => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const buttonRef = (ref as any) || React.useRef<HTMLElement | null>(null)
+}) => {
+  
 
   if (link) {
     return (
       <Link
-        ref={buttonRef}
         to={link}
         className={btnStyles}
       >
@@ -52,7 +50,6 @@ export const Button: FC<Props> = ({
   if (href) {
     return (
       <a
-        ref={buttonRef}
         className={btnStyles}
         href={href}
         target="_blank"
@@ -62,10 +59,9 @@ export const Button: FC<Props> = ({
       </a>
     )
   }
-  
+
   return (
     <button 
-      ref={buttonRef}
       className={btnStyles}
       onClick={onClick}
       type={submit ? 'submit' : 'button'}

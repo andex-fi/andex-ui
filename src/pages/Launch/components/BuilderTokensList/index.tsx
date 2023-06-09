@@ -2,10 +2,8 @@ import { observer } from 'mobx-react-lite'
 
 import { Button } from '../../../../components/Button'
 import { ContentLoader } from '../../../../components/ContentLoader'
-import { Item } from './item'
+import { Item } from './Item'
 import { useBuilderStore } from '../../state/BuilderStore'
-
-import './index.scss'
 
 
 export function TokensList(): JSX.Element {
