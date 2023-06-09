@@ -26,7 +26,7 @@ export const Thriving: FC = () => {
       </p>
       <div className="flex items-center justify-center">
         <Link to="https://discord.gg/kmvpvBWT" target={"_blank"}>
-          <Button btnStyles="bg-[#983BF6] text-white flex items-center justify-center font-bold px-4 py-2 text-sm rounded-lg">
+          <Button btnStyles="bg-[#983BF6] text-white flex items-center justify-center font-bold px-8 py-3 text-sm rounded-lg">
             Join Community
           </Button>
         </Link>
