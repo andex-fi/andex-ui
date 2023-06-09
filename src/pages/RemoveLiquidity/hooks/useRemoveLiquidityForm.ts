@@ -99,20 +99,14 @@ export function useRemoveLiquidityForm(): PoolFormShape {
         const rightRoot = (formStore.rightToken?.root !== undefined && formStore.rightToken.root !== root)
             ? formStore.rightToken.root
             : undefined
-        navigate(appRoutes.liquidityRemove.makeUrl({
-            leftTokenRoot: root,
-            rightTokenRoot: rightRoot,
-        }), {replace: true})
+        navigate((`/removeliquidity/${root}/${rightRoot}`), {replace: true})
     }
 
     const onSelectRightToken: PoolFormShape['onSelectRightToken'] = root => {
         hideTokensList()
         formStore.setData('rightToken', root)
         if (formStore.leftToken?.root !== undefined) {
-            navigate(appRoutes.liquidityRemove.makeUrl({
-                leftTokenRoot: formStore.leftToken.root,
-                rightTokenRoot: root,
-            }), {replace: true})
+            navigate((`/removeliquidity/${formStore.leftToken.root}/${root}`), {replace: true})
         }
     }
 

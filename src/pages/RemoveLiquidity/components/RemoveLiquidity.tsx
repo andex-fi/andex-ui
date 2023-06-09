@@ -6,7 +6,7 @@ import BigNumber from "bignumber.js";
 
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { FiSettings } from "react-icons/fi";
-import { TokenSelector } from "./TokenSelector";
+import { TokenSelector } from "../../../components/TokenSelector";
 // import { Button } from "../../../components/Button";
 import { Warning } from "../../../components/Warning";
 import { AmountInput } from "../../../components/AmountInput";
@@ -75,6 +75,7 @@ export function RemoveLiquidity(): JSX.Element {
           <h3 className="font-extrabold">Remove Liquidity</h3>
           <FiSettings />
         </div>
+
         <Observer>
             {() => {
                 const isSyncingPool = formStore.isSyncingPool === undefined || formStore.isSyncingPool
@@ -87,7 +88,6 @@ export function RemoveLiquidity(): JSX.Element {
                     <div className="flex ml-4 gap-20">
                         <div className="">
                             <TokenSelector
-                                disabled={isSyncingPool}
                                 root={formStore.leftToken?.root}
                                 showIcon
                                 size="medium"
@@ -97,10 +97,10 @@ export function RemoveLiquidity(): JSX.Element {
                         <div className="">
                             <TokenSelector
                                 disabled={isSyncingPool}
-                                root={formStore.leftToken?.root}
+                                root={formStore.rightToken?.root}
                                 showIcon
                                 size="medium"
-                                onSelect={form.onSelectLeftToken}  
+                                onSelect={form.onSelectRightToken}  
                             />
                         </div>
 
