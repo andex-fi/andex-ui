@@ -6,7 +6,7 @@ import { useRemoveLiquidityFormStoreContext } from '../../../contexts'
 import { RemoveLiquidityFormStoreData } from '../../../state/RemoveLiquidityStore'
 import { TokenSide } from '../../../components/TokensList'
 import { debounce, debug, error } from '../../../utils'
-import { appRoutes } from '../../../routes'
+// import { appRoutes } from '../../../routes'
 
 
 type PoolFormShape = {
