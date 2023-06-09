@@ -36,11 +36,11 @@ export const Supercharge: FC = () => {
             harnessing the power of our advanced DeFi strategies, carefully
             designed to suit both beginners and experienced users
           </p>
-          <div className="flex items-center justify-center lg:justify-normal gap-3">
-            <Button btnStyles="bg-[#983BF6] text-white flex items-center justify-center font-bold px-4 py-2 text-sm rounded-lg">
+          <div className="flex items-center justify-center mt-2 lg:justify-normal gap-3">
+            <Button btnStyles="bg-[#983BF6] text-white flex items-center justify-center font-bold px-8 py-3 text-sm rounded-lg">
               Coming soon
             </Button>
-            <Button btnStyles="bg-[#3B1F5E] text-white flex items-center justify-center font-bold px-4 py-2 text-sm rounded-lg">
+            <Button btnStyles="bg-[#3B1F5E] text-white flex items-center justify-center font-bold px-8 py-3 text-sm rounded-lg">
               Learn more
             </Button>
           </div>
@@ -82,11 +82,11 @@ export const Supercharge: FC = () => {
             earn interest on your holdings with our user-friendly borrowing and
             lending options, tailored to your specific needs.
           </p>
-          <div className="flex items-center justify-center lg:justify-normal gap-3">
-            <Button btnStyles="bg-[#983BF6] text-white flex items-center justify-center font-bold px-4 py-2 text-sm rounded-lg">
+          <div className="flex items-center justify-center mt-2 lg:justify-normal gap-3">
+            <Button btnStyles="bg-[#983BF6] text-white flex items-center justify-center font-bold px-8 py-3 text-sm rounded-lg">
               Coming soon
             </Button>
-            <Button btnStyles="bg-[#3B1F5E] text-white flex items-center justify-center font-bold px-4 py-2 text-sm rounded-lg">
+            <Button btnStyles="bg-[#3B1F5E] text-white flex items-center justify-center font-bold px-8 py-3 text-sm rounded-lg">
               Learn more
             </Button>
           </div>
