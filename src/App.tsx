@@ -30,7 +30,7 @@ export default function App() {
         <Route path="removeliquidity" element={<RemoveLiquidityPage />} />
         <Route path="builder" element={<BuilderPage />} />
         <Route path="builder/create" element={<CreatePage />} />
-        <Route path="builder/:tokenRoot([0][:][0-9a-f]{64})" element={<TokenPage />} />
+        <Route path="builder/:tokenRoot" element={<TokenPage />} />
       </Routes>
     </>
   );

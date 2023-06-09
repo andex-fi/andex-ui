@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom'
 
 import { Token } from '../../../../constants'
-import { appRoutes } from '../../../../routes'
 import { formattedAmount, sliceAddress } from '../../../../utils'
 
 
@@ -12,22 +11,22 @@ type Props = {
 export function Item({ token }: Props): JSX.Element {
     return (
         <Link
-            to={appRoutes.builderItem.makeUrl({ tokenRoot: token.root })}
-            className="list__row list__row--pointer"
+            to={`/builder/${token.root}`}
+            className="flex flex-col min-h-400 overflow-x-auto w-full items-center border-b border-white border-opacity-8 gap-4 grid grid-cols-auto min-h-[57px] py-2 text-no-underline cursor-pointer"
         >
-            <div className="list__cell list__cell--left">
+            <div className="flex flex-col min-h-400 overflow-x-auto w-full text-base font-medium leading-5 min-w-min overflow-hidden truncate whitespace-nowrap text-left">
                 {token.name}
             </div>
-            <div className="list__cell list__cell--center">
+            <div className="flex flex-col min-h-400 overflow-x-auto w-full text-base font-medium leading-5 min-w-min overflow-hidden truncate whitespace-nowrap text-center">
                 {token.symbol}
             </div>
-            <div className="list__cell list__cell--center">
+            <div className="flex flex-col min-h-400 overflow-x-auto w-full text-base font-medium leading-5 min-w-min overflow-hidden truncate whitespace-nowrap text-center">
                 {token.decimals}
             </div>
-            <div className="list__cell list__cell--center">
+            <div className="flex flex-col min-h-400 overflow-x-auto w-full text-base font-medium leading-5 min-w-min overflow-hidden truncate whitespace-nowrap text-center">
                 {formattedAmount(token.totalSupply, token.decimals)}
             </div>
-            <div className="list__cell list__cell--center">
+            <div className="flex flex-col min-h-400 overflow-x-auto w-full text-base font-medium leading-5 min-w-min overflow-hidden truncate whitespace-nowrap text-center">
                 {sliceAddress(token.root)}
             </div>
         </Link>

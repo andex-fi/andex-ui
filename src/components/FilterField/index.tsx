@@ -1,5 +1,5 @@
 import * as React from 'react'
-import classNames from 'classnames'
+//import classNames from 'classnames'
 
 type Props = {
     className?: string;
@@ -10,20 +10,16 @@ type Props = {
 }
 
 export function FilterField({
-    className,
+    // className,
     placeholder,
     onChange,
     value,
-    size,
+    // size,
 }: Props): JSX.Element {
     return (
-        <div
-            className={classNames('filter-field', className, {
-                [`filter-field_size_${size}`]: Boolean(size),
-            })}
-        >
+        <div>
             <input
-                className="form-input"
+                className="cursor-pointer block outline-none bg-white dark:bg-purple-light rounded text-gray-800 text-base h-11 px-3 py-2 w-full"
                 placeholder={placeholder}
                 onChange={onChange}
                 value={value}

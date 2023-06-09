@@ -19,8 +19,8 @@ export function Builder(): JSX.Element {
     }, [])
 
     return (
-        <div className="card card--small card--flat">
-            <div className="card__wrap">
+        <div className="bg-white dark:bg-purple-light bg-opacity-8 rounded-md mx-auto p-8 relative w-[70%]">
+            <div className="">
                 <BuilderTokensList />
             </div>
         </div>

@@ -15,19 +15,19 @@ export function PageHeader(props: Props): JSX.Element {
     const { actions, breadcrumb, className, subtitle, title } = props
 
     return (
-        <header className={classNames('page_header', className)}>
+        <header className={classNames('mb-6', className)}>
             {breadcrumb !== undefined && breadcrumb.length > 0 && (
                 <Breadcrumb items={breadcrumb} />
             )}
-            <div className="page_header__inner">
-                <div className="page_header__title_wrapper">
-                    <h1 className="page_header__title">{title}</h1>
+            <div className="inline-flex gap-96 mb-4 ml-64">
+                <div className="flex items-center gap-3 flex-row">
+                    <h1 className="flex items-center text-2xl font-bold gap-3 leading-8">{title}</h1>
                     {subtitle && (
-                        <div className="page_header__subtitle">{subtitle}</div>
+                        <div className="text-white text-base font-normal tracking-tighter leading-5">{subtitle}</div>
                     )}
                 </div>
                 {actions !== undefined && (
-                    <div className="page_header__actions">
+                    <div className="flex items-center gap-5 justify-between min-w-min w-full">
                         {actions}
                     </div>
                 )}

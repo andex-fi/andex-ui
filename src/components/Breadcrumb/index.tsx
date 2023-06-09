@@ -15,7 +15,7 @@ export function Breadcrumb({
     items,
 }: Props): JSX.Element {
     return (
-        <ul className="breadcrumb">
+        <ul className="text-white opacity-75 flex flex-wrap text-base leading-5 mb-8">
             {items.map(({ link, title }, index) => (
                 <li key={index}>
                     {link ? (
