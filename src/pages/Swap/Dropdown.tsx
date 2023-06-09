@@ -1,17 +1,26 @@
-import { Fragment } from 'react'
+import { Fragment, useState } from 'react'
 import { Menu, Transition } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/20/solid'
+
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(' ')
 }
 
 export default function DropdownComponent() {
+  const [token, setToken] = useState<number | string>("ETH");
+
+  // ChangeEvent<HTMLInputElement>
+  // const changeToken = (e) => {
+  //   if (e.target.value) {
+  //     setToken(e.target.value)
+  //   }
+  // }
   return (
     <Menu as="div" className="relative inline-block text-left">
       <div>
         <Menu.Button className="inline-flex w-full justify-center gap-x-1.5 rounded-3xl bg-[#F3F3F3] dark:bg-[#482168] px-4 py-3 text-lg font-semibold text-black  dark:text-white shadow-sm drop-shadow-xl  ">
-          CRYPTO
+          {token}
           <ChevronDownIcon className="-mr-1 h-7 w-7 text-gray-400" aria-hidden="true" />
         </Menu.Button>
       </div>
@@ -25,12 +34,13 @@ export default function DropdownComponent() {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute right-0 z-20 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none dark:bg-purple">
           <div className="py-1">
-            <Menu.Item>
+            <Menu.Item >
               {({ active }) => (
                 <a
                   href="#"
+                  onClick={() => setToken("ETH")}
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                     'block px-4 py-2 text-sm'
@@ -44,6 +54,7 @@ export default function DropdownComponent() {
               {({ active }) => (
                 <a
                   href="#"
+                  onClick={() => setToken("ANDC")}
                   className={classNames(
                     active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
                     'block px-4 py-2 text-sm'
