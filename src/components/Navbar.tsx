@@ -24,7 +24,7 @@ import { ProviderRpcClient } from "@andex/provider";
 
 const navigation = [
   { name: "Swap", href: "/swap", current: true },
-  { name: "Tokens", href: "#", current: false },
+  { name: "Tokens", href: "/builder", current: false },
   { name: "Pools", href: "/pools", current: false },
   { name: "Docs", href: "#", current: false },
 ];

@@ -8,6 +8,9 @@ import { Play } from "./pages/playground";
 import RemoveLiquidityPage from "./pages/RemoveLiquidity";
 import { Homepage } from "./pages/homepage/Homepage";
 import { Nav } from "./components/Nav";
+import CreatePage from "./pages/Launch/Create";
+import BuilderPage from "./pages/Launch";
+import TokenPage from "./pages/Launch/Token";
 import AddLiquidityPage from "./pages/AddLiquidity";
 
 export default function App() {
@@ -29,6 +32,9 @@ export default function App() {
         />
         <Route path="addliquidity" element={<AddLiquidityPage />} />
         <Route path="removeliquidity" element={<RemoveLiquidityPage />} />
+        <Route path="builder" element={<BuilderPage />} />
+        <Route path="builder/create" element={<CreatePage />} />
+        <Route path="builder/:tokenRoot" element={<TokenPage />} />
       </Routes>
     </>
   );
