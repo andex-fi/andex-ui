@@ -51,11 +51,11 @@ function WalletDropDown() {
         {({ open }) => (
           <>
             <Menu.Button
-              className="items-center flex-row w-auto rounded-3xl border border-[#6D87AC] dark:border-[#A086C0] bg-[#EBF1FF]  dark:bg-[#34184B] gap-1 p-1 text-sm font-semibold text-[#13173E] dark:text-white flex"
+              className="items-center flex-row w-auto rounded-3xl border border-[#6D87AC] dark:border-[#A086C0] bg-[#EBF1FF]  dark:bg-[#34184B]  text-sm font-semibold text-[#13173E] dark:text-white flex"
               style={{ border: "1px solid #6D87AC" }}
             >
-              <div className="flex items-center gap-2">
-                <Identicon width={30} />
+              <div className="flex items-center gap-2 pl-1.5 pt-0.5 pr-1.5">
+                <div className="mt-1"> <Identicon width={30} /> </div>
                 <div>{`${address?.slice(0, 6)}...${address?.slice(-5)}`}</div>
                 {open ? (
                   <ChevronUpIcon className="block w-5 h-5 text-[#6D87AC] dark:text-white" />
@@ -68,8 +68,8 @@ function WalletDropDown() {
               <div className="flex flex-col gap-3 ">
                 <Menu.Item>
                   <div className="flex justify-between items-center">
-                    <div className="flex gap-1 text-[16px] font-[600] items-center">
-                      <Identicon width={24} />
+                    <div className="flex gap-2 text-[16px] font-[600] items-center">
+                      <div className="mt-1"><Identicon width={24}/></div>
                       <div>{`${address?.slice(0, 6)}...${address?.slice(
                         -5
                       )}`}</div>
