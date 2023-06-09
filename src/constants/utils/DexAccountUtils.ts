@@ -9,8 +9,8 @@ import type {
   ProviderRpcClient,
   SendInternalParams,
   Transaction,
-} from "everscale-inpage-provider";
-import { LT_COLLATOR } from "everscale-inpage-provider";
+} from "@andex/provider";
+import { LT_COLLATOR } from "@andex/provider";
 
 import { useRpc, useStaticRpc } from "../../hooks";
 import { DexAbi } from "../abi";
@@ -126,7 +126,7 @@ export type DexAccountWithdrawLiquidityParams = {
   sendGasTo: Address | string;
 };
 
-const staticRpc = useStaticRpc();
+// const staticRpc = useStaticRpc();
 
 export abstract class DexAccountUtils {
   /**
@@ -300,9 +300,10 @@ export abstract class DexAccountUtils {
     dexAccountAddress: Address | string,
     params: DexAccountDepositTokenParams,
     args?: Partial<SendInternalParams>,
-    provider: ProviderRpcClient = staticRpc
+    provider: ProviderRpcClient = useStaticRpc()
   ): Promise<Transaction | undefined> {
     const callId = params.callId ?? getSafeProcessingId();
+
     let transaction: Transaction | undefined;
     const subscriber = new provider.Subscriber();
 
@@ -426,7 +427,7 @@ export abstract class DexAccountUtils {
     dexAccountAddress: Address | string,
     params: DexAccountWithdrawTokenParams,
     args?: Partial<SendInternalParams>,
-    provider: ProviderRpcClient = staticRpc
+    provider: ProviderRpcClient = useStaticRpc()
   ): Promise<Transaction | undefined> {
     const callId = params.callId ?? getSafeProcessingId();
     let transaction: Transaction | undefined;
@@ -525,7 +526,6 @@ export abstract class DexAccountUtils {
     dexRootAddress: Address | string,
     dexAccountOwnerAddress: Address | string,
     cachedState?: FullContractState,
-    provider?: ProviderRpcClient
   ): Promise<
     | DecodedAbiFunctionOutputs<
         typeof DexAbi.Root,
@@ -543,7 +543,7 @@ export abstract class DexAccountUtils {
       return undefined;
     }
 
-    const state = await getFullContractState(dexAccountAddress, provider);
+    const state = await getFullContractState(dexAccountAddress);
 
     if (!state?.isDeployed) {
       return undefined;

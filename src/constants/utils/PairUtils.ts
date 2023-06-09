@@ -5,9 +5,9 @@ import type {
   DecodedAbiFunctionOutputs,
   DelayedMessageExecution,
   FullContractState,
-  ProviderRpcClient,
+  // ProviderRpcClient,
   SendInternalParams,
-} from "everscale-inpage-provider";
+} from "@andex/provider";
 
 import { DexAbi } from "..";
 import { dexPairContract, getFullContractState } from "../contracts";
@@ -21,7 +21,7 @@ import {
   resolveVenomAddress,
   sliceAddress,
 } from "../../utils";
-import { useStaticRpc } from "../../hooks";
+// import { useStaticRpc } from "../../hooks";
 
 export type DexPairDepositLiquiditySuccess = DecodedAbiFunctionInputs<
   typeof DexAbi.DexPairCallbacks,
@@ -194,7 +194,6 @@ export abstract class PairUtils {
   public static async withdrawLiquidity(
     dexRootAddress: Address | string,
     params: PairWithdrawLiquidityParams,
-    provider: ProviderRpcClient,
     args?: Partial<SendInternalParams>
   ): Promise<DelayedMessageExecution> {
     const pairAddress =
@@ -207,7 +206,7 @@ export abstract class PairUtils {
       ));
     const lpRootState =
       params?.lpRootState ??
-      (await getFullContractState(params.lpRootAddress, provider));
+      (await getFullContractState(params.lpRootAddress));
 
     const [lpPairWalletAddress, lpUserWalletAddress] = await Promise.all([
       params.lpPairWalletAddress ??
@@ -228,8 +227,8 @@ export abstract class PairUtils {
         )),
     ]);
     const [lpPairWalletState, lpOwnerWalletState] = await Promise.allSettled([
-      getFullContractState(lpPairWalletAddress, provider),
-      getFullContractState(lpUserWalletAddress, provider),
+      getFullContractState(lpPairWalletAddress),
+      getFullContractState(lpUserWalletAddress),
     ]).then((results) =>
       results.map((result) =>
         result.status === "fulfilled" ? result.value : undefined
@@ -261,8 +260,8 @@ export abstract class PairUtils {
       ]);
     const [leftRootUserWalletState, rightRootUserWalletState] =
       await Promise.allSettled([
-        getFullContractState(leftRootUserWalletAddress, provider),
-        getFullContractState(rightRootUserWalletAddress, provider),
+        getFullContractState(leftRootUserWalletAddress),
+        getFullContractState(rightRootUserWalletAddress),
       ]).then((results) =>
         results.map((result) =>
           result.status === "fulfilled" ? result.value : undefined
@@ -403,7 +402,6 @@ export abstract class PairUtils {
     dexRootAddress: Address | string,
     leftRootAddress: Address | string,
     rightRootAddress: Address | string,
-    provider: ProviderRpcClient = useStaticRpc(),
     dexRootCachedState?: FullContractState
   ): Promise<Address | undefined> {
     let pairAddress!: Address, pairState: FullContractState | undefined;
@@ -415,7 +413,7 @@ export abstract class PairUtils {
         rightRootAddress,
         dexRootCachedState
       );
-      pairState = await getFullContractState(pairAddress, provider);
+      pairState = await getFullContractState(pairAddress);
     } catch (e) {
       error(e);
     }
@@ -540,9 +538,8 @@ export abstract class PairUtils {
 
   public static async getDetails(
     pairAddress: Address | string,
-    provider: ProviderRpcClient
   ): Promise<PairFullDetails> {
-    const state = await getFullContractState(pairAddress, provider);
+    const state = await getFullContractState(pairAddress);
 
     const [balances, feeParams, roots, wallets, type] = await Promise.all([
       PairUtils.balances(pairAddress, state),
@@ -562,7 +559,7 @@ export abstract class PairUtils {
       wallets,
     };
 
-    result.lpState = await getFullContractState(roots.lp, provider);
+    result.lpState = await getFullContractState(roots.lp);
 
     const [leftTokenDetails, rightTokenDetails, lpTokenDetails] =
       await Promise.all([

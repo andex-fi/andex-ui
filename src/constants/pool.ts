@@ -2,7 +2,7 @@
 import {
     Address,
     TransactionId,
-} from 'everscale-inpage-provider'
+} from '@andex/provider'
 
 import { useStaticRpc } from '../hooks/useStaticRpc'
 import { DexAbi } from './abi'

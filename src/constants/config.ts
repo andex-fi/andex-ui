@@ -1,4 +1,4 @@
-import { AddressLiteral } from "everscale-inpage-provider";
+import { AddressLiteral } from "@andex/provider";
 
 export const WrapGas = '1000000000' // <= 1 VENOM
 

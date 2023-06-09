@@ -9,7 +9,7 @@ import {
     reaction,
     runInAction,
 } from 'mobx'
-import { Address, Subscription } from 'everscale-inpage-provider'
+import { Address, Subscription } from '@andex/provider'
 
 import { useRpc } from '../hooks/useRpc'
 import {

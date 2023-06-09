@@ -5,12 +5,12 @@
 @tailwind utilities;
 
 .dark {
-    background-color: #19102D;
+    background: linear-gradient(113.67deg, #34184A -0.78%, #160F2A 100.71%);;
     color: #ffffff;
 }
 
 .light {
-    background-color:  #E5E5E5;;
+    background:  linear-gradient(113.67deg, #EBF1FF -0.78%, #F8FAFF 100.71%);;;
     color: #282828;
 }
 

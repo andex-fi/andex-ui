@@ -32,11 +32,11 @@ export const Protect: FC = () => {
             offer comprehensive coverage to shield your assets from potential
             risks, giving you peace of mind as you explore new horizons.
           </p>
-          <div className="flex items-center justify-center lg:justify-normal gap-3">
-            <Button btnStyles="bg-[#983BF6] text-white flex items-center justify-center font-bold px-4 py-2 text-sm rounded-lg">
+          <div className="flex items-center justify-center mt-2 lg:justify-normal gap-3">
+            <Button btnStyles="bg-[#983BF6] text-white flex items-center justify-center font-bold px-8 py-3 text-sm rounded-lg">
               Coming soon
             </Button>
-            <Button btnStyles="bg-[#3B1F5E] text-white flex items-center justify-center font-bold px-4 py-2 text-sm rounded-lg">
+            <Button btnStyles="bg-[#3B1F5E] text-white flex items-center justify-center font-bold px-8 py-3 text-sm rounded-lg">
               Learn more
             </Button>
           </div>

@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { Address, FullContractState } from 'everscale-inpage-provider'
+import { Address, FullContractState } from '@andex/provider'
 
 import { useStaticRpc } from '../hooks'
 import { error, resolveVenomAddress, sliceAddress } from '../utils'

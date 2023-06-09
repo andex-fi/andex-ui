@@ -6,11 +6,10 @@ import {
     Contract,
     ContractState,
     FullContractState,
-    hasEverscaleProvider,
+    hasVenomProvider,
     Permissions,
     Subscription,
-    ProviderRpcClient
-} from 'everscale-inpage-provider'
+} from '@andex/provider'
 import {
     action,
     computed,
@@ -26,7 +25,7 @@ import {
     DexConstants, getFullContractState,
     Token,
 } from '../constants'
-import { BaseStore } from './BaseStore'
+import { BaseStore } from '../state/BaseStore'
 import { debug, error, log } from '../utils'
 
 
@@ -76,7 +75,7 @@ const rpc = useRpc()
 
 
 export async function connect(): Promise<Permissions['accountInteraction'] | undefined> {
-    const hasProvider = await hasEverscaleProvider()
+    const hasProvider = await hasVenomProvider()
 
     if (hasProvider) {
         await rpc.ensureInitialized()
@@ -164,7 +163,7 @@ export class WalletService extends BaseStore<WalletData, WalletState> {
         this.setState('isConnecting', true)
 
         try {
-            const hasProvider = await hasEverscaleProvider()
+            const hasProvider = await hasVenomProvider()
             this.setState('hasProvider', hasProvider)
         }
         catch (e) {
@@ -408,7 +407,7 @@ export class WalletService extends BaseStore<WalletData, WalletState> {
         let hasProvider = false
 
         try {
-            hasProvider = await hasEverscaleProvider()
+            hasProvider = await hasVenomProvider()
         }
         catch (e) { /* empty */ }
 
@@ -460,7 +459,7 @@ export class WalletService extends BaseStore<WalletData, WalletState> {
      * @returns {Promise<void>}
      * @protected
      */
-    protected async onAccountChange(account?: Account, provider?: ProviderRpcClient): Promise<void> {
+    protected async onAccountChange(account?: Account): Promise<void> {
         if (this.contractSubscriber !== undefined) {
             if (account !== undefined) {
                 try {
@@ -480,7 +479,7 @@ export class WalletService extends BaseStore<WalletData, WalletState> {
         this.setState('isUpdatingContract', true)
 
         try {
-            const state = await getFullContractState(account.address, provider)
+            const state = await getFullContractState(account.address)
 
             this.setData('contract', state)
             this.setState('isUpdatingContract', false)

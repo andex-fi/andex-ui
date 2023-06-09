@@ -1,4 +1,4 @@
-import { ProviderRpcClient } from 'everscale-inpage-provider'
+import { ProviderRpcClient } from '@andex/provider'
 
 import { debug } from '../utils/console'
 

@@ -6,8 +6,8 @@ import type {
   FullContractState,
   ProviderRpcClient,
   Transaction,
-} from "everscale-inpage-provider";
-import { Subscription } from "everscale-inpage-provider";
+} from "@andex/provider";
+import { Subscription } from "@andex/provider";
 
 // import { DexRootAddress } from "../constants/dexConstants";
 import { useStaticRpc } from "../hooks";
@@ -88,7 +88,6 @@ export class DexAccountService extends BaseStore<
     try {
       const state = await getFullContractState(
         this.dexRootAddress,
-        this.provider
       );
       this.setState("dexState", state);
       debug("Sync DEX Root Contract state", state);
@@ -272,7 +271,7 @@ export class DexAccountService extends BaseStore<
     }
 
     try {
-      const state = await getFullContractState(address, this.provider);
+      const state = await getFullContractState(address);
       this.setState("accountState", state);
       debug("Sync DEX Account Contract state", state);
     } catch (e) {
@@ -334,7 +333,6 @@ export class DexAccountService extends BaseStore<
 
           const state = await getFullContractState(
             event.address,
-            this.provider
           );
 
           this.setState("accountState", state);

@@ -4,7 +4,7 @@ import type {
   Address,
   ProviderRpcClient,
   Subscription,
-} from "everscale-inpage-provider";
+} from "@andex/provider";
 import {
   action,
   comparer,
@@ -1008,7 +1008,6 @@ export class AddLiquidityFormStore extends BaseStore<
         this.dex.dexRootAddress,
         this.data.leftToken,
         this.data.rightToken,
-        this.provider,
         toJS(this.dex.dexState)
       );
 
@@ -1128,7 +1127,6 @@ export class AddLiquidityFormStore extends BaseStore<
             const pool = { ...toJS(this.pool) };
             pool.state = await getFullContractState(
               event.address,
-              this.provider
             );
             const balances = await PairUtils.balances(
               event.address,

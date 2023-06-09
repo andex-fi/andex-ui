@@ -3,7 +3,7 @@ import {
     Address,
     FullContractState,
     TransactionId,
-} from 'everscale-inpage-provider'
+} from '@andex/provider'
 
 import { DexRootAddress } from './config'
 import { useRpc } from '../hooks/useRpc'

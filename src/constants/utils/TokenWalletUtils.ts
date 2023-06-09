@@ -5,7 +5,7 @@ import type {
   DelayedMessageExecution,
   FullContractState,
   SendInternalParams,
-} from "everscale-inpage-provider";
+} from "@andex/provider";
 
 import { TokenAbi } from "../abi";
 import { tokenRootContract, tokenWalletContract } from "../contracts";
