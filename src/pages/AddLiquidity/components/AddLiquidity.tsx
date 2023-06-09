@@ -1,8 +1,5 @@
 import React from "react";
-import {
-  AddLiquidityFormStoreProvider,
-  useAddLiquidityFormStoreContext,
-} from "../../../contexts/AddLiquidityFormStoreContext";
+import { useAddLiquidityFormStoreContext } from "../../../contexts/AddLiquidityFormStoreContext";
 // import { Approveliquidity } from "./approveliquidity";
 import { Link, useParams } from "react-router-dom";
 import { URLTokensParams } from "../../../routes";
@@ -12,11 +9,11 @@ import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { FiSettings } from "react-icons/fi";
 import { Selecttoken } from "../../pools/selecttoken";
 import { Observer } from "mobx-react-lite";
-import { Button } from "../../../components/Button";
 import { AddLiquiditySubmitButton } from "./AddLiquiditySubmitButton";
 // import { error } from "console";
 import { reaction } from "mobx";
 import { error } from "../../../utils";
+import { TokenSelector } from "../../../components/TokenSelector";
 
 function AddLiquidity() {
   const { leftTokenRoot, rightTokenRoot } = useParams<URLTokensParams>();
@@ -94,7 +91,7 @@ function AddLiquidity() {
         </div>
 
         <div className="">
-          <Selecttoken />
+          <TokenSelector />
         </div>
         <div className="flex items-center justify-center  w-full mt-8">
           <div className="w-5 h-5 rounded-full bg-[#E5E5E5] dark:bg-purple-dark flex items-center justify-center">
@@ -102,7 +99,7 @@ function AddLiquidity() {
           </div>
         </div>
         <div>
-          <Selecttoken />
+          <TokenSelector />
         </div>
 
         <Observer>
