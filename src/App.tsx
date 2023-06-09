@@ -8,7 +8,6 @@ import { Play } from "./pages/playground";
 import RemoveLiquidityPage from "./pages/RemoveLiquidity";
 import { Homepage } from "./pages/homepage/Homepage";
 import { Nav } from "./components/Nav";
-import AddLiquidity from "./pages/AddLiquidity/components/AddLiquidity";
 import AddLiquidityPage from "./pages/AddLiquidity";
 
 export default function App() {
@@ -24,6 +23,10 @@ export default function App() {
         <Route path="pools">
           <Route index={true} element={<Liquiditypools />} />
         </Route>
+        <Route
+          path="addliquidity/:leftTokenRoot/:rightTokenRoot"
+          element={<AddLiquidityPage />}
+        />
         <Route path="addliquidity" element={<AddLiquidityPage />} />
         <Route path="removeliquidity" element={<RemoveLiquidityPage />} />
       </Routes>

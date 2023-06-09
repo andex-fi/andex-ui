@@ -19,7 +19,7 @@ export function TokenIcon({
     return (
       <img
         alt={name}
-        className="h-[48px] w-[48px] rounded-full"
+        className="h-[48px] w-[48px] block rounded-full"
         sizes={size}
         src={icon}
       />

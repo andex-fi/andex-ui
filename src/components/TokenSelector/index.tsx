@@ -62,7 +62,7 @@ export function TokenSelector({
   }, [root]);
 
   return (
-    <div className="mt-8 dark:bg-purple-light">
+    <div className="dark:bg-purple-light">
       <div className="flex item-center justify-between w-full">
         <div
           className="h-14 bg-[#F3F3F3] dark:bg-purple-dark flex items-center justify-start rounded-full"

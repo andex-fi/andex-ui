@@ -75,7 +75,9 @@ export function TokenItem({ token, onSelect }: TokenItemProps): JSX.Element {
           }
         </Observer>
       </div>
-      {tokensCache.isImporting && <TokenImportPopup />}
+      <Observer>
+        {() => <TokenImportPopup isOpen={tokensCache.isImporting} />}
+      </Observer>
     </>
   );
 }

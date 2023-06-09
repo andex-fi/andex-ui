@@ -113,12 +113,15 @@ export function useAddLiquidityForm(): PoolFormShape {
         ? formStore.rightToken.root
         : undefined;
 
-    navigate(
+    console.log(
+      "path",
       appRoutes.liquidityAdd.makeUrl({
         leftTokenRoot: root,
         rightTokenRoot: rightRoot,
       })
     );
+
+    navigate(`/addliquidity/${root}/${rightRoot}`);
 
     await formStore.changeLeftToken(root);
   };
@@ -129,12 +132,7 @@ export function useAddLiquidityForm(): PoolFormShape {
     hideTokensList();
 
     if (formStore.leftToken?.root !== undefined) {
-      navigate(
-        appRoutes.liquidityAdd.makeUrl({
-          leftTokenRoot: formStore.leftToken.root,
-          rightTokenRoot: root,
-        })
-      );
+      navigate(`/addliquidity/${formStore.leftToken.root}/${root}`);
     }
 
     await formStore.changeRightToken(root);

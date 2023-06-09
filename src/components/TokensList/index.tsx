@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import * as React from "react";
-import * as ReactDOM from "react-dom";
 import getScrollBarSize from "rc-util/es/getScrollBarSize";
 
 import { NativeCoinItem } from "../NativeCoinItem";
@@ -10,6 +9,7 @@ import { useTokensCache } from "../../state/TokensCacheService";
 import type { TokenCache } from "../../state/TokensCacheService";
 import type { WalletNativeCoin } from "../../state/WalletService";
 import { Dialog } from "@headlessui/react";
+import { AiOutlineClose } from "react-icons/ai";
 
 export type TokenSide = "leftToken" | "rightToken";
 
@@ -94,7 +94,7 @@ export function TokensList({
     <Dialog
       open={isOpen}
       onClose={() => onDismiss()}
-      className="relative w-full h-full z-50"
+      className="relative w-full h-full z-40"
     >
       {/* The backdrop, rendered as a fixed sibling to the panel container */}
       <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
@@ -102,10 +102,15 @@ export function TokensList({
       {/* Full-screen container to center the panel */}
       <div className="fixed inset-0 flex items-center justify-center p-4">
         {/* The actual dialog panel  */}
-        <Dialog.Panel className="mx-auto w-1/3  py-3 flex flex-col gap-3 rounded-[24px] bg-white shadow-[0_16px_48px_0_rgba(27, 0, 49, 0.16)]">
-          <h2 className="text-[#13173E] font-[700] text-[28px] px-5">
-            Select a token
-          </h2>
+        <Dialog.Panel className="mx-auto w-1/3  py-5 flex flex-col gap-3 rounded-[24px] bg-white shadow-[0_16px_48px_0_rgba(27, 0, 49, 0.16)]">
+          <div className="flex px-5 items-center justify-between">
+            <h2 className="text-[#13173E] font-[700] text-[28px] ">
+              Select a token
+            </h2>
+            <button onClick={onDismiss} className="text-[14px]">
+              <AiOutlineClose className="text-[20px] font-bold" />
+            </button>
+          </div>
           <form className="popup-search px-5">
             <input
               type="text"
@@ -130,7 +135,7 @@ export function TokensList({
                 onSelectToken={onSelectToken}
               />
             )}
-            {!allowMultiple && nativeCoin !== undefined && !query && (
+            {nativeCoin !== undefined && !query && (
               <NativeCoinItem
                 key={nativeCoin.symbol}
                 disabled={currentTokenSide === nativeCoinSide}
@@ -151,7 +156,7 @@ export function TokensList({
                 />
               ))
             ) : (
-              <div className="popup-search__message">No results found</div>
+              <div className="px-5">No results found</div>
             )}
           </div>
         </Dialog.Panel>
