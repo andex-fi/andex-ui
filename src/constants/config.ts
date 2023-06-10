@@ -1,4 +1,4 @@
-import { AddressLiteral } from "@andex/provider";
+import { AddressLiteral, Address } from "@andex/provider";
 
 export const WrapGas = '1000000000' // <= 1 VENOM
 
@@ -15,3 +15,19 @@ export const WVENOMRootAddress = new AddressLiteral('0:caf849eea43d916944844ea0c
 export const TokenListURI = 'https://raw.githubusercontent.com/andex-fi/token-lists/master/manifest.json'
 
 export const MinWalletVersion = '0.2.31'
+
+export const API_URL = 'https://api.flatqube.io/v2'
+
+export const NPoolsList = new Map<
+    string,
+    { poolAddress: Address, roots: { address: Address }[] }
+>([
+    ['0:155dfc30972a91b1737a3c75f8077f6d4f6c871753c1866407efaf43c3687723', {
+        poolAddress: new AddressLiteral('0:71bbd09511797ba170911677f9300633a1143472c279b5b1bd6bd46cb666f929'),
+        roots: [
+            { address: new AddressLiteral('0:2d963fb029bf321d25c207f7c786dffa030387106861a9912b2d5e1cd90590ea') },
+            { address: new AddressLiteral('0:84f7dc464665ee5be3c0e4065afa509041eaa9cded1308cdd29560dd630cdbf7') },
+            { address: new AddressLiteral('0:b8b76afb475cbd64786d2c693fe8b182797c4b47194fa5f25749ee673e478b06') },
+        ],
+    }],
+])
