@@ -49,7 +49,6 @@ const standaloneFallback = () =>
         // endpoint: "https://jrpc.venom.foundation/rpc",
       },
     },
-    initInput: '../../node_modules/nekoton-wasm/nekoton_wasm_bg.wasm'
   });
 
 

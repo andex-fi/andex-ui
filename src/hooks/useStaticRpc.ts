@@ -16,7 +16,7 @@ export function useStaticRpc(): ProviderRpcClient {
             forceUseFallback: true,
             fallback: () => VenomStandaloneClient.create({
                 connection: 'devnetJrpc',
-                initInput: '../../node_modules/nekoton-wasm/nekoton_wasm_bg.wasm'
+                initInput: '../../public/nekoton_wasm_bg.wasm'
             }),
         })
     }
