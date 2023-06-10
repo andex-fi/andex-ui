@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { FC } from "react";
+import React, { FC, useRef } from "react";
 import * as H from 'history'
 import { Link } from "react-router-dom";
 
@@ -17,11 +17,12 @@ export interface NativeButtonProps extends Omit<React.ButtonHTMLAttributes<any>,
 interface Props<S = H.LocationState>  extends Partial<NativeButtonProps> {
   block?: boolean;
   btnStyles: string;
+  ref?: any;
   href?: string;
   children: React.ReactNode;
   link?: H.LocationDescriptor<S> | ((location: H.Location<S>) => H.LocationDescriptor<S>) | any;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
-  type?: 'primary' | 'secondary' | 'tertiary' | 'link' | 'icon' | 'accept' | 'danger';
+  type?: 'primary' | 'secondary' | 'tertiary' | 'link' | 'icon' | 'accept' | 'danger' | 'empty';
   size?: 'xs' | 'sm' | 'md' | 'lg';
   submit?: boolean;
 }
@@ -31,14 +32,17 @@ export const Button: FC<Props> = ({
   onClick,
   link,
   href,
+  ref,
   children,
   submit
 }) => {
-  
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const buttonRef = (ref as any) || useRef<HTMLElement | null>(null)
 
   if (link) {
     return (
       <Link
+        ref={buttonRef}
         to={link}
         className={btnStyles}
       >
@@ -50,6 +54,7 @@ export const Button: FC<Props> = ({
   if (href) {
     return (
       <a
+        ref={buttonRef}
         className={btnStyles}
         href={href}
         target="_blank"
@@ -61,7 +66,8 @@ export const Button: FC<Props> = ({
   }
 
   return (
-    <button 
+    <button
+      ref={buttonRef} 
       className={btnStyles}
       onClick={onClick}
       type={submit ? 'submit' : 'button'}
