@@ -1,0 +1,72 @@
+@import '@/styles/variables.scss';
+
+.swap-price {
+    align-items: flex-end !important;
+    display: flex;
+    flex-flow: column-reverse wrap;
+    font-size: 12px;
+    gap: 10px;
+    letter-spacing: 0.6px;
+    line-height: 16px;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    min-height: 28px;
+
+    @media only screen and (min-width: $breakpoint-xsmall) {
+        align-items: center !important;
+        flex-flow: row nowrap;
+    }
+
+    &-details {
+        align-items: center;
+        display: flex;
+        flex-flow: row nowrap;
+        font-size: 12px;
+        justify-content: space-between;
+        line-height: 16px;
+        text-align: right;
+
+        > span {
+            align-items: center;
+            display: flex;
+            flex-flow: row nowrap;
+            justify-content: space-between;
+        }
+    }
+
+    .btn.swap-price__exchange-mode-btn {
+        border-radius: 40px;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 16px;
+        min-height: 0;
+        padding: 2px 8px;
+
+        &:not(:hover) {
+            background: linear-gradient(0deg, rgb(5 11 46 / 12%), rgb(5 11 46 / 12%)), rgb(255 255 255 / 12%);
+        }
+    }
+
+    div.btn.swap-price__exchange-mode-btn {
+        align-items: center;
+        background: linear-gradient(0deg, rgb(5 11 46 / 12%), rgb(5 11 46 / 12%)), rgb(255 255 255 / 12%);
+        color: #fff !important;
+        cursor: default;
+        display: flex;
+        flex-flow: row nowrap;
+        gap: 10px;
+    }
+}
+
+.btn.swap-price__reverse-btn {
+    border: 0 none;
+    border-radius: 50%;
+    opacity: 0.5;
+    padding: 0;
+    transition: opacity 0.15s ease-in-out;
+
+    svg { stroke: #fff; }
+
+    &:hover { opacity: 0.7; }
+}
