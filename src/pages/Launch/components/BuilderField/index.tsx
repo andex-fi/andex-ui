@@ -47,7 +47,7 @@ function Field({
 
 
     return (
-        <label className="form-label" htmlFor={props.id}>
+        <label className="form-label " htmlFor={props.id}>
             <fieldset
                 className={classNames('form-fieldset', className, {
                     invalid: isDirty.current && !isValid,
@@ -59,7 +59,7 @@ function Field({
                 </div>
                 <div className="form-fieldset__main">
                     <input
-                        className="form-input"
+                        className="form-input w-[30rem] outline-none bg-white dark:bg-purple-light p-3 rounded-lg"
                         disabled={props.disabled}
                         inputMode={props.inputMode}
                         pattern={props.pattern}

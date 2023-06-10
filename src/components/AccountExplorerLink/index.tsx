@@ -14,7 +14,7 @@ export function AccountExplorerLink(props: Props): JSX.Element {
   return (
     <a
       className={className}
-      href={`https://everscan.io/accounts/${address}`}
+      href={`https://devnet.venomscan.com/accounts/${address}`}
       title={"Open in Explorer"}
       target="_blank"
       rel="noopener noreferrer"

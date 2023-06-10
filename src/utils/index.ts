@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Address } from "@andex/provider";
 import BigNumber from "bignumber.js";
@@ -159,6 +160,10 @@ export function zip<A, B>(a: Array<A>, b: Array<B>): Array<[A, B]> {
   return a.map((e, i) => [e, b[i]]);
 }
 
+export function throwException(message: string): never {
+  throw new Error(message)
+}
+
 export const isString = (value: unknown): boolean => typeof value === "string";
 export const isObject = (value: unknown): boolean =>
   typeof value === "object" && value !== null;
@@ -178,3 +183,4 @@ export * from "./formattedTokenAmount";
 export * from "./makeArray";
 export * from "./events";
 export * from "./abbrNumber";
+export * from "./createHandler"

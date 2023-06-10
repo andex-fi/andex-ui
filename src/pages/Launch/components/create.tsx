@@ -15,17 +15,17 @@ export function Create(): JSX.Element {
 
     return (
         <>
-            <div className="card">
+            <div className="card flex justify-center p-10 bg-[#EBF1FF] dark:bg-purple-dark">
                 <div className="card__wrap">
-                    <div className="card__header">
+                    <div className="card__header text-xl font-bold mb-10">
                         <h2 className="card-title">Create token</h2>
                     </div>
 
-                    <div className="form form-builder">
+                    <div className="form form-builder flex flex-col gap-6">
                         <Observer>
                             {() => (
                                 <BuilderField
-                                    className=''
+                                    className='flex flex-col gap-2'
                                     key="nameField"
                                     disabled={creatingToken.isCreating}
                                     label="Name"
@@ -40,7 +40,7 @@ export function Create(): JSX.Element {
                         <Observer>
                             {() => (
                                 <BuilderField
-                                    className=''
+                                    className='flex flex-col gap-2'
                                     key="symbolField"
                                     disabled={creatingToken.isCreating}
                                     label="Symbol"
@@ -55,7 +55,7 @@ export function Create(): JSX.Element {
                         <Observer>
                             {() => (
                                 <BuilderField
-                                    className=''
+                                    className='flex flex-col gap-2'
                                     key="decimalsField"
                                     type="number"
                                     disabled={creatingToken.isCreating}

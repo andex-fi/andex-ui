@@ -211,7 +211,7 @@ export class WalletService extends BaseStore<WalletData, WalletState> {
     }
 
     /**
-     * Add custom token asset to the EVER Wallet
+     * Add custom token asset to the Venom Wallet
      * @param {string} root
      * @param {AssetType} [type]
      */
@@ -537,7 +537,7 @@ let wallet: WalletService
 export function useWallet(): WalletService {
     if (wallet === undefined) {
         log(
-            '%cCreated a new one WalletService instance as global service to interact with the EVER Wallet browser extension',
+            '%cCreated a new WalletService instance as global service to interact with the Venom Wallet browser extension',
             'color: #bae701',
         )
         wallet = new WalletService({
