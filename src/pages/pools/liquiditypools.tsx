@@ -1,7 +1,8 @@
 import { FC } from "react";
 import { Button } from "../../components/Button";
 // import { useNavigate } from "react-router-dom";
-import { Pools, Positions } from "./positions";
+// import { Pools, Positions } from "./positions";
+import { Positions } from "./positions";
 import { useAccountContext } from "../../hooks/useAccountContext";
 import { useNavigate } from "react-router-dom";
 
@@ -20,7 +21,7 @@ export const Liquiditypools: FC = () => {
 
   return (
     <div
-      className={`flex flex-col items-center justify-center w-full font-montserrat bg-[#EBF1FF] dark:bg-purple-dark p-4 py-10 md:py-24`}
+      className={`flex flex-col items-center min-h-[90vh] justify-center w-full font-montserrat bg-[#EBF1FF] dark:bg-purple-dark p-4 py-10 md:py-24`}
     >
       <div
         className={`w-full md:w-[60%] bg-white dark:bg-purple-darkest rounded-lg p-4`}
@@ -127,7 +128,7 @@ export const Liquiditypools: FC = () => {
         )}
       </div>
 
-      <div className={`w-full md:w-[70%] mt-12`}>
+      {/* <div className={`w-full md:w-[70%] mt-12`}>
         <h3 className="text-[#13173E] font-bold text-sm">All pools</h3>
 
         <div className="w-full overflow-x-auto">
@@ -178,7 +179,7 @@ export const Liquiditypools: FC = () => {
             Load more
           </Button>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

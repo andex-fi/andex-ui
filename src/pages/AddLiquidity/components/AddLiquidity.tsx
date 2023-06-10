@@ -102,7 +102,7 @@ function AddLiquidity() {
 
         <Observer>
           {() => (
-            <div className="mt-8 flex justify-between items-center">
+            <div className="mt-8 flex  justify-between items-center">
               <input
                 pattern="^[0-9]*[.]?[0-9]*$"
                 value={formStore.leftAmount}
@@ -110,11 +110,12 @@ function AddLiquidity() {
                 type="text"
                 inputMode="decimal"
                 onChange={leftField.onChange}
-                className="text-5xl w-[50%] dark:bg-purple-light dark:text-white dark:opacity-80"
+                className="text-5xl w-[80%] dark:bg-purple-light dark:text-white dark:opacity-80"
               />
               <TokenSelector
                 root={formStore.leftToken?.root}
                 onSelect={form.onSelectLeftToken}
+                showIcon
               />
             </div>
           )}
@@ -135,11 +136,12 @@ function AddLiquidity() {
                 type="text"
                 onChange={rightField.onChange}
                 inputMode="decimal"
-                className="text-5xl w-[50%] dark:bg-purple-light dark:text-white dark:opacity-80"
+                className="text-5xl w-[80%] dark:bg-purple-light dark:text-white dark:opacity-80"
               />
               <TokenSelector
                 root={formStore.rightToken?.root}
                 onSelect={form.onSelectRightToken}
+                showIcon
               />
             </div>
           )}

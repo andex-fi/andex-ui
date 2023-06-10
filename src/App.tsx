@@ -16,7 +16,7 @@ import AddLiquidityPage from "./pages/AddLiquidity";
 export default function App() {
   const location = useLocation();
   return (
-    <>
+    <div className="bg-[#EBF1FF] dark:bg-purple-dark h-min-screen w-full">
       {location.pathname === "/" ? <Nav /> : <Navbar />}
 
       <Routes>
@@ -32,11 +32,14 @@ export default function App() {
         />
         <Route path="addliquidity" element={<AddLiquidityPage />} />
         <Route path="removeliquidity" element={<RemoveLiquidityPage />} />
-        <Route path="removeliquidity/:leftTokenRoot/:rightTokenRoot" element={<RemoveLiquidityPage />} />
+        <Route
+          path="removeliquidity/:leftTokenRoot/:rightTokenRoot"
+          element={<RemoveLiquidityPage />}
+        />
         <Route path="builder" element={<BuilderPage />} />
         <Route path="builder/create" element={<CreatePage />} />
         <Route path="builder/:tokenRoot" element={<TokenPage />} />
       </Routes>
-    </>
+    </div>
   );
 }

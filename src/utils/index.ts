@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Address } from "@andex/provider";
 import BigNumber from "bignumber.js";
+import React from "react";
 
 export function isGoodBignumber(
   value: BigNumber | number | string,
@@ -167,6 +168,11 @@ export const isString = (value: unknown): boolean => typeof value === "string";
 export const isObject = (value: unknown): boolean =>
   typeof value === "object" && value !== null;
 export const isExists = Boolean as any as <T>(x: T | undefined) => x is T;
+
+export function useForceUpdate(): React.DispatchWithoutAction {
+  const [, forceUpdate] = React.useReducer((x) => x + 1, 0);
+  return forceUpdate;
+}
 
 export * from "./console";
 export * from "./debounce";
