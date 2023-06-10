@@ -90,7 +90,7 @@ function AddLiquidity() {
   }, []);
 
   return (
-    <div className="flex items-center justify-center w-full h-screen font-montserrat bg-[#EBF1FF] dark:bg-purple-dark">
+    <div className="flex items-center justify-center w-full h-screen font-montserrat bg-[#EBF1FF] dark:bg-purple-dark p-4">
       <div className="w-full md:w-[30rem] bg-white dark:bg-purple-light rounded-2xl p-6">
         <div className="w-full flex items-center justify-between">
           <Link to="/pools">
