@@ -1,6 +1,5 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React from "react";
+import React, { FC, useRef } from "react";
 import * as H from 'history'
 import { Link } from "react-router-dom";
 
@@ -18,6 +17,7 @@ export interface NativeButtonProps extends Omit<React.ButtonHTMLAttributes<any>,
 interface Props<S = H.LocationState>  extends Partial<NativeButtonProps> {
   block?: boolean;
   btnStyles: string;
+  ref?: any;
   href?: string;
   children: React.ReactNode;
   link?: H.LocationDescriptor<S> | ((location: H.Location<S>) => H.LocationDescriptor<S>) | any;
@@ -27,17 +27,17 @@ interface Props<S = H.LocationState>  extends Partial<NativeButtonProps> {
   submit?: boolean;
 }
 
-export const Button = React.forwardRef<unknown, Props>(({
+export const Button: FC<Props> = ({
   btnStyles,
   onClick,
   link,
   href,
+  ref,
   children,
-  submit,
-  ...props
-}, ref): JSX.Element => {
-  const buttonRef = (ref as any) || React.useRef<HTMLElement | null>(null)
-  
+  submit
+}) => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const buttonRef = (ref as any) || useRef<HTMLElement | null>(null)
 
   if (link) {
     return (
@@ -70,10 +70,9 @@ export const Button = React.forwardRef<unknown, Props>(({
       ref={buttonRef} 
       className={btnStyles}
       onClick={onClick}
-      {...props}
       type={submit ? 'submit' : 'button'}
     >
       {children}
     </button>
   );
-});
+};

@@ -1,18 +1,13 @@
-import * as React from 'react'
 import { Observer } from 'mobx-react-lite'
-import { useIntl } from 'react-intl'
 
-import { Button } from '@/components/common/Button'
-import { Icon } from '@/components/common/Icon'
-import { useSwapFormStoreContext } from '@/modules/Swap/context'
-import { SwapDirection } from '@/modules/Swap/types'
-import { formattedTokenAmount, stripHtmlTags } from '@/utils'
-
-import './index.scss'
+import { Button } from '../../../../components/Button'
+import { Icon } from '../../../../components/Icon'
+import { useSwapFormStoreContext } from '../../context'
+import { SwapDirection } from '../../types'
+import { formattedTokenAmount, stripHtmlTags } from '../../../../utils'
 
 
 export function SwapPrice(): JSX.Element | null {
-    const intl = useIntl()
     const formStore = useSwapFormStoreContext()
 
     if (formStore.leftToken === undefined || formStore.rightToken === undefined) {
@@ -39,30 +34,14 @@ export function SwapPrice(): JSX.Element | null {
                             <span
                                 key={SwapDirection.RTL}
                                 dangerouslySetInnerHTML={{
-                                    __html: intl.formatMessage({
-                                        id: 'SWAP_PRICE_RESULT',
-                                    }, {
-                                        leftSymbol: stripHtmlTags(leftSymbol ?? ''),
-                                        rightSymbol: stripHtmlTags(rightSymbol ?? ''),
-                                        value: formattedTokenAmount(formStore.ltrPrice),
-                                    }, {
-                                        ignoreTag: true,
-                                    }),
+                                    __html: `${formattedTokenAmount(formStore.ltrPrice)} ${stripHtmlTags(leftSymbol ?? '')}&nbsp;per&nbsp;1&nbsp;${stripHtmlTags(rightSymbol ?? '')}`,
                                 }}
                             />
                         ) : (
                             <span
                                 key={SwapDirection.LTR}
                                 dangerouslySetInnerHTML={{
-                                    __html: intl.formatMessage({
-                                        id: 'SWAP_PRICE_RESULT',
-                                    }, {
-                                        leftSymbol: stripHtmlTags(rightSymbol ?? ''),
-                                        rightSymbol: stripHtmlTags(leftSymbol ?? ''),
-                                        value: formattedTokenAmount(formStore.rtlPrice),
-                                    }, {
-                                        ignoreTag: true,
-                                    }),
+                                    __html: `${formattedTokenAmount(formStore.rtlPrice)} ${stripHtmlTags(rightSymbol ?? '')}&nbsp;per&nbsp;1&nbsp;${stripHtmlTags(leftSymbol ?? '')}`,
                                 }}
                             />
                         )
@@ -70,7 +49,7 @@ export function SwapPrice(): JSX.Element | null {
                 </Observer>
                 <Button
                     size="xs"
-                    className="swap-price__reverse-btn"
+                    btnStyles="swap-price__reverse-btn"
                     onClick={formStore.togglePriceDirection}
                 >
                     <Icon icon="reverseHorizontal" />
