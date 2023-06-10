@@ -174,7 +174,6 @@ function SubmitButton(): JSX.Element {
     <Button
       btnStyles="bg-[#52058F] dark:bg-purple-lightest text-white flex items-center justify-center w-full rounded-lg py-3 mt-4"
       aria-disabled={buttonProps.disabled}
-      className="form-submit"
       block
       size="lg"
       type="primary"

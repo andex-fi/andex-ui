@@ -40,7 +40,7 @@ export const Hero: FC = () => {
             Launch Dapp
           </Button>
         </Link>
-        <Button btnStyles="bg-[#3B1F5E] text-white flex items-center justify-center font-bold px-8 py-3 text-sm rounded-lg">
+        <Button href="https://docs.andex.finance" btnStyles="bg-[#3B1F5E] text-white flex items-center justify-center font-bold px-8 py-3 text-sm rounded-lg">
           Learn more
         </Button>
       </div>
@@ -48,12 +48,12 @@ export const Hero: FC = () => {
         <img
           src={VenomBall}
           alt="venomball"
-          className="motion-safe:animate-bounce absolute bottom-[25%] md:bottom-[45%] lg:bottom-[50%]"
+          className="animate-bounce-slow absolute bottom-[25%] md:bottom-[45%] lg:bottom-[50%]"
         />
         <img
           src={VenomShadow}
           alt="VenomShadow"
-          className="absolute bottom-[70%] md:bottom-[75%] lg:bottom-[80%]"
+          className="absolute bottom-[70%] md:bottom-[75%] lg:bottom-[80%] animate-pulse-slow"
         />
         <img src={Cube} alt="cube" />
       </div>

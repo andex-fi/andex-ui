@@ -62,44 +62,34 @@ export function TokenSelector({
   }, [root]);
 
   return (
-    <div className="dark:bg-purple-light">
+    <div className="dark:bg-purple-light w-full">
       <div className="flex item-center justify-between w-full">
-        <div
-          className="h-14 bg-[#F3F3F3] dark:bg-purple-dark flex items-center justify-start rounded-full"
-          style={{
-            boxShadow: "0px 4px 8px rgba(50, 14, 79, 0.15)",
-          }}
+        <Button
+          disabled={disabled}
+          btnStyles="flex shadow-[0_4px_8px_rgba(50, 14, 79, 0.15)] w-[100%] items-center px-5 gap-1 h-14 bg-[#F3F3F3] w-full dark:bg-purple-dark flex items-center justify-start rounded-full"
+          onClick={open}
         >
-          <Button
-            disabled={disabled}
-            btnStyles="flex items-center px-5 gap-1"
-            onClick={open}
+          <span
+            className=" flex items-center gap-2 block w-full rounded-full dark:bg-purple-dark text-md lg:text-xl font-bold py-1 outline-none"
+            title={token ? token.symbol : placeholder}
           >
-            <span
-              className=" flex items-center gap-1 justify-between block w-full rounded-full dark:bg-purple-dark text-md lg:text-xl font-bold py-1 outline-none"
-              title={token ? token.symbol : placeholder}
-            >
-              {showIcon && token && (
-                <TokenIcon
-                  size="small"
-                  address={token.root}
-                  icon={token.icon}
-                />
-              )}
-              <span className="token-selector__symbol">
-                {token ? token.symbol : placeholder}
-              </span>
+            {showIcon && token && (
+              <TokenIcon size="small" address={token.root} icon={token.icon} />
+            )}
+            <span className="token-selector__symbol">
+              {token ? token.symbol : placeholder}
             </span>
-            <ChevronDownIcon width={"20px"} />
-          </Button>
+          </span>
+          <ChevronDownIcon width={"20px"} />
+        </Button>
 
-          <TokensList
-            isOpen={listVisible}
-            onDismiss={close}
-            onSelectToken={select}
-          />
-        </div>
+        <TokensList
+          isOpen={listVisible}
+          onDismiss={close}
+          onSelectToken={select}
+        />
       </div>
+      {/* </div> */}
     </div>
   );
 }
