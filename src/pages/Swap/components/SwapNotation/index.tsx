@@ -115,7 +115,7 @@ function SwapNotationInternal(): JSX.Element | null {
                     <div className="swap-notation__icon-holders">
                         <TokenIcons
                             icons={[
-                                { icon: 'https://raw.githubusercontent.com/broxus/ton-assets/master/icons/WEVER/logo.svg' },
+                                { icon: 'https://raw.githubusercontent.com/andex-fi/token-lists/master/icons/WVENOM/logo.svg' },
                                 { icon: formStore.wallet.coin.icon },
                             ]}
                             size="medium"
