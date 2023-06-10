@@ -40,7 +40,7 @@ export const Hero: FC = () => {
             Launch Dapp
           </Button>
         </Link>
-        <Button btnStyles="bg-[#3B1F5E] text-white flex items-center justify-center font-bold px-8 py-3 text-sm rounded-lg">
+        <Button href="https://docs.andex.finance" btnStyles="bg-[#3B1F5E] text-white flex items-center justify-center font-bold px-8 py-3 text-sm rounded-lg">
           Learn more
         </Button>
       </div>
