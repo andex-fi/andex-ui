@@ -205,8 +205,7 @@ export abstract class PairUtils {
         params?.dexRootState
       ));
     const lpRootState =
-      params?.lpRootState ??
-      (await getFullContractState(params.lpRootAddress));
+      params?.lpRootState ?? (await getFullContractState(params.lpRootAddress));
 
     const [lpPairWalletAddress, lpUserWalletAddress] = await Promise.all([
       params.lpPairWalletAddress ??
@@ -537,7 +536,7 @@ export abstract class PairUtils {
   }
 
   public static async getDetails(
-    pairAddress: Address | string,
+    pairAddress: Address | string
   ): Promise<PairFullDetails> {
     const state = await getFullContractState(pairAddress);
 
@@ -622,7 +621,7 @@ export abstract class PairUtils {
     pairAddress: Address | string,
     cachedState?: FullContractState
   ): Promise<DecodedAbiFunctionOutputs<typeof DexAbi.Pair, "getTokenRoots">> {
-    return dexPairContract(pairAddress)
+    return await dexPairContract(pairAddress)
       .methods.getTokenRoots({ answerId: 0 })
       .call({ cachedState });
   }
