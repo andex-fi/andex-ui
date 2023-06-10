@@ -44,7 +44,7 @@ function SubmitButton(): JSX.Element {
         <Button
             aria-disabled={buttonProps.disabled}
             block
-            btnStyles="form-submit"
+            btnStyles="form-submit mt-2 bg-purple text-white dark:bg-purple-lightest text-lg font-bold p-4 rounded-lg"
             size="lg"
             type="primary"
             {...buttonProps}

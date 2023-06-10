@@ -3484,6 +3484,7 @@ styled-components@^6.0.0-rc.1, styled-components@^6.0.0-rc.3:
     "@babel/traverse" "^7.21.2"
     "@emotion/unitless" "^0.8.0"
     css-to-react-native "^3.2.0"
+    postcss "^8.4.23"
     shallowequal "^1.1.0"
     stylis "^4.2.0"
     tslib "^2.5.0"
@@ -3713,6 +3714,7 @@ vite@^4.3.9:
   version "4.3.9"
   resolved "https://registry.yarnpkg.com/vite/-/vite-4.3.9.tgz#db896200c0b1aa13b37cdc35c9e99ee2fdd5f96d"
   integrity sha512-qsTNZjO9NoJNW7KnOrgYwczm0WctJ8m/yqYAMAK9Lxt4SoySUfS5S8ia9K7JHpa3KEeMfyF8LoJ3c5NeBJy6pg==
+  
   dependencies:
     esbuild "^0.17.5"
     postcss "^8.4.23"
