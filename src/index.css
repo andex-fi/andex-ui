@@ -5,22 +5,21 @@
 @tailwind utilities;
 
 .dark {
-    background: linear-gradient(113.67deg, #34184A -0.78%, #160F2A 100.71%);;
-    color: #ffffff;
+  background: linear-gradient(113.67deg, #34184a -0.78%, #160f2a 100.71%);
+  color: #ffffff;
 }
 
 .light {
-    background:  linear-gradient(113.67deg, #EBF1FF -0.78%, #F8FAFF 100.71%);;;
-    color: #282828;
+  background: linear-gradient(113.67deg, #ebf1ff -0.78%, #f8faff 100.71%);
+  color: #282828;
 }
 
 .dark .button {
-    background-color: #983bf6;
-    color: #ffffff;
+  background-color: #983bf6;
+  color: #ffffff;
 }
 
 .light .button {
-    background-color: #28133f;
-    color: #ffffff;
+  background-color: #28133f;
+  color: #ffffff;
 }
-

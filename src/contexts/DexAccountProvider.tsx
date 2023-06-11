@@ -6,7 +6,7 @@ import {
   useEffect,
   useState,
 } from "react";
-import { useAccountContext } from "../hooks";
+import { useAccountContext, useRpc } from "../hooks";
 import { DexRootAddress } from "../constants/config";
 import { getFullContractState } from "../constants/contracts";
 import { DexUtils } from "../constants/utils/DexUtils";
@@ -26,13 +26,13 @@ export const DexAccountContext = createContext<DexAccount>({
 
 function DexAccountProvider({ children }: { children: ReactNode }) {
   const [dexAccount, setDexAccount] = useState<Address | string | undefined>();
-  const { address, venomProvider } = useAccountContext();
+  const { address } = useAccountContext();
   const [dexAccountLoading, setLoading] = useState<boolean | undefined>();
 
+  const venomProvider = useRpc();
+
   const connectDexAccount = useCallback(async () => {
-    const dexRootState = await getFullContractState(
-      DexRootAddress,
-    );
+    const dexRootState = await getFullContractState(DexRootAddress);
     console.log("Dexroot state", dexRootState);
     console.log("trying to getExpectedAdress.....");
     const dexAccountAddress = await DexUtils.getExpectedAccountAddress(

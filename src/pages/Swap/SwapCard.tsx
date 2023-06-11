@@ -6,7 +6,6 @@ import { FiSettings } from "react-icons/fi";
 
 const SwapCard: FC = () => {
   const { connect, address } = useAccountContext();
-
   // const [tokenOne] = React.useState("ETH");
   // const [tokenTwo] = useState<number | string>("ANDC");
 

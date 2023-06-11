@@ -19,7 +19,6 @@ export type AddLiquidityFormStoreProviderProps = React.PropsWithChildren<{
   wallet?: WalletService;
 }>;
 
-// eslint-disable-next-line react-refresh/only-export-components
 export function useAddLiquidityFormStoreContext(): AddLiquidityFormStore {
   return React.useContext(AddLiquidityFormStoreContext);
 }
