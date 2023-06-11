@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import usdc from "../assets/usdc.png";
 import eth from "../assets/eth.png";
 import arrow from "../assets/arrow.png";

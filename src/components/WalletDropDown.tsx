@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Menu } from "@headlessui/react";
 import jazzicon from "@metamask/jazzicon";
 import { useEffect, useRef, ButtonHTMLAttributes } from "react";
-import { useAccountContext } from "../hooks/useAccountContext";
+// import { useAccountContext } from "../hooks/useAccountContext";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/20/solid";
 // import { MdOutlineSettings } from "react-icons/md";
 
@@ -36,7 +37,7 @@ const Identicon = ({ width }: { width: number }) => {
         jazzicon(width, parseInt(address.slice(2, 10), 16))
       );
     }
-  }, [address]);
+  }, [address, width]);
   return (
     <div
       className={`w-[${width}px] h-[${width}px] rounded-[${width * 1.5}px]`}

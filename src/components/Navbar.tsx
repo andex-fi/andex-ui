@@ -15,11 +15,11 @@ import LogoLightSingle from "../assets/LogoLightSingle.png";
 import LogoDark from "../assets/LogoDark.png";
 import LogoDarkSingle from "../assets/LogoDarkSingle.png";
 import { Link } from "react-router-dom";
-import { useAccountContext } from "../hooks/useAccountContext";
+// import { useAccountContext } from "../hooks/useAccountContext";
 import WalletDropDown from "./WalletDropDown";
-import { VenomConnect } from "@andex/wallet-kit";
-import { VenomStandaloneClient } from "@andex/client";
-import { ProviderRpcClient } from "@andex/provider";
+// import { VenomConnect } from "@andex/wallet-kit";
+// import { VenomStandaloneClient } from "@andex/client";
+// import { ProviderRpcClient } from "@andex/provider";
 import { useWallet } from "../state/WalletService";
 import { Observer } from "mobx-react-lite";
 // import { Sun } from "@heroicons/react/20/solid";
@@ -40,7 +40,7 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-const standaloneFallback = () =>
+/*const standaloneFallback = () =>
   VenomStandaloneClient.create({
     connection: {
       id: 1002,
@@ -51,19 +51,19 @@ const standaloneFallback = () =>
         // endpoint: "https://jrpc.venom.foundation/rpc",
       },
     },
-  });
+  }); */
 
 export default function Navbar() {
-  const initTheme = "light" as const;
-  const themesList = ["light", "dark"];
+  // const initTheme = "light" as const;
+  // const themesList = ["light", "dark"];
 
   const wallet = useWallet();
 
   const [darkMode, setDarkMode] = useState(false);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const [setTheme] = useState<any>(initTheme);
+  // const [setTheme] = useState<any>(initTheme);
 
-  const connection = () => {
+  /*const connection = () => {
     return new VenomConnect({
       theme: initTheme,
       checkNetworkId: 1002,
@@ -99,12 +99,13 @@ export default function Navbar() {
         },
       },
     });
-  };
+  };*/
 
-  const getTheme = () =>
+  /*const getTheme = () =>
     connection().getInfo().themeConfig.name.toString() || "...";
+  */
 
-  const onToggleThemeButtonClick = async () => {
+  /*const onToggleThemeButtonClick = async () => {
     const currentTheme = getTheme();
 
     const lastIndex = themesList.length - 1;
@@ -122,7 +123,7 @@ export default function Navbar() {
     await connection().updateTheme(theme);
 
     setTheme(getTheme());
-  };
+  };*/
 
   useEffect(() => {
     if (darkMode) {

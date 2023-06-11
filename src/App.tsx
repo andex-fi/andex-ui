@@ -1,5 +1,5 @@
-import Navbar from "./components/Navbar";
-import { Routes, Route, useLocation } from "react-router-dom";
+// import Navbar from "./components/Navbar";
+import { Routes, Route } from "react-router-dom";
 // import { Liquiditypools } from "./pages/pools/liquiditypools";
 // import { Addliquidity } from "./pages/pools/addliquidity";
 import Swap from "./pages/Swap";
@@ -7,7 +7,7 @@ import { Play } from "./pages/playground";
 // import { Approveliquidity } from "./pages/AddLiquidity/components/approveliquidity";
 import RemoveLiquidityPage from "./pages/RemoveLiquidity";
 import { Homepage } from "./pages/homepage/Homepage";
-import { Nav } from "./components/Nav";
+// import { Nav } from "./components/Nav";
 import CreatePage from "./pages/Launch/Create";
 import BuilderPage from "./pages/Launch";
 import TokenPage from "./pages/Launch/Token";
@@ -16,7 +16,7 @@ import Pools from "./pages/pools";
 import Layout from "./components/Layout";
 
 export default function App() {
-  const location = useLocation();
+  // const location = useLocation();
   return (
     <Routes>
       <Route element={<Layout />}>

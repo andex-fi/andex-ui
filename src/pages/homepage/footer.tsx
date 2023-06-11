@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { FC } from "react";
 import { Link } from "react-router-dom";
 import { AiOutlineTwitter } from "react-icons/ai";

@@ -3,7 +3,7 @@ import { Button } from "../../components/Button";
 // import { useNavigate } from "react-router-dom";
 // import { Pools, Positions } from "./positions";
 // import { Positions } from "./positions";
-import { useAccountContext } from "../../hooks/useAccountContext";
+// import { useAccountContext } from "../../hooks/useAccountContext";
 import { useNavigate } from "react-router-dom";
 import FavoritePools from "./components/FavoritePools";
 import { usePoolsStoreContext } from "../../contexts/PoolsStoreProvider";
@@ -12,10 +12,7 @@ export const Liquiditypools: FC = () => {
   // const [positions, setPositions] = useState<boolean>(false);
   const pool = usePoolsStoreContext();
   console.log(pool);
-  const { address, connect } = useAccountContext();
-  const handleConnectWallet = (): void => {
-    connect();
-  };
+  // const { connect } = useAccountContext();
 
   const navigate = useNavigate();
 

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-inferrable-types */
 /* eslint-disable react-hooks/rules-of-hooks */
 import { Mutex } from "@broxus/await-semaphore";

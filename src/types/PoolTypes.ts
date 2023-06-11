@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { TransactionSuccessResult } from "../constants";
 import type {
   DexPairDepositLiquiditySuccessV2,

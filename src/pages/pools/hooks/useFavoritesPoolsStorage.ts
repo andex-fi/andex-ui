@@ -29,7 +29,7 @@ export function useFavoritesPoolsStorage(): string[] {
         },
         { fireImmediately: true }
       ),
-    []
+    [favoritePools, favoritesPairs]
   );
 
   React.useEffect(
@@ -37,7 +37,7 @@ export function useFavoritesPoolsStorage(): string[] {
       reaction(() => favoritePools.addresses, forceUpdate, {
         fireImmediately: true,
       }),
-    []
+    [favoritePools.addresses, forceUpdate]
   );
 
   return favoritePools.addresses ?? [];

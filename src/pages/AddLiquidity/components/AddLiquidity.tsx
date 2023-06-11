@@ -14,7 +14,7 @@ import { reaction } from "mobx";
 import { error } from "../../../utils";
 import { TokenSelector } from "../../../components/TokenSelector";
 import { useField } from "../../../hooks";
-import Navbar from "../../../components/Navbar";
+// import Navbar from "../../../components/Navbar";
 
 function AddLiquidity() {
   const { leftTokenRoot, rightTokenRoot } = useParams<URLTokensParams>();
@@ -88,7 +88,7 @@ function AddLiquidity() {
       tokensListDisposer();
       formStore.dispose().catch((reason) => error(reason));
     };
-  }, []);
+  }, [form, formStore, leftTokenRoot, rightTokenRoot]);
 
   return (
     <div className="flex items-center justify-center w-full h-screen font-montserrat bg-[#EBF1FF] dark:bg-purple-dark p-4">
