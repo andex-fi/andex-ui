@@ -1,49 +1,46 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/438c813c-48fd-4d75-bc0a-fc870c1e8bfd/deploy-status)](https://app.netlify.com/sites/andex-demo/deploys)
+# Getting Started with Create React App
 
-# andex-interface
-Frontend Interface of Andex Protocol
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-This repository contains a the codebase for the andex frontend interface. 
-Follow the instructions below to clone the repository and set it up on your local computer.
+## Available Scripts
 
-# Prerequisites
-Node.js (v16 or higher) and npm (v7 or higher) installed on your local computer.
+In the project directory, you can run:
 
-# Clone the repository
-1. Open a terminal on your local computer.
-2. Navigate to the directory where you want to clone the repository.
-3. Run the following command:
-```git clone https://github.com/andex-fi/andex-interface.git```
+### `npm start`
 
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-# Set up the project
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
-1. Navigate to the root directory of the cloned repository in your terminal.
-2. Run the following command to install the project dependencies:
-```yarn install```
+### `npm test`
 
-Once the dependencies are installed, you can run the project using the following command:
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-```yarn dev```
+### `npm run build`
 
-This will start the Vite development server and launch the project in your default web browser at http://localhost:4000.
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-# Build the project
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
-To build the project for production, run the following command in the root directory of the cloned repository:
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-yarn build
+### `npm run eject`
 
-This will generate a production-ready version of the project in the dist directory.
+**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-# Additional Information
-For more information on using Vite, check out the <a href="https://vitejs.dev">official documentation</a>.
+If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-# Folder Structure
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
+You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
+## Learn More
 
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-
-
-# andex-ui
+To learn React, check out the [React documentation](https://reactjs.org/).

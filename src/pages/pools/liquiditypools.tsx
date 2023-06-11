@@ -36,7 +36,7 @@ export const Liquiditypools: FC = () => {
         <div className=" justify-between items-center flex">
           <h1 className=" font-bold text-sm">Pools Overview</h1>
 
-          {address && (
+          {pool.wallet.address && (
             <div className="flex gap-3">
               <Button
                 btnStyles="bg-[#9645D7] px-3 py-1 rounded-2xl text-white text-sm col-span-2 col-end-7 flex items-center justify-center gap-2"
@@ -46,7 +46,7 @@ export const Liquiditypools: FC = () => {
                 <p>New Position</p>
               </Button>
               <Button
-                btnStyles="border-[#9645D7] text-[#9645D7] border-2 px-3 py-1 rounded-2xl text-white text-sm col-span-2 col-end-7 flex items-center justify-center gap-2"
+                btnStyles="border-[#9645D7] text-[#9645D7] border-2 px-3 py-1 rounded-2xl dark:text-white text-sm col-span-2 col-end-7 flex items-center justify-center gap-2"
                 onClick={() => navigate("/removeliquidity")}
               >
                 <span>-</span>
@@ -56,12 +56,12 @@ export const Liquiditypools: FC = () => {
           )}
         </div>
 
-        {!address ? (
+        {!pool.wallet.address ? (
           <>
             <div className="w-full md:w-[30rem] mx-auto bg-white dark:bg-purple-darkest rounded-lg p-4">
               <Button
                 btnStyles="w-full px-2 py-4 flex items-center justify-center bg-[#52058F] text-white text-sm rounded-lg mt-6 font-bold"
-                onClick={handleConnectWallet}
+                onClick={pool.wallet.connect}
               >
                 <p>Connect Wallet</p>
               </Button>

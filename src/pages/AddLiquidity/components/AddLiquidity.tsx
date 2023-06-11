@@ -14,6 +14,7 @@ import { reaction } from "mobx";
 import { error } from "../../../utils";
 import { TokenSelector } from "../../../components/TokenSelector";
 import { useField } from "../../../hooks";
+import Navbar from "../../../components/Navbar";
 
 function AddLiquidity() {
   const { leftTokenRoot, rightTokenRoot } = useParams<URLTokensParams>();

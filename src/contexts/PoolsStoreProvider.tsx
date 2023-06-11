@@ -1,4 +1,3 @@
-/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import * as React from "react";
 
