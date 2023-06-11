@@ -2,12 +2,16 @@ import { FC } from "react";
 import { Button } from "../../components/Button";
 // import { useNavigate } from "react-router-dom";
 // import { Pools, Positions } from "./positions";
-import { Positions } from "./positions";
+// import { Positions } from "./positions";
 import { useAccountContext } from "../../hooks/useAccountContext";
 import { useNavigate } from "react-router-dom";
+import FavoritePools from "./components/FavoritePools";
+import { usePoolsStoreContext } from "../../contexts/PoolsStoreProvider";
 
 export const Liquiditypools: FC = () => {
   // const [positions, setPositions] = useState<boolean>(false);
+  const pool = usePoolsStoreContext();
+  console.log(pool);
   const { address, connect } = useAccountContext();
   const handleConnectWallet = (): void => {
     connect();
@@ -29,17 +33,26 @@ export const Liquiditypools: FC = () => {
           boxShadow: "0px 16px 64px rgba(55, 0, 98, 0.2)",
         }}
       >
-        <div className="grid grid-cols-6">
-          <h1 className="col-span-2 font-bold text-sm">Pools Overview</h1>
+        <div className=" justify-between items-center flex">
+          <h1 className=" font-bold text-sm">Pools Overview</h1>
 
           {address && (
-            <Button
-              btnStyles="bg-[#9645D7] px-2 py-1 rounded-2xl text-white text-sm col-span-2 col-end-7 flex items-center justify-center gap-2"
-              onClick={handleAddPosition}
-            >
-              <span>+</span>
-              <p>New Position</p>
-            </Button>
+            <div className="flex gap-3">
+              <Button
+                btnStyles="bg-[#9645D7] px-3 py-1 rounded-2xl text-white text-sm col-span-2 col-end-7 flex items-center justify-center gap-2"
+                onClick={handleAddPosition}
+              >
+                <span>+</span>
+                <p>New Position</p>
+              </Button>
+              <Button
+                btnStyles="border-[#9645D7] text-[#9645D7] border-2 px-3 py-1 rounded-2xl text-white text-sm col-span-2 col-end-7 flex items-center justify-center gap-2"
+                onClick={() => navigate("/removeliquidity")}
+              >
+                <span>-</span>
+                <p>Remove Liquidity</p>
+              </Button>
+            </div>
           )}
         </div>
 
@@ -54,7 +67,11 @@ export const Liquiditypools: FC = () => {
               </Button>
             </div>
           </>
-        ) : Positions && Positions?.length > 0 ? (
+        ) : (
+          <FavoritePools />
+        )}
+      </div>
+      {/* Positions && Positions?.length > 0 ? (
           <div className="mt-4">
             <div className="flex items-center justify-between text-[#657795]">
               <h4 className="text-sm font-bold">
@@ -62,8 +79,9 @@ export const Liquiditypools: FC = () => {
               </h4>
               <p className="text-sm font-bold">Status</p>
             </div>
+            <FavoritePools></FavoritePools> */}
 
-            {Positions.map((position, index) => (
+      {/* Positions.map((position, index) => (
               <div
                 key={index}
                 className="bg-[#F4F5FA] dark:bg-purple-light p-4 w-full my-4 rounded-lg"
@@ -125,9 +143,7 @@ export const Liquiditypools: FC = () => {
           <div className="flex items-center justify-center w-full h-48">
             <p className="font-bold">No positions found</p>
           </div>
-        )}
-      </div>
-
+        )} */}
       {/* <div className={`w-full md:w-[70%] mt-12`}>
         <h3 className="text-[#13173E] font-bold text-sm">All pools</h3>
 

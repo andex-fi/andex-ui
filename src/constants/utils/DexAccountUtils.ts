@@ -20,7 +20,7 @@ import type {
   TransactionCallbacks,
   TransactionFailureReason,
   TransactionSuccessResult,
-} from "../../utils/types";
+} from "../../state/types";
 import { DexUtils } from "./DexUtils";
 import { TokenWalletUtils } from "./TokenWalletUtils";
 import type { TokenWalletTransferToWalletParams } from "./TokenWalletUtils";
@@ -525,7 +525,7 @@ export abstract class DexAccountUtils {
   public static async address(
     dexRootAddress: Address | string,
     dexAccountOwnerAddress: Address | string,
-    cachedState?: FullContractState,
+    cachedState?: FullContractState
   ): Promise<
     | DecodedAbiFunctionOutputs<
         typeof DexAbi.Root,

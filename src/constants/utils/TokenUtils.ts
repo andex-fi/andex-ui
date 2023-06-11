@@ -8,7 +8,7 @@ import type {
 } from "@andex/provider";
 
 import { getFullContractState, tokenRootContract } from "../contracts";
-import type { EverscaleTokenData } from "../../utils/types";
+import type { EverscaleTokenData } from "../../state/types";
 import { useRpc } from "../../hooks";
 import { resolveVenomAddress } from "../../utils";
 import { SupportedInterfaceDetection } from "../supportedInterfaceDetection";
@@ -104,10 +104,9 @@ export abstract class TokenUtils {
 
   public static async getDetails(
     address: Address | string,
-    cachedState?: FullContractState,
+    cachedState?: FullContractState
   ): Promise<EverscaleTokenData | undefined> {
-    const state =
-      cachedState ?? (await getFullContractState(address));
+    const state = cachedState ?? (await getFullContractState(address));
 
     if (!state) {
       return undefined;
@@ -166,9 +165,7 @@ export abstract class TokenUtils {
     ).value0;
   }
 
-  public static async isNewTip3(
-    address: Address | string,
-  ): Promise<boolean> {
+  public static async isNewTip3(address: Address | string): Promise<boolean> {
     const state = await getFullContractState(address);
     if (!state || !state.isDeployed) {
       return false;

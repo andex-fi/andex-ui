@@ -21,6 +21,7 @@
     "classnames": "^2.3.2",
     "framer-motion": "^10.12.16",
     "history": "4.10.1",
+    "lightweight-charts": "^4.0.1",
     "mobx": "6.8.0",
     "mobx-react-lite": "^3.4.3",
     "rc-util": "^5.33.0",

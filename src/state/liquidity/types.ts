@@ -9,7 +9,7 @@ import type {
   LiquidityPoolDepositCallbacks,
   LiquidityPoolDepositSuccessResult,
 } from "../../constants/utils";
-import { TransactionSuccessResult } from "../../utils/types";
+import { TransactionSuccessResult } from "../types";
 
 export type PoolData = LiquidityPoolData;
 

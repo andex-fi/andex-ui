@@ -1,6 +1,6 @@
 import Navbar from "./components/Navbar";
 import { Routes, Route, useLocation } from "react-router-dom";
-import { Liquiditypools } from "./pages/pools/liquiditypools";
+// import { Liquiditypools } from "./pages/pools/liquiditypools";
 // import { Addliquidity } from "./pages/pools/addliquidity";
 import Swap from "./pages/Swap";
 import { Play } from "./pages/playground";
@@ -12,6 +12,7 @@ import CreatePage from "./pages/Launch/Create";
 import BuilderPage from "./pages/Launch";
 import TokenPage from "./pages/Launch/Token";
 import AddLiquidityPage from "./pages/AddLiquidity";
+import Pools from "./pages/pools";
 
 export default function App() {
   const location = useLocation();
@@ -24,7 +25,7 @@ export default function App() {
         <Route path="/swap" element={<Swap />} />
         <Route path="/play" element={<Play />} />
         <Route path="pools">
-          <Route index={true} element={<Liquiditypools />} />
+          <Route index={true} element={<Pools />} />
         </Route>
         <Route
           path="addliquidity/:leftTokenRoot/:rightTokenRoot"
