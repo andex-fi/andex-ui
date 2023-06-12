@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import * as React from "react";
 import { reaction } from "mobx";
 
@@ -37,7 +38,7 @@ export function useFavoritesPoolsStorage(): string[] {
       reaction(() => favoritePools.addresses, forceUpdate, {
         fireImmediately: true,
       }),
-    [favoritePools.addresses, forceUpdate]
+    []
   );
 
   return favoritePools.addresses ?? [];
