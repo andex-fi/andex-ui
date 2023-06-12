@@ -5,6 +5,7 @@ import { TokenIcon } from "../TokenIcon";
 import { TokensList } from "../TokensList";
 import { useTokensCache } from "../../state/TokensCacheService";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import { Observer } from "mobx-react-lite";
 
 type Props = {
   disabled?: boolean;
@@ -83,11 +84,17 @@ export function TokenSelector({
           <ChevronDownIcon width={"20px"} />
         </Button>
 
-        <TokensList
-          isOpen={listVisible}
-          onDismiss={close}
-          onSelectToken={select}
-        />
+        <Observer>
+          {() => (
+            <TokensList
+              isOpen={listVisible}
+              onDismiss={close}
+              onSelectToken={select}
+              // onSelectNativeCoin={select}
+              // nativeCoin={tokensCache.wallet.coin}
+            />
+          )}
+        </Observer>
       </div>
       {/* </div> */}
     </div>

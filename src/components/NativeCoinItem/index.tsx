@@ -14,8 +14,11 @@ export function NativeCoinItem({
 }: NativeCoinItemProps): JSX.Element {
   return (
     <>
-      <div className="flex flex-row" onClick={onSelect}>
-        <div className="flex">
+      <div
+        className="flex items-center cursor-pointer justify-between px-5 py-2 font-[600] text-[20px] border-y-[1px] border-[#CCCEE7]"
+        onClick={onSelect}
+      >
+        <div className="flex items-center justify-between">
           <div className="popup-item__icon">
             <TokenIcon name={coin.symbol} size="small" icon={coin.icon} />
           </div>
