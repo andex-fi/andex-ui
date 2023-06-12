@@ -14,7 +14,11 @@ export function WaypointWrappedItem(props: TokenItemProps): JSX.Element {
     <Waypoint onPositionChange={onPositionChange}>
       <div
         className="popup-item-wrapper "
-        style={{ height: visible ? "" : 60, minHeight: visible ? "" : 60 }}
+        style={{
+          height: visible ? "" : 60,
+          minHeight: visible ? "" : 60,
+          borderCollapse: "collapse",
+        }}
       >
         {visible && <TokenItem {...props} />}
       </div>
