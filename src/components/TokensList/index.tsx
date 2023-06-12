@@ -75,20 +75,20 @@ export function TokensList({
     [query, searchResults]
   );
 
-  React.useEffect(() => {
-    try {
-      document.body.style.touchAction = "none";
-      document.body.style.overflow = "hidden";
-      document.body.style.width = `calc(100% - ${getScrollBarSize() || 0}px)`;
-    } catch (e) {
-      /* empty */
-    }
-    return () => {
-      document.body.style.touchAction = "";
-      document.body.style.overflow = "";
-      document.body.style.width = "";
-    };
-  }, []);
+  // React.useEffect(() => {
+  //   // try {
+  //   //   document.body.style.touchAction = "none";
+  //   //   document.body.style.overflow = "hidden";
+  //   //   document.body.style.width = `calc(100% - ${getScrollBarSize() || 0}px)`;
+  //   // } catch (e) {
+  //   //   /* empty */
+  //   // }
+  //   return () => {
+  //     document.body.style.touchAction = "";
+  //     document.body.style.overflow = "";
+  //     document.body.style.width = "";
+  //   };
+  // }, []);
 
   return (
     <Dialog
@@ -102,11 +102,9 @@ export function TokensList({
       {/* Full-screen container to center the panel */}
       <div className="fixed inset-0 flex items-center justify-center p-4">
         {/* The actual dialog panel  */}
-        <Dialog.Panel className="mx-auto w-1/3  py-5 flex flex-col gap-3 rounded-[24px] bg-white shadow-[0_16px_48px_0_rgba(27, 0, 49, 0.16)]">
+        <Dialog.Panel className="mx-auto w-1/3  py-5 flex flex-col gap-3 rounded-[24px] bg-white dark:bg-purple-dark shadow-[0_16px_48px_0_rgba(27, 0, 49, 0.16)]">
           <div className="flex px-5 items-center justify-between">
-            <h2 className="text-[#13173E] font-[700] text-[28px] ">
-              Select a token
-            </h2>
+            <h2 className=" font-[700] text-[28px] ">Select a token</h2>
             <button onClick={onDismiss} className="text-[14px]">
               <AiOutlineClose className="text-[20px] font-bold" />
             </button>
@@ -114,7 +112,7 @@ export function TokensList({
           <form className="popup-search px-5">
             <input
               type="text"
-              className="block w-full placeholder:text-[#CCCEE7] px-3 py-2 h-[55px] border-[1px] rounded border-[#CCCEE7]"
+              className="block w-full placeholder:text-[#CCCEE7] dark:border-purple-light dark:bg-purple-dark px-3 py-2 h-[55px] border-[1px] rounded border-[#CCCEE7]"
               placeholder="Search name or paste address"
               value={query}
               onChange={onSearch}

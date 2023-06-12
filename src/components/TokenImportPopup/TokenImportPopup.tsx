@@ -35,12 +35,12 @@ export function TokenImportPopup({
       {/* Full-screen container to center the panel */}
       <div className="fixed inset-0 flex items-center z-50 justify-center p-4">
         {/* The actual dialog panel  */}
-        <Dialog.Panel className="mx-auto w-1/3  h-auto py-10 p-10 flex flex-col gap-5 rounded-[24px] bg-white shadow-[0_16px_48px_0_rgba(27, 0, 49, 0.16)]">
+        <Dialog.Panel className="mx-auto w-1/3  h-auto py-10 p-10 flex flex-col gap-5 rounded-[24px] bg-white dark:bg-purple-dark shadow-[0_16px_48px_0_rgba(27, 0, 49, 0.16)]">
           <div className=" flex flex-col gap-3 justify-between ">
             <div className="flex justify-between ">
               <h2 className="text-20 font-bold leading-24">Import Token</h2>
               <Button
-                btnStyles="text-black"
+                btnStyles="text-black dark:text-white"
                 type="icon"
                 onClick={tokensCache.onImportDismiss}
               >
