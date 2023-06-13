@@ -3,6 +3,7 @@ import { usePoolsStoreContext } from "../../../contexts/PoolsStoreProvider";
 import { reaction } from "mobx";
 import { Observer } from "mobx-react-lite";
 import { TokenIcon } from "../../../components/TokenIcon";
+import { Link } from "react-router-dom";
 
 function FavoritePools() {
   const poolsStore = usePoolsStoreContext();
@@ -63,10 +64,21 @@ function FavoritePools() {
                 </div>
               </div>
             ))}
+            <div className="text-center mt-5">
+              Can't find pool?{" "}
+              <Link className="text-blue-400 underline" to="/importliquidity">
+                Import pools
+              </Link>
+            </div>
           </div>
         ) : (
           <div className="flex items-center justify-center w-full h-48">
-            <p className="font-bold">No positions found</p>
+            <p className="font-bold">
+              No positions found{" "}
+              <Link className="text-blue-400 underline" to="/importliquidity">
+                Import pools
+              </Link>{" "}
+            </p>
           </div>
         )
       }
