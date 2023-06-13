@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import * as React from "react";
-import getScrollBarSize from "rc-util/es/getScrollBarSize";
+// import getScrollBarSize from "rc-util/es/getScrollBarSize";
 
 import { NativeCoinItem } from "../NativeCoinItem";
 import { TokenAndCoinCombinator } from "../TokenAndCoinCombinator";
