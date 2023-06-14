@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-hooks/rules-of-hooks */
 import BigNumber from "bignumber.js";
@@ -11,7 +13,7 @@ import { DEFAULT_SWAP_BILL } from "../constants";
 import { BaseSwapStore } from "./BaseSwapStore";
 import { TokensCacheService } from "../../../state/TokensCacheService";
 import { WalletService } from "../../../state/WalletService";
-import { error } from "../../../utils";
+import { error, getSafeProcessingId } from "../../../utils";
 import type {
   BaseSwapStoreState,
   DirectSwapStoreData,
@@ -64,6 +66,7 @@ export class DirectSwapStore extends BaseSwapStore<
    * Manually start direct swap process.
    * @returns {Promise<void>}
    */
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   public async submit(..._: any[]): Promise<void> {
     if (!this.isValid) {
       this.setState("isSwapping", false);
@@ -71,6 +74,8 @@ export class DirectSwapStore extends BaseSwapStore<
     }
 
     this.setState("isSwapping", true);
+    const callId = getSafeProcessingId();
+    this.callbacks?.onSend?.({ callId });
 
     const deployGrams =
       this.rightToken?.balance === undefined ? "100000000" : "0";
@@ -154,12 +159,13 @@ export class DirectSwapStore extends BaseSwapStore<
         E.match(
           (r: DirectTransactionFailureResult) => {
             this.setState("isSwapping", false);
-            this.callbacks?.onTransactionFailure?.(r);
+            this.callbacks?.onTransactionFailure?.({ ...r, callId });
           },
           (r: DirectTransactionSuccessResult) => {
             this.setState("isSwapping", false);
-            this.callbacks?.onTransactionSuccess?.(r);
+            this.callbacks?.onTransactionSuccess?.({ ...r, callId });
           }
+          //@ts-ignore
         )(await resultHandler);
       }
     } catch (e) {

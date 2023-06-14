@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import * as React from "react";
-import * as ReactDOM from "react-dom";
+// import * as ReactDOM from "react-dom";
 import { reaction } from "mobx";
 import { observer } from "mobx-react-lite";
 
@@ -77,7 +78,7 @@ function ConfirmationPopup({ isOpen }: { isOpen: boolean }): JSX.Element {
             <div className="form-fieldset__header">
               <div className="text-center">from</div>
             </div>
-            <div className="flex gap-2 justify-center">
+            <div className="flex gap-2 items-center justify-center">
               <span>{leftAmount}</span>
               {formStore.nativeCoinSide === "leftToken" ? (
                 <>
@@ -114,7 +115,7 @@ function ConfirmationPopup({ isOpen }: { isOpen: boolean }): JSX.Element {
             <div className="form-fieldset__header">
               <div className="text-center">to</div>
             </div>
-            <div className="justify-center flex gap-2">
+            <div className="justify-center items-center flex gap-2">
               <span>{rightAmount}</span>
               {formStore.nativeCoinSide === "rightToken" ? (
                 <>

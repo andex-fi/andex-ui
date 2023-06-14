@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable react-hooks/rules-of-hooks */
 import BigNumber from "bignumber.js";
 import { Address, Subscriber } from "@andex/provider";
@@ -6,7 +8,7 @@ import { computed, makeObservable, override } from "mobx";
 
 import { useRpc } from "../../../hooks";
 import {
-  DexConstants,
+  // DexConstants,
   EverAbi,
   Tip3ToVenomAddress,
   TokenAbi,
@@ -16,7 +18,7 @@ import {
 import { DirectSwapStore } from "./DirectSwapStore";
 import { WalletService } from "../../../state/WalletService";
 import { TokensCacheService } from "../../../state/TokensCacheService";
-import { error, isGoodBignumber } from "../../../utils";
+import { error, getSafeProcessingId, isGoodBignumber } from "../../../utils";
 import type {
   CoinSwapFailureResult,
   CoinSwapStoreInitialData,
@@ -104,8 +106,9 @@ export class CoinSwapStore extends DirectSwapStore {
       this.setState("isSwapping", false);
       return;
     }
-
+    const callId = getSafeProcessingId();
     this.setState("isSwapping", true);
+    this._callbacks?.onSend?.({ callId });
 
     const tokenRoot = new rpc.Contract(TokenAbi.Root, this.rightTokenAddress!);
     const walletAddress = (
@@ -228,12 +231,13 @@ export class CoinSwapStore extends DirectSwapStore {
         E.match(
           (r: CoinSwapFailureResult) => {
             this.setState("isSwapping", false);
-            this._callbacks?.onTransactionFailure?.(r);
+            this._callbacks?.onTransactionFailure?.({ ...r, callId });
           },
           (r: CoinSwapSuccessResult) => {
             this.setState("isSwapping", false);
-            this._callbacks?.onTransactionSuccess?.(r);
+            this._callbacks?.onTransactionSuccess?.({ ...r, callId });
           }
+          //@ts-ignore
         )(await resultHandler);
       }
     } catch (e) {
@@ -251,8 +255,9 @@ export class CoinSwapStore extends DirectSwapStore {
       this.setState("isSwapping", false);
     }
 
+    const callId = getSafeProcessingId();
     this.setState("isSwapping", true);
-
+    this.callbacks?.onSend?.({ callId });
     const tip3ToCoinContract = new rpc.Contract(
       EverAbi.Tip3ToEver,
       Tip3ToVenomAddress
@@ -379,12 +384,13 @@ export class CoinSwapStore extends DirectSwapStore {
         E.match(
           (r: CoinSwapFailureResult) => {
             this.setState("isSwapping", false);
-            this._callbacks?.onTransactionFailure?.(r);
+            this._callbacks?.onTransactionFailure?.({ ...r, callId });
           },
           (r: CoinSwapSuccessResult) => {
             this.setState("isSwapping", false);
-            this._callbacks?.onTransactionSuccess?.(r);
+            this._callbacks?.onTransactionSuccess?.({ ...r, callId });
           }
+          //@ts-ignore
         )(await resultHandler);
       }
     } catch (e) {

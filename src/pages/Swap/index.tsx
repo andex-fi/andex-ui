@@ -6,7 +6,7 @@ import { Observer } from "mobx-react-lite";
 // import { Icon } from '@/components/common/Icon'
 import {
   ConversionSubmitButton,
-  ConversionTransactionReceipt,
+  // ConversionTransactionReceipt,
   //   CrossExchangeSubmitButton,
   MultiSwapConfirmationPopup,
   SwapBill,
@@ -16,11 +16,11 @@ import {
   SwapPrice,
   SwapSettings,
   SwapSubmitButton,
-  SwapTransactionReceipt,
+  // SwapTransactionReceipt,
 } from "./components";
 import { useSwapForm } from "./hooks/useSwapForm";
 import { useSwapFormStore } from "./stores/SwapFormStore";
-import { SwapDirection } from "./types";
+// import { SwapDirection } from "./types";
 // import { TokensList } from '../Launch/components'
 import { TokenImportPopup } from "../../components/TokenImportPopup";
 
@@ -190,9 +190,9 @@ export function Swap(): JSX.Element {
         </div>
       </div>
 
-      <SwapTransactionReceipt key="swap-transaction-receipt" />
+      {/* <SwapTransactionReceipt key="swap-transaction-receipt" />
 
-      <ConversionTransactionReceipt key="conversion-transaction-receipt" />
+      <ConversionTransactionReceipt key="conversion-transaction-receipt" /> */}
 
       <Observer>
         {() => (

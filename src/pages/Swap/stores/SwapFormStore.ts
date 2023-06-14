@@ -30,7 +30,7 @@ import type {
 } from "../types";
 import { SwapDirection, SwapExchangeMode } from "../types";
 import {
-  getCrossExchangeSlippage,
+  // getCrossExchangeSlippage,
   getSlippageMinExpectedAmount,
 } from "../utils";
 import type { WalletNativeCoin } from "../../../state/WalletService";
@@ -41,7 +41,7 @@ import {
 } from "../../../state/TokensCacheService";
 import {
   debounce,
-  debug,
+  // debug,
   formattedBalance,
   isGoodBignumber,
   storage,
@@ -110,6 +110,9 @@ export class SwapFormStore extends BaseSwapStore<
         slippage: this.data.slippage,
       },
       {
+        onSend: (...args) => {
+          this.handleSendSwap(...args);
+        },
         onTransactionSuccess: (...args) => this.handleSwapSuccess(...args),
         onTransactionFailure: (...args) => this.handleSwapFailure(...args),
       }
@@ -127,6 +130,7 @@ export class SwapFormStore extends BaseSwapStore<
         swapFee: options?.multipleSwapFee,
       },
       {
+        onSend: (...args) => this.handleSendSwap(...args),
         onTransactionSuccess: (...args) => this.handleCoinSwapSuccess(...args),
         onTransactionFailure: (...args) => this.handleSwapFailure(...args),
       }
@@ -144,6 +148,7 @@ export class SwapFormStore extends BaseSwapStore<
         swapFee: options?.multipleSwapFee,
       },
       {
+        onSend: (...args) => this.handleSendSwap(...args),
         onTransactionSuccess: (...args) => this.handleCoinSwapSuccess(...args),
         onTransactionFailure: (...args) => this.handleSwapFailure(...args),
       }
@@ -1247,6 +1252,7 @@ export class SwapFormStore extends BaseSwapStore<
    */
   protected async handleSwapSuccess({
     input,
+    callId,
     transaction,
   }: DirectTransactionSuccessResult): Promise<void> {
     this.setData({
@@ -1271,6 +1277,12 @@ export class SwapFormStore extends BaseSwapStore<
     this.forceInvalidate();
 
     await this.currentSwap.syncPairState();
+    notify(undefined, "The swap has been completed", {
+      isLoading: false,
+      toastId: callId,
+      type: NotifyType.SUCCESS,
+      update: true,
+    });
 
     // if (!this.isMultipleSwapMode) {
     //     await this.#crossPairSwap.syncCrossExchangePairsStates()
@@ -1285,8 +1297,9 @@ export class SwapFormStore extends BaseSwapStore<
    * @protected
    */
   protected handleSwapFailure({
+    callId,
     cancelStep,
-    index,
+    // index,
     step,
   }: CrossPairSwapFailureResult): void {
     const leftToken =
@@ -1319,6 +1332,12 @@ export class SwapFormStore extends BaseSwapStore<
       spentSymbol: leftToken?.symbol,
       success: false,
     });
+    notify(undefined, "Swap Failed", {
+      isLoading: false,
+      toastId: callId,
+      type: NotifyType.WARNING,
+      update: true,
+    });
 
     this.checkExchangeMode();
     this.forceInvalidate();
@@ -1333,6 +1352,7 @@ export class SwapFormStore extends BaseSwapStore<
   protected async handleCoinSwapSuccess({
     input,
     transaction,
+    callId,
   }: CoinSwapSuccessResult): Promise<void> {
     this.setData({
       leftAmount: "",
@@ -1358,6 +1378,13 @@ export class SwapFormStore extends BaseSwapStore<
             : this.rightToken?.symbol,
         success: true,
       },
+    });
+
+    notify(undefined, "The swap has been completed", {
+      isLoading: false,
+      toastId: callId,
+      type: NotifyType.SUCCESS,
+      update: true,
     });
 
     this.checkExchangeMode();
@@ -1409,6 +1436,15 @@ export class SwapFormStore extends BaseSwapStore<
     });
   }
 
+  protected handleSendSwap(_: { callId: string }) {
+    const title = "Wait until the swap is Completed";
+    notify(undefined, title, {
+      autoClose: false,
+      isLoading: true,
+      toastId: _.callId,
+      type: NotifyType.INFO,
+    });
+  }
   /*
    * Private swap stores instances
    * ----------------------------------------------------------------------------------

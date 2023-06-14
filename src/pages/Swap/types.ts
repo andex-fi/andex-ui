@@ -137,6 +137,7 @@ export type SwapStoreState = {
 };
 
 export interface TransactionCallbacks<T, U> {
+  onSend?: (response: { callId: string }) => Promise<void> | void;
   onTransactionSuccess?: (response: T) => Promise<void> | void;
   onTransactionFailure?: (reason: U) => Promise<void> | void;
 }
@@ -144,10 +145,12 @@ export interface TransactionCallbacks<T, U> {
 export interface TransactionSuccessResult<T> {
   input: T;
   transaction: Transaction;
+  callId: string;
 }
 
 export interface TransactionFailureResult<T> {
   input?: T;
+  callId: string;
 }
 
 export type SwapTransactionReceipt = {
@@ -270,6 +273,7 @@ export interface CrossPairSwapFailureResult
   cancelStep?: SwapRouteResult;
   index?: number;
   step?: SwapRouteResult;
+  callId: string;
 }
 
 export type CrossPairSwapTransactionCallbacks = TransactionCallbacks<
