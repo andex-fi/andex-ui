@@ -1,6 +1,10 @@
 import { FC } from "react";
-import SwapCard from "./Swap/SwapCard";
+import { Swap } from "./Swap";
 
 export const Home: FC = () => {
-  return <div><SwapCard/></div>;
+  return (
+    <div>
+      <Swap />
+    </div>
+  );
 };
