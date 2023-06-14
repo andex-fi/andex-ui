@@ -1,60 +1,134 @@
-import { Observer } from 'mobx-react-lite'
+/* eslint-disable react-hooks/exhaustive-deps */
+import * as React from "react";
+import { observer } from "mobx-react-lite";
 
-import { Button } from '../../../../components/Button'
-import { Icon } from '../../../../components/Icon'
-import { useSwapFormStoreContext } from '../../context'
-import { SwapDirection } from '../../types'
-import { formattedTokenAmount, stripHtmlTags } from '../../../../utils'
+import { Button } from "../../../../components/Button";
+import { Icon } from "../../../../components/Icon";
+import { useSwapFormStore } from "../../stores/SwapFormStore";
+import { SwapDirection } from "../../types";
+import { formattedTokenAmount } from "../../../../utils";
 
+// import "./index.scss";
 
-export function SwapPrice(): JSX.Element | null {
-    const formStore = useSwapFormStoreContext()
+function Price(): JSX.Element | null {
+  const formStore = useSwapFormStore();
 
-    if (formStore.leftToken === undefined || formStore.rightToken === undefined) {
-        return null
+  const leftSymbol = React.useMemo(() => {
+    if (
+      formStore.nativeCoinSide === "leftToken" ||
+      (!formStore.multipleSwap.isEnoughTokenBalance &&
+        formStore.multipleSwap.isEnoughCoinBalance)
+    ) {
+      return formStore.coin.symbol;
     }
+    return formStore.leftToken?.symbol;
+  }, [
+    formStore.leftToken?.symbol,
+    formStore.nativeCoinSide,
+    formStore.multipleSwap.isEnoughTokenBalance,
+  ]);
 
-    return (
-        <div className="form-row swap-price">
-            <div />
-            <div className="swap-price-details">
-                <Observer>
-                    {() => {
-                        const { coinSide, priceDirection } = formStore
-                        const isCurrencyOnLeft = coinSide === 'leftToken'
-                        const isCurrencyOnRight = coinSide === 'rightToken'
-                        const leftSymbol = isCurrencyOnLeft
-                            ? formStore.wallet.coin.symbol
-                            : formStore.leftToken?.symbol
-                        const rightSymbol = isCurrencyOnRight
-                            ? formStore.wallet.coin.symbol
-                            : formStore.rightToken?.symbol
+  const rightSymbol = React.useMemo(() => {
+    if (formStore.nativeCoinSide === "rightToken") {
+      return formStore.coin.symbol;
+    }
+    return formStore.rightToken?.symbol;
+  }, [formStore.rightToken?.symbol, formStore.nativeCoinSide]);
 
-                        return priceDirection === SwapDirection.RTL ? (
-                            <span
-                                key={SwapDirection.RTL}
-                                dangerouslySetInnerHTML={{
-                                    __html: `${formattedTokenAmount(formStore.ltrPrice)} ${stripHtmlTags(leftSymbol ?? '')}&nbsp;per&nbsp;1&nbsp;${stripHtmlTags(rightSymbol ?? '')}`,
-                                }}
-                            />
-                        ) : (
-                            <span
-                                key={SwapDirection.LTR}
-                                dangerouslySetInnerHTML={{
-                                    __html: `${formattedTokenAmount(formStore.rtlPrice)} ${stripHtmlTags(rightSymbol ?? '')}&nbsp;per&nbsp;1&nbsp;${stripHtmlTags(leftSymbol ?? '')}`,
-                                }}
-                            />
-                        )
-                    }}
-                </Observer>
+  if (formStore.leftToken === undefined || formStore.rightToken === undefined) {
+    return null;
+  }
+
+  return (
+    <div className="form-row swap-price">
+      <div>
+        {(() => {
+          switch (true) {
+            case formStore.isCrossExchangeOnly:
+              return (
+                <div className="btn btn-xs btn-secondary swap-price__exchange-mode-btn">
+                  Cross-exchange only
+                </div>
+              );
+
+            case formStore.isCrossExchangeMode:
+              return (
                 <Button
-                    size="xs"
-                    btnStyles="swap-price__reverse-btn"
-                    onClick={formStore.togglePriceDirection}
+                  size="xs"
+                  type="secondary"
+                  className="swap-price__exchange-mode-btn"
+                  disabled={formStore.isSwapping}
+                  onClick={formStore.toggleSwapExchangeMode}
                 >
-                    <Icon icon="reverseHorizontal" />
+                  Back to direct swap
                 </Button>
-            </div>
-        </div>
-    )
+              );
+
+            // case formStore.isCrossExchangeAvailable &&
+            //   formStore.route !== undefined:
+            //   return (
+            //     <Button
+            //       size="xs"
+            //       type="secondary"
+            //       className="swap-price__exchange-mode-btn"
+            //       disabled={formStore.isSwapping}
+            //       onClick={formStore.toggleSwapExchangeMode}
+            //     >
+            //       {!formStore.isEnoughLiquidity
+            //         ? "Cross-exchange available"
+            //         : "Get a better price"}
+            //     </Button>
+            //   );
+
+            default:
+              return (
+                <div className="btn btn-xs btn-secondary swap-price__exchange-mode-btn">
+                  Optimal price
+                </div>
+              );
+          }
+        })()}
+      </div>
+      <div className="swap-price-details">
+        {formStore.priceDirection === SwapDirection.RTL ? (
+          <span
+            key={SwapDirection.RTL}
+            dangerouslySetInnerHTML={{
+              __html: `${
+                formStore.priceLeftToRight !== undefined
+                  ? formattedTokenAmount(
+                      formStore.priceLeftToRight,
+                      formStore.leftToken.decimals
+                    )
+                  : "--"
+              } ${leftSymbol}&nbsp;per&nbsp;1&nbsp;${rightSymbol}`,
+            }}
+          />
+        ) : (
+          <span
+            key={SwapDirection.LTR}
+            dangerouslySetInnerHTML={{
+              __html: `${
+                formStore.priceLeftToRight !== undefined
+                  ? formattedTokenAmount(
+                      formStore.priceLeftToRight,
+                      formStore.leftToken.decimals
+                    )
+                  : "--"
+              } ${leftSymbol}&nbsp;per&nbsp;1&nbsp;${rightSymbol}`,
+            }}
+          />
+        )}
+        <Button
+          size="xs"
+          className="swap-price__reverse-btn"
+          onClick={formStore.togglePriceDirection}
+        >
+          <Icon icon="reverseHorizontal" />
+        </Button>
+      </div>
+    </div>
+  );
 }
+
+export const SwapPrice = observer(Price);

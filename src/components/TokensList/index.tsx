@@ -118,7 +118,7 @@ export function TokensList({
               onChange={onSearch}
             />
           </form>
-          <div className="min-h-[350px] overflow-y-auto">
+          <div className="max-h-[350px] overflow-y-auto">
             {allowMultiple && nativeCoin !== undefined && !query && (
               <TokenAndCoinCombinator
                 key="multiple"

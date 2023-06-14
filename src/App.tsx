@@ -2,7 +2,7 @@
 import { Routes, Route } from "react-router-dom";
 // import { Liquiditypools } from "./pages/pools/liquiditypools";
 // import { Addliquidity } from "./pages/pools/addliquidity";
-import Swap from "./pages/Swap";
+// import Swap from "./pages/Swap";
 import { Play } from "./pages/playground";
 // import { Approveliquidity } from "./pages/AddLiquidity/components/approveliquidity";
 import RemoveLiquidityPage from "./pages/RemoveLiquidity";
@@ -15,6 +15,7 @@ import AddLiquidityPage from "./pages/AddLiquidity";
 import Pools from "./pages/pools";
 import Layout from "./components/Layout";
 import ImportLiquidityPage from "./pages/ImportLiquidity";
+import { Swap } from "./pages/Swap";
 
 export default function App() {
   // const location = useLocation();
@@ -22,7 +23,13 @@ export default function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<Homepage />} />
-        <Route path="/swap" element={<Swap />} />
+        <Route
+          path="/swap/:leftTokenRoot/:rigtTokenRoot"
+          index={true}
+          element={<Swap />}
+        />
+        <Route path="/swap" index={true} element={<Swap />} />
+        <Route path="/swap/:leftTokenRoot" index={true} element={<Swap />} />
         <Route path="/play" element={<Play />} />
         <Route path="pools">
           <Route index={true} element={<Pools />} />
