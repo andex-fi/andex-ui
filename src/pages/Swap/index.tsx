@@ -12,7 +12,7 @@ import {
   SwapBill,
   SwapConfirmationPopup,
   SwapField,
-  SwapNotation,
+  // SwapNotation,
   SwapPrice,
   SwapSettings,
   SwapSubmitButton,
@@ -38,7 +38,7 @@ export function Swap(): JSX.Element {
   return (
     <div className="flex justify-center items-center h-full m-auto px-4 md:p-20 drop-shadow-2xl ">
       <div className="swap-container">
-        <SwapNotation />
+        {/* <SwapNotation /> */}
         <div className="w-full text-black dark:text-white md:w-[32rem]">
           <div className="h-53 p-2 px-4 rounded-t-3xl bg-[#F4F5FA] dark:bg-purple">
             <header className="flex items-center justify-between pr-8">
