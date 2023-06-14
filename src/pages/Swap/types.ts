@@ -299,11 +299,14 @@ export type ConversionStoreState = {
 export type ConversionTransactionResponse = {
   amount: string;
   txHash: string;
+  callId: string;
+  action: string;
 };
 
 export type ConversionTransactionCallbacks = {
   onTransactionSuccess?: (response: ConversionTransactionResponse) => void;
   onTransactionFailure?: (reason: unknown) => void;
+  onSend?: (response: { callId: string; action: string }) => void;
 };
 
 export interface SwapFormStoreState extends BaseSwapStoreState {

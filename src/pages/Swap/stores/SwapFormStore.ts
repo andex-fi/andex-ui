@@ -46,6 +46,7 @@ import {
   isGoodBignumber,
   storage,
 } from "../../../utils";
+import { NotifyType, notify } from "../../../components/Notification";
 
 export class SwapFormStore extends BaseSwapStore<
   SwapFormStoreData,
@@ -84,6 +85,7 @@ export class SwapFormStore extends BaseSwapStore<
       {
         onTransactionSuccess: (...args) =>
           this.handleConversionSuccess(...args),
+        onSend: (...args) => this.handleSendConversion(...args),
       }
     );
     // this.#crossPairSwap = new CrossPairSwapStore(wallet, tokensCache, {
@@ -1368,6 +1370,21 @@ export class SwapFormStore extends BaseSwapStore<
     // }
   }
 
+  protected handleSendConversion(_: { callId: string; action: string }) {
+    let title = "";
+    if (_.action === "wrap") {
+      title = "Wait until wrap is completed";
+    } else if (_.action === "unwrap") {
+      title = "Wait until unwrap is completed";
+    }
+    notify(undefined, title, {
+      autoClose: false,
+      isLoading: true,
+      toastId: _.callId,
+      type: NotifyType.INFO,
+    });
+  }
+
   /**
    *
    * @param {ConversionTransactionResponse} _
@@ -1377,6 +1394,18 @@ export class SwapFormStore extends BaseSwapStore<
     this.setData({
       leftAmount: "",
       rightAmount: "",
+    });
+    let title: string | undefined;
+    if (_.action === "wrap") {
+      title = "The wrap has been completed";
+    } else if (_.action === "unwrap") {
+      title = "The unwrap has been completed";
+    }
+    notify(undefined, title, {
+      isLoading: false,
+      toastId: _.callId,
+      type: NotifyType.SUCCESS,
+      update: true,
     });
   }
 

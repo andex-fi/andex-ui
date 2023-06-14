@@ -8,7 +8,12 @@ import { useRpc } from "../../../hooks";
 import { BaseStore } from "../../../state/BaseStore";
 import { TokensCacheService } from "../../../state/TokensCacheService";
 import { WalletService } from "../../../state/WalletService";
-import { error, isGoodBignumber, log } from "../../../utils";
+import {
+  error,
+  getSafeProcessingId,
+  isGoodBignumber,
+  log,
+} from "../../../utils";
 import type {
   ConversionStoreData,
   ConversionStoreInitialData,
@@ -63,8 +68,9 @@ export class ConversionStore extends BaseStore<
     ) {
       return;
     }
-
+    const callId = getSafeProcessingId();
     try {
+      this.callbacks?.onSend?.({ callId, action: "wrap" });
       const wrappedAmount = new BigNumber(this.amount ?? 0).shiftedBy(
         this.coin.decimals
       );
@@ -90,6 +96,8 @@ export class ConversionStore extends BaseStore<
       });
 
       this.callbacks?.onTransactionSuccess?.({
+        action: "wrap",
+        callId,
         amount: wrappedAmount.toFixed(),
         txHash: transaction.id.hash,
       });
@@ -108,8 +116,9 @@ export class ConversionStore extends BaseStore<
     ) {
       return;
     }
-
+    const callId = getSafeProcessingId();
     try {
+      this.callbacks?.onSend?.({ callId, action: "unwrap" });
       const amount = new BigNumber(this.amount ?? 0)
         .shiftedBy(this.token.decimals ?? 0)
         .toFixed();
@@ -145,6 +154,8 @@ export class ConversionStore extends BaseStore<
 
       this.callbacks?.onTransactionSuccess?.({
         amount,
+        callId,
+        action: "unwrap",
         txHash: transaction.id.hash,
       });
     } catch (e) {
