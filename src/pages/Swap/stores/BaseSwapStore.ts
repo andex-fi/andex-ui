@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable react-hooks/rules-of-hooks */
 import BigNumber from "bignumber.js";
 import { Address } from "@andex/provider";
@@ -455,10 +456,11 @@ export class BaseSwapStore<
     }
 
     if (this.pair?.address !== undefined) {
-      const isPredefinedTokens =
-        this.tokensCache.verifiedAndexTokens.filter((token) =>
-          [this.data.leftToken, this.data.rightToken].includes(token.root)
-        ).length >= 2;
+      // const isPredefinedTokens =
+      //   this.tokensCache.verifiedAndexTokens.filter((token) =>
+      //     [this.data.leftToken, this.data.rightToken].includes(token.root)
+      //   ).length >= 2;
+      //   con
 
       //   if (isPredefinedTokens) {
       //     try {

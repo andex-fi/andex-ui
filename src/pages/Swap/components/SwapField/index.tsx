@@ -10,7 +10,7 @@ import { TokenIcons } from "../../../../components/TokenIcons";
 import { useField } from "../../../../hooks";
 import { WalletNativeCoin } from "../../../../state/WalletService";
 import type { TokenCache } from "../../../../state/TokensCacheService";
-import { useSwapFormStore } from "../../stores/SwapFormStore";
+// import { useSwapFormStore } from "../../stores/SwapFormStore";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 type Props = {
@@ -33,7 +33,7 @@ type Props = {
 function Field({
   balance = "0",
   isMultiple = false,
-  isValid = true,
+  // isValid = true,
   nativeCoin,
   showMaximizeButton,
   token,
@@ -44,8 +44,8 @@ function Field({
     value: props.value,
     onChange: props.onChange,
   });
-  const formStore = useSwapFormStore();
-  const tokensCache = formStore.useTokensCache;
+  // const formStore = useSwapFormStore();
+  // const tokensCache = formStore.useTokensCache;
 
   useTokenBalanceWatcher(token, {
     subscriberPrefix: "swap-filed",

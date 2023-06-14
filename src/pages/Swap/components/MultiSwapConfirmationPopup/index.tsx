@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { reaction } from "mobx";
