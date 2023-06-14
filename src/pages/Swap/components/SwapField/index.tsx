@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 
 import { Button } from "../../../../components/Button";
-import { Icon } from "../../../../components/Icon";
+// import { Icon } from "../../../../components/Icon";
 import { TokenIcon } from "../../../../components/TokenIcon";
 import { useTokenBalanceWatcher } from "../../../../hooks";
 import { TokenIcons } from "../../../../components/TokenIcons";
@@ -11,6 +11,7 @@ import { useField } from "../../../../hooks";
 import { WalletNativeCoin } from "../../../../state/WalletService";
 import type { TokenCache } from "../../../../state/TokensCacheService";
 import { useSwapFormStore } from "../../stores/SwapFormStore";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 type Props = {
   balance?: string;
@@ -51,137 +52,149 @@ function Field({
   });
 
   return (
-    <label className="form-label" htmlFor={props.id}>
-      <fieldset
-        className={classNames("form-fieldset", {
-          invalid: !isValid,
-          checking:
-            tokensCache.isTokenUpdatingBalance(token?.root) && !props.disabled,
-        })}
-      >
-        <div className="form-fieldset__main">
-          <input
-            autoComplete="off"
-            className="form-input"
-            id={props.id}
-            inputMode="decimal"
-            pattern="^[0-9]*[.]?[0-9]*$"
-            placeholder="0.0"
-            readOnly={props.readOnly}
-            type="text"
-            value={props.value}
-            onBlur={field.onBlur}
-            onChange={field.onChange}
-          />
+    <>
+      <div className="p-6 flex w-full justify-between">
+        <input
+          autoComplete="off"
+          className="bg-transparent focus:border-0 block w-1/3 focus:outline-0 text-5xl "
+          id={props.id}
+          style={{ background: "transparent" }}
+          inputMode="decimal"
+          pattern="^[0-9]*[.]?[0-9]*$"
+          placeholder="0.0"
+          readOnly={props.readOnly}
+          type="text"
+          value={props.value}
+          onBlur={field.onBlur}
+          onChange={field.onChange}
+        />
 
-          {(() => {
-            switch (true) {
-              case isMultiple:
-                return (
-                  <Button
-                    key="change-token"
-                    className={classNames("form-drop form-drop-extra", {
+        {(() => {
+          switch (true) {
+            case isMultiple:
+              return (
+                <Button
+                  key="change-token "
+                  btnStyles={classNames(
+                    "rounded-3xl gap-1 bg-[#F3F3F3] px-1 items-center flex dark:bg-[#482168] text-black dark:text-white shadow-sm drop-shadow-xl ",
+                    {
                       disabled: props.disabled,
-                    })}
-                    disabled={props.disabled}
-                    onClick={props.onToggleTokensList}
-                  >
-                    <span className="form-drop__logo">
-                      <TokenIcons
-                        icons={[
-                          {
-                            icon: nativeCoin?.icon,
-                            name: nativeCoin?.name,
-                          },
-                          {
-                            address: token?.root,
-                            icon: token?.icon,
-                            name: token?.name,
-                          },
-                        ]}
-                      />
-                    </span>
-                    <span className="form-drop__name">
+                    }
+                  )}
+                  disabled={props.disabled}
+                  onClick={props.onToggleTokensList}
+                >
+                  <span className="form-drop__logo">
+                    <TokenIcons
+                      icons={[
+                        {
+                          icon: nativeCoin?.icon,
+                          name: nativeCoin?.name,
+                        },
+                        {
+                          address: token?.root,
+                          icon: token?.icon,
+                          name: token?.name,
+                        },
+                      ]}
+                    />
+                  </span>
+                  <span className="text-[10px]">
+                    <span className="form-drop__arrow">
                       {`${nativeCoin?.symbol} + ${token?.symbol}`}
                     </span>
-                    <span className="form-drop__arrow">
-                      <Icon icon="arrowDown" ratio={1.2} />
-                    </span>
-                  </Button>
-                );
-
-              case token !== undefined:
-              case nativeCoin !== undefined:
-                return (
-                  <Button
-                    key="change-token"
-                    className={classNames("form-drop form-drop-extra", {
-                      disabled: props.disabled,
-                    })}
-                    disabled={props.disabled}
-                    onClick={props.onToggleTokensList}
-                  >
-                    <span className="form-drop__logo">
-                      <TokenIcon
-                        address={token?.root}
-                        icon={nativeCoin?.icon || token?.icon}
-                        name={nativeCoin?.symbol || token?.symbol}
-                        size="small"
-                      />
-                    </span>
-                    <span className="form-drop__name">
-                      {nativeCoin?.symbol || token?.symbol}
-                    </span>
-                    <span className="form-drop__arrow">
-                      <Icon icon="arrowDown" ratio={1.2} />
-                    </span>
-                  </Button>
-                );
-
-              default:
-                return (
-                  <Button
-                    key="select-token"
-                    className={classNames("form-select", {
-                      disabled: props.disabled,
-                    })}
-                    disabled={props.disabled}
-                    onClick={props.onToggleTokensList}
-                  >
-                    <span className="form-select__txt">Select a token</span>
-                    <span className="form-select__arrow">
-                      <Icon icon="arrowDown" ratio={1.2} />
-                    </span>
-                  </Button>
-                );
-            }
-          })()}
-        </div>
-
-        <div className="form-fieldset__footer">
-          <div className="form-fieldset__footer-label">{props.label}</div>
-          <div className="form-fieldset__footer-inner">
-            {(token !== undefined || nativeCoin !== undefined) &&
-              typeof props.onMaximize === "function" &&
-              showMaximizeButton && (
-                <Button
-                  key="max-button"
-                  className="form-btn-max"
-                  disabled={props.disabled}
-                  size="xs"
-                  type="secondary"
-                  onClick={props.onMaximize}
-                >
-                  Max
+                  </span>
+                  <ChevronDownIcon
+                    className="-mr-1 h-7 w-4 text-gray-400"
+                    aria-hidden="true"
+                  />
                 </Button>
-              )}
-            <div key="token-balance" className="swap-field-balance truncate">
-              {`Balance ${balance}`}
-            </div>
+              );
+
+            case token !== undefined:
+            case nativeCoin !== undefined:
+              return (
+                <Button
+                  key="change-token"
+                  btnStyles={classNames(
+                    "rounded-3xl gap-2 bg-[#F3F3F3] items-center flex dark:bg-[#482168] px-4 py-3 text-lg font-semibold text-black  dark:text-white shadow-sm drop-shadow-xl ",
+                    {
+                      disabled: props.disabled,
+                    }
+                  )}
+                  disabled={props.disabled}
+                  onClick={props.onToggleTokensList}
+                >
+                  <span className="form-drop__logo">
+                    <TokenIcon
+                      address={token?.root}
+                      icon={nativeCoin?.icon || token?.icon}
+                      name={nativeCoin?.symbol || token?.symbol}
+                      size="small"
+                    />
+                  </span>
+                  <span className="form-drop__name">
+                    {nativeCoin?.symbol || token?.symbol}
+                  </span>
+                  <span className="form-drop__arrow">
+                    <ChevronDownIcon
+                      className="h-4 w-4 text-gray-400"
+                      aria-hidden="true"
+                    />
+                  </span>
+                </Button>
+              );
+
+            default:
+              return (
+                <Button
+                  key="select-token"
+                  btnStyles={classNames(
+                    "rounded-3xl gap-2 bg-[#F3F3F3] items-center flex dark:bg-[#482168] px-4 py-3 text-lg font-semibold text-black  dark:text-white shadow-sm drop-shadow-xl ",
+                    {
+                      disabled: props.disabled,
+                    }
+                  )}
+                  disabled={props.disabled}
+                  onClick={props.onToggleTokensList}
+                >
+                  <span className="form-select__txt">Select a token</span>
+                  {/* <span className="form-select__arrow"> */}
+                  <ChevronDownIcon
+                    className="h-4 w-4 text-gray-400"
+                    aria-hidden="true"
+                  />
+                  {/* </span> */}
+                </Button>
+              );
+          }
+        })()}
+      </div>
+
+      <div className="form-fieldset__footer">
+        <div className="form-fieldset__footer-label">{props.label}</div>
+        <div className="form-fieldset__footer-inner flex justify-end px-6">
+          {(token !== undefined || nativeCoin !== undefined) &&
+            typeof props.onMaximize === "function" &&
+            showMaximizeButton && (
+              <Button
+                key="max-button"
+                className="form-btn-max"
+                btnStyles="mr-auto"
+                disabled={props.disabled}
+                size="xs"
+                type="secondary"
+                onClick={props.onMaximize}
+              >
+                Max
+              </Button>
+            )}
+          <div key="mr-auto text-right" className="swap-field-balance truncate">
+            {`Balance ${balance}`}
           </div>
         </div>
-      </fieldset>
-    </label>
+      </div>
+    </>
   );
 }
 

@@ -64,7 +64,10 @@ export function SwapBill({
         )}
 
       {slippage !== undefined && minExpectedAmount !== undefined && (
-        <div key="slippage" className="list-bill__row">
+        <div
+          key="slippage"
+          className="list-bill__row flex justify-between items-center"
+        >
           <div className="list-bill__info">
             <span>Slippage tolerance</span>
             <span className="list-bill__icn">
@@ -76,7 +79,10 @@ export function SwapBill({
       )}
 
       {minExpectedAmount !== undefined && (
-        <div key="minExpectedAmount" className="list-bill__row">
+        <div
+          key="minExpectedAmount"
+          className="list-bill__row flex justify-between items-center"
+        >
           <div className="list-bill__info">
             <span>Minimum Recieved</span>
             <span className="list-bill__icn">
@@ -99,8 +105,8 @@ export function SwapBill({
       )}
 
       {priceImpact !== undefined && (
-        <div key="priceImpact" className="list-bill__row">
-          <div className="list-bill__info">
+        <div key="priceImpact" className="flex justify-between items-center">
+          <div>
             <span>Price Impact</span>
             <span className="list-bill__icn">
               <Icon icon="info" />
@@ -116,7 +122,7 @@ export function SwapBill({
       )}
 
       {fee !== undefined && (
-        <div key="fee" className="list-bill__row">
+        <div key="fee" className="flex justify-between items-center">
           <div className="list-bill__info">
             <span>Liquidity Provider Fee</span>
             <span className="list-bill__icn">

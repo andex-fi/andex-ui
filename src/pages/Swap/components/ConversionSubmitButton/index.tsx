@@ -6,6 +6,7 @@ import { Button } from "../../../../components/Button";
 // import { Icon } from '@/components/common/Icon'
 import { useSwapFormStore } from "../../stores/SwapFormStore";
 import { SwapExchangeMode } from "../../types";
+import { Icon } from "../../../../components/Icon";
 
 function SubmitButton(): JSX.Element {
   // const intl = useIntl()
@@ -27,10 +28,11 @@ function SubmitButton(): JSX.Element {
         type="primary"
         className="form-submit"
         aria-disabled="true"
+        btnStyles="bg-purple-light text-white dark:bg-purple-lightest m-6 p-4 rounded-xl font-bold"
         disabled
       >
-        {/* <Icon icon="loader" className="spin" /> */}
-        spinner
+        <Icon icon="loader" className="spin" />
+        {/* spinner */}
       </Button>
     );
   }
@@ -84,6 +86,7 @@ function SubmitButton(): JSX.Element {
       type="primary"
       className="form-submit"
       aria-disabled={buttonProps.disabled}
+      btnStyles="bg-purple-light text-white dark:bg-purple-lightest m-6 p-4 rounded-xl font-bold"
       {...buttonProps}
     >
       {buttonText}

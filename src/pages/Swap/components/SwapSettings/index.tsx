@@ -19,7 +19,7 @@ function Settings(): JSX.Element {
         className="swap-settings__btn"
         onClick={settings.isOpen ? settings.hide : settings.show}
       >
-        <Icon icon="config" />
+        <Icon icon="config" className="color-white" />
       </Button>
       {settings.isOpen && (
         <div ref={settings.popupRef} className="swap-settings__drop">
