@@ -133,7 +133,7 @@ export function TokensList({
                 onSelectToken={onSelectToken}
               />
             )}
-            {nativeCoin !== undefined && !query && (
+            {nativeCoin !== undefined && !allowMultiple && !query && (
               <NativeCoinItem
                 key={nativeCoin.symbol}
                 disabled={currentTokenSide === nativeCoinSide}
