@@ -33,15 +33,17 @@ export const MintTokenModal: FC<Props> = ({ setMintToken }) => {
       onClick={handleCloseMintModal}
     >
       <div
-        className="w-full lg:w-[30%] h-fit p-4 md:p-6 bg-white rounded-lg"
+        className="w-full lg:w-[30%] h-fit p-4 md:p-6 bg-white dark:bg-purple-light rounded-lg"
         onClick={(e) => e.stopPropagation()}
       >
-        <h4 className="text-[#13173E] font-bold">Mint tokens</h4>
+        <h4 className="text-[#13173E] dark:text-white font-bold">
+          Mint tokens
+        </h4>
 
         {token.map((item, index) => (
           <div
             key={index}
-            className="border border-[#DFE8F9] p-4 rounded-lg mt-3 overflow-hidden bg-[#F4F5FA]"
+            className="border border-[#DFE8F9] p-4 rounded-lg mt-3 overflow-hidden bg-[#F4F5FA] dark:bg-purple-darkest"
           >
             <h4>{item.name}</h4>
             <p
