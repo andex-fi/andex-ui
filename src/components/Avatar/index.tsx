@@ -103,7 +103,7 @@ const circles = [
   },
 ];
 
-export function Avatar({ address, size }: Props): JSX.Element {
+export function Avatar({ address, size, className }: Props): JSX.Element {
   const hash = address.split(":")[1] ?? [];
 
   let pxSize: number;
@@ -136,7 +136,7 @@ export function Avatar({ address, size }: Props): JSX.Element {
 
   return (
     <svg
-      className="rounded-full"
+      className={`rounded-full ${className}`}
       width={pxSize}
       height={pxSize}
       viewBox="0 0 36 36"
