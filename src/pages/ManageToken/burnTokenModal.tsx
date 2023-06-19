@@ -38,15 +38,17 @@ export const BurnTokenModal: FC<Props> = ({ setBurnToken }) => {
       onClick={handleCloseBurnModal}
     >
       <div
-        className="w-full lg:w-[30%] h-[80vh] p-4 md:p-6 bg-white rounded-lg overflow-y-scroll"
+        className="w-full lg:w-[30%] h-[80vh] p-4 md:p-6 bg-white dark:bg-purple-light rounded-lg overflow-y-scroll"
         onClick={(e) => e.stopPropagation()}
       >
-        <h4 className="text-[#13173E] font-bold">Burn tokens</h4>
+        <h4 className="text-[#13173E] dark:text-white font-bold">
+          Burn tokens
+        </h4>
 
         {token.map((item, index) => (
           <div
             key={index}
-            className="border border-[#DFE8F9] p-4 rounded-lg mt-3 overflow-hidden bg-[#F4F5FA]"
+            className="border border-[#DFE8F9] p-4 rounded-lg mt-3 overflow-hidden bg-[#F4F5FA] dark:bg-purple-darkest"
           >
             <h4>{item.name}</h4>
             <p
@@ -65,7 +67,7 @@ export const BurnTokenModal: FC<Props> = ({ setBurnToken }) => {
           <Button btnStyles="text-[#52058F] bg-[#F4F5FA] rounded-2xl w-48 py-4 font-bold border-2 border-[#DFE8F9]">
             Cancel
           </Button>
-          <Button btnStyles="bg-[#52058F] text-white rounded-2xl w-48 py-4 font-bold">
+          <Button btnStyles="bg-[#52058F] text-white rounded-2xl w-48 py-4 font-bold dark:bg-purple-darkest">
             Enter all data
           </Button>
         </div>

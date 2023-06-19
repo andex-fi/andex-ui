@@ -2,10 +2,12 @@ import { FC, useState } from "react";
 import { Button } from "../../components/Button";
 import { MintTokenModal } from "./mintTokenModal";
 import { BurnTokenModal } from "./burnTokenModal";
+import { TransferTokenModal } from "./transferTokenModal";
 
 export const Actions: FC = () => {
   const [mintToken, setMintToken] = useState<boolean>(false);
   const [burnToken, setBurnToken] = useState<boolean>(false);
+  const [transferToken, setTransferToken] = useState<boolean>(false);
 
   const handleMintToken = (): void => {
     setMintToken(true);
@@ -14,6 +16,11 @@ export const Actions: FC = () => {
 
   const handleBurnToken = (): void => {
     setBurnToken(true);
+    document.body.style.overflow = "hidden";
+  };
+
+  const handleTransferToken = (): void => {
+    setTransferToken(true);
     document.body.style.overflow = "hidden";
   };
 
@@ -69,13 +76,19 @@ export const Actions: FC = () => {
               Set a new token owner
             </p>
           </div>
-          <Button btnStyles="flex items-center justify-center text-white rounded-3xl w-24 py-1 bg-[#FA2B39] ">
+          <Button
+            btnStyles="flex items-center justify-center text-white rounded-3xl w-24 py-1 bg-[#FA2B39] "
+            onClick={handleTransferToken}
+          >
             Transfer
           </Button>
         </div>
       </div>
       {mintToken && <MintTokenModal setMintToken={setMintToken} />}
       {burnToken && <BurnTokenModal setBurnToken={setBurnToken} />}
+      {transferToken && (
+        <TransferTokenModal setTransferToken={setTransferToken} />
+      )}
     </div>
   );
 };
