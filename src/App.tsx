@@ -16,6 +16,7 @@ import Pools from "./pages/pools";
 import Layout from "./components/Layout";
 import ImportLiquidityPage from "./pages/ImportLiquidity";
 import { Swap } from "./pages/Swap";
+import { Managetoken } from "./pages/ManageToken/managetoken";
 
 export default function App() {
   // const location = useLocation();
@@ -44,6 +45,7 @@ export default function App() {
           path="removeliquidity/:leftTokenRoot/:rightTokenRoot"
           element={<RemoveLiquidityPage />}
         />
+        <Route path="managetoken" element={<Managetoken />} />
         <Route path="builder" element={<BuilderPage />} />
         <Route path="builder/create" element={<CreatePage />} />
         <Route path="builder/:tokenRoot" element={<TokenPage />} />
