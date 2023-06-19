@@ -2,9 +2,9 @@ import * as ReactDOM from 'react-dom'
 import { observer } from 'mobx-react-lite' 
 
 import { Button } from '../../../../components/Button'
-import { Icon } from '../../../../components/Icon'
+// import { Icon } from '../../../../components/Icon'
 import { useCreateTokenStore } from '../../state/CreateTokenStore'
-import classNames from 'classnames'
+// import classNames from 'classnames'
 
 
 type Props = {

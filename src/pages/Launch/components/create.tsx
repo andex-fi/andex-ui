@@ -15,8 +15,8 @@ export function Create(): JSX.Element {
 
     return (
         <>
-            <div className="card flex justify-center p-10">
-                <div className="card__wrap w-[35rem] rounded-[24px] bg-white dark:bg-purple-light p-[24px]">
+            <div className="card flex justify-center m-10">
+                <div className="card__wrap w-[35rem] h-fit rounded-[24px] bg-white dark:bg-purple-light p-[24px]">
                     <div className="card__header text-xl font-bold mb-10">
                         <h2 className="card-title">Create Token</h2>
                     </div>
