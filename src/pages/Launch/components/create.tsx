@@ -15,13 +15,13 @@ export function Create(): JSX.Element {
 
     return (
         <>
-            <div className="card flex justify-center p-10 bg-[#EBF1FF] dark:bg-purple-dark">
-                <div className="card__wrap">
+            <div className="card flex justify-center p-10">
+                <div className="card__wrap w-[35rem] rounded-[24px] bg-white dark:bg-purple-light p-[24px]">
                     <div className="card__header text-xl font-bold mb-10">
-                        <h2 className="card-title">Create token</h2>
+                        <h2 className="card-title">Create Token</h2>
                     </div>
 
-                    <div className="form form-builder flex flex-col gap-6">
+                    <div className="form form-builder flex flex-col gap-5">
                         <Observer>
                             {() => (
                                 <BuilderField

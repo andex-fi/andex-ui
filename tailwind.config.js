@@ -4,6 +4,11 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   darkMode: "class",
   theme: {
+    extend: {
+      boxShadow: {
+        "3xl": '0px 16px 64px rgba(55, 0, 98, 0.2)'
+      }
+    },
     colors: {
       black: "#000000",
       white: "#ffffff",
