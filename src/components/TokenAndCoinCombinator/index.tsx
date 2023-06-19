@@ -56,20 +56,21 @@ export function TokenAndCoinCombinatorInner({
   return (
     <div className="popup-list-combined-selector">
       <div
-        className="flex items-center cursor-pointer justify-between px-5 py-2 font-[600] text-[15px] border-y-[1px] border-[#CCCEE7]"
+        className="flex items-center cursor-pointer justify-between px-5 py-5 font-[600] text-[15px] border-y-[1px] border-[#CCCEE7]"
         onClick={onSelectMultipleSwap}
       >
-        <div className="flex items-center">
+        <div className="flex gap-2 items-center">
           <div className="flex items-center">
             <TokenIcon
               name={nativeCoin?.symbol}
-              size="xsmall"
+              size="medium"
               icon={nativeCoin?.icon}
             />
             <TokenIcon
+              className="ml-[-10px]"
               address={token?.root}
               name={token?.symbol}
-              size="xsmall"
+              size="medium"
               icon={token?.icon}
             />
           </div>

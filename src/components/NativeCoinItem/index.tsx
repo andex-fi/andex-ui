@@ -15,12 +15,12 @@ export function NativeCoinItem({
   return (
     <>
       <div
-        className="flex items-center cursor-pointer justify-between px-5 py-2 font-[600] text-[20px] border-y-[1px] border-[#CCCEE7]"
+        className="flex items-center cursor-pointer justify-between px-5 py-5 font-[600] text-[20px] border-y-[1px] border-[#CCCEE7]"
         onClick={onSelect}
       >
         <div className="flex items-center justify-between">
           <div className="popup-item__icon">
-            <TokenIcon name={coin.symbol} size="small" icon={coin.icon} />
+            <TokenIcon name={coin.symbol} size="large" icon={coin.icon} />
           </div>
           <div className="popup-item__main">
             {/* <div className="popup-item__name" title={coin.symbol}>

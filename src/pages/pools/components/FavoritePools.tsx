@@ -2,8 +2,9 @@ import React from "react";
 import { usePoolsStoreContext } from "../../../contexts/PoolsStoreProvider";
 import { reaction } from "mobx";
 import { Observer } from "mobx-react-lite";
-import { TokenIcon } from "../../../components/TokenIcon";
+// import { TokenIcon } from "../../../components/TokenIcon";
 import { Link } from "react-router-dom";
+import PoolRow from "./PoolRow";
 
 function FavoritePools() {
   const poolsStore = usePoolsStoreContext();
@@ -34,35 +35,17 @@ function FavoritePools() {
               <p className="text-sm font-bold">Status</p>
             </div>
             {poolsStore.pools.map((item, index) => (
-              <div
-                key={index}
-                className="bg-[#F4F5FA] dark:bg-purple-light text-black p-4 w-full my-4 rounded-lg"
-              >
-                <div className="flex gap-2 items-center">
-                  <div className="flex">
-                    <TokenIcon
-                      size="medium"
-                      address={item.roots.left.toString()}
-                    ></TokenIcon>
-                    <TokenIcon
-                      size="medium"
-                      className=""
-                      address={item.roots.right.toString()}
-                    ></TokenIcon>
-                  </div>
-                  <div>
-                    {
-                      poolsStore.tokensCache.get(item.roots.left.toString())
-                        ?.symbol
-                    }
-                    /
-                    {
-                      poolsStore.tokensCache.get(item.roots.right.toString())
-                        ?.symbol
-                    }
-                  </div>
-                </div>
-              </div>
+              <>
+                <PoolRow
+                  leftToken={poolsStore.tokensCache.get(
+                    item.roots.left.toString()
+                  )}
+                  rightToken={poolsStore.tokensCache.get(
+                    item.roots.right.toString()
+                  )}
+                  key={index}
+                />
+              </>
             ))}
             <div className="text-center mt-5">
               Can't find pool?{" "}
