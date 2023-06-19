@@ -1,12 +1,19 @@
 import { FC, useState } from "react";
 import { Button } from "../../components/Button";
 import { MintTokenModal } from "./mintTokenModal";
+import { BurnTokenModal } from "./burnTokenModal";
 
 export const Actions: FC = () => {
   const [mintToken, setMintToken] = useState<boolean>(false);
+  const [burnToken, setBurnToken] = useState<boolean>(false);
 
   const handleMintToken = (): void => {
     setMintToken(true);
+    document.body.style.overflow = "hidden";
+  };
+
+  const handleBurnToken = (): void => {
+    setBurnToken(true);
     document.body.style.overflow = "hidden";
   };
 
@@ -42,7 +49,10 @@ export const Actions: FC = () => {
               Burn tokens at a specific address
             </p>
           </div>
-          <Button btnStyles="flex items-center justify-center text-white rounded-3xl w-20 py-1 bg-[#9645D7] ">
+          <Button
+            btnStyles="flex items-center justify-center text-white rounded-3xl w-20 py-1 bg-[#9645D7] "
+            onClick={handleBurnToken}
+          >
             Burn
           </Button>
         </div>
@@ -65,6 +75,7 @@ export const Actions: FC = () => {
         </div>
       </div>
       {mintToken && <MintTokenModal setMintToken={setMintToken} />}
+      {burnToken && <BurnTokenModal setBurnToken={setBurnToken} />}
     </div>
   );
 };
