@@ -47,19 +47,19 @@ function Field({
 
 
     return (
-        <label className="form-label " htmlFor={props.id}>
+        <label className="form-label" htmlFor={props.id}>
             <fieldset
                 className={classNames('form-fieldset', className, {
                     invalid: isDirty.current && !isValid,
                 })}
                 onClick={props.onClick}
             >
-                <div className="form-fieldset__header">
+                <div className="form-fieldset__header ml-3 font-bold">
                     <div>{props.label}</div>
                 </div>
                 <div className="form-fieldset__main">
                     <input
-                        className="form-input w-[30rem] outline-none bg-white dark:bg-purple-light p-3 rounded-lg"
+                        className="form-input outline-none w-full placeholder-[#7F8FA9] bg-[#F4F5FA] dark:bg-purple px-3 py-5 rounded-[12px]"
                         disabled={props.disabled}
                         inputMode={props.inputMode}
                         pattern={props.pattern}

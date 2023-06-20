@@ -28,7 +28,7 @@ function SubmitButton(): JSX.Element {
 
         case !creatingToken.name || !creatingToken.symbol || !creatingToken.decimals:
             buttonProps.disabled = true
-            buttonText = "Enter all data"
+            buttonText = "Enter token data"
             break
 
         case creatingToken.name != null && creatingToken.symbol != null && creatingToken.decimals != null:
@@ -44,7 +44,7 @@ function SubmitButton(): JSX.Element {
         <Button
             aria-disabled={buttonProps.disabled}
             block
-            btnStyles="form-submit mt-2 bg-purple text-white dark:bg-purple-lightest text-lg font-bold p-4 rounded-lg"
+            btnStyles="form-submit mt-2 bg-purple text-white dark:bg-purple-lightest text-lg font-bold p-4 rounded-[12px]"
             size="lg"
             type="primary"
             {...buttonProps}
