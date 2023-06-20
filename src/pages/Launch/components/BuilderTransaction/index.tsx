@@ -22,7 +22,7 @@ function Transaction({ onDismiss }: Props): JSX.Element | null {
     return ReactDOM.createPortal(
         <div className="popup backdrop-blur-[9px] fixed inset-0 flex justify-center items-center">
             <div className="popup-overlay" />
-            <div className="popup__wrap bg-white dark:bg-purple-dark shadow-3xl rounded-[24px] absolute top-[20%] flex flex-col gap-7 w-[35rem] p-5">
+            <div className="popup__wrap bg-white dark:bg-purple-dark shadow-3xl rounded-[24px] absolute top-[20%] flex flex-col sm:gap-7 gap-4 sm:w-[35rem] w-auto p-5 m-2 ">
                 {/* <Button
                     btnStyles="popup-close"
                     type="icon"
@@ -36,12 +36,12 @@ function Transaction({ onDismiss }: Props): JSX.Element | null {
                 {creatingToken.transaction.success ? (
                     <>
                         <div className="popup-main">
-                            <div className="popup-main__name bg-[#F4F5FA] dark:bg-purple-light font-bold p-5 rounded-[12px]">
+                            <div className="popup-main__name bg-[#F4F5FA] dark:bg-purple-light font-bold sm:p-5 p-3 rounded-[12px]">
                                 Token deployed
                             </div>
                         </div>
                         <div
-                            className="popup-txt font-medium flex flex-col gap-3 text-[#7F8FA9]"
+                            className="popup-txt font-medium flex flex-col sm:gap-3 gap-2 text-[#7F8FA9]"
                             dangerouslySetInnerHTML={{
                                 __html: `<p>Token ${creatingToken.transaction.name} deployed successfully</p>
                                         <p>${creatingToken.transaction.symbol} token root <a href="https://devnet.venomscan.com/accounts/${creatingToken.transaction.root}" target="_blank" rel="nofollow noopener noreferrer"} style='color: #9645D7; text-decoration: underline'>contract</a></p>
@@ -59,7 +59,7 @@ function Transaction({ onDismiss }: Props): JSX.Element | null {
                 )}
                 <Button
                     block
-                    btnStyles="popup-btn bg-purple-light dark:bg-purple-lightest rounded-[12px] text-white p-5 font-bold"
+                    btnStyles="popup-btn bg-purple-light dark:bg-purple-lightest rounded-[12px] text-white sm:p-5 p-3 font-bold"
                     type="primary"
                     onClick={onDismiss}
                 >
