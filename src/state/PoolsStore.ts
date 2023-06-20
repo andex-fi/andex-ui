@@ -8,7 +8,10 @@ import { PoolsOrdering } from "../types/PoolTypes";
 import { BaseStore } from "./BaseStore";
 import { TokensCacheService } from "./TokensCacheService";
 import { WalletService } from "./WalletService";
-import { PairUtils } from "../constants";
+import {
+  LiquidityPoolUtils,
+  //  PairUtils, TokenWalletUtils
+} from "../constants";
 
 export type PoolsStoreData = {
   pools: PoolResponse[];
@@ -64,9 +67,19 @@ export class PoolsStore extends BaseStore<PoolsStoreData, PoolsStoreState> {
         let pool: any[] = [];
 
         for (let i = 0; i < pools.length; i++) {
-          const _roots = await PairUtils.roots(pools[i]);
-          console.log("_roots", _roots);
-          pool.push({ roots: _roots, pair: pools[i] });
+          // const _roots = await PairUtils.roots(pools[i]);
+          // const userLpBalance = await TokenWalletUtils.balance({
+          //   tokenRootAddress: pools[i],
+          //   walletOwnerAddress: this.wallet.address ?? "",
+          // });
+
+          // const balances = PairUtils.balances(pools[i]);
+          const poolDetails = await LiquidityPoolUtils.get(
+            pools[i],
+            this.wallet.address
+          );
+          console.log("_roots", poolDetails);
+          pool.push(poolDetails);
         }
         return { pools: pool, totalCount: pool.length };
       };
