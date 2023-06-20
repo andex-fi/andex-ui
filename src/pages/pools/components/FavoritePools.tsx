@@ -5,8 +5,6 @@ import { Observer } from "mobx-react-lite";
 // import { TokenIcon } from "../../../components/TokenIcon";
 import { Link } from "react-router-dom";
 import PoolRow from "./PoolRow";
-import { formattedTokenAmount, isGoodBignumber } from "../../../utils";
-import BigNumber from "bignumber.js";
 import { Oval } from "react-loader-spinner";
 
 function FavoritePools() {
@@ -40,37 +38,16 @@ function FavoritePools() {
             {poolsStore.pools.map((item, index) => (
               <>
                 <PoolRow
-                  leftToken={item.left}
-                  rightToken={item.right}
-                  userLpBalance={formattedTokenAmount(
-                    item.lp.userBalance,
-                    item.lp.decimals
+                  leftToken={poolsStore.tokensCache.get(
+                    item.roots.left.toString()
                   )}
-                  leftBalance={new BigNumber(
-                    new BigNumber(item.lp.userBalance || 0)
-                  )
-                    .times(item.left.balance || 0)
-                    .div(
-                      isGoodBignumber(item.lp.balance ?? 0)
-                        ? item.lp.balance ?? 0
-                        : 1
-                    )
-                    .dp(0, BigNumber.ROUND_DOWN)
-                    .shiftedBy(-(item.left.decimals ?? 0))
-                    .toFixed()}
-                  rightBalance={new BigNumber(
-                    new BigNumber(item.lp.userBalance || 0)
-                  )
-                    .times(item.right.balance || 0)
-                    .div(
-                      isGoodBignumber(item.lp.balance ?? 0)
-                        ? item.lp.balance ?? 0
-                        : 1
-                    )
-                    .dp(0, BigNumber.ROUND_DOWN)
-                    .shiftedBy(-(item.right.decimals ?? 0))
-                    .toFixed()}
+                  rightToken={poolsStore.tokensCache.get(
+                    item.roots.right.toString()
+                  )}
+                  pool={item.pool}
+                  // userLpBalance={item.userLpBalance}
                   key={index}
+                  user={poolsStore.wallet.address}
                 />
               </>
             ))}
@@ -83,7 +60,7 @@ function FavoritePools() {
           </div>
         ) : poolsStore.isFetching ? (
           <Oval
-            width={"30px"}
+            width={"25px"}
             color="#19102d"
             secondaryColor="rgba(255, 255, 255)"
           />

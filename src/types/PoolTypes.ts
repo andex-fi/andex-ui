@@ -2,10 +2,8 @@
 import { TransactionSuccessResult } from "../constants";
 import type {
   DexPairDepositLiquiditySuccessV2,
-  LiquidityPoolData,
   LiquidityPoolDepositCallbacks,
   LiquidityStablePoolData,
-  // PairBalances,
 } from "../constants/utils";
 import type { OhlcvData, Timeframe } from "./chartTypes";
 import type { CommonTokenTransactionReceipt } from "./LiquidityTypes";
@@ -21,26 +19,25 @@ export enum PoolsOrdering {
   Volume7dDescending = "volume7ddescending",
 }
 
-// export type PoolResponse = {
-//   roots: any;
-//   left: string;
-//   balances: PairBalances;
-//   userLpBalance: string;
-//   fee24h: string;
-//   fee7d: string;
-//   feeAllTime: string;
-//   lpLocked: string;
-//   meta: PoolMeta;
-//   prices: string[];
-//   stableOneSwap: string[];
-//   tvl: string;
-//   tvlChange: string;
-//   volume24h: string;
-//   volume24hChange: string;
-//   volume7d: string;
-//   volumesLocked: string[];
-// };
-export type PoolResponse = LiquidityPoolData;
+export type PoolResponse = {
+  roots: any;
+  left: string;
+  pool: string;
+  fee24h: string;
+  fee7d: string;
+  feeAllTime: string;
+  lpLocked: string;
+  meta: PoolMeta;
+  prices: string[];
+  stableOneSwap: string[];
+  tvl: string;
+  tvlChange: string;
+  volume24h: string;
+  volume24hChange: string;
+  volume7d: string;
+  volumesLocked: string[];
+};
+
 export type PoolMeta = {
   beneficiaryAddress: string;
   currencies: string[];
