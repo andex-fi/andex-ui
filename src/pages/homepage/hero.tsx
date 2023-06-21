@@ -8,7 +8,7 @@ import VenomShadow from "../../assets/venomshadow.png";
 export const Hero: FC = () => {
   return (
     <section
-      className="text-center text-white px-4 md:px-10 lg:px-20 py-10 md:pt-24 pb-0"
+      className="text-center text-white px-4 md:px-10 lg:px-20 py-10 md:pt-24 pb-0 w-full"
       style={{
         background: "linear-gradient(90deg, #270A3E 0%, #100618 100%)",
       }}
@@ -40,7 +40,10 @@ export const Hero: FC = () => {
             Launch Dapp
           </Button>
         </Link>
-        <Button href="https://docs.andex.finance" btnStyles="bg-[#3B1F5E] text-white flex items-center justify-center font-bold px-8 py-3 text-sm rounded-lg">
+        <Button
+          href="https://docs.andex.finance"
+          btnStyles="bg-[#3B1F5E] text-white flex items-center justify-center font-bold px-8 py-3 text-sm rounded-lg"
+        >
           Learn more
         </Button>
       </div>

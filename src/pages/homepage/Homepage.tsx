@@ -9,7 +9,7 @@ import { Footer } from "./footer";
 
 export const Homepage: FC = () => {
   return (
-    <div>
+    <div className="w-full">
       <Hero />
       <Seamless />
       <Perpetual />

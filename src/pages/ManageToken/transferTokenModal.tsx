@@ -47,10 +47,13 @@ export const TransferTokenModal: FC<Props> = ({ setTransferToken }) => {
         </div>
 
         <div className="flex items-center justify-between gap-4 mt-4">
-          <Button btnStyles="text-[#52058F] bg-[#F4F5FA] rounded-2xl w-48 py-4 font-bold border-2 border-[#DFE8F9]">
+          <Button
+            btnStyles="text-[#52058F] bg-[#F4F5FA] rounded-2xl w-56 py-4 font-bold border-2 border-[#DFE8F9]"
+            onClick={handleCloseTokenModal}
+          >
             Cancel
           </Button>
-          <Button btnStyles="bg-[#52058F] text-white rounded-2xl w-48 py-4 font-bold dark:bg-purple-darkest">
+          <Button btnStyles="bg-[#52058F] text-white rounded-2xl w-56 py-4 font-bold dark:bg-purple-darkest">
             Enter all data
           </Button>
         </div>
