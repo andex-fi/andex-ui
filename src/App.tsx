@@ -17,6 +17,7 @@ import Layout from "./components/Layout";
 import ImportLiquidityPage from "./pages/ImportLiquidity";
 import { Swap } from "./pages/Swap";
 import { Managetoken } from "./pages/ManageToken/managetoken";
+// import BuilderPage from "./pages/Builder";
 
 export default function App() {
   // const location = useLocation();
