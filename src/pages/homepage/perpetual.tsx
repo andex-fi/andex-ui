@@ -6,7 +6,7 @@ import { Button } from "../../components/Button";
 export const Perpetual: FC = () => {
   return (
     <div
-      className="px-4 md:px-10 lg:px-48 pt-40 flex flex-col-reverse lg:flex-row items-center justify-center lg:gap-20 text-white relative"
+      className="px-4 md:px-10 lg:px-48 pt-40 flex flex-col-reverse lg:flex-row items-center justify-center lg:gap-20 text-white relative w-full"
       style={{
         background: "linear-gradient(180deg, #270A3E 0%, #100618 100%)",
       }}

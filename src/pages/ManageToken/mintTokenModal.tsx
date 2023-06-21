@@ -11,11 +11,6 @@ interface tokenDetails {
 }
 
 const token: tokenDetails[] = [
-  {
-    name: "Token Address",
-    value: "0:a5c7faa181d88c7338d91fa8578cef02d7a118188844d84..",
-  },
-  { name: "Amount to mint", value: 2.2098 },
   { name: "Target Address Balance", value: 2.2098 },
   { name: "Circulating Supply", value: 2.2098 },
 ];
@@ -40,6 +35,23 @@ export const MintTokenModal: FC<Props> = ({ setMintToken }) => {
           Mint tokens
         </h4>
 
+        <div className="border border-[#DFE8F9] p-4 rounded-lg mt-3 overflow-hidden bg-[#F4F5FA] dark:bg-purple-darkest">
+          <h4>Target Address</h4>
+          <input
+            type="text"
+            placeholder="0:a5c7faa181d88c7338d91fa8578cef02d7a118188844d84.."
+            className="w-full bg-[#F4F5FA] dark:bg-purple-darkest mt-1 focus:border-[#F4F5FA]"
+          />
+        </div>
+        <div className="border border-[#DFE8F9] p-4 rounded-lg mt-3 overflow-hidden bg-[#F4F5FA] dark:bg-purple-darkest">
+          <h4>Amount to mint</h4>
+          <input
+            type="text"
+            placeholder="2.2098"
+            className="w-full bg-[#F4F5FA] dark:bg-purple-darkest mt-1 focus:border-[#F4F5FA] text-5xl font-bold"
+          />
+        </div>
+
         {token.map((item, index) => (
           <div
             key={index}
@@ -57,7 +69,10 @@ export const MintTokenModal: FC<Props> = ({ setMintToken }) => {
         ))}
 
         <div className="flex items-center justify-between gap-4 mt-4">
-          <Button btnStyles="text-[#52058F] bg-[#F4F5FA] rounded-2xl w-48 py-4 font-bold border-2 border-[#DFE8F9]">
+          <Button
+            btnStyles="text-[#52058F] bg-[#F4F5FA] rounded-2xl w-48 py-4 font-bold border-2 border-[#DFE8F9]"
+            onClick={handleCloseMintModal}
+          >
             Cancel
           </Button>
           <Button btnStyles="bg-[#52058F] text-white rounded-2xl w-48 py-4 font-bold">

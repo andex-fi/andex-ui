@@ -30,7 +30,7 @@ export const Footer: FC = () => {
     { img: <AiOutlineGithub />, link: "https://github.com/andex-fi/andex-ui" },
   ];
   return (
-    <div className="bg-[#100618] text-white px-4 md:px-10 lg:px-40 py-20 text-center">
+    <div className="bg-[#100618] text-white px-4 md:px-10 lg:px-40 py-20 text-center w-full">
       <div className="lg:flex items-center justify-center gap-4">
         {footerLinks.map((footerlink, index) => (
           <Link key={index} to={footerlink.link} target={"_blank"}>

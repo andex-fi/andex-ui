@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 export const Protect: FC = () => {
   return (
     <div
-      className="px-4 md:px-10 lg:px-48 py-20 text-white"
+      className="px-4 md:px-10 lg:px-48 py-20 text-white w-full"
       style={{
         background: "linear-gradient(90deg, #270A3E 0%, #100618 100%)",
       }}

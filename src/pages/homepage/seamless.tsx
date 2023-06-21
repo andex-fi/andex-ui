@@ -7,13 +7,13 @@ import { motion } from "framer-motion";
 export const Seamless: FC = () => {
   return (
     <div
-      className="lg:flex items-center justify-center px-4 md:px-10 lg:px-20 py-20 text-white"
+      className="lg:flex items-center justify-center px-4 md:px-10 lg:px-20 py-20 text-white w-full"
       style={{
         background: "linear-gradient(180deg, #270A3E 0%, #100618 100%)",
       }}
     >
       <motion.div
-        className="text-center lg:text-left"
+        className="text-center lg:text-left w-full"
         whileInView={{ x: 0, opacity: 1 }}
         initial={{ x: -50, opacity: 0 }}
         transition={{ type: "spring", stiffness: 20 }}
@@ -38,7 +38,10 @@ export const Seamless: FC = () => {
               Launch Dapp
             </Button>
           </Link>
-          <Button href="https://docs.andex.finance" btnStyles="bg-[#3B1F5E] text-white flex items-center justify-center font-bold px-8 py-3 text-sm rounded-lg">
+          <Button
+            href="https://docs.andex.finance"
+            btnStyles="bg-[#3B1F5E] text-white flex items-center justify-center font-bold px-8 py-3 text-sm rounded-lg"
+          >
             Learn more
           </Button>
         </div>

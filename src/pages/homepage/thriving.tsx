@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export const Thriving: FC = () => {
   return (
     <div
-      className="text-center text-white px-4 md:px-10 lg:px-[25%] py-28"
+      className="text-center text-white px-4 md:px-10 lg:px-[25%] py-28 w-full"
       style={{
         background: "linear-gradient(90deg, #270A3E 0%, #100618 100%)",
       }}
