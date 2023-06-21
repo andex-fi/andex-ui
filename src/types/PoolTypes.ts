@@ -22,6 +22,7 @@ export enum PoolsOrdering {
 export type PoolResponse = {
   roots: any;
   left: string;
+  pool: string;
   fee24h: string;
   fee7d: string;
   feeAllTime: string;

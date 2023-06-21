@@ -66,7 +66,7 @@ export class PoolsStore extends BaseStore<PoolsStoreData, PoolsStoreState> {
         for (let i = 0; i < pools.length; i++) {
           const _roots = await PairUtils.roots(pools[i]);
           console.log("_roots", _roots);
-          pool.push({ roots: _roots, pair: pools[i] });
+          pool.push({ roots: _roots, pool: pools[i] });
         }
         return { pools: pool, totalCount: pool.length };
       };
