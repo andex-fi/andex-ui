@@ -5,6 +5,7 @@ import { Observer } from "mobx-react-lite";
 // import { TokenIcon } from "../../../components/TokenIcon";
 import { Link } from "react-router-dom";
 import PoolRow from "./PoolRow";
+import { Oval } from "react-loader-spinner";
 
 function FavoritePools() {
   const poolsStore = usePoolsStoreContext();
@@ -43,7 +44,10 @@ function FavoritePools() {
                   rightToken={poolsStore.tokensCache.get(
                     item.roots.right.toString()
                   )}
+                  pool={item.pool}
+                  // userLpBalance={item.userLpBalance}
                   key={index}
+                  user={poolsStore.wallet.address}
                 />
               </>
             ))}
@@ -54,6 +58,12 @@ function FavoritePools() {
               </Link>
             </div>
           </div>
+        ) : poolsStore.isFetching ? (
+          <Oval
+            width={"25px"}
+            color="#19102d"
+            secondaryColor="rgba(255, 255, 255)"
+          />
         ) : (
           <div className="flex items-center justify-center w-full h-48">
             <p className="font-bold">
