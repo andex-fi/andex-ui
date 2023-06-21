@@ -5,6 +5,7 @@
   "dependencies": {
     "@andex/client": "^1.2.1",
     "@andex/provider": "^1.0.0",
+    "@andex/uikit": "^1.0.0",
     "@andex/wallet-kit": "0.2.3",
     "@headlessui/react": "^1.7.14",
     "@heroicons/react": "^2.0.18",
