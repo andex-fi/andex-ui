@@ -15,7 +15,7 @@ const BuildersPage = () => {
               <input
                 type="text"
                 id="table-search"
-                className="block p-3 pl-8 text-sm text-gray-900 border border-gray-300 rounded-3xl w-full bg-gray-50"
+                className="block p-3 pl-8 text-sm text-gray-900 bg-[#DFE4EE] border border-grey-light rounded-3xl w-full bg-gray-50 outline-black font-bold"
                 placeholder="Filtering..."
               />
             </div>
@@ -40,10 +40,10 @@ const BuildersPage = () => {
         </div>
       </div>
 
-      <div className="relative overflow-x-auto h-96 bg-white border border-grey rounded-lg w-full min-h-screen-xl mt-6 md:mt-8">
+      <div className="relative overflow-x-auto h-96 bg-white border border-grey-lightest rounded-t-xl w-full min-h-screen-xl mt-6 md:mt-8 dark:bg-purple">
         <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-          <thead className="list__header text-md text-gray-600 dark:text-gray-400 border-b-2 border-grey drop-shadow-2xl">
-            <tr>
+          <thead className="list__header text-md text-grey dark:text-gray-400">
+            <tr className="border-b border-grey-lightest">
               <th scope="col" className="list__cell list__cell--left px-6 py-3">
                 Name
               </th>
@@ -74,10 +74,10 @@ const BuildersPage = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className="">
+            <tr className="font-black text-lg">
               <th
                 scope="row"
-                className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
               >
                 Everbeans
               </th>
