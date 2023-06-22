@@ -10,6 +10,7 @@ import { Homepage } from "./pages/homepage/Homepage";
 // import { Nav } from "./components/Nav";
 import CreatePage from "./pages/Launch/Create";
 import BuilderPage from "./pages/Launch";
+import BuildersPage from "./pages/Builders";
 import TokenPage from "./pages/Launch/Token";
 import AddLiquidityPage from "./pages/AddLiquidity";
 import Pools from "./pages/pools";
@@ -48,6 +49,7 @@ export default function App() {
         />
         <Route path="managetoken" element={<Managetoken />} />
         <Route path="builder" element={<BuilderPage />} />
+        <Route path="builders" element={<BuildersPage />} />
         <Route path="builder/create" element={<CreatePage />} />
         <Route path="builder/:tokenRoot" element={<TokenPage />} />
         <Route path="importliquidity" element={<ImportLiquidityPage />} />
