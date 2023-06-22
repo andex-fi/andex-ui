@@ -1,6 +1,6 @@
 const BuildersPage = () => {
   return (
-    <div className="max-w-screen-xl m-auto p-16 h-[85vh]">
+    <div className="max-w-screen-xl m-auto p-8 h-[85vh] md:p-16">
       <div className="items-center w-full md:flex md:justify-between md:w-auto">
         <div className="w-full md:w-[30%]">
           <h1 className="text-4xl font-black">Builder</h1>
