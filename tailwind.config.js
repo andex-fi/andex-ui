@@ -13,6 +13,8 @@ export default {
       black: "#000000",
       white: "#ffffff",
       grey: "#999999",
+      "grey-light": "#6D87AC",
+      "grey-lightest": "#DFE8F9",
       "purple-darkest": "#19102d",
       "purple-dark": "#28133f",
       purple: "#34184B",
