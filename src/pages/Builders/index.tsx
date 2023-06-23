@@ -15,12 +15,12 @@ const BuildersPage = () => {
               <input
                 type="text"
                 id="table-search"
-                className="block p-3 pl-8 text-sm text-gray-900 bg-[#DFE4EE] border border-grey-light rounded-3xl w-full bg-gray-50 outline-black font-bold"
+                className="block p-3 pl-8 text-sm text-gray-900 bg-[#DFE4EE] rounded-3xl w-full bg-gray-50 outline-black font-bold"
                 placeholder="Filtering..."
               />
             </div>
           </div>
-          <button className="bg-purple w-auto p-3 text-white border-2 rounded-full flex justify-center items-center mx-3 md:w-[30%] md:mx-0 md:ml-4">
+          <button className="bg-purple w-auto p-3 text-white rounded-full flex justify-center items-center mx-3 md:w-[30%] md:mx-0 md:ml-4 dark:bg-purple-lightest">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -40,8 +40,8 @@ const BuildersPage = () => {
         </div>
       </div>
 
-      <div className="relative overflow-x-auto h-96 bg-white border border-grey-lightest rounded-t-xl w-full min-h-screen-xl mt-6 md:mt-8 dark:bg-purple">
-        <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
+      <div className="relative overflow-x-auto h-96 bg-white border border-grey-lightest rounded-t-xl w-full min-h-screen-xl mt-6 md:mt-8">
+        <table className="w-full text-sm text-left text-gray-500">
           <thead className="list__header text-md text-grey dark:text-gray-400">
             <tr className="border-b border-grey-lightest">
               <th scope="col" className="list__cell list__cell--left px-6 py-3">
@@ -74,10 +74,10 @@ const BuildersPage = () => {
             </tr>
           </thead>
           <tbody>
-            <tr className="font-black text-lg">
+            <tr className="text-black text-lg">
               <th
                 scope="row"
-                className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
+                className="px-6 py-4 text-gray-900 whitespace-nowrap "
               >
                 Everbeans
               </th>
