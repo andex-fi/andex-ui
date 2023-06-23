@@ -5,7 +5,6 @@ import { Perpetual } from "./perpetual";
 import { Supercharge } from "./supercharge";
 import { Protect } from "./protect";
 import { Thriving } from "./thriving";
-import { Footer } from "./footer";
 
 export const Homepage: FC = () => {
   return (
@@ -16,7 +15,6 @@ export const Homepage: FC = () => {
       <Supercharge />
       <Protect />
       <Thriving />
-      <Footer />
     </div>
   );
 };

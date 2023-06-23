@@ -7,6 +7,7 @@ import AccountProvider from "./contexts/AccountProvider";
 import DexAccountProvider from "./contexts/DexAccountProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Providers from "./Providers";
 // import reportWebVitals from "./reportWebVitals";
 
 const root = ReactDOM.createRoot(
@@ -15,12 +16,14 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <AccountProvider>
-        <DexAccountProvider>
-          <App />
-          <ToastContainer position="bottom-right" />
-        </DexAccountProvider>
-      </AccountProvider>
+    <Providers>
+        <AccountProvider>
+          <DexAccountProvider>
+            <App />
+            <ToastContainer position="bottom-right" />
+          </DexAccountProvider>
+        </AccountProvider>
+    </Providers>
     </BrowserRouter>
   </React.StrictMode>
 );
