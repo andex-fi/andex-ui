@@ -28,7 +28,6 @@ const navigation = [
   { name: "Swap", href: "/swap", current: true },
   { name: "Tokens", href: "/builder", current: false },
   { name: "Pools", href: "/pools", current: false },
-  { name: "Docs", href: "#", current: false },
 ];
 const userNavigation = [
   { name: "Profile", href: "#" },
