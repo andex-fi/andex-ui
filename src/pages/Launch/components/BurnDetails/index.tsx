@@ -59,15 +59,15 @@ function Details(): JSX.Element {
     }
 
     return (
-        <div className="burn-details">
-            <h3 className="burn-details-title">
+        <div className="border border-[#DFE8F9] p-4 rounded-lg mt-3 overflow-hidden bg-[#F4F5FA] dark:bg-purple-darkest">
+            <h3 className="font-bold">
                 Target address balance
             </h3>
-            <div className="burn-details-table">
+            <div>
                 {managingToken.targetWalletBalance && managingToken.amountToBurn
                     ? (
                         <>
-                            <div className="burn-details-table__row">
+                            <div className="flex items-center justify-between gap-4 text-xs mt-1">
                                 <div>
                                     Current
                                 </div>
@@ -75,9 +75,9 @@ function Details(): JSX.Element {
                                     {currentTargetAddressBalance}
                                 </div>
                             </div>
-                            <div className="burn-details-table__row">
+                            <div className="flex items-center justify-between gap-4 text-xs mt-1">
                                 <div>
-                                    After mining
+                                    After burning
                                 </div>
                                 <div>
                                     {afterTargetAddressBalance}
@@ -86,19 +86,19 @@ function Details(): JSX.Element {
                         </>
                     )
                     : (
-                        <div className="burn-details-table__row">
+                        <div className="flex items-center justify-between gap-4 text-xs mt-1">
                             <div>{getBalanceMessage()}</div>
                         </div>
                     )}
             </div>
-            <h3 className="burn-details-title">
+            <h3 className="font-bold mt-4">
                 Circulating supply
             </h3>
-            <div className="burn-details-table">
+            <div>
                 {managingToken.amountToBurn
                     ? (
                         <>
-                            <div className="burn-details-table__row">
+                            <div className="flex items-center justify-between gap-4 text-xs mt-1">
                                 <div>
                                     Current
                                 </div>
@@ -106,9 +106,9 @@ function Details(): JSX.Element {
                                     {currentSupply}
                                 </div>
                             </div>
-                            <div className="burn-details-table__row">
+                            <div className="flex items-center justify-between gap-4 text-xs mt-1">
                                 <div>
-                                    After mining
+                                    After burning
                                 </div>
                                 <div>
                                     {afterSupply}
@@ -117,7 +117,7 @@ function Details(): JSX.Element {
                         </>
                     )
                     : (
-                        <div className="burn-details-table__row">
+                        <div className="flex items-center justify-between gap-4 text-xs mt-1">
                             <div>
                                 Enter amount to mint
                             </div>

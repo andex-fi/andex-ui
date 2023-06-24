@@ -73,4 +73,4 @@ function Field({
     )
 }
 
-export const CustomAddressField = observer(Field)
+export const CustomBurnField = observer(Field)

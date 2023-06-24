@@ -6,8 +6,8 @@ import { useParams } from 'react-router-dom'
 import { observer } from 'mobx-react-lite'
 
 import { Button } from '../../../../components/Button'
-import { Icon } from '../../../../components/Icon'
-import { BuilderField } from '../BuilderField'
+import { CustomField } from '../CustomField'
+import { CustomBurnField } from '../CustomBurnField'
 import { BurnSubmitButton } from '../BurnSubmitButton'
 import { useBurnForm } from '../../hooks/useBurnForm'
 import { useManageTokenStore } from '../../state/ManageTokenStore'
@@ -39,23 +39,16 @@ function Popup({ onDismiss }: Props): JSX.Element {
     }, [])
 
     return ReactDOM.createPortal(
-        <div className="popup popup_scrollable">
-            <div className="popup-overlay" />
-            <div className="popup__wrap">
-                <Button
-                    btnStyles=''
-                    type="icon"
-                    className="popup-close"
-                    onClick={onDismiss}
-                >
-                    <Icon icon="close" />
-                </Button>
-                <h2 className="popup-title">
+        <div 
+            className="fixed h-full w-full inset-0 flex justify-center items-center p-4"
+            style={{ background: "rgba(0, 0, 0, 0.2)", backdropFilter: "blur(9px)" }}
+        >
+            <div className="w-full lg:w-[30%] h-[80vh] p-4 md:p-6 bg-white dark:bg-purple-light rounded-lg overflow-y-scroll">
+                <h4 className="text-[#13173E] dark:text-white font-bold">
                     Burn tokens
-                </h2>
-                <div className="form-builder">
+                </h4>
                     <BurnAddressField />
-                    <BuilderField
+                    <CustomField
                         className=''
                         disabled={managingToken.isBurning}
                         label="Amount to burn"
@@ -66,7 +59,7 @@ function Popup({ onDismiss }: Props): JSX.Element {
                         value={managingToken.amountToBurn}
                         onChange={burnForm.onChangeData('amountToBurn')}
                     />
-                    <BuilderField
+                    <CustomBurnField
                         className=''
                         disabled={managingToken.isBurning}
                         label="Callback address"
@@ -77,7 +70,7 @@ function Popup({ onDismiss }: Props): JSX.Element {
                         value={managingToken.callbackAddress}
                         onChange={burnForm.onChangeData('callbackAddress')}
                     />
-                    <BuilderField
+                    <CustomBurnField
                         className=''
                         disabled={managingToken.isBurning}
                         label="Callback payload"
@@ -85,12 +78,11 @@ function Popup({ onDismiss }: Props): JSX.Element {
                         value={managingToken.callbackPayload}
                         onChange={burnForm.onChangeData('callbackPayload')}
                     />
-                </div>
                 <BurnDetails />
-                <div className="popup-actions">
+                <div className="flex items-center justify-between gap-4 mt-4">
                     <Button
                         block
-                        btnStyles="form-submit"
+                        btnStyles="text-[#52058F] bg-[#F4F5FA] rounded-2xl w-48 py-4 font-bold border-2 border-[#DFE8F9]"
                         size="lg"
                         type="tertiary"
                         onClick={onDismiss}

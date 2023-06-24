@@ -3,7 +3,7 @@ import { observer } from 'mobx-react-lite'
 import { useParams } from 'react-router-dom'
 
 import { useBurnForm } from '../../hooks/useBurnForm'
-import { BuilderField } from '../BuilderField'
+import { CustomAddressField } from '../CustomAddressField'
 import { useManageTokenStore } from '../../state/ManageTokenStore'
 import { isAddressValid } from '../../../../constants'
 
@@ -19,7 +19,7 @@ function Field(): JSX.Element {
     }
 
     return (
-        <BuilderField
+        <CustomAddressField
             className=''
             disabled={managingToken.isBurning}
             label="Target address"

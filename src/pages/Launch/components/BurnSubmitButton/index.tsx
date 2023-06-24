@@ -65,7 +65,7 @@ function SubmitButton({ closePopup }: Props): JSX.Element {
             block
             size="lg"
             type="primary"
-            btnStyles="form-submit"
+            btnStyles="bg-[#52058F] text-white rounded-2xl w-64 py-4 font-bold"
             {...buttonProps}
         >
             {showSpinner ? (
