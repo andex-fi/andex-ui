@@ -6,9 +6,9 @@ import { useParams } from 'react-router-dom'
 import { observer } from 'mobx-react-lite'
 
 import { Button } from '../../../../components/Button'
-import { Icon } from '../../../../components/Icon'
+// import { Icon } from '../../../../components/Icon'
 import { usePage } from '../../../../hooks/usePage'
-import { BuilderField } from '../BuilderField'
+import { CustomField } from '../CustomField'
 import { MintSubmitButton } from '../MintSubmitButton'
 import { useMintForm } from '../../hooks/useMintForm'
 import { useManageTokenStore } from '../../state/ManageTokenStore'
@@ -36,38 +36,31 @@ function Popup({ onDismiss }: Props): JSX.Element {
     }, [])
 
     return ReactDOM.createPortal(
-        <div className="popup popup_scrollable">
-            <div className="popup-overlay" />
-            <div className="popup__wrap">
-                <Button
-                    btnStyles="popup-close"
-                    type="icon"
-                    onClick={onDismiss}
-                >
-                    <Icon icon="close" />
-                </Button>
-                <h2 className="popup-title">
+        <div 
+            className="fixed h-full w-full inset-0 flex justify-center items-center"
+            style={{ background: "rgba(0, 0, 0, 0.2)", backdropFilter: "blur(9px)" }}
+        >
+            <div className="w-full lg:w-[30%] h-fit p-4 md:p-6 bg-white dark:bg-purple-light rounded-lg">
+                <h4 className="text-[#13173E] dark:text-white font-bold">
                     Mint tokens
-                </h2>
-                <div className="form-builder">
-                    <MintAddressField />
-                    <BuilderField
-                        className=''
-                        disabled={managingToken.isMinting}
-                        label="Amount to mint"
-                        type="number"
-                        isValid={
-                            managingToken.amountToMint.length > 0
-                        }
-                        value={managingToken.amountToMint}
-                        onChange={mintForm.onChangeData('amountToMint')}
-                    />
-                </div>
+                </h4>
+                <MintAddressField />
+                <CustomField
+                    className=''
+                    disabled={managingToken.isMinting}
+                    label="Amount to mint"
+                    type="number"
+                    isValid={
+                        managingToken.amountToMint.length > 0
+                    }
+                    value={managingToken.amountToMint}
+                    onChange={mintForm.onChangeData('amountToMint')}        
+                />
                 <MintDetails />
-                <div className="popup-actions">
+                <div className="flex items-center justify-between gap-4 mt-4">
                     <Button
                         block
-                        btnStyles="form-submit"
+                        btnStyles="text-[#52058F] bg-[#F4F5FA] rounded-2xl w-48 py-4 font-bold border-2 border-[#DFE8F9]"
                         size="lg"
                         type="tertiary"
                         onClick={onDismiss}

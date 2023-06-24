@@ -11,7 +11,7 @@ function ButtonInternal(): JSX.Element {
     return (
         <>
             <Button
-                btnStyles=''
+                btnStyles='flex items-center justify-center text-white rounded-3xl w-20 py-1 bg-[#9645D7]'
                 type="primary"
                 onClick={burnForm.showBurnPopup}
             >

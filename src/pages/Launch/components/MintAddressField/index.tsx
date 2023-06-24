@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { observer } from 'mobx-react-lite'
 
 import { useMintForm } from '../../hooks/useMintForm'
-import { BuilderField } from '../BuilderField'
+import { CustomAddressField } from '../CustomAddressField'
 import { useManageTokenStore } from '../../state/ManageTokenStore'
 import { isAddressValid } from '../../../../constants'
 
@@ -20,7 +20,7 @@ function Field(): JSX.Element {
     }
 
     return (
-        <BuilderField
+        <CustomAddressField
             className=''
             disabled={managingToken.isMinting}
             label="Target address"

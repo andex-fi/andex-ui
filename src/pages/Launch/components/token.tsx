@@ -7,13 +7,11 @@ import BigNumber from 'bignumber.js'
 import {
     BuilderConfirmationPopup,
     BuilderField,
-    BurnButton,
-    MintButton,
-    TransferButton,
 } from '.'
 import { getTokenFromLocalStorage, saveTokenToLocalStorage } from '../utils'
 import { useManageTokenStore } from '../state'
 import { Icon } from '../../../components/Icon'
+import { Actions } from './actions'
 
 
 export function Token(): JSX.Element {
@@ -48,8 +46,7 @@ export function Token(): JSX.Element {
 
     return (
         <>
-            <div className="card card--flat">
-                <div className="card__wrap">
+            <div className="bg-white dark:bg-purple-light rounded-xl lg:flex items-start gap-4 w-full lg:w-[60%] p-6">
                     <Observer>
                         {() => (managingToken.isLoading ? (
                             <div className="message">
@@ -58,110 +55,59 @@ export function Token(): JSX.Element {
                                 </div>
                             </div>
                         ) : (
-                            <div className="card-parts">
-                                <div className="card-parts__part">
-                                    <div className="card__header">
-                                        <h2 className="card-title">
-                                            Description
-                                        </h2>
-                                    </div>
-                                    <div className="form form-builder">
-                                        <BuilderField
-                                            className=''
-                                            label="Network"
-                                            readOnly
-                                            value="Devnet"
-                                        />
-                                        <BuilderField
-                                            showCopy
-                                            className="builder-address-field"
-                                            label="Root"
-                                            disabled
-                                            value={managingToken.token?.root}
-                                            onClick={copyToClipboard}
-                                        />
-                                        <BuilderField
-                                            className=''
-                                            label="Token name"
-                                            readOnly
-                                            value={managingToken.token?.name}
-                                        />
-                                        <BuilderField
-                                            className=''
-                                            label="Token symbol"
-                                            readOnly
-                                            value={managingToken.token?.symbol}
-                                        />
-                                        <BuilderField
-                                            className=''
-                                            label="Decimal places"
-                                            readOnly
-                                            value={`${managingToken.token?.decimals}`}
-                                        />
-                                        <BuilderField
-                                            className=''
-                                            label="Total supply"
-                                            readOnly
-                                            value={new BigNumber(managingToken.token?.totalSupply ?? 0)
-                                                .shiftedBy(-(managingToken.token?.decimals || 0))
-                                                .toFixed()}
-                                        />
-                                    </div>
-                                </div>
-                                <div className="card-parts__part">
-                                    <div className="card__header">
-                                        <h2 className="card-title">
-                                            Actions
-                                        </h2>
-                                    </div>
-                                    <div className="card-block">
-                                        <h3 className="card-block__title">
-                                            Manage circulating supply
-                                        </h3>
-                                        <div className="card-block__action">
-                                            <div>
-                                                <div className="card-block__action__name">
-                                                    Mint
-                                                </div>
-                                                <div className="card-block__action__description">
-                                                    Issue additional tokens to a specific address
-                                                </div>
-                                            </div>
-                                            <MintButton key="mint-button" />
-                                        </div>
-                                        <div className="card-block__action">
-                                            <div>
-                                                <div className="card-block__action__name">
-                                                    Burn
-                                                </div>
-                                                <div className="card-block__action__description">
-                                                    Burn tokens at a specific address
-                                                </div>
-                                            </div>
-                                            <BurnButton key="burn-button" />
-                                        </div>
-                                    </div>
-                                    <div className="card-block card-block--alert">
-                                        <h3 className="card-block__title">
-                                            Danger zone
-                                        </h3>
-                                        <div className="card-block__action">
-                                            <div>
-                                                <div className="card-block__action__name">
-                                                    Transfer ownership
-                                                </div>
-                                                <div className="card-block__action__description">
-                                                    Set a new token owner
-                                                </div>
-                                            </div>
-                                            <TransferButton key="transfer-button" />
-                                        </div>
-                                    </div>
+                            <>
+                            <div className="w-full lg:w-[50%]">
+                                <h2 className="text-[#13173E] dark:text-white font-bold">
+                                    Description
+                                </h2>
+                                <div className="">
+                                    <BuilderField
+                                        className=''
+                                        label="Network"
+                                        readOnly
+                                        value="Devnet"    
+                                    />
+                                    <BuilderField
+                                        showCopy
+                                        className=""
+                                        label="Root"
+                                        disabled
+                                        value={managingToken.token?.root}
+                                        onClick={copyToClipboard}    
+                                    />    
+                                    <BuilderField
+                                        className=''
+                                        label=""
+                                        readOnly
+                                        value={managingToken.token?.name}    
+                                    />
+                                    <BuilderField
+                                        className=''
+                                        label="Token symbol"
+                                        readOnly
+                                        value={managingToken.token?.symbol}    
+                                    />
+                                    <BuilderField
+                                        className=''
+                                        label="Decimal places"
+                                        readOnly
+                                        value={`${managingToken.token?.decimals}`}    
+                                    />
+                                    <BuilderField
+                                        className=''
+                                        label="Total supply"
+                                        readOnly
+                                        value={new BigNumber(managingToken.token?.totalSupply ?? 0)
+                                            .shiftedBy(-(managingToken.token?.decimals || 0))
+                                            .toFixed()}    
+                                    />
                                 </div>
                             </div>
+                            <Actions />
+                            </>
                         ))}
                     </Observer>
-                </div>
+                
             </div>
 
             <BuilderConfirmationPopup key="confirmation" />

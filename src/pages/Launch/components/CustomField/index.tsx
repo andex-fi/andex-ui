@@ -46,20 +46,17 @@ function Field({
 
 
     return (
-        <label className="form-label" htmlFor={props.id}>
+        <label htmlFor={props.id}>
             <fieldset
                 className={classNames('form-fieldset', className, {
                     invalid: isDirty.current && !isValid,
                 })}
                 onClick={props.onClick}
             >
-                <div className="bg-[#F4F5FA] dark:bg-purple-darkest rounded-lg mt-4 flex flex-col gap-2 p-2 overflow-hidden">
-                    <div className="text-[#7F8FA9] dark:text-white text-sm">
-                        <div>{props.label}</div>
-                    </div>
-                    <div className="text-[#13173E] dark:text-white font-bold text-sm">
+                <div className="border border-[#DFE8F9] p-4 rounded-lg mt-3 overflow-hidden bg-[#F4F5FA] dark:bg-purple-darkest">
+                        <h4>{props.label}</h4>
                         <input
-                            className="outline-none w-full placeholder-[#7F8FA9] bg-[#F4F5FA] dark:bg-purple"
+                            className="w-full bg-[#F4F5FA] dark:bg-purple-darkest mt-1 focus:border-[#F4F5FA] text-5xl outline-none font-bold"
                             disabled={props.disabled}
                             inputMode={props.inputMode}
                             pattern={props.pattern}
@@ -70,11 +67,10 @@ function Field({
                             onChange={type === 'number' ? numberField.onChange : onChangeTextInput}
                             onBlur={type === 'number' ? numberField.onBlur : undefined}
                         />
-                    </div>
                 </div>
             </fieldset>
         </label>
     )
 }
 
-export const BuilderField = observer(Field)
+export const CustomField = observer(Field)

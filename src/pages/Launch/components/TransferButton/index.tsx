@@ -9,7 +9,10 @@ function ButtonInternal(): JSX.Element {
 
     return (
         <>
-            <Button btnStyles="" type="danger" onClick={transferForm.showTransferPopup}>
+            <Button 
+                btnStyles="flex items-center justify-center text-white rounded-3xl w-24 py-1 bg-[#FA2B39]" 
+                type="danger" onClick={transferForm.showTransferPopup}
+            >
                 Transfer
             </Button>
             {transferForm.isTransferPopupShown && <TransferPopup onDismiss={transferForm.hideTransferPopup} />}

@@ -59,25 +59,25 @@ function Details(): JSX.Element {
     }
 
     return (
-        <div className="mint-details">
-            <h3 className="mint-details-title">
+        <div className="border border-[#DFE8F9] p-4 rounded-lg mt-3 overflow-hidden bg-[#F4F5FA] dark:bg-purple-darkest">
+            <h3 className="font-bold">
                 Target address balance
             </h3>
-            <div className="mint-details-table">
+            <div>
                 {managingToken.targetWalletBalance && managingToken.amountToMint
                     ? (
                         <>
-                            <div className="mint-details-table__row">
+                            <div className="flex items-center justify-between gap-4 text-xs">
                                 <div>
                                     Current
                                 </div>
-                                <div>
+                                <div className=''>
                                     {currentTargetAddressBalance}
                                 </div>
                             </div>
-                            <div className="mint-details-table__row">
+                            <div className="flex items-center justify-between gap-4 text-xs">
                                 <div>
-                                    After mining
+                                    After minting
                                 </div>
                                 <div>
                                     {afterTargetAddressBalance}
@@ -86,19 +86,19 @@ function Details(): JSX.Element {
                         </>
                     )
                     : (
-                        <div className="mint-details-table__row">
+                        <div className="flex items-center justify-between gap-4 text-xs">
                             <div>{getBalanceMessage()}</div>
                         </div>
                     )}
             </div>
-            <h3 className="mint-details-title">
+            <h3 className="font-bold mt-4">
                 Circulating Supply
             </h3>
-            <div className="mint-details-table">
+            <div>
                 {managingToken.amountToMint
                     ? (
                         <>
-                            <div className="mint-details-table__row">
+                            <div className="flex items-center justify-between gap-4 text-xs">
                                 <div>
                                     Current
                                 </div>
@@ -106,9 +106,9 @@ function Details(): JSX.Element {
                                     {currentSupply}
                                 </div>
                             </div>
-                            <div className="mint-details-table__row">
+                            <div className="flex items-center justify-between gap-4 text-xs">
                                 <div>
-                                    After mining
+                                    After minting
                                 </div>
                                 <div>
                                     {afterSupply}
@@ -117,7 +117,7 @@ function Details(): JSX.Element {
                         </>
                     )
                     : (
-                        <div className="mint-details-table__row">
+                        <div className="flex items-center justify-between gap-4 text-xs">
                             <div>
                                 Enter amount to mint
                             </div>

@@ -12,7 +12,7 @@ export default function BuilderPage(): JSX.Element {
         <div className="max-w-screen-xl m-auto p-8 h-[85vh] md:p-16">
             <div className="items-center w-full md:flex md:justify-between md:w-auto">
                 <div className="w-full md:w-[30%]">
-                    <h1 className="text-4xl font-black">Builder</h1>
+                    <h1 className="text-4xl text-[#13173E] dark:text-white font-bold">Builder</h1>
                 </div>
 
                 <div className="w-full mt-4 flex items-center md:mt-0 md:w-[70%]">
