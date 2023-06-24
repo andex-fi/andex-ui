@@ -42,8 +42,12 @@ function Popup({ onDismiss }: Props): JSX.Element {
         <div 
             className="fixed h-full w-full inset-0 flex justify-center items-center p-4"
             style={{ background: "rgba(0, 0, 0, 0.2)", backdropFilter: "blur(9px)" }}
+            onClick={onDismiss}
         >
-            <div className="w-full lg:w-[30%] h-[80vh] p-4 md:p-6 bg-white dark:bg-purple-light rounded-lg overflow-y-scroll">
+            <div 
+                className="w-full lg:w-[30%] h-[80vh] p-4 md:p-6 bg-white dark:bg-purple-light rounded-lg overflow-y-scroll"
+                onClick={(e) => e.stopPropagation()}
+            >
                 <h4 className="text-[#13173E] dark:text-white font-bold">
                     Burn tokens
                 </h4>

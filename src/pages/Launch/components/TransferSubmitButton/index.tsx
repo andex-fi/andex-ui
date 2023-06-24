@@ -58,7 +58,7 @@ function SubmitButton({ closePopup }: Props): JSX.Element {
         <Button
             aria-disabled={buttonProps.disabled}
             block
-            btnStyles="form-submit"
+            btnStyles="bg-[#52058F] text-white rounded-2xl w-64 py-4 font-bold dark:bg-purple-darkest"
             size="lg"
             type="primary"
             {...buttonProps}

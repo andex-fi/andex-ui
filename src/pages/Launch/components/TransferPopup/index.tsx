@@ -4,9 +4,8 @@ import { useParams } from 'react-router-dom'
 import { observer } from 'mobx-react-lite'
 
 import { Button } from '../../../../components/Button'
-import { Icon } from '../../../../components/Icon'
+import { TransferField } from '../TransferField'
 import { isAddressValid } from '../../../../constants'
-import { BuilderField } from '../BuilderField'
 import { TransferSubmitButton } from '../TransferSubmitButton'
 import { useManageTokenStore } from '../../state/ManageTokenStore'
 import { useTransferForm } from '../../hooks/useTransferForm'
@@ -23,29 +22,30 @@ function Popup({ onDismiss }: Props): JSX.Element {
     const transferForm = useTransferForm()
 
     return ReactDOM.createPortal(
-        <div className="manage-token transfer-popup popup">
-            <div className="popup-overlay" />
-            <div className="popup__wrap">
-                <Button
-                    btnStyles="popup-close"
-                    type="icon"
-                    onClick={onDismiss}
-                >
-                    <Icon icon="close" />
-                </Button>
-                <h2 className="popup-title">
+        <div 
+            className="fixed h-full w-full inset-0 flex justify-center items-center p-4"
+            style={{ background: "rgba(0, 0, 0, 0.2)", backdropFilter: "blur(9px)" }}
+            onClick={onDismiss}
+        >
+            <div 
+                className="w-full lg:w-[35%] h-[50vh] p-4 md:p-6 bg-white dark:bg-purple-light rounded-lg"
+                onClick={(e) => e.stopPropagation()}
+            >
+                <h4 className="text-[#13173E] dark:text-white font-bold">
                     Transfer token ownership
-                </h2>
-                <div className="card-block card-block--alert warning-block">
-                    <p className="text text--bold">⚠️ Warning</p>
-                    <p className="text">This action is irreversible!</p>
-                    <p className="text">Please double check the target address before confirming the transfer.</p>
+                </h4>
+                <div className="mt-3 border-[1px] border-[#FA2B39] rounded-lg p-4 text-[#FA2B39]">
+                    <div className='flex items-center gap-2 font-bold'>
+                        <h4>⚠️ Warning</h4>
+                    </div>
+                    <h5 className="text-sm font-bold my-1">This action is irreversible!</h5>
+                    <p className="text-sm">Please double check the target address before confirming the transfer.</p>
                 </div>
-                <div className="form-builder">
-                    <BuilderField
+                    <TransferField
                         className=''
                         disabled={managingToken.isTransfer}
                         label="New owner address"
+                        placeholder='New owner address'
                         type="string"
                         isValid={
                             isAddressValid(managingToken.newOwnerAddress, true)
@@ -53,11 +53,10 @@ function Popup({ onDismiss }: Props): JSX.Element {
                         value={managingToken.newOwnerAddress}
                         onChange={transferForm.onChangeData('newOwnerAddress')}
                     />
-                </div>
-                <div className="popup-actions">
+                <div className="flex items-center justify-between gap-4 mt-4">
                     <Button
                         block
-                        btnStyles="form-submit"
+                        btnStyles="text-[#52058F] bg-[#F4F5FA] rounded-2xl w-56 py-4 font-bold border-2 border-[#DFE8F9]"
                         size="lg"
                         type="tertiary"
                         onClick={onDismiss}
