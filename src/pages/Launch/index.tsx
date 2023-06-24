@@ -1,48 +1,49 @@
-import { Observer } from 'mobx-react-lite'
-
 import { Button } from '../../components/Button'
-import { PageHeader } from '../../components/PageHeader'
 import { Builder } from './components/Builder'
 import { FilterField } from './components'
 // import { WalletMiddleware } from '@/modules/WalletMiddleware'
-import { useWallet } from '../../state/WalletService'
+// import { useWallet } from '../../state/WalletService'
 
 
 export default function BuilderPage(): JSX.Element {
-    const wallet = useWallet()
+    // const wallet = useWallet()
 
     return (
-        <div className="flex items-center justify-center w-full h-screen font-montserrat bg-[#EBF1FF] dark:bg-purple-dark px-4 py-10">
-            <section className="box-border p-0 w-full">
-                <PageHeader
-                    actions={(
-                        <Observer>
-                            {() => (
-                                <div className="flex gap-5 justify-between w-full">
-                                    {wallet.isReady && (
-                                        <div className='inline-flex gap-6 ml-80'>
-                                            <FilterField className="flex-grow inline-flex" />
-                                            <Button
-                                                btnStyles='inline-flex items-center rounded h-11 px-3 py-2 text-base shadow-sm bg-purple text-white dark:bg-purple-lightest'
-                                                link="/builder/create"
-                                                size="md"
-                                                type="primary"
-                                            >
-                                                Create new token
-                                            </Button>
-                                        </div>
-                                    )}
-                                </div>
-                            )}
-                        </Observer>
-                    )}
-                    title="Builder"
-                />
+        <div className="max-w-screen-xl m-auto p-8 h-[85vh] md:p-16">
+            <div className="items-center w-full md:flex md:justify-between md:w-auto">
+                <div className="w-full md:w-[30%]">
+                    <h1 className="text-4xl font-black">Builder</h1>
+                </div>
 
+                <div className="w-full mt-4 flex items-center md:mt-0 md:w-[70%]">
+                    <FilterField className='' />
+                    <Button
+                        btnStyles='bg-purple dark:bg-purple-lightest w-auto p-3 text-white rounded-full flex justify-center items-center mx-3 md:w-[30%] md:mx-0 md:ml-4'
+                        link="/builder/create"
+                        size="md"
+                        type="primary"
+                    >
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke-width="1.5"
+                            stroke="currentColor"
+                            className="w-6 h-6"
+                        >                               
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                d="M12 6v12m6-6H6"
+                            />                                                               
+                        </svg>
+                        Create new token 
+                    </Button>
+                </div>
+            </div>
                 {/*<WalletMiddleware>*/}
                     <Builder />
                 {/*</WalletMiddleware>*/}
-            </section>
         </div>
     )
 }

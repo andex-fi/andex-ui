@@ -22,11 +22,12 @@ import WalletDropDown from "./WalletDropDown";
 // import { ProviderRpcClient } from "@andex/provider";
 import { useWallet } from "../state/WalletService";
 import { Observer } from "mobx-react-lite";
+import useTheme from "../hooks/useTheme";
 // import { Sun } from "@heroicons/react/20/solid";
 
 const navigation = [
   { name: "Swap", href: "/swap", current: true },
-  { name: "Tokens", href: "/builder", current: false },
+  { name: "Builder", href: "/builder", current: false },
   { name: "Pools", href: "/pools", current: false },
 ];
 const userNavigation = [
@@ -132,8 +133,11 @@ export default function Navbar() {
     }
   }, [darkMode]);
 
+  const { toggleTheme } = useTheme()
+
   const handleDarkMode = () => {
     setDarkMode(!darkMode);
+    toggleTheme();
     // onToggleThemeButtonClick();
   };
 

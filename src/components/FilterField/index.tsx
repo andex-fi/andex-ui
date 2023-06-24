@@ -17,13 +17,15 @@ export function FilterField({
     // size,
 }: Props): JSX.Element {
     return (
-        <div>
-            <input
-                className="cursor-pointer block outline-none bg-white dark:bg-purple-light rounded text-gray-800 text-base h-11 px-3 py-2 w-full"
-                placeholder={placeholder}
-                onChange={onChange}
-                value={value}
-            />
+        <div className="md:w-[70%]">
+            <div className=''>
+                <input
+                    className="block p-3 pl-8 text-sm text-gray-900 bg-[#DFE4EE] dark:bg-[#482168] border border-grey-light rounded-3xl w-full bg-gray-50 outline-none font-bold"
+                    placeholder={placeholder}
+                    onChange={onChange}
+                    value={value}
+                />
+            </div>
         </div>
     )
 }
