@@ -19,15 +19,15 @@ export function PageHeader(props: Props): JSX.Element {
             {breadcrumb !== undefined && breadcrumb.length > 0 && (
                 <Breadcrumb items={breadcrumb} />
             )}
-            <div className="inline-flex gap-96 mb-4 ml-64">
-                <div className="flex items-center gap-3 flex-row">
-                    <h1 className="flex items-center text-2xl font-bold gap-3 leading-8">{title}</h1>
+            <div className="items-center w-full md:flex md:justify-between md:w-auto">
+                <div className="w-full md:w-[30%]">
+                    <h1 className="text-4xl font-black">{title}</h1>
                     {subtitle && (
-                        <div className="text-white text-base font-normal tracking-tighter leading-5">{subtitle}</div>
+                        <div className="text-xl font-black">{subtitle}</div>
                     )}
                 </div>
                 {actions !== undefined && (
-                    <div className="flex items-center gap-5 justify-between min-w-min w-full">
+                    <div className="w-full mt-4 flex items-center md:mt-0 md:w-[70%]">
                         {actions}
                     </div>
                 )}
