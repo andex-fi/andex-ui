@@ -1,4 +1,4 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/438c813c-48fd-4d75-bc0a-fc870c1e8bfd/deploy-status)](https://app.netlify.com/sites/andex-demo/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/bb302a0e-26e2-4d41-9c13-d6d207acb258/deploy-status)](https://app.netlify.com/sites/andex-home/deploys)
 
 # Getting Started with Create React App
 
