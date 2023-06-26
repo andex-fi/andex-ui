@@ -1,6 +1,7 @@
 import BigNumber from "bignumber.js";
 import { TokenIcon } from "../TokenIcon";
 import type { WalletNativeCoin } from "../../state/WalletService";
+import { formattedAmount } from "../../utils";
 
 export type NativeCoinItemProps = {
   coin: WalletNativeCoin;
@@ -32,7 +33,9 @@ export function NativeCoinItem({
           </div>
         </div>
         <div className="popup-item__right">
-          {new BigNumber(coin.balance ?? 0).shiftedBy(-coin.decimals).toFixed()}
+          {formattedAmount(
+            new BigNumber(coin.balance ?? 0).shiftedBy(-coin.decimals).toFixed()
+          )}
         </div>
       </div>
     </>
