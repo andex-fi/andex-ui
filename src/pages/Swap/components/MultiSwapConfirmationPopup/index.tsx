@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import * as React from "react";
-import * as ReactDOM from "react-dom";
+// import * as ReactDOM from "react-dom";
 import { reaction } from "mobx";
 import { observer } from "mobx-react-lite";
 // import { useIntl } from 'react-intl'
