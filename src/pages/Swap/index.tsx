@@ -42,7 +42,9 @@ export function Swap(): JSX.Element {
         <div className="w-full text-black dark:text-white md:w-[32rem]">
           <div className="h-53 p-2 px-4 rounded-t-3xl bg-[#F4F5FA] dark:bg-purple">
             <header className="flex items-center justify-between pr-8">
-              <Observer>{() => <h2 className="m-6 text-xl font-bold">Swap Tokens</h2>}</Observer>
+              <Observer>
+                {() => <h2 className="m-6 text-xl font-bold">Swap Tokens</h2>}
+              </Observer>
 
               <SwapSettings />
             </header>
@@ -200,7 +202,13 @@ export function Swap(): JSX.Element {
             {formStore.isConfirmationAwait && (
               <>
                 {formStore.isMultipleSwapMode ? (
-                  <MultiSwapConfirmationPopup key="multiSwapConfirmationPopup" />
+                  <MultiSwapConfirmationPopup
+                    isOpen={
+                      formStore.isMultipleSwapMode &&
+                      formStore.isConfirmationAwait
+                    }
+                    key="multiSwapConfirmationPopup"
+                  />
                 ) : (
                   <SwapConfirmationPopup
                     isOpen={
