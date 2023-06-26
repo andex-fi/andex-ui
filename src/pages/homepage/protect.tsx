@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { Button } from "../../components/Button";
-import ProtectImg from "../../assets/protectimg.png";
+import ProtectImg from "../../assets/protectimg.svg";
 import { motion } from "framer-motion";
 
 export const Protect: FC = () => {

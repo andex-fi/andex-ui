@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Button } from "../../components/Button";
-import SuperchargeImg from "../../assets/superchargeimg.png";
-import UnlockImg from "../../assets/unlockimg.png";
+import SuperchargeImg from "../../assets/superchargeimg.svg";
+import UnlockImg from "../../assets/unlockimg.svg";
 import { motion } from "framer-motion";
 
 export const Supercharge: FC = () => {
