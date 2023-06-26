@@ -88,11 +88,13 @@ Props) {
           <div className="flex">
             <TokenIcon
               size="medium"
+              icon={leftToken?.icon}
               address={leftToken?.root.toString()}
             ></TokenIcon>
             <TokenIcon
               size="medium"
               className="-ml-2 "
+              icon={rightToken?.icon}
               address={rightToken?.root.toString()}
             ></TokenIcon>
           </div>
