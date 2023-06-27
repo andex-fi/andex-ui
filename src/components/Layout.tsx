@@ -2,7 +2,7 @@ import React from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { Nav } from "./Nav";
 import Navbar from "./Navbar";
-import { Footer as HomepageFooter } from "../pages/homepage/footer";
+import { Footer as HomepageFooter } from "../pages/Homepage/footer";
 
 const Layout: React.FC = () => {
   const location = useLocation();

@@ -133,7 +133,7 @@ Props) {
           <div className="flex justify-around gap-2 mt-3">
             <Button
               onClick={() =>
-                navigate(`/addliquidity/${leftToken?.root}/${rightToken?.root}`)
+                navigate(`/add/${leftToken?.root}/${rightToken?.root}`)
               }
               btnStyles="bg-[#9645D7] px-3 py-2 rounded-lg text-white text-sm col-span-2 col-end-7 flex items-center justify-center gap-2"
             >
@@ -142,7 +142,7 @@ Props) {
             <Button
               onClick={() =>
                 navigate(
-                  `/removeliquidity/${leftToken?.root}/${rightToken?.root}`
+                  `/remove/${leftToken?.root}/${rightToken?.root}`
                 )
               }
               btnStyles="bg-[#9645D7] px-3 py-2 rounded-lg text-white text-sm col-span-2 col-end-7 flex items-center justify-center gap-2"

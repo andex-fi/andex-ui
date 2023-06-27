@@ -1,10 +1,13 @@
 import { AddLiquidityFormStoreProvider } from "../../contexts/AddLiquidityFormStoreContext";
 import AddLiquidity from "./components/AddLiquidity";
+import Page from "../Page";
 
 function AddLiquidityPage() {
   return (
     <AddLiquidityFormStoreProvider>
-      <AddLiquidity />
+      <Page>
+        <AddLiquidity />
+      </Page>
     </AddLiquidityFormStoreProvider>
   );
 }

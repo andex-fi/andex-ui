@@ -1,20 +1,16 @@
 import React from "react";
 import { useAddLiquidityFormStoreContext } from "../../../contexts/AddLiquidityFormStoreContext";
-// import { Approveliquidity } from "./approveliquidity";
 import { Link, useParams } from "react-router-dom";
 import { URLTokensParams } from "../../../routes";
 import { useAddLiquidityForm } from "../hooks/useAddLiquidityForm";
-// import BigNumber from "bignumber.js";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { FiSettings } from "react-icons/fi";
 import { Observer } from "mobx-react-lite";
 import { AddLiquiditySubmitButton } from "./AddLiquiditySubmitButton";
-// import { error } from "console";
 import { reaction } from "mobx";
 import { error } from "../../../utils";
 import { TokenSelector } from "../../../components/TokenSelector";
 import { useField } from "../../../hooks";
-// import Navbar from "../../../components/Navbar";
 
 function AddLiquidity() {
   const { leftTokenRoot, rightTokenRoot } = useParams<URLTokensParams>();
@@ -33,37 +29,6 @@ function AddLiquidity() {
     onChange: form.onChangeLeftAmount,
   });
 
-  // const maximizeLeftAmount = React.useCallback(async () => {
-  //   await formStore.changeLeftAmount(
-  //     new BigNumber(formStore.leftBalance)
-  //       .shiftedBy(-(formStore.leftDecimals ?? 0))
-  //       .toFixed()
-  //   );
-  // }, []);
-
-  // const maximizeRightAmount = React.useCallback(async () => {
-  //   await formStore.changeRightAmount(
-  //     new BigNumber(formStore.rightBalance)
-  //       .shiftedBy(-(formStore.rightDecimals ?? 0))
-  //       .toFixed()
-  //   );
-  // }, []);
-
-  // const onLeftImportConfirm = React.useCallback(
-  //   (value: string) => {
-  //     form.onLeftImportConfirm(value, rightTokenRoot);
-  //   },
-  //   [leftTokenRoot, rightTokenRoot]
-  // );
-
-  // const onRightImportConfirm = React.useCallback(
-  //   (value: string) => {
-  //     if (leftTokenRoot) {
-  //       form.onRightImportConfirm(leftTokenRoot, value);
-  //     }
-  //   },
-  //   [leftTokenRoot, rightTokenRoot]
-  // );
 
   React.useEffect(() => {
     const tokensListDisposer = reaction(
@@ -91,7 +56,7 @@ function AddLiquidity() {
   }, [form, formStore, leftTokenRoot, rightTokenRoot]);
 
   return (
-    <div className="flex items-center justify-center w-full h-screen font-montserrat bg-[#EBF1FF] dark:bg-purple-dark p-4">
+    <div className="flex items-center justify-center w-full font-montserrat p-4">
       <div className="w-full md:w-[30rem] bg-white dark:bg-purple-light rounded-2xl p-6">
         <div className="w-full flex items-center justify-between">
           <Link to="/pools">

@@ -1,14 +1,17 @@
 import { useFavoritesPoolsStorage } from "./hooks/useFavoritesPoolsStorage";
-import { Liquiditypools } from "./liquiditypools";
+import { Liquiditypools } from "./LiquidityPools";
 import { PoolsStoreProvider } from "../../contexts/PoolsStoreProvider";
+import Page from "../Page";
 
 function Pools() {
   const pools = useFavoritesPoolsStorage();
 
   return (
-    <PoolsStoreProvider params={{ pools }}>
-      <Liquiditypools />
-    </PoolsStoreProvider>
+    <Page>
+      <PoolsStoreProvider params={{ pools }}>
+        <Liquiditypools />
+      </PoolsStoreProvider>
+    </Page>
   );
 }
 

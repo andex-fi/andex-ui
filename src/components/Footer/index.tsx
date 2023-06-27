@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { noop } from "lodash";
 import useTheme from "../../hooks/useTheme";
 import { Footer as UIKitFooter, footerLinks, langs } from "@andex/uikit";
-import { Footer as HomepageFooter } from "../../pages/homepage/footer";
+import { Footer as HomepageFooter } from "../../pages/Homepage/footer";
 
 const MOBILE_MENU_HEIGHT = 44;
 

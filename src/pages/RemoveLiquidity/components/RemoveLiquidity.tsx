@@ -7,13 +7,11 @@ import BigNumber from "bignumber.js";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { FiSettings } from "react-icons/fi";
 import { TokenSelector } from "../../../components/TokenSelector";
-// import { Button } from "../../../components/Button";
 import { Warning } from "../../../components/Warning";
 import { AmountInput } from "../../../components/AmountInput";
 import { Placeholder } from "../../../components/Placeholder";
 import { Token } from "../../../components/Token";
 import { Link, useParams } from "react-router-dom";
-// import { useAccountContext } from "../../../hooks/useAccountContext";
 import { URLTokensParams } from "../../../routes";
 import { useRemoveLiquidityForm } from "../hooks";
 import { useRemoveLiquidityFormStoreContext } from "../../../contexts";
@@ -28,7 +26,6 @@ import {
 import { RemoveLiquiditySubmitButton } from "./RemoveLiquiditySubmitButton";
 
 export function RemoveLiquidity(): JSX.Element {
-  // const { address, connect } = useAccountContext();
   const { leftTokenRoot, rightTokenRoot } = useParams<URLTokensParams>();
 
   const formStore = useRemoveLiquidityFormStoreContext();
@@ -69,7 +66,7 @@ export function RemoveLiquidity(): JSX.Element {
   }, []);
 
   return (
-    <div className="flex items-center justify-center w-full min-h-screen overflow-y-auto font-montserrat bg-[#EBF1FF] dark:bg-purple-dark p-4 py-10">
+    <div className="flex items-center justify-center w-full overflow-y-auto font-montserrat p-4 py-10">
       <div className="w-full md:w-[40rem] bg-white dark:bg-purple-light rounded-2xl p-6">
         <div className="w-full flex items-center justify-between mb-4">
           <Link to="/pools">

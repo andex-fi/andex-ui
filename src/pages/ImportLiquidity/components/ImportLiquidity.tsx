@@ -67,7 +67,8 @@ export function ImportLiquidity(): JSX.Element {
 
     return () => {
       tokensListDisposer();
-      formStore.dispose().catch((reason) => error(reason));
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      formStore.dispose().catch((reason: any) => error(reason));
     };
   }, []);
 

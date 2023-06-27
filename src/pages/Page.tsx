@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import { PageMeta } from "../components/Layout/Page";
 
 const StyledPage = styled.div<{ $removePadding: boolean }>`
-  display: flex;
+  // display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;

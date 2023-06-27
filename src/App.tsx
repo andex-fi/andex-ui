@@ -1,11 +1,11 @@
 import { Routes, Route } from "react-router-dom";
 import RemoveLiquidityPage from "./pages/RemoveLiquidity";
-import { Homepage } from "./pages/homepage/Homepage";
+import { Homepage } from "./pages/Homepage/Homepage";
 import CreatePage from "./pages/Builder/Create";
 import BuilderPage from "./pages/Builder";
 import TokenPage from "./pages/Builder/Token";
 import AddLiquidityPage from "./pages/AddLiquidity";
-import Pools from "./pages/pools";
+import Pools from "./pages/Pools";
 import Layout from "./components/Layout";
 import ImportLiquidityPage from "./pages/ImportLiquidity";
 import { Swap } from "./pages/Swap";
