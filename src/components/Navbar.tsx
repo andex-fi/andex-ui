@@ -270,8 +270,8 @@ export default function Navbar() {
                   href={item.href}
                   className={classNames(
                     item.current
-                      ? "bg-grey text-white"
-                      : "text-grey hover:bg-grey hover:text-white",
+                      ? "bg-[#983BF6] text-white"
+                      : "text-grey hover:bg-[#983BF6] hover:text-white",
                     "block rounded-md px-3 py-2 text-base font-medium"
                   )}
                   aria-current={item.current ? "page" : undefined}
@@ -280,7 +280,7 @@ export default function Navbar() {
                 </Disclosure.Button>
               ))}
             </div>
-            <div className="border-t border-gray-700 pb-3 pt-4">
+            {/* <div className="border-t border-gray-700 pb-3 pt-4">
               <div className="flex items-center px-5 sm:px-6"></div>
               <div className="mt-3 space-y-1 px-2 sm:px-3">
                 {userNavigation.map((item) => (
@@ -294,7 +294,7 @@ export default function Navbar() {
                   </Disclosure.Button>
                 ))}
               </div>
-            </div>
+            </div> */}
           </Disclosure.Panel>
         </>
       )}
