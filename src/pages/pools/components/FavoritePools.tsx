@@ -53,7 +53,7 @@ function FavoritePools() {
             ))}
             <div className="text-center mt-5">
               Can't find pool?{" "}
-              <Link className="text-blue-400 underline" to="/importliquidity">
+              <Link className="text-blue-400 underline" to="/import">
                 Import pools
               </Link>
             </div>
@@ -68,7 +68,7 @@ function FavoritePools() {
           <div className="flex items-center justify-center w-full h-48">
             <p className="font-bold">
               No positions found{" "}
-              <Link className="text-blue-400 underline" to="/importliquidity">
+              <Link className="text-blue-400 underline" to="/import">
                 Import pools
               </Link>{" "}
             </p>

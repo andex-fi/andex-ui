@@ -9,21 +9,16 @@ import {
   SunIcon,
   MoonIcon,
 } from "@heroicons/react/24/outline";
-
+// import styled from "styled-components";
 import LogoLight from "../assets/LogoLight.png";
 import LogoLightSingle from "../assets/LogoLightSingle.png";
 import LogoDark from "../assets/LogoDark.png";
 import LogoDarkSingle from "../assets/LogoDarkSingle.png";
 import { Link } from "react-router-dom";
-// import { useAccountContext } from "../hooks/useAccountContext";
 import WalletDropDown from "./WalletDropDown";
-// import { VenomConnect } from "@andex/wallet-kit";
-// import { VenomStandaloneClient } from "@andex/client";
-// import { ProviderRpcClient } from "@andex/provider";
 import { useWallet } from "../state/WalletService";
 import { Observer } from "mobx-react-lite";
 import useTheme from "../hooks/useTheme";
-// import { Sun } from "@heroicons/react/20/solid";
 
 const navigation = [
   { name: "Swap", href: "/swap", current: true },

@@ -17,7 +17,11 @@ export const Liquiditypools: FC = () => {
   const navigate = useNavigate();
 
   const handleAddPosition = (): void => {
-    navigate("/addliquidity");
+    navigate("/add");
+  };
+
+  const handleRemovePosition = (): void => {
+    navigate("/remove");
   };
 
   return (
@@ -44,7 +48,7 @@ export const Liquiditypools: FC = () => {
               </Button>
               <Button
                 btnStyles="border-[#9645D7] text-[#9645D7] border-2 px-3 py-1 rounded-2xl dark:text-white text-sm col-span-2 col-end-7 flex items-center justify-center gap-2"
-                onClick={() => navigate("/removeliquidity")}
+                onClick={handleRemovePosition}
               >
                 <span>-</span>
                 <p>Remove Liquidity</p>

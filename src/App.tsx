@@ -26,21 +26,21 @@ export default function App() {
           <Route index={true} element={<Pools />} />
         </Route>
         <Route
-          path="addliquidity/:leftTokenRoot/:rightTokenRoot"
+          path="add/:leftTokenRoot/:rightTokenRoot"
           element={<AddLiquidityPage />}
         />
-        <Route path="addliquidity" element={<AddLiquidityPage />} />
-        <Route path="removeliquidity" element={<RemoveLiquidityPage />} />
+        <Route path="add" element={<AddLiquidityPage />} />
+        <Route path="remove" element={<RemoveLiquidityPage />} />
         <Route
-          path="removeliquidity/:leftTokenRoot/:rightTokenRoot"
+          path="remove/:leftTokenRoot/:rightTokenRoot"
           element={<RemoveLiquidityPage />}
         />
         <Route path="builder" element={<BuilderPage />} />
         <Route path="builder/create" element={<CreatePage />} />
         <Route path="builder/:tokenRoot" element={<TokenPage />} />
-        <Route path="importliquidity" element={<ImportLiquidityPage />} />
+        <Route path="import" element={<ImportLiquidityPage />} />
         <Route
-          path="importliquidity/:leftTokenRoot/:rightTokenRoot"
+          path="import/:leftTokenRoot/:rightTokenRoot"
           element={<ImportLiquidityPage />}
         />
       </Route>
