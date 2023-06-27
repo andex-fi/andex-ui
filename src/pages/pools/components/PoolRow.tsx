@@ -5,7 +5,6 @@ import { TokenCache } from "../../../state/TokensCacheService";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/20/solid";
 import { Button } from "../../../components/Button";
 import { useNavigate } from "react-router-dom";
-// import { LiquidityPoolTokenData } from "../../../constants";
 import { formattedTokenAmount, isGoodBignumber } from "../../../utils";
 import { LiquidityPoolUtils } from "../../../constants";
 import BigNumber from "bignumber.js";
@@ -21,15 +20,12 @@ interface Props {
   leftBalance?: string;
 }
 
-function PoolRow({
+const PoolRow: React.FC<Props> = ({
   leftToken,
   rightToken,
   pool,
   user,
-}: // userLpBalance,
-// rightBalance,
-// leftBalance,
-Props) {
+}) => {
   const [isOpen, setOpen] = useState(false);
   const navigate = useNavigate();
   const [rightBalance, setRightBalance] = useState("0");

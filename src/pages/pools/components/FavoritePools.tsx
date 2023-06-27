@@ -2,12 +2,11 @@ import React from "react";
 import { usePoolsStoreContext } from "../../../contexts/PoolsStoreProvider";
 import { reaction } from "mobx";
 import { Observer } from "mobx-react-lite";
-// import { TokenIcon } from "../../../components/TokenIcon";
 import { Link } from "react-router-dom";
 import PoolRow from "./PoolRow";
 import { Oval } from "react-loader-spinner";
 
-function FavoritePools() {
+const FavoritePools: React.FC = () => {
   const poolsStore = usePoolsStoreContext();
 
   React.useEffect(

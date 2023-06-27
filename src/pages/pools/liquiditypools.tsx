@@ -6,10 +6,8 @@ import FavoritePools from "./components/FavoritePools";
 import { usePoolsStoreContext } from "../../contexts/PoolsStoreProvider";
 
 export const Liquiditypools: FC = () => {
-  // const [positions, setPositions] = useState<boolean>(false);
   const pool = usePoolsStoreContext();
   console.log(pool);
-  // const { connect } = useAccountContext();
 
   const navigate = useNavigate();
 
