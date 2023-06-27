@@ -66,11 +66,13 @@ export function TokensList(): JSX.Element {
                         </tr>
                     </thead>
                     <TableBody>
-                        <tr className="font-bold">
+                        <>
                             {builder.tokens.map(token => (
+                                <tr className="font-bold">
                                 <Item key={token.root} token={token} />
+                                </tr>
                             ))}
-                        </tr>
+                        </>
                     </TableBody>
                     </Table>
                 </div>
