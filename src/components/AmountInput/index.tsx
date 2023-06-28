@@ -1,28 +1,11 @@
 import * as React from "react";
-
+import { AmountInputProps } from "./types";
 import { Button } from "../Button";
-import { TextInput, TextInputProps } from "../TextInput";
+import TextInput from "../TextInput";
 import { useField } from "../../hooks/useField";
 
-type Props = {
-  value?: string;
-  decimals?: number;
-  disabled?: boolean;
-  maxIsVisible?: boolean;
-  placeholder?: string;
-  size?: TextInputProps["size"];
-  id?: string;
-  invalid?: boolean;
-  prefix?: React.ReactNode;
-  readOnly?: boolean;
-  className?: string;
-  onBlur?: React.FocusEventHandler<HTMLInputElement>;
-  onChange?: (value: string) => void;
-  onClickMax?: () => void;
-  onFocus?: React.FocusEventHandler<HTMLInputElement>;
-};
 
-export function AmountInput({
+const AmountInput: React.FC<AmountInputProps> = ({
   decimals,
   disabled,
   id,
@@ -37,7 +20,7 @@ export function AmountInput({
   onFocus,
   onBlur,
   ...props
-}: Props): JSX.Element {
+}) => {
   const field = useField({
     decimals,
     value: props.value,
@@ -77,3 +60,5 @@ export function AmountInput({
     </div>
   );
 }
+
+export default AmountInput

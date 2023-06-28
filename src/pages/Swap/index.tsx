@@ -14,9 +14,9 @@ import {
 } from "./components";
 import { useSwapForm } from "./hooks/useSwapForm";
 import { useSwapFormStore } from "./stores/SwapFormStore";
-import { TokenImportPopup } from "../../components/TokenImportPopup";
+import TokenImportPopup from "../../components/TokenImportPopup";
 
-import { TokensList } from "../../components/TokensList";
+import TokensList from "../../components/TokensList";
 import { ArrowsUpDownIcon } from "@heroicons/react/20/solid";
 import Page from "../Page";
 

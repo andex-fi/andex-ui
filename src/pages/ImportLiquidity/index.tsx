@@ -1,11 +1,14 @@
 import React from "react";
 import { ImportLiquidityFormStoreProvider } from "../../contexts/ImportLiquidityContext";
 import { ImportLiquidity } from "./components/ImportLiquidity";
+import Page from "../Page";
 
-function ImportLiquidityPage() {
+const ImportLiquidityPage: React.FC = () => {
   return (
     <ImportLiquidityFormStoreProvider>
-      <ImportLiquidity />
+      <Page>
+        <ImportLiquidity />
+      </Page>
     </ImportLiquidityFormStoreProvider>
   );
 }

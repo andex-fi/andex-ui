@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import { TokenIcon, TokenIconProps } from "../TokenIcon";
-import { Tooltip } from "../Tooltip";
+import TokenIcon, { TokenIconProps } from "../TokenIcon";
+import Tooltip from "../Tooltip";
 
 export type TokenIconsProps = {
   icons: TokenIconProps[];
@@ -11,13 +11,13 @@ export type TokenIconsProps = {
   showDesc?: boolean;
 };
 
-export function TokenIcons({
+const TokenIcons: React.FC<TokenIconsProps> = ({
   icons,
   title,
   limit = icons.length,
   size = "small",
   showDesc,
-}: TokenIconsProps): JSX.Element {
+}) => {
   const moreIconRef = React.useRef<HTMLSpanElement | null>(null);
   const innerRef = React.useRef<HTMLDivElement>(null);
   const visibleIcons = icons.slice(0, limit);
@@ -58,3 +58,5 @@ export function TokenIcons({
     </div>
   );
 }
+
+export default TokenIcons;

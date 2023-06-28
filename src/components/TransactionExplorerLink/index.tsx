@@ -9,7 +9,7 @@ type Props = React.PropsWithChildren<{
     onClick?: React.MouseEventHandler<HTMLAnchorElement>;
 }>
 
-export function TransactionExplorerLink(props: Props): JSX.Element {
+const TransactionExplorerLink: React.FC<Props> = (props) => {
 
     const { children, className, id, onClick } = props
 
@@ -26,3 +26,5 @@ export function TransactionExplorerLink(props: Props): JSX.Element {
         </a>
     )
 }
+
+export default TransactionExplorerLink;

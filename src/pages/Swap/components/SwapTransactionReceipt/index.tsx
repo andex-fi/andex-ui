@@ -1,11 +1,9 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { observer } from "mobx-react-lite";
-
-import { AccountExplorerLink } from "../../../../components/AccountExplorerLink";
-import { Button } from "../../../../components/Button";
-import { Icon } from "../../../../components/Icon";
-import { TransactionExplorerLink } from "../../../../components/TransactionExplorerLink";
+import { IconButton, CloseIcon } from "@andex/uikit";
+import AccountExplorerLink from "../../../../components/AccountExplorerLink";
+import TransactionExplorerLink from "../../../../components/TransactionExplorerLink";
 // import { UserAvatar } from '@/components/common/UserAvatar'
 import { useSwapFormStore } from "../../stores/SwapFormStore";
 import { formattedTokenAmount } from "../../../../utils";
@@ -105,13 +103,11 @@ function SwapReceipt(): JSX.Element | null {
     <div className="popup">
       <div className="popup-overlay" />
       <div className="popup__wrap">
-        <Button
-          type="icon"
-          className="popup-close"
+        <IconButton
           onClick={formStore.cleanTransactionResult}
         >
-          <Icon icon="close" />
-        </Button>
+          <CloseIcon />
+        </IconButton>
         <h2 className="popup-title">
           {formStore.transaction.success
             ? "Swap has been completed successfully"

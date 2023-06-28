@@ -1,18 +1,11 @@
 import * as React from "react";
-
+import { AccountExplorerProps } from "./types";
 import { sliceAddress } from "../../utils";
+import { Link } from "@andex/uikit";
 
-type Props = React.PropsWithChildren<{
-  address: string;
-  className?: string;
-  onClick?: (event: React.MouseEvent<HTMLAnchorElement>) => void;
-}>;
-
-export function AccountExplorerLink(props: Props): JSX.Element {
-  const { address, children, className, onClick } = props;
-
+const AccountExplorerLink: React.FC<AccountExplorerProps> = ({ address, children, className, onClick }) => {
   return (
-    <a
+    <Link
       className={className}
       href={`https://devnet.venomscan.com/accounts/${address}`}
       title={"Open in Explorer"}
@@ -21,6 +14,8 @@ export function AccountExplorerLink(props: Props): JSX.Element {
       onClick={onClick}
     >
       {children || sliceAddress(address)}
-    </a>
+    </Link>
   );
 }
+
+export default AccountExplorerLink;

@@ -3,11 +3,10 @@ import { observer } from "mobx-react-lite";
 
 import { Button } from "../../../../components/Button";
 import { Icon } from "../../../../components/Icon";
-import { TokenIcons } from "../../../../components/TokenIcons";
+import TokenIcons from "../../../../components/TokenIcons";
 import { useSwapFormStore } from "../../stores/SwapFormStore";
 import { storage } from "../../../../utils";
 
-// import "./index.scss";
 
 function SwapNotationInternal(): JSX.Element | null {
   const formStore = useSwapFormStore();

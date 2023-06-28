@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { toast } from 'react-toastify'
 
-import { TransactionExplorerLink } from '../../../components/TransactionExplorerLink'
+import TransactionExplorerLink from '../../../components/TransactionExplorerLink'
 import type { LiquidityPoolWithdrawCallbacks } from '../../../constants'
 import { notify, NotifyType } from '../../../components/Notification'
 import { isMobile, stopEventPropagate } from '../../../utils'

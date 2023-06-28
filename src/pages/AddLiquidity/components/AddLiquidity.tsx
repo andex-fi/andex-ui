@@ -9,7 +9,7 @@ import { Observer } from "mobx-react-lite";
 import { AddLiquiditySubmitButton } from "./AddLiquiditySubmitButton";
 import { reaction } from "mobx";
 import { error } from "../../../utils";
-import { TokenSelector } from "../../../components/TokenSelector";
+import TokenSelector from "../../../components/TokenSelector";
 import { useField } from "../../../hooks";
 
 const AddLiquidity: React.FC = () => {

@@ -1,9 +1,9 @@
 import * as React from "react";
 import { Waypoint } from "react-waypoint";
 
-import { TokenItem, TokenItemProps } from "../TokenItem";
+import TokenItem, { TokenItemProps } from "../TokenItem";
 
-export function WaypointWrappedItem(props: TokenItemProps): JSX.Element {
+const WaypointWrappedItem: React.FC<TokenItemProps> = (props) => {
   const [visible, setVisibleTo] = React.useState(false);
 
   const onPositionChange = ({ currentPosition }: Waypoint.CallbackArgs) => {
@@ -25,3 +25,5 @@ export function WaypointWrappedItem(props: TokenItemProps): JSX.Element {
     </Waypoint>
   );
 }
+
+export default WaypointWrappedItem
