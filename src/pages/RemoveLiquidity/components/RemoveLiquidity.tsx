@@ -25,7 +25,7 @@ import {
 } from "../../../utils";
 import { RemoveLiquiditySubmitButton } from "./RemoveLiquiditySubmitButton";
 
-export function RemoveLiquidity(): JSX.Element {
+export const RemoveLiquidity: React.FC = () => {
   const { leftTokenRoot, rightTokenRoot } = useParams<URLTokensParams>();
 
   const formStore = useRemoveLiquidityFormStoreContext();
