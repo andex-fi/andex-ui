@@ -6,7 +6,7 @@ import { Supercharge } from "./supercharge";
 import { Protect } from "./protect";
 import { Thriving } from "./thriving";
 
-export const Homepage: FC = () => {
+const Homepage: FC = () => {
   return (
     <div className="w-full">
       <Hero />
@@ -18,3 +18,5 @@ export const Homepage: FC = () => {
     </div>
   );
 };
+
+export default Homepage
