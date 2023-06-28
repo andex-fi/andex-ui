@@ -8,6 +8,7 @@ import AddLiquidityPage from "./pages/AddLiquidity";
 import Pools from "./pages/pools";
 import Layout from "./components/Layout";
 import ImportLiquidityPage from "./pages/ImportLiquidity";
+import YeildFarmingPage from "./pages/YeildFarming";
 import { Swap } from "./pages/Swap";
 
 export default function App() {
@@ -39,6 +40,7 @@ export default function App() {
         <Route path="builder/create" element={<CreatePage />} />
         <Route path="builder/:tokenRoot" element={<TokenPage />} />
         <Route path="importliquidity" element={<ImportLiquidityPage />} />
+        <Route path="yeildfarming" element={<YeildFarmingPage />} />
         <Route
           path="importliquidity/:leftTokenRoot/:rightTokenRoot"
           element={<ImportLiquidityPage />}
