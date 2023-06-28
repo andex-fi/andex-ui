@@ -2,12 +2,9 @@ import { Button } from '../../components/Button'
 import { Builder } from './components/Builder'
 import { FilterField } from './components'
 import Page from '../Page'
-// import { WalletMiddleware } from '@/modules/WalletMiddleware'
-// import { useWallet } from '../../state/WalletService'
 
 
 export default function BuilderPage(): JSX.Element {
-    // const wallet = useWallet()
 
     return (
         <Page>

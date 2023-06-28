@@ -12,7 +12,7 @@ import { error } from "../../../utils";
 import { TokenSelector } from "../../../components/TokenSelector";
 import { useField } from "../../../hooks";
 
-function AddLiquidity() {
+const AddLiquidity: React.FC = () => {
   const { leftTokenRoot, rightTokenRoot } = useParams<URLTokensParams>();
 
   const formStore = useAddLiquidityFormStoreContext();

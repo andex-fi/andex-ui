@@ -1,36 +1,26 @@
 import * as React from "react";
 import classNames from "classnames";
 import { Observer } from "mobx-react-lite";
-// import { useIntl } from "react-intl";
 
-// import { Icon } from '@/components/common/Icon'
 import {
   ConversionSubmitButton,
-  // ConversionTransactionReceipt,
-  //   CrossExchangeSubmitButton,
   MultiSwapConfirmationPopup,
   SwapBill,
   SwapConfirmationPopup,
   SwapField,
-  // SwapNotation,
   SwapPrice,
   SwapSettings,
   SwapSubmitButton,
-  // SwapTransactionReceipt,
 } from "./components";
 import { useSwapForm } from "./hooks/useSwapForm";
 import { useSwapFormStore } from "./stores/SwapFormStore";
-// import { SwapDirection } from "./types";
-// import { TokensList } from '../Launch/components'
 import { TokenImportPopup } from "../../components/TokenImportPopup";
 
-// import "./index.scss";
 import { TokensList } from "../../components/TokensList";
 import { ArrowsUpDownIcon } from "@heroicons/react/20/solid";
 import Page from "../Page";
 
-export function Swap(): JSX.Element {
-  //   const intl = useIntl();
+const Swap: React.FC = () => {
   const formStore = useSwapFormStore();
   const tokensCache = formStore.useTokensCache;
   const wallet = formStore.useWallet;
@@ -277,3 +267,5 @@ export function Swap(): JSX.Element {
     </Page>
   );
 }
+
+export default Swap;

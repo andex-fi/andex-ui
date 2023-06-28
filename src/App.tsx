@@ -8,7 +8,7 @@ import AddLiquidityPage from "./pages/AddLiquidity";
 import Pools from "./pages/Pools";
 import Layout from "./components/Layout";
 import ImportLiquidityPage from "./pages/ImportLiquidity";
-import { Swap } from "./pages/Swap";
+import Swap from "./pages/Swap";
 
 export default function App() {
   return (
