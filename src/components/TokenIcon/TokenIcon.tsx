@@ -1,20 +1,13 @@
-import { Avatar } from "../Avatar";
+import Avatar from "../Avatar";
+import { TokenIconProps } from "./types";
 
-export type TokenIconProps = {
-  address?: string;
-  className?: string;
-  icon?: string;
-  name?: string;
-  size?: "small" | "xsmall" | "medium" | "large";
-};
-
-export function TokenIcon({
+const TokenIcon: React.FC<TokenIconProps> = ({
   address,
   className,
   icon,
   name,
   size = "large",
-}: TokenIconProps): JSX.Element | null {
+}) => {
   if (icon !== undefined) {
     return (
       <img
@@ -30,3 +23,5 @@ export function TokenIcon({
     <Avatar address={address} size={size} className={className} />
   ) : null;
 }
+
+export default TokenIcon;

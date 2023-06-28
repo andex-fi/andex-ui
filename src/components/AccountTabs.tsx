@@ -30,7 +30,7 @@ const Assets = () => {
   );
 };
 
-function AccountTabs() {
+const AccountTabs: React.FC = () => {
   return (
     <div>
       <Tab.Group>

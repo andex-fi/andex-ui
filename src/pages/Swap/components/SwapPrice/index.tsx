@@ -8,7 +8,6 @@ import { useSwapFormStore } from "../../stores/SwapFormStore";
 import { SwapDirection } from "../../types";
 import { formattedTokenAmount } from "../../../../utils";
 
-// import "./index.scss";
 
 function Price(): JSX.Element | null {
   const formStore = useSwapFormStore();

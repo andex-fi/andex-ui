@@ -39,20 +39,7 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-/*const standaloneFallback = () =>
-  VenomStandaloneClient.create({
-    connection: {
-      id: 1002,
-      group: "venom_devnet",
-      type: "jrpc",
-      data: {
-        endpoint: "https://jrpc-devnet.venom.foundation/",
-        // endpoint: "https://jrpc.venom.foundation/rpc",
-      },
-    },
-  }); */
-
-export default function Navbar() {
+const Navbar: React.FC = () => {
 
   const wallet = useWallet();
 
@@ -218,21 +205,6 @@ export default function Navbar() {
                   </Disclosure.Button>
                 ))}
               </div>
-              {/* <div className="border-t border-gray-700 pb-3 pt-4">
-                <div className="flex items-center px-5 sm:px-6"></div>
-                <div className="mt-3 space-y-1 px-2 sm:px-3">
-                  {userNavigation.map((item) => (
-                    <Disclosure.Button
-                      key={item.name}
-                      as="a"
-                      href={item.href}
-                      className="block rounded-md px-3 py-2 text-base font-medium text-grey hover:bg-gray-700 hover:text-white"
-                    >
-                      {item.name}
-                    </Disclosure.Button>
-                  ))}
-                </div>
-              </div> */}
             </Disclosure.Panel>
           </>
         )}
@@ -240,3 +212,5 @@ export default function Navbar() {
     </NavContainer>
   );
 }
+
+export default Navbar;

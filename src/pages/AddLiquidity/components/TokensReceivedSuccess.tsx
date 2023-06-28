@@ -1,8 +1,8 @@
 import BigNumber from "bignumber.js";
 
-import { AccountExplorerLink } from "../../../components/AccountExplorerLink";
-import { TokenIcon } from "../../../components/TokenIcon";
-import { TransactionExplorerLink } from "../../../components/TransactionExplorerLink";
+import AccountExplorerLink from "../../../components/AccountExplorerLink";
+import TokenIcon from "../../../components/TokenIcon";
+import TransactionExplorerLink from "../../../components/TransactionExplorerLink";
 import {
   abbrNumber,
   formattedTokenAmount,

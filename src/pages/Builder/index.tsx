@@ -1,6 +1,6 @@
 import { Button } from '../../components/Button'
 import { Builder } from './components/Builder'
-import { FilterField } from './components'
+import { FilterFieldCommon } from './components'
 import Page from '../Page'
 
 
@@ -15,7 +15,7 @@ export default function BuilderPage(): JSX.Element {
                     </div>
 
                     <div className="w-full mt-4 flex items-center md:mt-0 md:w-[70%]">
-                        <FilterField className='' />
+                        <FilterFieldCommon />
                         <Button
                             btnStyles='bg-purple dark:bg-purple-lightest w-auto p-3 text-white rounded-full flex justify-center items-center mx-3 md:w-[30%] md:mx-0 md:ml-4'
                             link="/builder/create"

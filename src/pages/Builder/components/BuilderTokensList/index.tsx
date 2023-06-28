@@ -1,10 +1,10 @@
 import { observer } from 'mobx-react-lite'
 import styled from 'styled-components'
 import { Button } from '../../../../components/Button'
-import { ContentLoader } from '../../../../components/ContentLoader'
+import { CircleLoader } from '../../../../components/ContentLoader'
 import { Item } from './Item'
 import { useBuilderStore } from '../../state/BuilderStore'
-import { Table, Th } from '@andex/uikit'
+import { Table, Th, Box } from '@andex/uikit'
 
 const TableBody = styled.tbody`
   & tr {
@@ -20,7 +20,11 @@ export function TokensList(): JSX.Element {
 
     switch (true) {
         case builder.isLoading:
-            return <ContentLoader />
+            return (
+                <Box position="absolute" top="12px" right="16px" style={{ zIndex: 17 }}>
+                    <CircleLoader />
+                </Box>
+            )
 
         case builder.tokens.length === 0 && !!builder.filter:
             return (

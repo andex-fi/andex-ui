@@ -1,1 +1,1 @@
-export { TokenImportPopup } from './TokenImportPopup'
+export { default} from './TokenImportPopup'

@@ -7,7 +7,7 @@ import {
   TypeOptions,
 } from "react-toastify";
 
-import { Messages } from "./Messages";
+import Messages from "./Messages";
 
 export const NotifyType = toast.TYPE;
 

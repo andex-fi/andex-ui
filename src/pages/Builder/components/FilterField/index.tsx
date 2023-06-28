@@ -1,13 +1,10 @@
 import * as React from 'react'
 
-import { FilterField as FilterFieldCommon } from '../../../../components/FilterField'
+import FilterField from '../../../../components/FilterField'
 import { useFilterForm } from '../../hooks/useFilterForm'
 
-type Props = {
-    className?: string;
-}
 
-export function FilterField({ className }: Props): JSX.Element {
+export function FilterFieldCommon(): JSX.Element {
     const form = useFilterForm()
 
     const onChange = (event: React.FormEvent<HTMLInputElement>) => {
@@ -16,8 +13,8 @@ export function FilterField({ className }: Props): JSX.Element {
     }
 
     return (
-        <FilterFieldCommon
-            className={className}
+        <FilterField
+            // className={className}
             placeholder="Filtering..."
             onChange={onChange}
         />

@@ -18,7 +18,7 @@ type Props = {
     forceShow?: boolean;
 }
 
-export function Tooltip({
+const Tooltip: React.FC<Props> = ({
     children,
     target,
     alignX = 'left',
@@ -26,7 +26,7 @@ export function Tooltip({
     width,
     // size,
     forceShow,
-}: Props): JSX.Element | null {
+}) => {
     const [visible, setVisible] = React.useState(Boolean(forceShow))
     const tooltipRef = React.createRef<HTMLDivElement>()
     const [position, setPosition] = React.useState<Position>()
@@ -112,3 +112,5 @@ export function Tooltip({
         )
         : null
 }
+
+export default Tooltip;

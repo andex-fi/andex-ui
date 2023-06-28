@@ -1,8 +1,8 @@
 import * as React from "react";
 
 import { Button } from "../Button";
-import { TokenIcon } from "../TokenIcon";
-import { TokensList } from "../TokensList";
+import TokenIcon from "../TokenIcon";
+import TokensList from "../TokensList";
 import { useTokensCache } from "../../state/TokensCacheService";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { Observer } from "mobx-react-lite";
@@ -17,7 +17,7 @@ type Props = {
   showIcon?: boolean;
 };
 
-export function TokenSelector({
+const TokenSelector: React.FC<Props> = ({
   disabled,
   root,
   onOpen,
@@ -25,7 +25,7 @@ export function TokenSelector({
   onSelect,
   // size = 'small',
   showIcon,
-}: Props): JSX.Element {
+}) => {
   const tokensCache = useTokensCache();
   const token = root && tokensCache.get(root);
   const [listVisible, setListVisible] = React.useState(false);
@@ -100,3 +100,5 @@ export function TokenSelector({
     </div>
   );
 }
+
+export default TokenSelector;

@@ -1,14 +1,11 @@
 import * as React from 'react'
 
-
 type Props = {
     messages: React.ReactNode | React.ReactNode[];
     title?: React.ReactNode | null;
 }
 
-
-export function Messages(props: Props): JSX.Element {
-    const { messages, title } = props
+const Messages: React.FC<Props> = ({ messages, title }) => {
     const messagesArray = Array.isArray(messages) ? messages : [messages]
 
     return (
@@ -25,3 +22,5 @@ export function Messages(props: Props): JSX.Element {
         </div>
     )
 }
+
+export default Messages;

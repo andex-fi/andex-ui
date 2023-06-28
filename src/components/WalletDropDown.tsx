@@ -2,9 +2,7 @@
 import { Menu } from "@headlessui/react";
 import jazzicon from "@metamask/jazzicon";
 import { useEffect, useRef, ButtonHTMLAttributes } from "react";
-// import { useAccountContext } from "../hooks/useAccountContext";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/20/solid";
-// import { MdOutlineSettings } from "react-icons/md";
 
 import copy from "../assets/Copy_light.png";
 import settings from "../assets/Setting_line_light.png";
@@ -13,7 +11,6 @@ import power from "../assets/On_button_light.png";
 import AccountTabs from "./AccountTabs";
 import { useWallet } from "../state/WalletService";
 import { Observer } from "mobx-react-lite";
-// import { useNavigate } from "react-router-dom";
 
 interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   icon: string;
@@ -46,7 +43,7 @@ const Identicon = ({ width }: { width: number }) => {
   );
 };
 
-function WalletDropDown() {
+const WalletDropDown: React.FC = () => {
   const { address, balance, disconnect } = useWallet();
   return (
     <div>

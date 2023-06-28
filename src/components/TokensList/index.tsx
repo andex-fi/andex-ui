@@ -2,9 +2,9 @@
 import * as React from "react";
 // import getScrollBarSize from "rc-util/es/getScrollBarSize";
 
-import { NativeCoinItem } from "../NativeCoinItem";
+import NativeCoinItem from "../NativeCoinItem";
 import { TokenAndCoinCombinator } from "../TokenAndCoinCombinator";
-import { WaypointWrappedItem } from "../WaypointWrappedItem";
+import WaypointWrappedItem from "../WaypointWrappedItem";
 import { useTokensCache } from "../../state/TokensCacheService";
 import type { TokenCache } from "../../state/TokensCacheService";
 import type { WalletNativeCoin } from "../../state/WalletService";
@@ -28,7 +28,7 @@ type Props = {
   onSelectToken?: (root: string) => void;
 };
 
-export function TokensList({
+const TokensList: React.FC<Props> = ({
   isOpen,
   allowMultiple,
   currentToken,
@@ -41,7 +41,7 @@ export function TokensList({
   onSelectMultipleSwap,
   onSelectNativeCoin,
   onSelectToken,
-}: Props): JSX.Element {
+}) => {
   const tokensCache = useTokensCache();
 
   const [query, setSearchQuery] = React.useState<string>();
@@ -162,3 +162,5 @@ export function TokensList({
     </Dialog>
   );
 }
+
+export default TokensList
