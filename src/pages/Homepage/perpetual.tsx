@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { motion } from "framer-motion";
-import PerpetualImg from "../../assets/perpetualimg.png";
+import PerpetualImg from "../../assets/perpetualimg.svg";
 import { Button } from "../../components/Button";
 
 export const Perpetual: FC = () => {

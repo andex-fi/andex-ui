@@ -1,15 +1,15 @@
 import { Routes, Route } from "react-router-dom";
 import RemoveLiquidityPage from "./pages/RemoveLiquidity";
-import { Homepage } from "./pages/homepage/Homepage";
+import { Homepage } from "./pages/Homepage/Homepage";
 import CreatePage from "./pages/Builder/Create";
 import BuilderPage from "./pages/Builder";
 import TokenPage from "./pages/Builder/Token";
 import AddLiquidityPage from "./pages/AddLiquidity";
-import Pools from "./pages/pools";
+import Pools from "./pages/Pools";
 import Layout from "./components/Layout";
 import ImportLiquidityPage from "./pages/ImportLiquidity";
 import YeildFarmingPage from "./pages/YeildFarming";
-import { Swap } from "./pages/Swap";
+import  Swap from "./pages/Swap";
 
 export default function App() {
   return (
@@ -27,13 +27,13 @@ export default function App() {
           <Route index={true} element={<Pools />} />
         </Route>
         <Route
-          path="addliquidity/:leftTokenRoot/:rightTokenRoot"
+          path="add/:leftTokenRoot/:rightTokenRoot"
           element={<AddLiquidityPage />}
         />
-        <Route path="addliquidity" element={<AddLiquidityPage />} />
-        <Route path="removeliquidity" element={<RemoveLiquidityPage />} />
+        <Route path="add" element={<AddLiquidityPage />} />
+        <Route path="remove" element={<RemoveLiquidityPage />} />
         <Route
-          path="removeliquidity/:leftTokenRoot/:rightTokenRoot"
+          path="remove/:leftTokenRoot/:rightTokenRoot"
           element={<RemoveLiquidityPage />}
         />
         <Route path="builder" element={<BuilderPage />} />
@@ -42,7 +42,7 @@ export default function App() {
         <Route path="importliquidity" element={<ImportLiquidityPage />} />
         <Route path="yeildfarming" element={<YeildFarmingPage />} />
         <Route
-          path="importliquidity/:leftTokenRoot/:rightTokenRoot"
+          path="import/:leftTokenRoot/:rightTokenRoot"
           element={<ImportLiquidityPage />}
         />
       </Route>

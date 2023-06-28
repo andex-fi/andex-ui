@@ -3,6 +3,7 @@
 import React from 'react'
 import { ModalProvider, light, dark } from '@andex/uikit'
 import { useThemeManager } from './state/user/hooks'
+import { HelmetProvider } from 'react-helmet-async'
 import { Provider } from 'react-redux'
 import { ThemeProvider } from 'styled-components'
 import store from './state'
@@ -15,9 +16,11 @@ const ThemeProviderWrapper = (props: any) => {
 const Providers: React.FC<React.PropsWithChildren> = ({ children }) => {
   return (
     <Provider store={store}>
-      <ThemeProviderWrapper>
-        <ModalProvider>{children}</ModalProvider>
-      </ThemeProviderWrapper>
+      <HelmetProvider>
+        <ThemeProviderWrapper>
+          <ModalProvider>{children}</ModalProvider>
+        </ThemeProviderWrapper>
+      </HelmetProvider>
     </Provider>
   )
 }

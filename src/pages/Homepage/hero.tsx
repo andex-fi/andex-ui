@@ -2,7 +2,7 @@ import { FC } from "react";
 import { Button } from "../../components/Button";
 import { Link } from "react-router-dom";
 import VenomBall from "../../assets/venomball.png";
-import Cube from "../../assets/cube.png";
+import Cube from "../../assets/cube.svg";
 import VenomShadow from "../../assets/venomshadow.png";
 
 export const Hero: FC = () => {

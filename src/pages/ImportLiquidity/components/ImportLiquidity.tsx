@@ -2,15 +2,12 @@
 import { useEffect } from "react";
 import { Observer } from "mobx-react-lite";
 import { reaction } from "mobx";
-// import BigNumber from "bignumber.js";
 
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { FiSettings } from "react-icons/fi";
 import { TokenSelector } from "../../../components/TokenSelector";
-// import { Button } from "../../../components/Button";
 import { Warning } from "../../../components/Warning";
 import { Link, useParams } from "react-router-dom";
-// import { useAccountContext } from "../../../hooks/useAccountContext";
 import { URLTokensParams } from "../../../routes";
 import { useImportLiquidityForm } from "../hooks/useImportLiquidityForm";
 import { useImportLiquidityFormStoreContext } from "../../../contexts";
@@ -67,7 +64,8 @@ export function ImportLiquidity(): JSX.Element {
 
     return () => {
       tokensListDisposer();
-      formStore.dispose().catch((reason) => error(reason));
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      formStore.dispose().catch((reason: any) => error(reason));
     };
   }, []);
 

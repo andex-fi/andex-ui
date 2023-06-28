@@ -13,7 +13,7 @@ const TableBody = styled.tbody`
       vertical-align: middle;
     }
   }
-`;
+`
 
 export function TokensList(): JSX.Element {
   const builder = useBuilderStore();

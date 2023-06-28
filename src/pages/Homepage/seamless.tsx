@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Button } from "../../components/Button";
 import { Link } from "react-router-dom";
-import SeamlessImg from "../../assets/seamlessswap.png";
+import SeamlessImg from "../../assets/seamlessswap.svg";
 import { motion } from "framer-motion";
 
 export const Seamless: FC = () => {
