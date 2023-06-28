@@ -7,7 +7,7 @@ import { CustomAddressField } from '../CustomAddressField'
 import { useManageTokenStore } from '../../state/ManageTokenStore'
 import { isAddressValid } from '../../../../constants'
 
-function Field(): JSX.Element {
+const Field: React.FC = () => {
     const { tokenRoot } = useParams<{ tokenRoot: string }>()
 
     const managingToken = useManageTokenStore(tokenRoot!)

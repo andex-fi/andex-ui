@@ -13,7 +13,7 @@ type Props = {
     closePopup: () => void;
 }
 
-function SubmitButton({ closePopup }: Props): JSX.Element {
+const SubmitButton: React.FC<Props> = ({ closePopup }) => {
     const { tokenRoot } = useParams<{ tokenRoot: string }>()
 
     const wallet = useWallet()

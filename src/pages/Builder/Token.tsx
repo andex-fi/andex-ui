@@ -1,7 +1,7 @@
 import { Token } from "./components/token";
 import Page from "../Page";
 
-export default function TokenPage(): JSX.Element {
+const TokenPage: React.FC = () => {
     return (
         <Page>
             <div className="flex flex-col items-center min-h-[90vh] justify-center w-full font-montserrat p-4 py-10 md:py-24">
@@ -15,3 +15,5 @@ export default function TokenPage(): JSX.Element {
         </Page>
     )
 }
+
+export default TokenPage

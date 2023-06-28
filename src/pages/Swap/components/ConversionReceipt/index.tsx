@@ -9,7 +9,7 @@ import TransactionExplorerLink from "../../../../components/TransactionExplorerL
 import { useSwapFormStore } from "../../stores/SwapFormStore";
 import { formattedTokenAmount } from "../../../../utils";
 
-function ConversionReceipt(): JSX.Element | null {
+const ConversionReceipt: React.FC = () => {
   const formStore = useSwapFormStore();
 
   if (formStore.conversion.txHash === undefined) {

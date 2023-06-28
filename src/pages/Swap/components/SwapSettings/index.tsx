@@ -9,7 +9,7 @@ import { MdOutlineSettings } from "react-icons/md";
 import { Menu } from "@headlessui/react";
 
 
-function Settings(): JSX.Element {
+const Settings: React.FC = () => {
   const formStore = useSwapFormStore();
   const settings = useSwapSettings();
 

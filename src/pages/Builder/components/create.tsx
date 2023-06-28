@@ -9,7 +9,7 @@ import { useCreateTokenForm } from '../hooks/useCreateTokenForm'
 import { useCreateTokenStore } from '../state/CreateTokenStore'
 
 
-export function Create(): JSX.Element {
+export const Create: React.FC = () => {
     const creatingToken = useCreateTokenStore()
     const creatingTokenForm = useCreateTokenForm()
 

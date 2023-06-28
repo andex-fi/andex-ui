@@ -15,33 +15,20 @@ import {
   error,
   formattedTokenAmount,
   isGoodBignumber,
-  //   makeArray,
   stripHtmlTags,
-  //   uniqueId,
 } from "../../../utils";
 import { useFavoritePools } from "../../../state/FavoritePairs";
 import { Oval } from "react-loader-spinner";
 import { Button } from "../../../components/Button";
 import { NotifyType, notify } from "../../../components/Notification";
-// import { useFavoritesPoolsStorage } from "../../pools/hooks/useFavoritesPoolsStorage";
-// import { RemoveLiquiditySubmitButton } from "./RemoveLiquiditySubmitButton";
 
-export function ImportLiquidity(): JSX.Element {
-  // const { address, connect } = useAccountContext();
+
+const ImportLiquidity: React.FC = () => {
   const { leftTokenRoot, rightTokenRoot } = useParams<URLTokensParams>();
 
   const formStore = useImportLiquidityFormStoreContext();
   const form = useImportLiquidityForm();
   const storage = useFavoritePools();
-
-  //   const onMaximize = () => {
-  //     formStore.setData(
-  //       "amount",
-  //       new BigNumber(formStore.pool?.lp.userBalance ?? 0)
-  //         .shiftedBy(-(formStore.pool?.lp.decimals ?? 0))
-  //         .toFixed()
-  //     );
-  //   };
 
   useEffect(() => {
     const tokensListDisposer = reaction(
@@ -218,3 +205,5 @@ export function ImportLiquidity(): JSX.Element {
     </div>
   );
 }
+
+export default ImportLiquidity;

@@ -10,8 +10,11 @@ import { SwapBill } from "../SwapBill";
 import { useSwapFormStore } from "../../stores/SwapFormStore";
 import { Dialog } from "@headlessui/react";
 
+type Props = {
+  isOpen: boolean,
+}
 
-function ConfirmationPopup({ isOpen }: { isOpen: boolean }): JSX.Element {
+const ConfirmationPopup: React.FC<Props> = ({ isOpen }) => {
   const formStore = useSwapFormStore();
 
   const [minExpectedAmount, setMinExpectedAmount] = React.useState(
