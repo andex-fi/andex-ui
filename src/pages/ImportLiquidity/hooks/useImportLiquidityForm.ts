@@ -97,14 +97,14 @@ export function useImportLiquidityForm(): PoolFormShape {
       formStore.rightToken.root !== root
         ? formStore.rightToken.root
         : undefined;
-    navigate(`/importliquidity/${root}/${rightRoot}`, { replace: true });
+    navigate(`/import/${root}/${rightRoot}`, { replace: true });
   };
 
   const onSelectRightToken: PoolFormShape["onSelectRightToken"] = (root) => {
     hideTokensList();
     formStore.setData("rightToken", root);
     if (formStore.leftToken?.root !== undefined) {
-      navigate(`/importliquidity/${formStore.leftToken.root}/${root}`, {
+      navigate(`/import/${formStore.leftToken.root}/${root}`, {
         replace: true,
       });
     }

@@ -5,8 +5,8 @@ import { reaction } from "mobx";
 
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { FiSettings } from "react-icons/fi";
-import { TokenSelector } from "../../../components/TokenSelector";
-import { Warning } from "../../../components/Warning";
+import TokenSelector from "../../../components/TokenSelector";
+import Warning from "../../../components/Warning";
 import { Link, useParams } from "react-router-dom";
 import { URLTokensParams } from "../../../routes";
 import { useImportLiquidityForm } from "../hooks/useImportLiquidityForm";
@@ -70,7 +70,7 @@ export function ImportLiquidity(): JSX.Element {
   }, []);
 
   return (
-    <div className="flex items-center justify-center w-full min-h-screen overflow-y-auto font-montserrat bg-[#EBF1FF] dark:bg-purple-dark p-4 py-10">
+    <div className="flex items-center justify-center w-full overflow-y-auto font-montserrat p-4 py-10">
       <div className="w-full md:w-[40rem] bg-white dark:bg-purple-light rounded-2xl p-6">
         <div className="w-full flex items-center justify-between mb-4">
           <Link to="/pools">

@@ -6,10 +6,10 @@ import BigNumber from "bignumber.js";
 
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { FiSettings } from "react-icons/fi";
-import { TokenSelector } from "../../../components/TokenSelector";
-import { Warning } from "../../../components/Warning";
-import { AmountInput } from "../../../components/AmountInput";
-import { Placeholder } from "../../../components/Placeholder";
+import TokenSelector from "../../../components/TokenSelector";
+import Warning from "../../../components/Warning";
+import AmountInput from "../../../components/AmountInput";
+import Placeholder from "../../../components/Placeholder";
 import { Token } from "../../../components/Token";
 import { Link, useParams } from "react-router-dom";
 import { URLTokensParams } from "../../../routes";

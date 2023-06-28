@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import { TokenIcon } from "../../../components/TokenIcon";
+import TokenIcon from "../../../components/TokenIcon";
 import { TokenCache } from "../../../state/TokensCacheService";
 import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/20/solid";
 import { Button } from "../../../components/Button";

@@ -2,7 +2,7 @@ import * as React from "react";
 import BigNumber from "bignumber.js";
 import { toast } from "react-toastify";
 
-import { TransactionExplorerLink } from "../../../components/TransactionExplorerLink";
+import TransactionExplorerLink from "../../../components/TransactionExplorerLink";
 import type { LiquidityPoolDepositCallbacks } from "../../../constants";
 import { TokensReceivedSuccess } from "../components/TokensReceivedSuccess";
 import type { DepositLiquidityCallbacks } from "../../../types/LiquidityTypes";

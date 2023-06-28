@@ -24,7 +24,7 @@ function t<V extends React.ElementType<Props>, T extends { [key in string]: V }>
 
 /* eslint-disable */
 const library = t({
-    everscale1BlockchainIcon: ({ ratio, ...props }) => {
+    venom1BlockchainIcon: ({ ratio, ...props }) => {
         const gradientId = uniqueId()
         return (
             <svg {...defaultProps} {...props} viewBox="0 0 600 600" {...getSize(20, 20, ratio)}>
@@ -35,7 +35,7 @@ const library = t({
             </svg>
         )
     },
-    everCoinIcon: ({ ratio, ...props }) => {
+    venomCoinIcon: ({ ratio, ...props }) => {
         const gradientId = uniqueId()
         return (
             <svg {...defaultProps} {...props} viewBox="0 0 600 600" {...getSize(20, 20, ratio)}>
@@ -46,7 +46,7 @@ const library = t({
             </svg>
         )
     },
-    everWalletIcon: ({ ratio, ...props }) => <svg {...defaultProps} {...props} viewBox="0 0 1024 1024" {...getSize(20, 20, ratio)}><rect width="1024" height="1024" rx="512" fill="#050B2E" className="uk-preserve"/><path d="M391.935 256L160 490.49H537.022V864L768 632.859V256H391.935Z" fill="#C5E4F3" className="uk-preserve"/></svg>,
+    venomWalletIcon: ({ ratio, ...props }) => <svg {...defaultProps} {...props} viewBox="0 0 1024 1024" {...getSize(20, 20, ratio)}><rect width="1024" height="1024" rx="512" fill="#050B2E" className="uk-preserve"/><path d="M391.935 256L160 490.49H537.022V864L768 632.859V256H391.935Z" fill="#C5E4F3" className="uk-preserve"/></svg>,
 
     menu: ({ ratio, ...props }) => <svg {...defaultProps} {...props} viewBox="0 0 24 24" {...getSize(20, 20, ratio)}><path fillRule="evenodd" clipRule="evenodd" d="M22 5V7H2V5H22Z" fill="currentColor"/><path fillRule="evenodd" clipRule="evenodd" d="M22 11V13H2V11H22Z" fill="currentColor"/><path fillRule="evenodd" clipRule="evenodd" d="M22 17V19H2V17H22Z" fill="currentColor"/></svg>,
     arrowDown: ({ ratio, ...props }) => <svg {...defaultProps} {...props} viewBox="0 0 20 20" {...getSize(20, 20, ratio)}><path d="M10 13L5 8H15L10 13Z" fill="currentColor"/></svg>,

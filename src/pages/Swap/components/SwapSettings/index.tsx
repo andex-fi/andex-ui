@@ -8,7 +8,6 @@ import { useSwapSettings } from "../../hooks/useSwapSettings";
 import { MdOutlineSettings } from "react-icons/md";
 import { Menu } from "@headlessui/react";
 
-// import "./index.scss";
 
 function Settings(): JSX.Element {
   const formStore = useSwapFormStore();
