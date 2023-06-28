@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import FavoritePools from "./components/FavoritePools";
 import { usePoolsStoreContext } from "../../contexts/PoolsStoreProvider";
 
-export const Liquiditypools: FC = () => {
+const Liquiditypools: FC = () => {
   const pool = usePoolsStoreContext();
   console.log(pool);
 
@@ -70,3 +70,5 @@ export const Liquiditypools: FC = () => {
     </div>
   );
 };
+
+export default Liquiditypools;
