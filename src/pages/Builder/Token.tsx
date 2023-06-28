@@ -1,5 +1,4 @@
 import { Token } from "./components/token";
-import Page from "../Page";
 
 export default function TokenPage(): JSX.Element {
   return (

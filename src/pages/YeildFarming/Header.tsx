@@ -52,9 +52,9 @@ const HeaderComponent = () => {
                 xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
                 ></path>
               </svg>
@@ -72,7 +72,7 @@ const HeaderComponent = () => {
           id="farms"
           className="px-4 bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-full focus:ring-blue-500 focus:border-blue-500 block w-[20%] p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
         >
-          <option selected>All Farms</option>
+          <option defaultValue="All Farm">All Farms</option>
           <option value="US">United States</option>
           <option value="CA">Canada</option>
           <option value="FR">France</option>
