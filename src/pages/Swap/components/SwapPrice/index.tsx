@@ -9,7 +9,7 @@ import { SwapDirection } from "../../types";
 import { formattedTokenAmount } from "../../../../utils";
 
 
-function Price(): JSX.Element | null {
+const Price: React.FC = () => {
   const formStore = useSwapFormStore();
 
   const leftSymbol = React.useMemo(() => {

@@ -1,6 +1,6 @@
 import React from "react";
 import { ImportLiquidityFormStoreProvider } from "../../contexts/ImportLiquidityContext";
-import { ImportLiquidity } from "./components/ImportLiquidity";
+import ImportLiquidity from "./components/ImportLiquidity";
 import Page from "../Page";
 
 const ImportLiquidityPage: React.FC = () => {

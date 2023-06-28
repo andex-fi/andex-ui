@@ -4,7 +4,7 @@ import FilterField from '../../../../components/FilterField'
 import { useFilterForm } from '../../hooks/useFilterForm'
 
 
-export function FilterFieldCommon(): JSX.Element {
+export const FilterFieldCommon: React.FC = () => {
     const form = useFilterForm()
 
     const onChange = (event: React.FormEvent<HTMLInputElement>) => {

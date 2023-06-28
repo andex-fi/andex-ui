@@ -2,7 +2,7 @@ import { Create } from './components/create'
 import Page from '../Page'
 
 
-export default function CreatePage(): JSX.Element {
+const CreatePage: React.FC = () => {
     return (
         <Page>
             <div className="container mx-auto sm:h-screen">
@@ -13,3 +13,5 @@ export default function CreatePage(): JSX.Element {
         </Page>
     )
 }
+
+export default CreatePage

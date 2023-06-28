@@ -21,7 +21,7 @@ type Props = {
 }
 
 
-function Popup({ onDismiss }: Props): JSX.Element {
+const Popup: React.FC<Props> = ({ onDismiss }) => {
     const { rootToken } = useParams<{ rootToken: string }>()
 
     const managingToken = useManageTokenStore(rootToken!)

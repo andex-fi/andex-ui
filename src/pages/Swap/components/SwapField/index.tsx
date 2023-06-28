@@ -28,7 +28,7 @@ type Props = {
   onToggleTokensList?: () => void;
 };
 
-function Field({
+const Field: React.FC<Props> = ({
   balance = "0",
   isMultiple = false,
   // isValid = true,
@@ -36,7 +36,7 @@ function Field({
   showMaximizeButton,
   token,
   ...props
-}: Props): JSX.Element {
+}) => {
   const field = useField({
     decimals: nativeCoin !== undefined ? nativeCoin.decimals : token?.decimals,
     value: props.value,

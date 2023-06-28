@@ -7,7 +7,7 @@ import { Button } from "../../../../components/Button";
 import { Icon } from "../../../../components/Icon";
 import { useManageTokenStore } from "../../state/ManageTokenStore";
 
-function Modal(): JSX.Element | null {
+const Modal: React.FC = () => {
     const { tokenRoot } = useParams<{ tokenRoot: string }>()
 
     const managingToken = useManageTokenStore(tokenRoot!)

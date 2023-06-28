@@ -9,13 +9,14 @@ import { isAddressValid } from '../../../../constants'
 import { TransferSubmitButton } from '../TransferSubmitButton'
 import { useManageTokenStore } from '../../state/ManageTokenStore'
 import { useTransferForm } from '../../hooks/useTransferForm'
+import React from 'react'
 
 type Props = {
     onDismiss: () => void;
 }
 
 
-function Popup({ onDismiss }: Props): JSX.Element {
+const Popup: React.FC<Props> = ({ onDismiss }) => {
     const { rootToken } = useParams<{ rootToken: string }>()
 
     const managingToken = useManageTokenStore(rootToken!)

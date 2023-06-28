@@ -5,7 +5,7 @@ import { MintPopup } from '../MintPopup'
 import { useMintForm } from '../../hooks/useMintForm'
 
 
-function ButtonInternal(): JSX.Element {
+const ButtonInternal: React.FC = () => {
     const mintForm = useMintForm()
 
     return (

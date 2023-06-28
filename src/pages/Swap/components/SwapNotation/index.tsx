@@ -8,7 +8,7 @@ import { useSwapFormStore } from "../../stores/SwapFormStore";
 import { storage } from "../../../../utils";
 
 
-function SwapNotationInternal(): JSX.Element | null {
+const SwapNotationInternal: React.FC = () => {
   const formStore = useSwapFormStore();
   const wallet = formStore.useWallet;
 

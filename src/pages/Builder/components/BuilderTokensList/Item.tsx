@@ -3,12 +3,11 @@ import { Td } from '@andex/uikit'
 import { Token } from '../../../../constants'
 import { formattedAmount, sliceAddress } from '../../../../utils'
 
-
 type Props = {
     token: Token;
 }
 
-export function Item({ token }: Props): JSX.Element {
+export const Item: React.FC<Props> = ({ token }) => {
     return (
         <>
             <Td><Link to={`/builder/${token.root}`} >{token.name}</Link></Td>

@@ -4,7 +4,7 @@ import { Button } from '../../../../components/Button'
 import { useTransferForm } from '../../hooks/useTransferForm'
 import { TransferPopup } from '../TransferPopup'
 
-function ButtonInternal(): JSX.Element {
+const ButtonInternal: React.FC = () => {
     const transferForm = useTransferForm()
 
     return (
