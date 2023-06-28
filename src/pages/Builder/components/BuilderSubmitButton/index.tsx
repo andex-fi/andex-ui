@@ -7,7 +7,7 @@ import { useCreateTokenStore } from '../../state/CreateTokenStore'
 import { useWallet } from '../../../../state/WalletService'
 
 
-function SubmitButton(): JSX.Element {
+const SubmitButton: React.FC = () => {
     const wallet = useWallet()
     const creatingToken = useCreateTokenStore()
 

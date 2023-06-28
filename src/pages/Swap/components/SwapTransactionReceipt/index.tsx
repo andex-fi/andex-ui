@@ -8,7 +8,7 @@ import TransactionExplorerLink from "../../../../components/TransactionExplorerL
 import { useSwapFormStore } from "../../stores/SwapFormStore";
 import { formattedTokenAmount } from "../../../../utils";
 
-function SwapReceipt(): JSX.Element | null {
+const SwapReceipt: React.FC = () => {
   const formStore = useSwapFormStore();
 
   if (formStore.transaction == null) {

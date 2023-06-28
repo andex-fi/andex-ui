@@ -1,15 +1,11 @@
 import * as React from "react";
 import { observer } from "mobx-react-lite";
-// import { useIntl } from 'react-intl'
-
 import { Button } from "../../../../components/Button";
-// import { Icon } from '@/components/common/Icon'
 import { useSwapFormStore } from "../../stores/SwapFormStore";
 import { SwapExchangeMode } from "../../types";
 import { Icon } from "../../../../components/Icon";
 
-function SubmitButton(): JSX.Element {
-  // const intl = useIntl()
+const SubmitButton: React.FC = () => {
   const formStore = useSwapFormStore();
   const tokensCache = formStore.useTokensCache;
   const wallet = formStore.useWallet;

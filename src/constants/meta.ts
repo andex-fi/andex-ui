@@ -51,6 +51,10 @@ export const getCustomMeta = (path: string): PageMeta => {
             return {
                 title: `${'Pools'} | ${'Andex'}`,
             }
+        case '/builder':
+            return {
+                title: `${'Builder'} | ${'Andex'}`,
+            }
         default:
             return {
                 title: `${'Andex Protocol'}`

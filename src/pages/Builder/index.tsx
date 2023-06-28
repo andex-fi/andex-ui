@@ -4,7 +4,7 @@ import { FilterFieldCommon } from './components'
 import Page from '../Page'
 
 
-export default function BuilderPage(): JSX.Element {
+const BuilderPage: React.FC = () => {
 
     return (
         <Page>
@@ -47,3 +47,5 @@ export default function BuilderPage(): JSX.Element {
         </Page>
     )
 }
+
+export default BuilderPage

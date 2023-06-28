@@ -3,8 +3,6 @@ import {
     FullContractState,
     Transaction,
 } from '@andex/provider'
-
-
 import { Token, TokenAbi } from '../../constants'
 
 export type BuilderStoreData = {

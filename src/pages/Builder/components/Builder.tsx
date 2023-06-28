@@ -5,7 +5,7 @@ import { BuilderTokensList } from './BuilderTokensList'
 import { useBuilderStore } from '../state/BuilderStore'
 
 
-export function Builder(): JSX.Element {
+export const Builder: React.FC = () => {
     const builder = useBuilderStore()
 
     React.useEffect(() => {

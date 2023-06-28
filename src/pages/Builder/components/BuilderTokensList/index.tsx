@@ -15,8 +15,8 @@ const TableBody = styled.tbody`
   }
 `;
 
-export function TokensList(): JSX.Element {
-  const builder = useBuilderStore();
+export const TokensList: React.FC = () =>{
+    const builder = useBuilderStore()
 
   switch (true) {
     case builder.isLoading:

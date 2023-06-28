@@ -1,11 +1,10 @@
-import { FC } from "react";
 import { Button } from "../../components/Button";
 import { AddIcon, MinusIcon } from "@andex/uikit"
 import { useNavigate } from "react-router-dom";
 import FavoritePools from "./components/FavoritePools";
 import { usePoolsStoreContext } from "../../contexts/PoolsStoreProvider";
 
-const Liquiditypools: FC = () => {
+const Liquiditypools: React.FC = () => {
   const pool = usePoolsStoreContext();
   console.log(pool);
 

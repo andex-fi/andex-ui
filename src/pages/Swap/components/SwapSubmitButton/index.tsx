@@ -6,7 +6,7 @@ import { Icon } from "../../../../components/Icon";
 import { useSwapFormStore } from "../../stores/SwapFormStore";
 import { SwapDirection } from "../../types";
 
-function SubmitButton(): JSX.Element {
+const SubmitButton: React.FC = () => {
   const formStore = useSwapFormStore();
   const tokensCache = formStore.useTokensCache;
   const wallet = formStore.useWallet;

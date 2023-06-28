@@ -4,9 +4,10 @@ import { BuilderField, BuilderSubmitButton, BuilderTransaction } from ".";
 import { useCreateTokenForm } from "../hooks/useCreateTokenForm";
 import { useCreateTokenStore } from "../state/CreateTokenStore";
 
-export function Create(): JSX.Element {
-  const creatingToken = useCreateTokenStore();
-  const creatingTokenForm = useCreateTokenForm();
+
+export const Create: React.FC = () => {
+    const creatingToken = useCreateTokenStore()
+    const creatingTokenForm = useCreateTokenForm()
 
   return (
     <>

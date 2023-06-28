@@ -6,7 +6,7 @@ import { Icon } from '../../../components/Icon'
 import { useRemoveLiquidityFormStoreContext } from '../../../contexts'
 import { useNotifiedWithdrawLiquidityCallbacks } from '../hooks'
 
-function SubmitButton(): JSX.Element {
+const SubmitButton: React.FC = () => {
     const formStore = useRemoveLiquidityFormStoreContext()
     const withdrawLiquidityCallbacks = useNotifiedWithdrawLiquidityCallbacks({})
 
