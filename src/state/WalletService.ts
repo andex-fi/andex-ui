@@ -22,7 +22,8 @@ import { useRpc } from '../hooks/useRpc'
 import { useStaticRpc } from '../hooks/useStaticRpc'
 import {
     DexAbi,
-    DexConstants, getFullContractState,
+    DexConstants,
+    getFullContractState,
     Token,
 } from '../constants'
 import { BaseStore } from '../state/BaseStore'
