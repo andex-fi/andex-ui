@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 import Logo from "../assets/LogoLight.png";
 import LogoWhite from "../assets/LogoLightSingle.png";
-import { navLinks } from "../pages/homepage/utils";
+import { navLinks } from "../pages/Homepage/utils";
 import { Link, NavLink } from "react-router-dom";
 import { Button } from "./Button";
 import { Bars3CenterLeftIcon, XMarkIcon } from "@heroicons/react/24/outline";

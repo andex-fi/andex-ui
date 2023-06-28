@@ -121,7 +121,7 @@ export function useAddLiquidityForm(): PoolFormShape {
       })
     );
 
-    navigate(`/addliquidity/${root}/${rightRoot}`);
+    navigate(`/add/${root}/${rightRoot}`);
 
     await formStore.changeLeftToken(root);
   };
@@ -132,7 +132,7 @@ export function useAddLiquidityForm(): PoolFormShape {
     hideTokensList();
 
     if (formStore.leftToken?.root !== undefined) {
-      navigate(`/addliquidity/${formStore.leftToken.root}/${root}`);
+      navigate(`/add/${formStore.leftToken.root}/${root}`);
     }
 
     await formStore.changeRightToken(root);

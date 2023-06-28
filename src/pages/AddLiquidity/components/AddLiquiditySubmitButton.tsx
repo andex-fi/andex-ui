@@ -15,7 +15,7 @@ import { useFavoritePools } from "../../../state/FavoritePairs";
 import { isGoodBignumber } from "../../../utils";
 import { Oval } from "react-loader-spinner";
 
-function SubmitButton(): JSX.Element {
+const SubmitButton: React.FC = () => {
   const formStore = useAddLiquidityFormStoreContext();
   const poolConnectionCallbacks = useNotifiedPoolConnectionCallbacks({});
   const poolCreationCallbacks = useNotifiedPoolCreationCallbacks({});

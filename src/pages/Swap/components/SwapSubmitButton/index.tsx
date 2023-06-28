@@ -72,11 +72,11 @@ function SubmitButton(): JSX.Element {
       buttonProps.disabled = true;
       buttonText = formStore.isMultipleSwapMode
         ? "Insufficient balance"
-        : `Insufficient <s>${
+        : `Insufficient ${
             (formStore.nativeCoinSide === "leftToken"
               ? formStore.coin.symbol
               : formStore.leftToken?.symbol) || ""
-          }</s> balance`;
+          } balance`;
       break;
 
     case formStore.isConfirmationAwait:

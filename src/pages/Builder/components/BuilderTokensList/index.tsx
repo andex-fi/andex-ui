@@ -15,8 +15,6 @@ const TableBody = styled.tbody`
   }
 `
 
-
-
 export function TokensList(): JSX.Element {
     const builder = useBuilderStore()
 
@@ -66,45 +64,17 @@ export function TokensList(): JSX.Element {
                         </tr>
                     </thead>
                     <TableBody>
-                        <tr className="font-bold">
+                        <>
                             {builder.tokens.map(token => (
+                                <tr className="font-bold">
                                 <Item key={token.root} token={token} />
+                                </tr>
                             ))}
-                        </tr>
+                        </>
                     </TableBody>
                     </Table>
                 </div>
             )
-                {/* <div className="relative overflow-x-auto h-96 bg-white dark:bg-purple-light border border-grey-lightest dark:border-none rounded-t-xl w-full min-h-screen-xl mt-6 md:mt-8 dark:bg-purple">
-                    <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                        <thead className="list__header text-md text-grey dark:text-gray-400">
-                            <tr className="border-b border-grey-lightest">
-                                <th scope="col" className="list__cell list__cell--left px-6 py-3">
-                                    Name
-                                </th>
-                                <th scope="col" className="list__cell list__cell--center px-6 py-3">
-                                    Symbol
-                                </th>
-                                <th scope="col" className="list__cell list__cell--center px-6 py-3">
-                                    Decimals
-                                </th>
-                                <th scope="col" className="list__cell list__cell--center px-6 py-3">
-                                    Total Supply
-                                </th>
-                                <th scope="col" className="list__cell list__cell--center px-6 py-3">
-                                    Root
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr className='font-black text-lg'>
-                                {builder.tokens.map(token => (
-                                    <Item key={token.root} token={token} />
-                                ))}
-                            </tr>
-                            </tbody>
-                    </table>
-                                </div> */}
     }
 }
 
