@@ -17,6 +17,7 @@ export default {
       "grey-lightest": "#DFE8F9",
       "purple-darkest": "#19102d",
       "purple-dark": "#28133f",
+      "purple-text": "#13173E",
       purple: "#34184B",
       "purple-light": "#482168",
       "purple-lightest": "#983bf6",

@@ -17,6 +17,7 @@ const TokenPage = lazy(() => import('./pages/Builder/Token'))
 const AddLiquidity = lazy(() => import('./pages/AddLiquidity'))
 const Pools = lazy(() => import('./pages/Pools'))
 const ImportLiquidity = lazy(() => import('./pages/ImportLiquidity'))
+const Farms = lazy(() => import('./pages/YeildFarming'))
 
 const App = () => {
   return (
@@ -40,6 +41,7 @@ const App = () => {
           <Route path="builder/:tokenRoot" element={<TokenPage />} />
           <Route path="import" element={<ImportLiquidity />} />
           <Route path="import/:leftTokenRoot/:rightTokenRoot" element={<ImportLiquidity />} />
+          <Route path="yeildfarming" element={<Farms />} />
         </Route>
       </Routes>
       </SuspenseWithChunkError>
