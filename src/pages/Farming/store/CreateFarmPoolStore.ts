@@ -128,11 +128,18 @@ export class CreateFarmPoolStore {
    *
    */
   public async create(): Promise<void> {
+    console.log(
+      "farm State: ",
+      this.isCreating,
+      this.wallet.address == null,
+      !this.isValid
+    );
     if (this.isCreating || this.wallet.address == null || !this.isValid) {
       return;
     }
 
     this.changeState("isCreating", true);
+    console.log("Creating Farm");
 
     await this.unsubscribeTransactionSubscriber();
 

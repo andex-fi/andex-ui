@@ -1,8 +1,8 @@
 import BigNumber from "bignumber.js";
 
-import { AccountExplorerLink } from "../../../components/AccountExplorerLink";
-import { TokenIcon } from "../../../components/TokenIcon";
-import { TransactionExplorerLink } from "../../../components/TransactionExplorerLink";
+import AccountExplorerLink from "../../../components/AccountExplorerLink";
+import TokenIcon from "../../../components/TokenIcon";
+import TransactionExplorerLink from "../../../components/TransactionExplorerLink";
 import {
   abbrNumber,
   formattedTokenAmount,
@@ -20,8 +20,7 @@ type Props = {
   txHash: string;
 };
 
-export function TokensReceivedSuccess(props: Props): JSX.Element {
-  const { address, amount, decimals, icon, symbol, txHash } = props;
+export const TokensReceivedSuccess: React.FC<Props> = ({address, amount, decimals, icon, symbol, txHash}) => {
 
   const [formattedAmount, formattedAmountAbbr] = abbrNumber(
     new BigNumber(amount).shiftedBy(-(decimals ?? 0)).toFixed()

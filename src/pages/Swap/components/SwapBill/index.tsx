@@ -17,7 +17,7 @@ type Props = {
   tokens?: TokenCache[];
 };
 
-export function SwapBill({
+export const SwapBill: React.FC<Props> = ({
   fee,
   isCrossExchangeAvailable,
   isCrossExchangeMode,
@@ -27,7 +27,7 @@ export function SwapBill({
   rightToken,
   slippage,
   tokens,
-}: Props): JSX.Element | null {
+}) => {
   if (leftToken === undefined || rightToken === undefined) {
     return null;
   }

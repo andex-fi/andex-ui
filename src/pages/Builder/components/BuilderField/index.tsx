@@ -21,13 +21,13 @@ type Props = {
     onClick?: () => void;
 }
 
-function Field({
+const Field: React.FC<Props> = ({
     className,
     isValid = true,
     type = 'text',
     // showCopy,
     ...props
-}: Props): JSX.Element {
+}) => {
     const isDirty = React.useRef<boolean>(false)
 
     const onChangeTextInput: React.ChangeEventHandler<HTMLInputElement> = event => {

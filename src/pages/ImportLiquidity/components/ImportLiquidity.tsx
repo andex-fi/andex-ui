@@ -2,15 +2,12 @@
 import { useEffect } from "react";
 import { Observer } from "mobx-react-lite";
 import { reaction } from "mobx";
-// import BigNumber from "bignumber.js";
 
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { FiSettings } from "react-icons/fi";
-import { TokenSelector } from "../../../components/TokenSelector";
-// import { Button } from "../../../components/Button";
-import { Warning } from "../../../components/Warning";
+import TokenSelector from "../../../components/TokenSelector";
+import Warning from "../../../components/Warning";
 import { Link, useParams } from "react-router-dom";
-// import { useAccountContext } from "../../../hooks/useAccountContext";
 import { URLTokensParams } from "../../../routes";
 import { useImportLiquidityForm } from "../hooks/useImportLiquidityForm";
 import { useImportLiquidityFormStoreContext } from "../../../contexts";
@@ -18,33 +15,20 @@ import {
   error,
   formattedTokenAmount,
   isGoodBignumber,
-  //   makeArray,
   stripHtmlTags,
-  //   uniqueId,
 } from "../../../utils";
 import { useFavoritePools } from "../../../state/FavoritePairs";
 import { Oval } from "react-loader-spinner";
 import { Button } from "../../../components/Button";
 import { NotifyType, notify } from "../../../components/Notification";
-// import { useFavoritesPoolsStorage } from "../../pools/hooks/useFavoritesPoolsStorage";
-// import { RemoveLiquiditySubmitButton } from "./RemoveLiquiditySubmitButton";
 
-export function ImportLiquidity(): JSX.Element {
-  // const { address, connect } = useAccountContext();
+
+const ImportLiquidity: React.FC = () => {
   const { leftTokenRoot, rightTokenRoot } = useParams<URLTokensParams>();
 
   const formStore = useImportLiquidityFormStoreContext();
   const form = useImportLiquidityForm();
   const storage = useFavoritePools();
-
-  //   const onMaximize = () => {
-  //     formStore.setData(
-  //       "amount",
-  //       new BigNumber(formStore.pool?.lp.userBalance ?? 0)
-  //         .shiftedBy(-(formStore.pool?.lp.decimals ?? 0))
-  //         .toFixed()
-  //     );
-  //   };
 
   useEffect(() => {
     const tokensListDisposer = reaction(
@@ -67,12 +51,13 @@ export function ImportLiquidity(): JSX.Element {
 
     return () => {
       tokensListDisposer();
-      formStore.dispose().catch((reason) => error(reason));
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      formStore.dispose().catch((reason: any) => error(reason));
     };
   }, []);
 
   return (
-    <div className="flex items-center justify-center w-full min-h-screen overflow-y-auto font-montserrat bg-[#EBF1FF] dark:bg-purple-dark p-4 py-10">
+    <div className="flex items-center justify-center w-full overflow-y-auto font-montserrat p-4 py-10">
       <div className="w-full md:w-[40rem] bg-white dark:bg-purple-light rounded-2xl p-6">
         <div className="w-full flex items-center justify-between mb-4">
           <Link to="/pools">
@@ -220,3 +205,5 @@ export function ImportLiquidity(): JSX.Element {
     </div>
   );
 }
+
+export default ImportLiquidity;

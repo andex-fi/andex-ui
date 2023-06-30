@@ -4,6 +4,7 @@ import { observer } from 'mobx-react-lite'
 import { Button } from '../../../../components/Button'
 // import { Icon } from '../../../../components/Icon'
 import { useCreateTokenStore } from '../../state/CreateTokenStore'
+import React from 'react'
 // import classNames from 'classnames'
 
 
@@ -12,7 +13,7 @@ type Props = {
 }
 
 
-function Transaction({ onDismiss }: Props): JSX.Element | null {
+const Transaction: React.FC<Props> = ({ onDismiss }) => {
     const creatingToken = useCreateTokenStore()
 
     if (creatingToken.transaction == null) {

@@ -1,12 +1,17 @@
 import { Create } from './components/create'
+import Page from '../Page'
 
 
-export default function CreatePage(): JSX.Element {
+const CreatePage: React.FC = () => {
     return (
-        <div className="container mx-auto sm:h-screen">
-            <section className="section">
-                <Create />
-            </section>
-        </div>
+        <Page>
+            <div className="container mx-auto sm:h-screen">
+                <section className="section">
+                    <Create />
+                </section>
+            </div>
+        </Page>
     )
 }
+
+export default CreatePage

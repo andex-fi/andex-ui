@@ -1,7 +1,7 @@
-import { FC } from "react";
-import { Swap } from "./Swap";
+import React from "react";
+import Swap from "./Swap";
 
-export const Home: FC = () => {
+export const Home: React.FC = () => {
   return (
     <div>
       <Swap />

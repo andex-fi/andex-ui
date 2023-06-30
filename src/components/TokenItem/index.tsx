@@ -1,9 +1,9 @@
 import { Observer } from "mobx-react-lite";
 
 import { Button } from "../Button";
-import { TokenIcon } from "../TokenIcon";
+import TokenIcon from "../TokenIcon";
 import { useTokenBalanceWatcher } from "../../hooks/useTokenBalanceWatcher";
-import { TokenImportPopup } from "../TokenImportPopup";
+import TokenImportPopup from "../TokenImportPopup";
 import { TokenCache, useTokensCache } from "../../state/TokensCacheService";
 
 export type TokenItemProps = {
@@ -12,7 +12,7 @@ export type TokenItemProps = {
   onSelect?: (root: string) => void;
 };
 
-export function TokenItem({ token, onSelect }: TokenItemProps): JSX.Element {
+const TokenItem: React.FC<TokenItemProps> = ({ token, onSelect }) => {
   const tokensCache = useTokensCache();
 
   const balance = useTokenBalanceWatcher(token, {
@@ -82,3 +82,5 @@ export function TokenItem({ token, onSelect }: TokenItemProps): JSX.Element {
     </>
   );
 }
+
+export default TokenItem;

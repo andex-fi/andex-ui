@@ -6,7 +6,6 @@ import { useParams } from 'react-router-dom'
 import { observer } from 'mobx-react-lite'
 
 import { Button } from '../../../../components/Button'
-// import { Icon } from '../../../../components/Icon'
 import { usePage } from '../../../../hooks/usePage'
 import { CustomField } from '../CustomField'
 import { MintSubmitButton } from '../MintSubmitButton'
@@ -20,7 +19,7 @@ type Props = {
 }
 
 
-function Popup({ onDismiss }: Props): JSX.Element {
+const Popup: React.FC<Props> = ({ onDismiss }) => {
     const { rootToken } = useParams<{ rootToken: string }>()
     const managingToken = useManageTokenStore(rootToken!)
     const mintForm = useMintForm()

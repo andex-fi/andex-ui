@@ -1,17 +1,15 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { observer } from "mobx-react-lite";
-// import { useIntl } from 'react-intl'
 
-import { AccountExplorerLink } from "../../../../components/AccountExplorerLink";
+import AccountExplorerLink from "../../../../components/AccountExplorerLink";
 import { Button } from "../../../../components/Button";
-// import { Icon } from '@/components/common/Icon'
-import { TokenIcon } from "../../../../components/TokenIcon";
-import { TransactionExplorerLink } from "../../../../components/TransactionExplorerLink";
+import TokenIcon from "../../../../components/TokenIcon";
+import TransactionExplorerLink from "../../../../components/TransactionExplorerLink";
 import { useSwapFormStore } from "../../stores/SwapFormStore";
 import { formattedTokenAmount } from "../../../../utils";
 
-function ConversionReceipt(): JSX.Element | null {
+const ConversionReceipt: React.FC = () => {
   const formStore = useSwapFormStore();
 
   if (formStore.conversion.txHash === undefined) {

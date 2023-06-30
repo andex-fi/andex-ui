@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable no-empty */
 import * as React from "react";
 import BigNumber from "bignumber.js";
@@ -12,10 +13,11 @@ import { PoolField } from "./components/PoolField";
 import { useCreateFarmPoolStore } from "./store/CreateFarmPoolStore";
 import { useFavoriteFarmings } from "../../state/FavoritePairs";
 import { useWallet } from "../../state/WalletService";
+import Page from "../Page";
 
 // import "./index.scss";
 
-export function Create(): JSX.Element {
+const Create = () => {
   const navigate = useNavigate();
   const wallet = useWallet();
   const creatingPool = useCreateFarmPoolStore();
@@ -68,7 +70,8 @@ export function Create(): JSX.Element {
         navigate(`/farming/${creatingPool.createdFarmPoolAddress.toString()}`);
       } else {
         setTimeout(() => {
-          navigate("/farming");
+          console.log("error");
+          // navigate("/farming");
         }, 60 * 1000);
       }
     } catch (e) {}
@@ -95,140 +98,146 @@ export function Create(): JSX.Element {
   }, []);
 
   return (
-    <div className="card">
-      <div className="card__wrap">
-        <header className="card__header">
-          <h2 className="card-title">Create farm pool</h2>
-        </header>
+    <Page>
+      <div className="card">
+        <div className="card__wrap">
+          <header className="card__header">
+            <h2 className="card-title">Create farm pool</h2>
+          </header>
 
-        <div className="form form-create-farm-pool">
-          <Observer>
-            {() => (
-              <PoolField
-                autoFocus
-                hint={
-                  creatingPool.farmToken.symbol != null
-                    ? creatingPool.farmToken.symbol
-                    : "Address"
-                }
-                isValid={creatingPool.farmToken.isValid}
-                label="Farm token root"
-                placeholder="0:000000..."
-                readOnly={creatingPool.isCreating}
-                value={creatingPool.farmToken.root || ""}
-                onChange={onChangeFarmToken}
-              />
-            )}
-          </Observer>
+          <div className="form form-create-farm-pool">
+            <Observer>
+              {() => (
+                <PoolField
+                  autoFocus
+                  hint={
+                    creatingPool.farmToken.symbol != null
+                      ? creatingPool.farmToken.symbol
+                      : "Address"
+                  }
+                  isValid={creatingPool.farmToken.isValid}
+                  label="Farm token root"
+                  placeholder="0:000000..."
+                  readOnly={creatingPool.isCreating}
+                  value={creatingPool.farmToken.root || ""}
+                  onChange={onChangeFarmToken}
+                />
+              )}
+            </Observer>
 
-          <Observer>
-            {() => (
-              <PoolField
-                hint="YYYY.MM.DD HH:MM"
-                label="Farm start"
-                isValid={creatingPool.farmStart.isValid}
-                placeholder="YYYY.MM.DD HH:MM"
-                readOnly={creatingPool.isCreating}
-                value={creatingPool.farmStart.value || ""}
-                onChange={onChangeDate("farmStart")}
-              />
-            )}
-          </Observer>
+            <Observer>
+              {() => (
+                <PoolField
+                  hint="YYYY.MM.DD HH:MM"
+                  label="Farm start"
+                  isValid={creatingPool.farmStart.isValid}
+                  placeholder="YYYY.MM.DD HH:MM"
+                  readOnly={creatingPool.isCreating}
+                  value={creatingPool.farmStart.value || ""}
+                  onChange={onChangeDate("farmStart")}
+                />
+              )}
+            </Observer>
 
-          <Observer>
-            {() => (
-              <PoolField
-                hint="Ratio, percent"
-                inputMode="decimal"
-                isValid={creatingPool.isVestingValid}
-                label="Vesting ratio"
-                placeholder="50"
-                readOnly={creatingPool.isCreating}
-                value={creatingPool.farmVesting.vestingRatio || ""}
-                onChange={onChangeVesting("vestingRatio")}
-              />
-            )}
-          </Observer>
+            <Observer>
+              {() => (
+                <PoolField
+                  hint="Ratio, percent"
+                  inputMode="decimal"
+                  isValid={creatingPool.isVestingValid}
+                  label="Vesting ratio"
+                  placeholder="50"
+                  readOnly={creatingPool.isCreating}
+                  value={creatingPool.farmVesting.vestingRatio || ""}
+                  onChange={onChangeVesting("vestingRatio")}
+                />
+              )}
+            </Observer>
 
-          <Observer>
-            {() => (
-              <PoolField
-                hint="Period, seconds"
-                inputMode="decimal"
-                isValid={creatingPool.isVestingValid}
-                label="Vesting period"
-                placeholder="86400"
-                readOnly={creatingPool.isCreating}
-                value={creatingPool.farmVesting.vestingPeriod || ""}
-                onChange={onChangeVesting("vestingPeriod")}
-              />
-            )}
-          </Observer>
+            <Observer>
+              {() => (
+                <PoolField
+                  hint="Period, seconds"
+                  inputMode="decimal"
+                  isValid={creatingPool.isVestingValid}
+                  label="Vesting period"
+                  placeholder="86400"
+                  readOnly={creatingPool.isCreating}
+                  value={creatingPool.farmVesting.vestingPeriod || ""}
+                  onChange={onChangeVesting("vestingPeriod")}
+                />
+              )}
+            </Observer>
 
-          <Observer>
-            {() => (
-              <>
-                {creatingPool.rewardTokens.map((token, idx) => (
-                  <React.Fragment key={idx}>
-                    <PoolField
-                      hint={token.symbol != null ? token.symbol : "Address"}
-                      isValid={token.isValid}
-                      label="Reward token root"
-                      placeholder="0:000000..."
-                      readOnly={creatingPool.isCreating}
-                      value={token.root || ""}
-                      onChange={onChangeRewardTokenRoot(idx)}
-                    />
+            <Observer>
+              {() => (
+                <>
+                  {creatingPool.rewardTokens.map((token, idx) => (
+                    <React.Fragment key={idx}>
+                      <PoolField
+                        hint={token.symbol != null ? token.symbol : "Address"}
+                        isValid={token.isValid}
+                        label="Reward token root"
+                        placeholder="0:000000..."
+                        readOnly={creatingPool.isCreating}
+                        value={token.root || ""}
+                        onChange={onChangeRewardTokenRoot(idx)}
+                      />
 
-                    <PoolField
-                      hint={
-                        token.symbol != null
-                          ? `${token.symbol} per second`
-                          : "Reward"
-                      }
-                      inputMode="decimal"
-                      isValid={token.isRewardTotalValid}
-                      label="Reward per second"
-                      placeholder="0.0"
-                      readOnly={creatingPool.isCreating}
-                      value={token.farmSpeed || ""}
-                      onChange={onChangeRewardTokenRewardAmount(idx)}
-                    />
-                  </React.Fragment>
-                ))}
-              </>
-            )}
-          </Observer>
+                      <PoolField
+                        hint={
+                          token.symbol != null
+                            ? `${token.symbol} per second`
+                            : "Reward"
+                        }
+                        inputMode="decimal"
+                        isValid={token.isRewardTotalValid}
+                        label="Reward per second"
+                        placeholder="0.0"
+                        readOnly={creatingPool.isCreating}
+                        value={token.farmSpeed || ""}
+                        onChange={onChangeRewardTokenRewardAmount(idx)}
+                      />
+                    </React.Fragment>
+                  ))}
+                </>
+              )}
+            </Observer>
 
-          <div className="form-create-farm-pool__actions">
-            <a onClick={creatingPool.addRewardToken}>Add reward token</a>
+            <div className="form-create-farm-pool__actions">
+              <a onClick={creatingPool.addRewardToken}>Add reward token</a>
+            </div>
+
+            <PoolCreatingParams />
+
+            <Observer>
+              {() => (
+                <Button
+                  block
+                  className="form-submit"
+                  aria-disabled={
+                    creatingPool.isCreating || !creatingPool.isValid
+                  }
+                  disabled={creatingPool.isCreating || !creatingPool.isValid}
+                  size="lg"
+                  type="primary"
+                  onClick={create}
+                >
+                  {creatingPool.isCreating ? (
+                    <div className="popup-main__loader">
+                      <Icon icon="loader" />
+                    </div>
+                  ) : (
+                    "Create pool"
+                  )}
+                </Button>
+              )}
+            </Observer>
           </div>
-
-          <PoolCreatingParams />
-
-          <Observer>
-            {() => (
-              <Button
-                block
-                className="form-submit"
-                aria-disabled={creatingPool.isCreating || !creatingPool.isValid}
-                disabled={creatingPool.isCreating || !creatingPool.isValid}
-                size="lg"
-                type="primary"
-                onClick={create}
-              >
-                {creatingPool.isCreating ? (
-                  <div className="popup-main__loader">
-                    <Icon icon="loader" />
-                  </div>
-                ) : (
-                  "Create pool"
-                )}
-              </Button>
-            )}
-          </Observer>
         </div>
       </div>
-    </div>
+    </Page>
   );
-}
+};
+
+export default Create;

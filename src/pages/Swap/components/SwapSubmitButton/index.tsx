@@ -6,7 +6,7 @@ import { Icon } from "../../../../components/Icon";
 import { useSwapFormStore } from "../../stores/SwapFormStore";
 import { SwapDirection } from "../../types";
 
-function SubmitButton(): JSX.Element {
+const SubmitButton: React.FC = () => {
   const formStore = useSwapFormStore();
   const tokensCache = formStore.useTokensCache;
   const wallet = formStore.useWallet;
@@ -72,11 +72,11 @@ function SubmitButton(): JSX.Element {
       buttonProps.disabled = true;
       buttonText = formStore.isMultipleSwapMode
         ? "Insufficient balance"
-        : `Insufficient <s>${
+        : `Insufficient ${
             (formStore.nativeCoinSide === "leftToken"
               ? formStore.coin.symbol
               : formStore.leftToken?.symbol) || ""
-          }</s> balance`;
+          } balance`;
       break;
 
     case formStore.isConfirmationAwait:

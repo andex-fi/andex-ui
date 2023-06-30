@@ -3,7 +3,7 @@ import { DateTime } from "luxon";
 import { observer } from "mobx-react-lite";
 import BigNumber from "bignumber.js";
 
-import { AccountExplorerLink } from "../../../../components/AccountExplorerLink";
+import AccountExplorerLink from "../../../../components/AccountExplorerLink";
 import { useCreateFarmPoolStore } from "../../store/CreateFarmPoolStore";
 import { formattedAmount } from "../../../../utils";
 

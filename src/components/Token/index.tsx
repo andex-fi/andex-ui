@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 
-import { TokenIcon, TokenIconProps } from "../TokenIcon";
+import TokenIcon, { TokenIconProps } from "../TokenIcon";
 import { useTokensCache } from "../../state/TokensCacheService";
 
 type Props = {
@@ -10,12 +10,12 @@ type Props = {
   symbol?: string;
 };
 
-function TokenInner({
+const TokenInner: React.FC<Props> =({
   address,
   icon,
   size = "small",
   symbol,
-}: Props): JSX.Element {
+}) => {
   const tokensCache = useTokensCache();
   const token = tokensCache.get(address);
 

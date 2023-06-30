@@ -5,11 +5,11 @@ type Props = {
     theme?: 'danger' | 'warning'
 }
 
-export function Warning({
+const Warning: React.FC<Props> = ({
     title,
     text,
     // theme = 'danger',
-}: Props): JSX.Element {
+}) => {
     return (
         <div
             className=""
@@ -22,3 +22,5 @@ export function Warning({
         </div>
     )
 }
+
+export default Warning;

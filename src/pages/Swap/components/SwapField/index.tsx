@@ -3,14 +3,12 @@ import classNames from "classnames";
 import { observer } from "mobx-react-lite";
 
 import { Button } from "../../../../components/Button";
-// import { Icon } from "../../../../components/Icon";
-import { TokenIcon } from "../../../../components/TokenIcon";
+import TokenIcon from "../../../../components/TokenIcon";
 import { useTokenBalanceWatcher } from "../../../../hooks";
-import { TokenIcons } from "../../../../components/TokenIcons";
+import TokenIcons from "../../../../components/TokenIcons";
 import { useField } from "../../../../hooks";
 import { WalletNativeCoin } from "../../../../state/WalletService";
 import type { TokenCache } from "../../../../state/TokensCacheService";
-// import { useSwapFormStore } from "../../stores/SwapFormStore";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 type Props = {
@@ -30,7 +28,7 @@ type Props = {
   onToggleTokensList?: () => void;
 };
 
-function Field({
+const Field: React.FC<Props> = ({
   balance = "0",
   isMultiple = false,
   // isValid = true,
@@ -38,7 +36,7 @@ function Field({
   showMaximizeButton,
   token,
   ...props
-}: Props): JSX.Element {
+}) => {
   const field = useField({
     decimals: nativeCoin !== undefined ? nativeCoin.decimals : token?.decimals,
     value: props.value,

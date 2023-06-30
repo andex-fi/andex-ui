@@ -1,50 +1,48 @@
-import { useState, useRef} from 'react'
+import React, { useState } from 'react'
+import { Box, CopyIcon, FlexProps, IconButton } from '@andex/uikit'
+import { Wrapper, Text, Tooltip } from './styles'
 
-import { Icon } from '../Icon'
-import { Tooltip } from '../Tooltip'
-
-type Props = {
-    text: string;
+interface CopyProps extends FlexProps {
+  text: string
 }
 
-export function CopyToClipboard({
-    text,
-}: Props): JSX.Element | null {
-    const containerRef = useRef<HTMLSpanElement | null>(null)
-    const [success, setSuccess] = useState(false)
+const CopyToClipboard: React.FC<CopyProps> = ({ text, ...props }) => {
+    const [isTooltipDisplayed, setIsTooltipDisplayed] = useState(false)
 
-    if (!navigator || !navigator.clipboard) {
-        return null
+    function displayTooltip() {
+        setIsTooltipDisplayed(true)
+        setTimeout(() => {
+          setIsTooltipDisplayed(false)
+        }, 1000)
     }
 
-    const copy = async () => {
-        await navigator.clipboard.writeText(text)
-        setSuccess(true)
-        setTimeout(() => {
-            setSuccess(false)
-        }, 2000)
+    const copyText = () => {
+        if (navigator.clipboard && navigator.permissions) {
+            navigator.clipboard.writeText(text).then(() => displayTooltip())
+        } else if (document.queryCommandSupported('copy')) {
+            const ele = document.createElement('textarea')
+            ele.value = text
+            document.body.appendChild(ele)
+            ele.select()
+            document.execCommand('copy')
+            document.body.removeChild(ele)
+            displayTooltip()
+        }
     }
 
     return (
-        <>
-            <span
-                className=""
-                onClick={copy}
-                ref={containerRef}
-            >
-                <Icon icon="copy" onClick={copy} />
-            </span>
-            {success && (
-                <Tooltip
-                    forceShow
-                    target={containerRef}
-                    alignX="center"
-                    alignY="top"
-                    size="small"
-                >
-                    Copied
-                </Tooltip>
-            )}
-        </>
+        <Box position="relative" {...props}>
+            <Wrapper>
+                <Text title={text}>
+                    <input type="text" readOnly value={text} />
+                </Text>
+                <IconButton variant="text" onClick={copyText}>
+                    <CopyIcon color="primary" width="24px" />
+                </IconButton>
+            </Wrapper>
+            <Tooltip isTooltipDisplayed={isTooltipDisplayed}>{'Copied'}</Tooltip>
+        </Box>
     )
 }
+
+export default CopyToClipboard

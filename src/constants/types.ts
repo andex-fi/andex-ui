@@ -16,6 +16,12 @@ export type CallId = {
     callId: string;
 }
 
+export type PageMeta = {
+    title: string
+    description?: string
+    image?: string
+}
+
 export type SendMessageCallbackParams<AdditionalParams = {}> = AdditionalParams & CallId
 
 export interface SendMessageCallback<AdditionalParams = {}> {

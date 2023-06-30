@@ -1,11 +1,10 @@
 import { observer } from 'mobx-react-lite'
-
 import { Button } from '../../../../components/Button'
 import { BurnPopup } from '../BurnPopup'
 import { useBurnForm } from '../../hooks/useBurnForm'
 
 
-function ButtonInternal(): JSX.Element {
+const ButtonInternal: React.FC = () => {
     const burnForm = useBurnForm()
 
     return (

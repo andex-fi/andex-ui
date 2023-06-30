@@ -34,7 +34,7 @@ export const TokenListURI =
 
 export const MinWalletVersion = "0.2.31";
 
-export const API_URL = "https://api.flatqube.io/v2";
+export const API_URL = "https://api.andex.finance";
 
 export const NPoolsList = new Map<
   string,

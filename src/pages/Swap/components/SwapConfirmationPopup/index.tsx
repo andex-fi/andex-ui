@@ -1,19 +1,20 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import * as React from "react";
-// import * as ReactDOM from "react-dom";
 import { reaction } from "mobx";
 import { observer } from "mobx-react-lite";
 
 import { Button } from "../../../../components/Button";
 import { Icon } from "../../../../components/Icon";
-import { TokenIcon } from "../../../../components/TokenIcon";
+import TokenIcon from "../../../../components/TokenIcon";
 import { SwapBill } from "../SwapBill";
 import { useSwapFormStore } from "../../stores/SwapFormStore";
 import { Dialog } from "@headlessui/react";
 
-// import "./index.scss";
+type Props = {
+  isOpen: boolean,
+}
 
-function ConfirmationPopup({ isOpen }: { isOpen: boolean }): JSX.Element {
+const ConfirmationPopup: React.FC<Props> = ({ isOpen }) => {
   const formStore = useSwapFormStore();
 
   const [minExpectedAmount, setMinExpectedAmount] = React.useState(

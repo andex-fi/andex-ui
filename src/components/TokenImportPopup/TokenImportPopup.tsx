@@ -2,7 +2,7 @@ import { Observer } from "mobx-react-lite";
 
 import { Button } from "../Button";
 import { Icon } from "../Icon";
-import { TokenIcon } from "../TokenIcon";
+import TokenIcon from "../TokenIcon";
 import { useTokensCache } from "../../state/TokensCacheService";
 import ReactDOM from "react-dom";
 import { Dialog } from "@headlessui/react";
@@ -13,10 +13,10 @@ type Props = {
   isOpen: boolean;
 };
 
-export function TokenImportPopup({
+const TokenImportPopup: React.FC<Props> = ({
   onImportConfirm,
   isOpen,
-}: Props): JSX.Element | null {
+}) => {
   const tokensCache = useTokensCache();
 
   const onImportConfirmInternal = () => {
@@ -139,3 +139,5 @@ export function TokenImportPopup({
     document.body
   );
 }
+
+export default TokenImportPopup;

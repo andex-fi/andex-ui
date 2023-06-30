@@ -51,6 +51,7 @@ function params<T>(
   if (o != null) {
     return o;
   }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return ((oo: any) => oo) as any;
 }
 

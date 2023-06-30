@@ -1,8 +1,4 @@
-type Props = {
-  address: string;
-  className?: string;
-  size?: "small" | "xsmall" | "medium" | "large";
-};
+import { AvatarProps } from "./types";
 
 const circles = [
   {
@@ -103,7 +99,7 @@ const circles = [
   },
 ];
 
-export function Avatar({ address, size, className }: Props): JSX.Element {
+const Avatar: React.FC<AvatarProps> = ({ address, size, className }) => {
   const hash = address.split(":")[1] ?? [];
 
   let pxSize: number;
@@ -155,3 +151,5 @@ export function Avatar({ address, size, className }: Props): JSX.Element {
     </svg>
   );
 }
+
+export default Avatar;

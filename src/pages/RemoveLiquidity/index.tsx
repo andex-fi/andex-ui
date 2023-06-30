@@ -1,12 +1,17 @@
-import { RemoveLiquidity } from "./components/RemoveLiquidity";
+import RemoveLiquidity from "./components/RemoveLiquidity";
 import { RemoveLiquidityFormStoreProvider } from "../../contexts";
+import Page from "../Page";
 
-export default function RemoveLiquidityPage(): JSX.Element {
+const RemoveLiquidityPage: React.FC = () => {
     return (
         <div>
             <RemoveLiquidityFormStoreProvider>
-                <RemoveLiquidity />
+                <Page>
+                    <RemoveLiquidity />
+                </Page>
             </RemoveLiquidityFormStoreProvider>
         </div>
     )
 }
+
+export default RemoveLiquidityPage;

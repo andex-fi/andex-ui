@@ -1,18 +1,13 @@
 import BigNumber from "bignumber.js";
-import { TokenIcon } from "../TokenIcon";
-import type { WalletNativeCoin } from "../../state/WalletService";
+import TokenIcon from "../TokenIcon";
+import { NativeCoinItemProps } from "./types";
 import { formattedAmount } from "../../utils";
 
-export type NativeCoinItemProps = {
-  coin: WalletNativeCoin;
-  disabled?: boolean;
-  onSelect?: () => void;
-};
 
-export function NativeCoinItem({
+const NativeCoinItem: React.FC<NativeCoinItemProps> = ({
   coin,
   onSelect,
-}: NativeCoinItemProps): JSX.Element {
+}) => {
   return (
     <>
       <div
@@ -41,3 +36,5 @@ export function NativeCoinItem({
     </>
   );
 }
+
+export default NativeCoinItem;

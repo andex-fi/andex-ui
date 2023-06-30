@@ -9,7 +9,7 @@ import { useManageTokenStore } from '../../state/ManageTokenStore'
 import { isAddressValid } from '../../../../constants'
 
 
-function Details(): JSX.Element {
+const Details: React.FC = () => {
     const { tokenRoot } = useParams<{ tokenRoot: string }>()
 
     const managingToken = useManageTokenStore(tokenRoot!)

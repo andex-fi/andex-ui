@@ -14,7 +14,7 @@ import { Icon } from '../../../components/Icon'
 import { Actions } from './actions'
 
 
-export function Token(): JSX.Element {
+export const Token: React.FC = () => {
     const { tokenRoot } = useParams<{ tokenRoot: string }>()
 
     const managingToken = useManageTokenStore(tokenRoot!)

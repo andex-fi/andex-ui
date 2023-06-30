@@ -5,11 +5,11 @@ type Props = Pick<React.CSSProperties, 'height' | 'width'> & {
     className?: string;
 }
 
-export function Placeholder({
+const Placeholder: React.FC<Props> = ({
     circle,
     // className,
     ...props
-}: Props): JSX.Element {
+}) => {
     const width = typeof props.width === 'string' ? props.width : `${props.width}px`
     const height = typeof props.height === 'string' ? props.height : `${props.height}px`
 
@@ -25,3 +25,5 @@ export function Placeholder({
         </span>
     )
 }
+
+export default Placeholder;
