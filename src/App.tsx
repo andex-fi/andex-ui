@@ -9,6 +9,7 @@ import Pools from "./pages/pools";
 import Layout from "./components/Layout";
 import ImportLiquidityPage from "./pages/ImportLiquidity";
 import { Swap } from "./pages/Swap";
+import { Create } from "./pages/Farming/Create";
 
 export default function App() {
   return (
@@ -43,6 +44,7 @@ export default function App() {
           path="importliquidity/:leftTokenRoot/:rightTokenRoot"
           element={<ImportLiquidityPage />}
         />
+        <Route path="createpool" element={<Create />}></Route>
       </Route>
     </Routes>
   );
