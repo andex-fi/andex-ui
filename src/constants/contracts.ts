@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import type { Address, Contract, FullContractState } from '@andex/provider'
-
-import { useRpc, useStaticRpc } from '../hooks'
+import { useRpc, useStaticRpc } from '@andex/sdk'
 import { DexAbi, EverAbi, TokenAbi } from '../constants/abi'
 import { resolveVenomAddress } from '../utils'
 

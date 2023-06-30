@@ -18,15 +18,12 @@ import {
 } from 'mobx'
 
 import { MinWalletVersion } from '../constants/config'
-import { useRpc } from '../hooks/useRpc'
-import { useStaticRpc } from '../hooks/useStaticRpc'
 import {
     DexAbi,
     DexConstants,
     getFullContractState,
-    Token,
 } from '../constants'
-import { BaseStore } from '../state/BaseStore'
+import { BaseStore, Token, useRpc, useStaticRpc } from '@andex/sdk'
 import { debug, error, log } from '../utils'
 
 

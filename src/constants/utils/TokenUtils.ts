@@ -6,10 +6,9 @@ import type {
   SendInternalParams,
   Transaction,
 } from "@andex/provider";
-
+import { useRpc } from "@andex/sdk";
 import { getFullContractState, tokenRootContract } from "../contracts";
 import type { EverscaleTokenData } from "../../state/types";
-import { useRpc } from "../../hooks";
 import { resolveVenomAddress } from "../../utils";
 import { SupportedInterfaceDetection } from "../supportedInterfaceDetection";
 

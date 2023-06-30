@@ -1,10 +1,8 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { action, IReactionDisposer, makeAutoObservable, reaction } from "mobx";
 import { AddressLiteral, Subscriber } from "@andex/provider";
-
+import { useRpc, useStaticRpc } from "@andex/sdk";
 import { TokenFactoryAddress } from "../../../constants/config";
-import { useRpc } from "../../../hooks/useRpc";
-import { useStaticRpc } from "../../../hooks/useStaticRpc";
 import { TokenAbi } from "../../../constants";
 import {
   DEFAULT_CREATE_TOKEN_STORE_DATA,

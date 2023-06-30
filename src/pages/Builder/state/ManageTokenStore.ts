@@ -2,10 +2,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { action, IReactionDisposer, makeAutoObservable, reaction } from "mobx";
 import { Address } from "@andex/provider";
+import { Token, useRpc } from "@andex/sdk";
 import BigNumber from "bignumber.js";
 
-import { useRpc } from "../../../hooks/useRpc";
-import { Token, TokenAbi, TokenWallet } from "../../../constants";
+import { TokenAbi, TokenWallet } from "../../../constants";
 import {
   DEFAULT_MANAGE_TOKEN_STORE_DATA,
   DEFAULT_MANAGE_TOKEN_STORE_STATE,

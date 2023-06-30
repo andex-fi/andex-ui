@@ -10,9 +10,8 @@ import type {
 import { Subscription } from "@andex/provider";
 
 // import { DexRootAddress } from "../constants/dexConstants";
-import { useStaticRpc } from "../hooks";
 import { DexAccountUtils, DexUtils } from "../constants/utils";
-import { BaseStore } from "./BaseStore";
+import { BaseStore, useStaticRpc } from "@andex/sdk";
 import { useWallet } from "./WalletService";
 import type { WalletService } from "./WalletService";
 import { addressesComparer, debug, error, throttle } from "../utils";

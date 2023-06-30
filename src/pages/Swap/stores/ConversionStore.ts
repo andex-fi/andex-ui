@@ -4,8 +4,7 @@ import { Address } from "@andex/provider";
 import { computed, makeObservable } from "mobx";
 
 import { TokenAbi, WVenomVaultAddress } from "../../../constants";
-import { useRpc } from "../../../hooks";
-import { BaseStore } from "../../../state/BaseStore";
+import { BaseStore, useRpc } from "@andex/sdk";
 import { TokensCacheService } from "../../../state/TokensCacheService";
 import { WalletService } from "../../../state/WalletService";
 import {

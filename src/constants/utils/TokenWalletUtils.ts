@@ -10,7 +10,7 @@ import type {
 import { TokenAbi } from "../abi";
 import { tokenRootContract, tokenWalletContract } from "../contracts";
 import { resolveVenomAddress, debug, sliceAddress } from "../../utils";
-import { useRpc, useStaticRpc } from "../../hooks";
+import { useRpc, useStaticRpc } from "@andex/sdk";
 
 export type TokenWalletOwnerParams = {
   tokenRootAddress: Address | string;

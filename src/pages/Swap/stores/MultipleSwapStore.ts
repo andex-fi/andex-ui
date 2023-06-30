@@ -6,7 +6,7 @@ import { Address, Subscriber } from "@andex/provider";
 import * as E from "fp-ts/Either";
 import { computed, makeObservable, override } from "mobx";
 
-import { useRpc } from "../../../hooks";
+import { useRpc } from "@andex/sdk";
 import {
   // DexConstants,
   EverAbi,

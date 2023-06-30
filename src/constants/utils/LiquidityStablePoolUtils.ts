@@ -9,7 +9,7 @@ import type {
 } from "@andex/provider";
 import { LT_COLLATOR } from "@andex/provider";
 
-import { useStaticRpc } from "../../hooks";
+import { useStaticRpc } from "@andex/sdk";
 import { DexAbi } from "..";
 import {
   dexAccountContract,

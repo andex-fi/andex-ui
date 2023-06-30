@@ -14,8 +14,6 @@ import {
   toJS,
 } from "mobx";
 import type { IReactionDisposer } from "mobx";
-
-import { useStaticRpc } from "../../hooks";
 import {
   DexAccountUtils,
   DexUtils,
@@ -41,7 +39,7 @@ import type {
   PoolData,
   WithdrawTokenCallbacks,
 } from "./types";
-import { BaseStore } from "../BaseStore";
+import { BaseStore, useStaticRpc } from "@andex/sdk";
 import type { WalletService } from "../WalletService";
 import type { DexAccountService } from "../DexAccountService";
 import type { TokenCache, TokensCacheService } from "../TokensCacheService";

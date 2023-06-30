@@ -9,7 +9,7 @@ import {
   DEFAULT_SLIPPAGE_VALUE,
   DEFAULT_SWAP_BILL,
 } from "../constants";
-import { BaseStore } from "../../../state/BaseStore";
+import { BaseStore, useRpc } from "@andex/sdk";
 import {
   TokenCache,
   TokensCacheService,
@@ -35,7 +35,6 @@ import {
 } from "../utils";
 import { DexAbi, DexRootAddress, PairUtils } from "../../../constants";
 // import { useSwapApi } from '@/modules/Swap/hooks/useApi'
-import { useRpc } from "../../../hooks";
 
 const rpc = useRpc();
 

@@ -1,7 +1,7 @@
 import { computed, makeObservable } from 'mobx'
 
 import { TokenListURI } from '../constants/config'
-import { BaseStore } from './BaseStore'
+import { BaseStore } from '@andex/sdk'
 import { error } from '../utils'
 
 

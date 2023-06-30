@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { Td } from '@andex/uikit'
-import { Token } from '../../../../constants'
+import { Token } from '@andex/sdk'
 import { formattedAmount, sliceAddress } from '../../../../utils'
 
 type Props = {

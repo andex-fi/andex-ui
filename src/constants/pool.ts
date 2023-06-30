@@ -4,7 +4,7 @@ import {
     TransactionId,
 } from '@andex/provider'
 
-import { useStaticRpc } from '../hooks/useStaticRpc'
+import { useStaticRpc } from '@andex/sdk'
 import { DexAbi } from './abi'
 import { Dex } from './dex'
 import { TokenWallet } from './tokenWallet'

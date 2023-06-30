@@ -48,7 +48,7 @@ import {
   resolveVenomAddress,
 } from "../../utils";
 import { DexAbi } from "..";
-import { useStaticRpc } from "../../hooks";
+import { useStaticRpc } from "@andex/sdk";
 
 export type LiquidityPoolTokenData = {
   address: Address;

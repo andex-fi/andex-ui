@@ -12,14 +12,12 @@ import {
 } from "mobx";
 import { Address, Subscription } from "@andex/provider";
 
-import { useRpc } from "../hooks/useRpc";
 import {
   isAddressValid,
-  Token,
   TokenUtils,
   TokenWalletUtils,
 } from "../constants";
-import { BaseStore } from "./BaseStore";
+import { BaseStore, Token, useRpc } from "@andex/sdk";
 import { TokensListService, useTokensList } from "./TokensListService";
 import { useWallet, WalletService } from "./WalletService";
 import { debug, error, sliceAddress, storage, warn } from "../utils";

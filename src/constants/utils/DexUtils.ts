@@ -8,7 +8,7 @@ import type {
   SendInternalParams,
 } from "@andex/provider";
 
-import { useRpc, useStaticRpc } from "../../hooks";
+import { useRpc, useStaticRpc } from "@andex/sdk";
 import { DexAbi } from "../abi";
 import { dexRootContract } from "../contracts";
 import { resolveVenomAddress } from "../../utils";

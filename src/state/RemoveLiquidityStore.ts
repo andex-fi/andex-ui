@@ -10,8 +10,6 @@ import {
     toJS,
 } from 'mobx'
 import type { IReactionDisposer } from 'mobx'
-
-import { useStaticRpc } from '../hooks'
 import {
     DexUtils,
     getFullContractState,
@@ -22,7 +20,7 @@ import {
 } from '../constants'
 import type { LiquidityPoolWithdrawCallbacks } from '../constants'
 import type { PoolData } from '../types/LiquidityTypes'
-import { BaseStore } from '../state/BaseStore'
+import { BaseStore, useStaticRpc } from '@andex/sdk'
 import type { DexAccountService } from '../state/DexAccountService'
 import type { TokenCache, TokensCacheService } from '../state/TokensCacheService'
 import type { WalletService } from '../state/WalletService'

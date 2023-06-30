@@ -6,7 +6,8 @@ import {
   useEffect,
   useState,
 } from "react";
-import { useAccountContext, useRpc } from "../hooks";
+import { useAccountContext } from "../hooks";
+import { useRpc } from "@andex/sdk";
 import { DexRootAddress } from "../constants/config";
 import { getFullContractState } from "../constants/contracts";
 import { DexUtils } from "../constants/utils/DexUtils";

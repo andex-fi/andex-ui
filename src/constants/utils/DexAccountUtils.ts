@@ -11,8 +11,7 @@ import type {
   Transaction,
 } from "@andex/provider";
 import { LT_COLLATOR } from "@andex/provider";
-
-import { useRpc, useStaticRpc } from "../../hooks";
+import { useRpc, useStaticRpc } from "@andex/sdk";
 import { DexAbi } from "../abi";
 import { dexAccountContract, getFullContractState } from "../contracts";
 import type {

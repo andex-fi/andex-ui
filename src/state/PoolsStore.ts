@@ -5,7 +5,7 @@ import { computed, makeObservable } from "mobx";
 // import { usePoolsApi } from "../pages/pools/hooks/useApi";
 import type { PoolResponse, PoolsPagination } from "../types/PoolTypes";
 import { PoolsOrdering } from "../types/PoolTypes";
-import { BaseStore } from "./BaseStore";
+import { BaseStore } from "@andex/sdk";
 import { TokensCacheService } from "./TokensCacheService";
 import { WalletService } from "./WalletService";
 import { PairUtils } from "../constants";
