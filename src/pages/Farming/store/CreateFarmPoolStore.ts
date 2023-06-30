@@ -148,6 +148,14 @@ export class CreateFarmPoolStore {
 
       this._transactionSubscriber = new staticRpc.Subscriber();
 
+      // console.log(
+      //   "txs: ",
+      //   this._transactionSubscriber
+      //     .transactions(MasterChefAddress)
+      //     .flatMap((a) => a.transactions)
+      //     .filter((tx) => !startLt || tx.id.lt > startLt)
+      // );
+
       const stream = await this._transactionSubscriber
         .transactions(MasterChefAddress)
         .flatMap((a) => a.transactions)
@@ -157,14 +165,17 @@ export class CreateFarmPoolStore {
             FarmAbi.Fabric,
             MasterChefAddress
           ).decodeTransaction({
-            methods: ["onPoolDeploy"],
+            methods: ["onFarmPoolDeploy"],
             transaction,
           });
 
+          console.log("decoded tx: ", decodedTx);
+
           if (
-            decodedTx?.method === "onPoolDeploy" &&
+            decodedTx?.method === "onFarmPoolDeploy" &&
             decodedTx.input.pool_owner.toString() === this.wallet.address
           ) {
+            console.log("transaction: ", transaction);
             this.changeData(
               "createdFarmPoolAddress",
               transaction.inMessage.src
@@ -177,6 +188,7 @@ export class CreateFarmPoolStore {
         })
         .delayed((s) => s.first());
 
+      console.log("starting ...");
       await Farm.createPool(
         new Address(this.wallet.address),
         new Address(this.farmToken.root as string),
@@ -195,9 +207,20 @@ export class CreateFarmPoolStore {
           .toFixed()
       );
 
+      this._transactionSubscriber
+        .transactions(MasterChefAddress)
+        .flatMap((a) => a.transactions)
+        .filter((tx) => !startLt || tx.id.lt > startLt)
+        .filterMap((tx) => {
+          console.log("transaction", tx);
+        });
+
+      console.log("awaiting stream ...");
       await stream();
+      console.log("done");
     } catch (e) {
       this.changeState("isCreating", false);
+      console.log("error: ", e);
       throw e;
     } finally {
       await this.unsubscribeTransactionSubscriber();
