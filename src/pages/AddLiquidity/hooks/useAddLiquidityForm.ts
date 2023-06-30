@@ -3,7 +3,7 @@ import * as React from "react";
 import { isAddressValid } from "../../../constants";
 import { useAddLiquidityFormStoreContext } from "../../../contexts/AddLiquidityFormStoreContext";
 import { TokenSide } from "../../../components/TokensList";
-import { debug, error } from "../../../utils";
+import { debug, error } from "@andex/sdk";
 import { appRoutes } from "../../../routes";
 import { useNavigate } from "react-router-dom";
 import { AddLiquidityFormStoreData } from "../../../state/liquidity/AddLiquidityFormStore";

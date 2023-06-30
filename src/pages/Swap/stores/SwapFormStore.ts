@@ -4,7 +4,7 @@
 import BigNumber from "bignumber.js";
 import type { IReactionDisposer } from "mobx";
 import { action, computed, makeObservable, override, reaction } from "mobx";
-
+import { debounce } from "@andex/sdk";
 import { DexConstants, WVENOMRootAddress } from "../../../constants";
 import {
   DEFAULT_LEFT_TOKEN_ROOT,
@@ -40,7 +40,6 @@ import {
   useTokensCache,
 } from "../../../state/TokensCacheService";
 import {
-  debounce,
   // debug,
   formattedBalance,
   isGoodBignumber,

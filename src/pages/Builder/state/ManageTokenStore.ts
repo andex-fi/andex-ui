@@ -2,7 +2,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { action, IReactionDisposer, makeAutoObservable, reaction } from "mobx";
 import { Address } from "@andex/provider";
-import { Token, useRpc } from "@andex/sdk";
+import { Token, useRpc, error } from "@andex/sdk";
 import BigNumber from "bignumber.js";
 
 import { TokenAbi, TokenWallet } from "../../../constants";
@@ -12,7 +12,6 @@ import {
 } from "../constants";
 import { ManageTokenStoreData, ManageTokenStoreState } from "../types";
 import { useWallet, WalletService } from "../../../state/WalletService";
-import { error } from "../../../utils";
 
 const rpc = useRpc();
 

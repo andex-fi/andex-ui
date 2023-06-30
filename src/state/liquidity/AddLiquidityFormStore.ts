@@ -39,14 +39,17 @@ import type {
   PoolData,
   WithdrawTokenCallbacks,
 } from "./types";
-import { BaseStore, useStaticRpc } from "@andex/sdk";
+import { 
+  BaseStore, 
+  useStaticRpc, 
+  debug,
+  error, 
+} from "@andex/sdk";
 import type { WalletService } from "../WalletService";
 import type { DexAccountService } from "../DexAccountService";
 import type { TokenCache, TokensCacheService } from "../TokensCacheService";
 import {
   addressesComparer,
-  debug,
-  error,
   getSafeProcessingId,
   isGoodBignumber,
   throttle,

@@ -6,7 +6,7 @@ import { Address, Subscriber } from "@andex/provider";
 import * as E from "fp-ts/Either";
 import { computed, makeObservable, override } from "mobx";
 
-import { useRpc } from "@andex/sdk";
+import { useRpc, error } from "@andex/sdk";
 import {
   // DexConstants,
   EverAbi,
@@ -18,7 +18,7 @@ import {
 import { DirectSwapStore } from "./DirectSwapStore";
 import { WalletService } from "../../../state/WalletService";
 import { TokensCacheService } from "../../../state/TokensCacheService";
-import { error, getSafeProcessingId, isGoodBignumber } from "../../../utils";
+import { getSafeProcessingId, isGoodBignumber } from "../../../utils";
 import type {
   CoinSwapFailureResult,
   CoinSwapStoreInitialData,

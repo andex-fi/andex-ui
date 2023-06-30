@@ -17,10 +17,17 @@ import {
   TokenUtils,
   TokenWalletUtils,
 } from "../constants";
-import { BaseStore, Token, useRpc } from "@andex/sdk";
+import { 
+  BaseStore, 
+  Token, 
+  useRpc,
+  debug,
+  error,
+  warn
+ } from "@andex/sdk";
 import { TokensListService, useTokensList } from "./TokensListService";
 import { useWallet, WalletService } from "./WalletService";
-import { debug, error, sliceAddress, storage, warn } from "../utils";
+import { sliceAddress, storage } from "../utils";
 
 export type TokenCache = Token;
 

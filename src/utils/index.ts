@@ -174,8 +174,6 @@ export function useForceUpdate(): React.DispatchWithoutAction {
   return forceUpdate;
 }
 
-export * from "./console";
-export * from "./debounce";
 export * from "./formattedAmount";
 export * from "./formattedBalance";
 export * from "./storage";

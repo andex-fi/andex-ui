@@ -8,15 +8,13 @@ import type {
   // ProviderRpcClient,
   SendInternalParams,
 } from "@andex/provider";
-
+import { debug, error } from "@andex/sdk";
 import { DexAbi } from "..";
 import { dexPairContract, getFullContractState } from "../contracts";
 import { DexUtils } from "./DexUtils";
 import { TokenUtils } from "./TokenUtils";
 import { TokenWalletUtils } from "./TokenWalletUtils";
 import {
-  debug,
-  error,
   getSafeProcessingId,
   resolveVenomAddress,
   sliceAddress,

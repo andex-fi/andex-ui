@@ -8,7 +8,7 @@ import { FiSettings } from "react-icons/fi";
 import { Observer } from "mobx-react-lite";
 import { AddLiquiditySubmitButton } from "./AddLiquiditySubmitButton";
 import { reaction } from "mobx";
-import { error } from "../../../utils";
+import { error } from "@andex/sdk";
 import TokenSelector from "../../../components/TokenSelector";
 import { useField } from "../../../hooks";
 

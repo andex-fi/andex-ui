@@ -23,8 +23,15 @@ import {
     DexConstants,
     getFullContractState,
 } from '../constants'
-import { BaseStore, Token, useRpc, useStaticRpc } from '@andex/sdk'
-import { debug, error, log } from '../utils'
+import { 
+    BaseStore, 
+    Token, 
+    useRpc, 
+    useStaticRpc,
+    debug,
+    error,
+    log,
+} from '@andex/sdk'
 
 
 export type Account = Permissions['accountInteraction']

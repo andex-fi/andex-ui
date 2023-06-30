@@ -20,14 +20,12 @@ import {
 } from '../constants'
 import type { LiquidityPoolWithdrawCallbacks } from '../constants'
 import type { PoolData } from '../types/LiquidityTypes'
-import { BaseStore, useStaticRpc } from '@andex/sdk'
+import { BaseStore, useStaticRpc, debug, error } from '@andex/sdk'
 import type { DexAccountService } from '../state/DexAccountService'
 import type { TokenCache, TokensCacheService } from '../state/TokensCacheService'
 import type { WalletService } from '../state/WalletService'
 import {
     addressesComparer,
-    debug,
-    error,
     isGoodBignumber,
 } from '../utils'
 

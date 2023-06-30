@@ -11,7 +11,7 @@ import type {
   Transaction,
 } from "@andex/provider";
 import { LT_COLLATOR } from "@andex/provider";
-import { useRpc, useStaticRpc } from "@andex/sdk";
+import { useRpc, useStaticRpc, debug } from "@andex/sdk";
 import { DexAbi } from "../abi";
 import { dexAccountContract, getFullContractState } from "../contracts";
 import type {
@@ -25,7 +25,6 @@ import { TokenWalletUtils } from "./TokenWalletUtils";
 import type { TokenWalletTransferToWalletParams } from "./TokenWalletUtils";
 import {
   addressesComparer,
-  debug,
   getSafeProcessingId,
   resolveVenomAddress,
 } from "../../utils";

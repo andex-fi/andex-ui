@@ -1,8 +1,7 @@
 import { computed, makeObservable } from 'mobx'
 
 import { TokenListURI } from '../constants/config'
-import { BaseStore } from '@andex/sdk'
-import { error } from '../utils'
+import { BaseStore, error } from '@andex/sdk'
 
 
 export type EverToken = {

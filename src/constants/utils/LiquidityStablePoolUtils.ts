@@ -9,7 +9,11 @@ import type {
 } from "@andex/provider";
 import { LT_COLLATOR } from "@andex/provider";
 
-import { useStaticRpc } from "@andex/sdk";
+import { 
+  useStaticRpc, 
+  debug,
+  error, 
+} from "@andex/sdk";
 import { DexAbi } from "..";
 import {
   dexAccountContract,
@@ -36,8 +40,6 @@ import type {
   TransactionSuccessResult,
 } from "../index";
 import {
-  debug,
-  error,
   getSafeProcessingId,
   resolveVenomAddress,
 } from "../../utils";

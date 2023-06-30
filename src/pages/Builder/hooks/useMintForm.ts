@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 
 import { useManageTokenStore } from '../state/ManageTokenStore'
 import { ManageTokenStoreData } from '../types'
-import { debounce } from '../../../utils'
+import { debounce } from '@andex/sdk'
 
 type MintFormShape = {
     isMintPopupShown: boolean;

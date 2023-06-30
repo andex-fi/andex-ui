@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import { reaction } from "mobx";
-
-import { error, formattedBalance } from "../utils";
+import { error } from "@andex/sdk";
+import { formattedBalance } from "../utils";
 import { TokenCache, useTokensCache } from "../state/TokensCacheService";
 
 export type TokenFormattedBalanceOptions = {

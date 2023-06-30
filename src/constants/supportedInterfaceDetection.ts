@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { Address, FullContractState } from '@andex/provider'
-import { useStaticRpc } from '@andex/sdk'
-import { error, resolveVenomAddress, sliceAddress } from '../utils'
+import { useStaticRpc, error } from '@andex/sdk'
+import { resolveVenomAddress, sliceAddress } from '../utils'
 
 
 const staticRpc = useStaticRpc()

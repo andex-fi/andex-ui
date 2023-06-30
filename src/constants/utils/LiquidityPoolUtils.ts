@@ -42,13 +42,15 @@ import type {
 import { TokenWalletUtils } from "./TokenWalletUtils";
 import {
   addressesComparer,
-  debug,
-  error,
   getSafeProcessingId,
   resolveVenomAddress,
 } from "../../utils";
 import { DexAbi } from "..";
-import { useStaticRpc } from "@andex/sdk";
+import { 
+  useStaticRpc, 
+  debug,
+  error, 
+} from "@andex/sdk";
 
 export type LiquidityPoolTokenData = {
   address: Address;
