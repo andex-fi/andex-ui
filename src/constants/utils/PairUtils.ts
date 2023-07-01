@@ -5,21 +5,16 @@ import type {
   DecodedAbiFunctionOutputs,
   DelayedMessageExecution,
   FullContractState,
-  // ProviderRpcClient,
   SendInternalParams,
 } from "@andex/provider";
-import { debug, error } from "@andex/sdk";
-import { DexAbi } from "..";
-import { dexPairContract, getFullContractState } from "../contracts";
-import { DexUtils } from "./DexUtils";
+import { debug, error, dexPairContract, getFullContractState, DexAbi, DexUtils, TokenWalletUtils } from "@andex/sdk";
 import { TokenUtils } from "./TokenUtils";
-import { TokenWalletUtils } from "./TokenWalletUtils";
 import {
   getSafeProcessingId,
   resolveVenomAddress,
   sliceAddress,
 } from "../../utils";
-// import { useStaticRpc } from "../../hooks";
+
 
 export type DexPairDepositLiquiditySuccess = DecodedAbiFunctionInputs<
   typeof DexAbi.DexPairCallbacks,

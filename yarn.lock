@@ -37,13 +37,14 @@
   resolved "https://registry.yarnpkg.com/@andex/provider/-/provider-1.0.0.tgz#bfd4d63fa21b64610fb9e617cf2f975090f8c17c"
   integrity sha512-76zNaulGbHbZ/QOsq8+9WCzMMaju8i+j2avt6i16z7TgVac7b9Uc+cf9qkOx59fmnYRIaWzMtByqj4LViyfpWQ==
 
-"@andex/sdk@^0.1.3":
-  version "0.1.3"
-  resolved "https://registry.yarnpkg.com/@andex/sdk/-/sdk-0.1.3.tgz#518e9266ae8b82e460adc7f794191374d8d27271"
-  integrity sha512-+K1/GAN3S302/ktirvZk1frj0m7z3W5TwX/yEJrDiHG7qaOxEkzyKRR/VP4E3B+XNok+PxeXDgWBvmWt2HR/OA==
+"@andex/sdk@^0.1.6":
+  version "0.1.6"
+  resolved "https://registry.yarnpkg.com/@andex/sdk/-/sdk-0.1.6.tgz#9afea578ed269d79648d346f00ef4d3dc5021106"
+  integrity sha512-XC59cJZvt8kvWsys1Frl3MQyLyKp1gTloj6F0HOadaQXiZUDPfGAIENvQ8UB+wPH7UplZptrjWer02T/8V1etw==
   dependencies:
     "@andex/client" "^1.2.1"
     "@andex/provider" "^1.0.0"
+    bignumber.js "^9.1.1"
     mobx "^6.9.0"
 
 "@andex/ui-libs@^0.1.0":

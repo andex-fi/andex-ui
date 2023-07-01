@@ -16,7 +16,7 @@ import LogoDark from "../assets/LogoDark.png";
 import LogoDarkSingle from "../assets/LogoDarkSingle.png";
 import { Link } from "react-router-dom";
 import WalletDropDown from "./WalletDropDown";
-import { useWallet } from "../state/WalletService";
+import { useWallet } from "../hooks/useWallet";
 import { Observer } from "mobx-react-lite";
 import useTheme from "../hooks/useTheme";
 

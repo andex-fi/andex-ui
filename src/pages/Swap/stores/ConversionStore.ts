@@ -3,10 +3,9 @@ import BigNumber from "bignumber.js";
 import { Address } from "@andex/provider";
 import { computed, makeObservable } from "mobx";
 
-import { TokenAbi, WVenomVaultAddress } from "../../../constants";
-import { BaseStore, useRpc, error, log } from "@andex/sdk";
+import { WVenomVaultAddress } from "../../../constants";
+import { BaseStore, useRpc, error, log, TokenAbi, WalletService } from "@andex/sdk";
 import { TokensCacheService } from "../../../state/TokensCacheService";
-import { WalletService } from "../../../state/WalletService";
 import {
   getSafeProcessingId,
   isGoodBignumber,

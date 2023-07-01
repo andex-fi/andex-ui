@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { TransactionSuccessResult } from "../constants";
+import { TransactionSuccessResult } from "@andex/sdk";
 import type {
   DexPairDepositLiquiditySuccessV2,
   LiquidityPoolDepositCallbacks,

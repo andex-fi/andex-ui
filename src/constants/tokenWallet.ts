@@ -5,8 +5,7 @@ import {
     FullContractState,
     TransactionId,
 } from '@andex/provider'
-import { Token, useRpc, useStaticRpc, debug, error } from '@andex/sdk'
-import { TokenAbi } from './abi'
+import { Token, useRpc, useStaticRpc, debug, error, TokenAbi } from '@andex/sdk'
 import { sliceAddress } from '../utils'
 import { SupportedInterfaceDetection } from './supportedInterfaceDetection'
 

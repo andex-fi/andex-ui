@@ -6,9 +6,12 @@ import type {
   SendInternalParams,
   Transaction,
 } from "@andex/provider";
-import { useRpc } from "@andex/sdk";
-import { getFullContractState, tokenRootContract } from "../contracts";
-import type { EverscaleTokenData } from "../../state/types";
+import { 
+  useRpc, 
+  getFullContractState, 
+  tokenRootContract, 
+  VenomTokenData 
+} from "@andex/sdk";
 import { resolveVenomAddress } from "../../utils";
 import { SupportedInterfaceDetection } from "../supportedInterfaceDetection";
 
@@ -104,7 +107,7 @@ export abstract class TokenUtils {
   public static async getDetails(
     address: Address | string,
     cachedState?: FullContractState
-  ): Promise<EverscaleTokenData | undefined> {
+  ): Promise<VenomTokenData | undefined> {
     const state = cachedState ?? (await getFullContractState(address));
 
     if (!state) {

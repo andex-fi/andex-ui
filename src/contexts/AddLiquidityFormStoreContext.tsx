@@ -7,7 +7,8 @@ import {
   TokensCacheService,
   useTokensCache,
 } from "../state/TokensCacheService";
-import { WalletService, useWallet } from "../state/WalletService";
+import { WalletService } from "@andex/sdk";
+import { useWallet } from "../hooks";
 
 export const AddLiquidityFormStoreContext =
   // @ts-ignore

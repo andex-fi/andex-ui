@@ -7,7 +7,7 @@ import { Button } from '../../../../components/Button'
 import { Icon } from '../../../../components/Icon'
 import { isAddressValid } from '../../../../constants'
 import { useManageTokenStore } from '../../state/ManageTokenStore'
-import { useWallet } from '../../../../state/WalletService'
+import { useWallet } from '../../../../hooks'
 
 type Props = {
     closePopup: () => void;

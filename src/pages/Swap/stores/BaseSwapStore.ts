@@ -11,6 +11,7 @@ import {
 } from "../constants";
 import { 
   BaseStore,
+  DexAbi,
   useRpc,
   debug,
   error,
@@ -36,7 +37,7 @@ import {
   getExpectedSpendAmount,
   getSlippageMinExpectedAmount,
 } from "../utils";
-import { DexAbi, DexRootAddress, PairUtils } from "../../../constants";
+import { DexRootAddress, PairUtils } from "../../../constants";
 // import { useSwapApi } from '@/modules/Swap/hooks/useApi'
 
 const rpc = useRpc();

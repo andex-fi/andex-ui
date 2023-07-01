@@ -1,9 +1,8 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { action, IReactionDisposer, makeAutoObservable, reaction } from "mobx";
 import { AddressLiteral, Subscriber } from "@andex/provider";
-import { useRpc, useStaticRpc, error } from "@andex/sdk";
+import { useRpc, useStaticRpc, error, WalletService, TokenAbi } from "@andex/sdk";
 import { TokenFactoryAddress } from "../../../constants/config";
-import { TokenAbi } from "../../../constants";
 import {
   DEFAULT_CREATE_TOKEN_STORE_DATA,
   DEFAULT_CREATE_TOKEN_STORE_STATE,
@@ -15,7 +14,7 @@ import {
   CreateTokenTransactionResult,
 } from "../types";
 import { saveTokenToLocalStorage } from "../utils";
-import { useWallet, WalletService } from "../../../state/WalletService";
+import { useWallet } from "../../../hooks";
 
 const rpc = useRpc();
 const staticRpc = useStaticRpc();
