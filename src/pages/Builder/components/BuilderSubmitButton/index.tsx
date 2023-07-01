@@ -4,7 +4,7 @@ import { observer } from 'mobx-react-lite'
 import { Button } from '../../../../components/Button'
 import { Icon } from '../../../../components/Icon'
 import { useCreateTokenStore } from '../../state/CreateTokenStore'
-import { useWallet } from '../../../../state/WalletService'
+import { useWallet } from '../../../../hooks'
 
 
 const SubmitButton: React.FC = () => {

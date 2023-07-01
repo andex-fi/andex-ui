@@ -9,14 +9,18 @@ import {
   DEFAULT_SLIPPAGE_VALUE,
   DEFAULT_SWAP_BILL,
 } from "../constants";
-import { BaseStore } from "../../../state/BaseStore";
+import { 
+  BaseStore,
+  DexAbi,
+  useRpc,
+  debug,
+  error,
+} from "@andex/sdk";
 import {
   TokenCache,
   TokensCacheService,
 } from "../../../state/TokensCacheService";
 import {
-  debug,
-  error,
   formattedBalance,
   isGoodBignumber,
 } from "../../../utils";
@@ -33,9 +37,8 @@ import {
   getExpectedSpendAmount,
   getSlippageMinExpectedAmount,
 } from "../utils";
-import { DexAbi, DexRootAddress, PairUtils } from "../../../constants";
+import { DexRootAddress, PairUtils } from "../../../constants";
 // import { useSwapApi } from '@/modules/Swap/hooks/useApi'
-import { useRpc } from "../../../hooks";
 
 const rpc = useRpc();
 

@@ -10,25 +10,6 @@ import type {
 } from "@andex/provider";
 
 import {
-  dexAccountContract,
-  dexPairCallbacksContract,
-  dexRootContract,
-  getFullContractState,
-} from "../contracts";
-import type {
-  SendMessageCallback,
-  TransactionCallbacks,
-  TransactionFailureReason,
-  TransactionSuccessResult,
-} from "../types";
-import {
-  DexAccountDepositLiquidityParams,
-  DexAccountUtils,
-} from "./DexAccountUtils";
-import type { DexAccountAddPairParams } from "./DexAccountUtils";
-import { DexUtils } from "./DexUtils";
-import type { DexDeployPairParams } from "./DexUtils";
-import {
   DexPairDepositLiquiditySuccess,
   DexPairDepositLiquiditySuccessV2,
   PairType,
@@ -39,16 +20,31 @@ import type {
   DexPairWithdrawSuccess,
   PairWithdrawLiquidityParams,
 } from "./PairUtils";
-import { TokenWalletUtils } from "./TokenWalletUtils";
 import {
   addressesComparer,
-  debug,
-  error,
   getSafeProcessingId,
   resolveVenomAddress,
 } from "../../utils";
-import { DexAbi } from "..";
-import { useStaticRpc } from "../../hooks";
+import {
+  DexAbi,
+  DexAccountDepositLiquidityParams,
+  DexAccountUtils,
+  DexAccountAddPairParams,
+  DexUtils,
+  DexDeployPairParams,
+  SendMessageCallback,
+  TransactionCallbacks,
+  TransactionFailureReason,
+  TransactionSuccessResult,
+  dexAccountContract,
+  dexPairCallbacksContract,
+  dexRootContract,
+  getFullContractState, 
+  useStaticRpc, 
+  debug,
+  error,
+  TokenWalletUtils 
+} from "@andex/sdk";
 
 export type LiquidityPoolTokenData = {
   address: Address;

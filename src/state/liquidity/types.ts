@@ -1,15 +1,16 @@
 import type { Address } from "@andex/provider";
-
-import type {
+import {
   DexAccountDepositTokenCallbacks,
   DexAccountDepositTokenSuccessResult,
   DexAccountWithdrawTokenCallbacks,
   DexAccountWithdrawTokenSuccessResult,
+  TransactionSuccessResult
+} from "@andex/sdk"
+import type {
   LiquidityPoolData,
   LiquidityPoolDepositCallbacks,
   LiquidityPoolDepositSuccessResult,
 } from "../../constants/utils";
-import { TransactionSuccessResult } from "../types";
 
 export type PoolData = LiquidityPoolData;
 

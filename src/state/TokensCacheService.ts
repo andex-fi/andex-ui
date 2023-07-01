@@ -11,18 +11,23 @@ import {
   runInAction,
 } from "mobx";
 import { Address, Subscription } from "@andex/provider";
-
-import { useRpc } from "../hooks/useRpc";
 import {
   isAddressValid,
-  Token,
   TokenUtils,
-  TokenWalletUtils,
 } from "../constants";
-import { BaseStore } from "./BaseStore";
+import { 
+  BaseStore, 
+  Token, 
+  useRpc,
+  debug,
+  error,
+  warn,
+  TokenWalletUtils,
+  WalletService
+ } from "@andex/sdk";
 import { TokensListService, useTokensList } from "./TokensListService";
-import { useWallet, WalletService } from "./WalletService";
-import { debug, error, sliceAddress, storage, warn } from "../utils";
+import { useWallet } from "../hooks";
+import { sliceAddress, storage } from "../utils";
 
 export type TokenCache = Token;
 

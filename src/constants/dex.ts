@@ -6,9 +6,7 @@ import {
 } from '@andex/provider'
 
 import { DexRootAddress } from './config'
-import { useRpc } from '../hooks/useRpc'
-import { useStaticRpc } from '../hooks/useStaticRpc'
-import { DexAbi } from './abi'
+import { useRpc, useStaticRpc, DexAbi } from '@andex/sdk'
 import { TokenWallet } from './tokenWallet'
 
 export type PairTokenRoots = {

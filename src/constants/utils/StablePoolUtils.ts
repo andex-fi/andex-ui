@@ -6,11 +6,8 @@ import type {
   FullContractState,
   SendInternalParams,
 } from "@andex/provider";
-
-import { DexAbi } from "..";
-import { dexStablePoolContract, getFullContractState } from "../contracts";
+import { dexStablePoolContract, getFullContractState, DexAbi, TokenWalletUtils } from "@andex/sdk";
 import { TokenUtils } from "..";
-import { TokenWalletUtils } from "..";
 import {
   getSafeProcessingId,
   isGoodBignumber,

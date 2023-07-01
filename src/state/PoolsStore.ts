@@ -1,13 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable no-empty */
 import { computed, makeObservable } from "mobx";
-
-// import { usePoolsApi } from "../pages/pools/hooks/useApi";
+import { WalletService } from "@andex/sdk";
 import type { PoolResponse, PoolsPagination } from "../types/PoolTypes";
 import { PoolsOrdering } from "../types/PoolTypes";
-import { BaseStore } from "./BaseStore";
+import { BaseStore } from "@andex/sdk";
 import { TokensCacheService } from "./TokensCacheService";
-import { WalletService } from "./WalletService";
 import { PairUtils } from "../constants";
 
 export type PoolsStoreData = {

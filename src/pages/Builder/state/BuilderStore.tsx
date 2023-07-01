@@ -1,14 +1,14 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { action, IReactionDisposer, makeAutoObservable, reaction } from "mobx";
-
-import { isAddressValid, Token, TokenWallet } from "../../../constants";
+import { Token, WalletService } from "@andex/sdk";
+import { isAddressValid, TokenWallet } from "../../../constants";
 import { BuilderStoreData, BuilderStoreState } from "../types";
 import {
   DEFAULT_BUILDER_STORE_DATA,
   DEFAULT_BUILDER_STORE_STATE,
 } from "../constants";
 import { getTokenFromLocalStorage, saveTokenToLocalStorage } from "../utils";
-import { useWallet, WalletService } from "../../../state/WalletService";
+import { useWallet } from "../../../hooks";
 
 const service = useWallet();
 

@@ -2,7 +2,7 @@ import * as React from 'react'
 
 import { useBuilderStore } from '../state/BuilderStore'
 import { BuilderStoreData } from '../types'
-import { debounce } from '../../../utils'
+import { debounce } from '@andex/sdk'
 
 
 type FilterFormShape = {

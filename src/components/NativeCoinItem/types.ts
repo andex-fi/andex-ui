@@ -1,4 +1,4 @@
-import type { WalletNativeCoin } from "../../state/WalletService";
+import type { WalletNativeCoin } from "@andex/sdk";
 
 export type NativeCoinItemProps = {
     coin: WalletNativeCoin;

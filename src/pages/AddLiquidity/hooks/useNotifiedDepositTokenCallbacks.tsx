@@ -1,10 +1,10 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import * as React from "react";
 import classNames from "classnames";
 import { toast } from "react-toastify";
-
+import type { DexAccountDepositTokenCallbacks } from "@andex/sdk";
 import TransactionExplorerLink from "../../../components/TransactionExplorerLink";
 import type {
-  DexAccountDepositTokenCallbacks,
   LiquidityPoolTokenData,
 } from "../../../constants/utils";
 import { TokensReceivedSuccess } from "../components/TokensReceivedSuccess";
@@ -30,6 +30,7 @@ export function useNotifiedDepositTokenCallbacks(
   } = props;
 
   const onSend = React.useCallback<Required<DepositTokenCallbacks>["onSend"]>(
+    // @ts-ignore
     (message, params) => {
       const token: TokenCache | undefined = formStore.tokensCache.get(
         params.tokenAddress?.toString()

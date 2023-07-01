@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 import { updateVersion } from './global/actions'
 import user, { initialState as userInitialState } from './user/reducer'
 
-const PERSISTED_KEYS: string[] = ['user', 'transactions', 'lists', 'profile']
+const PERSISTED_KEYS: string[] = ['user', 'transactions', 'lists']
 
 const safeCloneDeep = <T>(state: T) => {
   try {

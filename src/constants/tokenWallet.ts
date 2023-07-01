@@ -5,28 +5,11 @@ import {
     FullContractState,
     TransactionId,
 } from '@andex/provider'
-
-import { useRpc } from '../hooks'
-import { useStaticRpc } from '../hooks'
-import { TokenAbi } from './abi'
-import { debug, error, sliceAddress } from '../utils'
+import { Token, useRpc, useStaticRpc, debug, error, TokenAbi } from '@andex/sdk'
+import { sliceAddress } from '../utils'
 import { SupportedInterfaceDetection } from './supportedInterfaceDetection'
 
 
-export type Token = {
-    balance?: string;
-    decimals: number;
-    icon?: string;
-    name?: string;
-    root: string;
-    rootOwnerAddress?: Address;
-    symbol: string;
-    totalSupply?: string;
-    updatedAt?: number;
-    vendor?: string | null;
-    verified?: boolean;
-    wallet?: string;
-}
 
 export type BalanceWalletRequest = {
     wallet: Address;

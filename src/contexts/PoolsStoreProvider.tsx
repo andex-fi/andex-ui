@@ -3,7 +3,7 @@ import * as React from "react";
 
 import { PoolsStore, PoolsStoreCtorParams } from "../state/PoolsStore";
 import { useTokensCache } from "../state/TokensCacheService";
-import { useWallet } from "../state/WalletService";
+import { useWallet } from "../hooks";
 export type PoolsStoreProviderProps = React.PropsWithChildren<{
   params?: PoolsStoreCtorParams;
 }>;

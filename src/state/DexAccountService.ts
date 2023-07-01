@@ -8,15 +8,10 @@ import type {
   Transaction,
 } from "@andex/provider";
 import { Subscription } from "@andex/provider";
-
-// import { DexRootAddress } from "../constants/dexConstants";
-import { useStaticRpc } from "../hooks";
-import { DexAccountUtils, DexUtils } from "../constants/utils";
-import { BaseStore } from "./BaseStore";
-import { useWallet } from "./WalletService";
-import type { WalletService } from "./WalletService";
-import { addressesComparer, debug, error, throttle } from "../utils";
-import { DexRootAddress, getFullContractState } from "../constants";
+import { BaseStore, DexAccountUtils, DexUtils, useStaticRpc, getFullContractState, debug, error, WalletService } from "@andex/sdk";
+import { useWallet } from "../hooks";
+import { addressesComparer, throttle } from "../utils";
+import { DexRootAddress } from "../constants";
 
 export type Balances = Map<string, string>;
 

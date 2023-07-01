@@ -13,7 +13,7 @@ import { useSwapFormStore } from "../stores/SwapFormStore";
 import type { BaseSwapStoreData } from "../types";
 import { SwapExchangeMode } from "../types";
 import type { TokenSide } from "../../../components/TokensList";
-import { debounce, debug, error } from "../../../utils";
+import { debounce, debug, error } from "@andex/sdk";
 
 type SwapFormShape = {
   isTokenListShown: boolean;

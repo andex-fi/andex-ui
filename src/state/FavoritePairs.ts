@@ -1,9 +1,8 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { action, makeAutoObservable, toJS } from "mobx";
-
-import { useWallet, WalletService } from "./WalletService";
+import { error, WalletService } from "@andex/sdk";
+import { useWallet } from "../hooks";
 import {
-  error,
   isObject,
   isString,
   storage as storageInstance,

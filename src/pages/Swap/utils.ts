@@ -7,8 +7,7 @@ import {
   FullContractState,
   Transaction,
 } from "@andex/provider";
-
-import { DexAbi } from "../../constants";
+import { DexAbi } from "@andex/sdk";
 import { SwapRouteResult, SwapRouteStep } from "./types";
 
 export function fillStepResult(
