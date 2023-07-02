@@ -4,9 +4,8 @@ import { computed, makeObservable } from "mobx";
 import { WalletService } from "@andex/sdk";
 import type { PoolResponse, PoolsPagination } from "../types/PoolTypes";
 import { PoolsOrdering } from "../types/PoolTypes";
-import { BaseStore } from "@andex/sdk";
+import { BaseStore, PairUtils } from "@andex/sdk";
 import { TokensCacheService } from "./TokensCacheService";
-import { PairUtils } from "../constants";
 
 export type PoolsStoreData = {
   pools: PoolResponse[];

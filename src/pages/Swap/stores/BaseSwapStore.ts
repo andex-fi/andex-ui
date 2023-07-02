@@ -15,6 +15,7 @@ import {
   useRpc,
   debug,
   error,
+  PairUtils
 } from "@andex/sdk";
 import {
   TokenCache,
@@ -37,7 +38,7 @@ import {
   getExpectedSpendAmount,
   getSlippageMinExpectedAmount,
 } from "../utils";
-import { DexRootAddress, PairUtils } from "../../../constants";
+import { DexRootAddress } from "../../../constants";
 // import { useSwapApi } from '@/modules/Swap/hooks/useApi'
 
 const rpc = useRpc();

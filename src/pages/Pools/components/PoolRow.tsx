@@ -6,7 +6,7 @@ import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/20/solid";
 import { Button } from "../../../components/Button";
 import { useNavigate } from "react-router-dom";
 import { formattedTokenAmount, isGoodBignumber } from "../../../utils";
-import { LiquidityPoolUtils } from "../../../constants";
+import { LiquidityPoolUtils } from "@andex/sdk";
 import BigNumber from "bignumber.js";
 import { Oval } from "react-loader-spinner";
 

@@ -10,12 +10,8 @@ import {
     toJS,
 } from 'mobx'
 import type { IReactionDisposer } from 'mobx'
-import {
-    LiquidityPoolUtils,
-    PairType,
-    PairUtils,
-} from '../constants'
-import type { LiquidityPoolWithdrawCallbacks } from '../constants'
+
+import type { LiquidityPoolWithdrawCallbacks } from '@andex/sdk'
 import type { PoolData } from '../types/LiquidityTypes'
 import { 
     BaseStore, 
@@ -23,7 +19,10 @@ import {
     getFullContractState, 
     useStaticRpc, 
     debug, 
-    error, 
+    error,
+    LiquidityPoolUtils,
+    PairType,
+    PairUtils, 
     TokenWalletUtils, 
     WalletService 
 } from '@andex/sdk'

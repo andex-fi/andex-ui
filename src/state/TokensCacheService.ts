@@ -11,10 +11,7 @@ import {
   runInAction,
 } from "mobx";
 import { Address, Subscription } from "@andex/provider";
-import {
-  isAddressValid,
-  TokenUtils,
-} from "../constants";
+import { isAddressValid } from "../constants";
 import { 
   BaseStore, 
   Token, 
@@ -22,6 +19,7 @@ import {
   debug,
   error,
   warn,
+  TokenUtils,
   TokenWalletUtils,
   WalletService
  } from "@andex/sdk";
