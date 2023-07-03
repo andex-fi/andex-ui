@@ -12,8 +12,9 @@ import { PoolCreatingParams } from "./components/PoolCreatingParams";
 import { PoolField } from "./components/PoolField";
 import { useCreateFarmPoolStore } from "./store/CreateFarmPoolStore";
 import { useFavoriteFarmings } from "../../state/FavoritePairs";
-import { useWallet } from "../../state/WalletService";
+// import { useWallet } from "../../state/WalletService";
 import Page from "../Page";
+import { useWallet } from "../../hooks";
 
 // import "./index.scss";
 
@@ -69,10 +70,11 @@ const Create = () => {
         favoriteFarmings.toggle(creatingPool.createdFarmPoolAddress.toString());
         navigate(`/farming/${creatingPool.createdFarmPoolAddress.toString()}`);
       } else {
-        setTimeout(() => {
-          console.log("error");
-          // navigate("/farming");
-        }, 60 * 1000);
+        navigate("/farming");
+        // setTimeout(() => {
+        //   console.log("error");
+
+        // }, 60 * 1000);
       }
     } catch (e) {}
   };

@@ -3,12 +3,10 @@
 import { DateTime } from "luxon";
 import { Address } from "@andex/provider";
 
-import { useRpc } from "../../../hooks";
 import { Farm, UserPendingReward } from "../store/farm";
 import { FarmAbi } from "../../../constants/abi/farming.abi";
 import { TokenWallet } from "./token-wallet";
-
-import { error } from "../../../utils";
+import { error, useRpc } from "@andex/sdk";
 
 const rpc = useRpc();
 

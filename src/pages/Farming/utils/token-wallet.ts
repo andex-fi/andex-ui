@@ -6,11 +6,9 @@ import {
   TransactionId,
 } from "@andex/provider";
 
-import { useRpc } from "../../../hooks";
-import { useStaticRpc } from "../../../hooks";
-import { TokenAbi } from "../../../constants";
-import { debug, error, sliceAddress } from "../../../utils";
+import { sliceAddress } from "../../../utils";
 import { SupportedInterfaceDetection } from "../../../constants/supportedInterfaceDetection";
+import { TokenAbi, debug, error, useRpc, useStaticRpc } from "@andex/sdk";
 
 export type Token = {
   balance?: string;

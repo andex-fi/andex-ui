@@ -5,7 +5,7 @@ import { action, IReactionDisposer, makeAutoObservable, reaction } from "mobx";
 import { Address, Subscriber } from "@andex/provider";
 
 import { MasterChefAddress } from "../../../constants";
-import { useStaticRpc } from "../../../hooks";
+import { useWallet } from "../../../hooks";
 import { FarmAbi } from "../../../constants/abi/farming.abi";
 import { Farm } from "./farm";
 import {
@@ -20,8 +20,7 @@ import {
   FarmToken,
 } from "./types";
 import { parseDate, resolveToken } from "../utils/utils";
-import { useWallet, WalletService } from "../../../state/WalletService";
-import { debounce, error } from "../../../utils";
+import { debounce, error, useStaticRpc, WalletService } from "@andex/sdk";
 
 const staticRpc = useStaticRpc();
 
@@ -157,7 +156,7 @@ export class CreateFarmPoolStore {
       // );
 
       const stream = await this._transactionSubscriber
-        .transactions(MasterChefAddress)
+        ?.transactions(MasterChefAddress)
         .flatMap((a) => a.transactions)
         .filter((tx) => !startLt || tx.id.lt > startLt)
         .filterMap(async (transaction) => {
@@ -208,7 +207,7 @@ export class CreateFarmPoolStore {
       );
 
       this._transactionSubscriber
-        .transactions(MasterChefAddress)
+        ?.transactions(MasterChefAddress)
         .flatMap((a) => a.transactions)
         .filter((tx) => !startLt || tx.id.lt > startLt)
         .filterMap((tx) => {
@@ -216,7 +215,7 @@ export class CreateFarmPoolStore {
         });
 
       console.log("awaiting stream ...");
-      await stream();
+      await stream?.();
       console.log("done");
     } catch (e) {
       this.changeState("isCreating", false);

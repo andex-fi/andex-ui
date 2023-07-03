@@ -7,8 +7,8 @@ import {
 } from "@andex/provider";
 
 import { MasterChefAddress } from "../../../constants";
-import { useRpc } from "../../../hooks";
-import { useStaticRpc } from "../../../hooks";
+import {useRpc, useStaticRpc} from '@andex/sdk'
+// import {  } from "../../../hooks";
 import { FarmAbi } from "../../../constants/abi/farming.abi";
 
 export type PoolDetails = DecodedAbiFunctionOutputs<
