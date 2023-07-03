@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React from "react";
 import { reaction } from "mobx";
-import { error } from "@andex/sdk";
+import { error, TokenCache } from "@andex/sdk";
 import { formattedBalance } from "../utils";
-import { TokenCache, useTokensCache } from "../state/TokensCacheService";
+import { useTokensCache } from "../hooks";
 
 export type TokenFormattedBalanceOptions = {
     dexAccountBalance?: string | number;

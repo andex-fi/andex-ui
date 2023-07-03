@@ -15,12 +15,10 @@ import {
   useRpc,
   debug,
   error,
-  PairUtils
-} from "@andex/sdk";
-import {
+  PairUtils,
   TokenCache,
   TokensCacheService,
-} from "../../../state/TokensCacheService";
+} from "@andex/sdk";
 import {
   formattedBalance,
   isGoodBignumber,

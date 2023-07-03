@@ -11,8 +11,12 @@ import {
 } from 'mobx'
 import type { IReactionDisposer } from 'mobx'
 
-import type { LiquidityPoolWithdrawCallbacks } from '@andex/sdk'
-import type { PoolData } from '../types/LiquidityTypes'
+import type { 
+    LiquidityPoolWithdrawCallbacks,
+    TokenCache, 
+    TokensCacheService, 
+} from '@andex/sdk'
+import type { PoolData } from '../../types/LiquidityTypes'
 import { 
     BaseStore, 
     DexUtils, 
@@ -22,16 +26,15 @@ import {
     error,
     LiquidityPoolUtils,
     PairType,
-    PairUtils, 
+    PairUtils,
     TokenWalletUtils, 
     WalletService 
 } from '@andex/sdk'
-import type { DexAccountService } from '../state/DexAccountService'
-import type { TokenCache, TokensCacheService } from '../state/TokensCacheService'
+import type { DexAccountService } from '../DexAccountService'
 import {
     addressesComparer,
     isGoodBignumber,
-} from '../utils'
+} from '../../utils'
 
 
 export type RemoveLiquidityFormStoreData = {

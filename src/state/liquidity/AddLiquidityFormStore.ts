@@ -19,6 +19,7 @@ import type {
   LiquidityPoolCreateCallbacks,
   LiquidityPoolDepositCallbacks,
   LiquidityPoolWithdrawCallbacks,
+  TokenCache, TokensCacheService
 } from "@andex/sdk";
 import { RECEIPTS } from "./receipt";
 import type {
@@ -47,7 +48,6 @@ import {
 } from "@andex/sdk";
 
 import type { DexAccountService } from "../DexAccountService";
-import type { TokenCache, TokensCacheService } from "../TokensCacheService";
 import {
   addressesComparer,
   getSafeProcessingId,

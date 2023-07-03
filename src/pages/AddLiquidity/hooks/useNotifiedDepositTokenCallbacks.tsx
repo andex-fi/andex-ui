@@ -2,13 +2,12 @@
 import * as React from "react";
 import classNames from "classnames";
 import { toast } from "react-toastify";
-import type { DexAccountDepositTokenCallbacks, LiquidityPoolTokenData } from "@andex/sdk";
+import type { DexAccountDepositTokenCallbacks, LiquidityPoolTokenData, TokenCache } from "@andex/sdk";
 import TransactionExplorerLink from "../../../components/TransactionExplorerLink";
 import { TokensReceivedSuccess } from "../components/TokensReceivedSuccess";
 import { useAddLiquidityFormStoreContext } from "../../../contexts/AddLiquidityFormStoreContext";
 import type { DepositTokenCallbacks } from "../../../types/LiquidityTypes";
 import { notify, NotifyType } from "../../../components/Notification";
-import type { TokenCache } from "../../../state/TokensCacheService";
 import {
   formattedTokenAmount,
   isMobile,
