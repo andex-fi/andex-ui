@@ -5,7 +5,7 @@ import { isAddressValid } from '../../../constants'
 import { useRemoveLiquidityFormStoreContext } from '../../../contexts'
 import { RemoveLiquidityFormStoreData } from '../../../state/RemoveLiquidityStore'
 import { TokenSide } from '../../../components/TokensList'
-import { debounce, debug, error } from '../../../utils'
+import { debounce, error, debug } from '@andex/sdk'
 // import { appRoutes } from '../../../routes'
 
 

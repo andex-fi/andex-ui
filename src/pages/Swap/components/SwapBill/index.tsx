@@ -1,7 +1,6 @@
 import * as React from "react";
-
+import { WalletNativeCoin } from "@andex/sdk";
 import { TokenCache } from "../../../../state/TokensCacheService";
-import { WalletNativeCoin } from "../../../../state/WalletService";
 import { formattedTokenAmount } from "../../../../utils";
 import { Icon } from "../../../../components/Icon";
 

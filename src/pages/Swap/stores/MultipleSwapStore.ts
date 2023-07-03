@@ -6,18 +6,14 @@ import { Address, Subscriber } from "@andex/provider";
 import * as E from "fp-ts/Either";
 import { computed, makeObservable, override } from "mobx";
 
-import { useRpc } from "../../../hooks";
+import { useRpc, error, TokenAbi, VenomAbi, WalletService } from "@andex/sdk";
 import {
-  // DexConstants,
-  EverAbi,
-  TokenAbi,
   VenomToTip3Address,
   VenomWvenomToTip3Address,
 } from "../../../constants";
 import { CoinSwapStore } from "./CoinSwapStore";
 import { TokensCacheService } from "../../../state/TokensCacheService";
-import { WalletService } from "../../../state/WalletService";
-import { error, getSafeProcessingId, isGoodBignumber } from "../../../utils";
+import { getSafeProcessingId, isGoodBignumber } from "../../../utils";
 import type {
   CoinSwapFailureResult,
   CoinSwapStoreInitialData,
@@ -73,7 +69,7 @@ export class MultipleSwapStore extends CoinSwapStore {
     }
 
     const everWeverToTip3Contract = new rpc.Contract(
-      EverAbi.EverWeverToTipP3,
+      VenomAbi.EverWeverToTipP3,
       VenomWvenomToTip3Address
     );
 

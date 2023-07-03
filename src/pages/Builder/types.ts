@@ -3,7 +3,7 @@ import {
     FullContractState,
     Transaction,
 } from '@andex/provider'
-import { Token, TokenAbi } from '../../constants'
+import { Token, TokenAbi } from '@andex/sdk';
 
 export type BuilderStoreData = {
     filter: string;

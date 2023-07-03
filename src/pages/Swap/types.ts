@@ -4,11 +4,9 @@ import type {
   FullContractState,
   Transaction,
 } from "@andex/provider";
-
-import { DexAbi } from "../../constants";
+import { DexAbi, WalletNativeCoin } from "@andex/sdk";
 import type { TokenSide } from "../../components/TokensList";
 import type { TokenCache } from "../../state/TokensCacheService";
-import { WalletNativeCoin } from "../../state/WalletService";
 
 export type SwapOptions = {
   multipleSwapFee?: string;

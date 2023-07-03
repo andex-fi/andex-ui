@@ -7,8 +7,8 @@ import { useDexAccount } from "../state/DexAccountService";
 import type { DexAccountService } from "../state/DexAccountService";
 import { useTokensCache } from "../state/TokensCacheService";
 import type { TokensCacheService } from "../state/TokensCacheService";
-import { useWallet } from "../state/WalletService";
-import type { WalletService } from "../state/WalletService";
+import { useWallet } from "../hooks";
+import type { WalletService } from "@andex/sdk";
 
 // @ts-ignore
 export const ImportLiquidityFormStoreContext =

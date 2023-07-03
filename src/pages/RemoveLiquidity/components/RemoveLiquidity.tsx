@@ -15,8 +15,8 @@ import { Link, useParams } from "react-router-dom";
 import { URLTokensParams } from "../../../routes";
 import { useRemoveLiquidityForm } from "../hooks";
 import { useRemoveLiquidityFormStoreContext } from "../../../contexts";
+import { error } from "@andex/sdk";
 import {
-  error,
   formattedTokenAmount,
   isGoodBignumber,
   makeArray,

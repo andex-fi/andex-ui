@@ -9,35 +9,35 @@ import type {
 } from "@andex/provider";
 import { LT_COLLATOR } from "@andex/provider";
 
-import { useStaticRpc } from "../../hooks";
-import { DexAbi } from "..";
-import {
+import { 
+  useStaticRpc,
   dexAccountContract,
   dexPairCallbacksContract,
-  getFullContractState,
-} from "../contracts";
-import { DexAccountUtils } from "..";
+  getFullContractState, 
+  debug,
+  error,
+  DexAbi,
+  DexAccountUtils,
+  DexAccountAddPoolParams,
+  SendMessageCallback,
+  TokenWalletUtils,
+  TransactionCallbacks,
+  TransactionFailureReason,
+  TransactionSuccessResult, 
+} from "@andex/sdk";
 import {
   StablePoolDepositLiquidityOneCoinParams,
   StablePoolUtils,
   StablePoolWithdrawLiquidityOneCoinParams,
 } from "./StablePoolUtils";
-import { TokenWalletUtils } from "..";
 import type {
-  DexAccountAddPoolParams,
   DexPairDepositLiquiditySuccessV2,
   DexPairOperationCancelled,
   DexPairWithdrawSuccessV2,
   LiquidityPoolTokenData,
-  SendMessageCallback,
   StablePoolWithdrawLiquidityParams,
-  TransactionCallbacks,
-  TransactionFailureReason,
-  TransactionSuccessResult,
 } from "../index";
 import {
-  debug,
-  error,
   getSafeProcessingId,
   resolveVenomAddress,
 } from "../../utils";

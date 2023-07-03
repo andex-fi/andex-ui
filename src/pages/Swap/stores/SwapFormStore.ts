@@ -4,8 +4,8 @@
 import BigNumber from "bignumber.js";
 import type { IReactionDisposer } from "mobx";
 import { action, computed, makeObservable, override, reaction } from "mobx";
-
-import { DexConstants, WVENOMRootAddress } from "../../../constants";
+import { debounce, DexConstants, WalletNativeCoin, WalletService } from "@andex/sdk";
+import { WVENOMRootAddress } from "../../../constants";
 import {
   DEFAULT_LEFT_TOKEN_ROOT,
   DEFAULT_RIGHT_TOKEN_ROOT,
@@ -33,14 +33,12 @@ import {
   // getCrossExchangeSlippage,
   getSlippageMinExpectedAmount,
 } from "../utils";
-import type { WalletNativeCoin } from "../../../state/WalletService";
-import { useWallet, WalletService } from "../../../state/WalletService";
+import { useWallet } from "../../../hooks";
 import {
   TokensCacheService,
   useTokensCache,
 } from "../../../state/TokensCacheService";
 import {
-  debounce,
   // debug,
   formattedBalance,
   isGoodBignumber,

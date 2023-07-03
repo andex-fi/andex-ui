@@ -9,7 +9,7 @@ import settings from "../assets/Setting_line_light.png";
 import out from "../assets/Out_light.png";
 import power from "../assets/On_button_light.png";
 import AccountTabs from "./AccountTabs";
-import { useWallet } from "../state/WalletService";
+import { useWallet } from "../hooks";
 import { Observer } from "mobx-react-lite";
 
 interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {

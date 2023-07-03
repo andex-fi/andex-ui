@@ -6,19 +6,15 @@ import { Address, Subscriber } from "@andex/provider";
 import * as E from "fp-ts/Either";
 import { computed, makeObservable, override } from "mobx";
 
-import { useRpc } from "../../../hooks";
+import { useRpc, error, TokenAbi, VenomAbi, WalletService } from "@andex/sdk";
 import {
-  // DexConstants,
-  EverAbi,
   Tip3ToVenomAddress,
-  TokenAbi,
   VenomToTip3Address,
   WVenomVaultAddress,
 } from "../../../constants";
 import { DirectSwapStore } from "./DirectSwapStore";
-import { WalletService } from "../../../state/WalletService";
 import { TokensCacheService } from "../../../state/TokensCacheService";
-import { error, getSafeProcessingId, isGoodBignumber } from "../../../utils";
+import { getSafeProcessingId, isGoodBignumber } from "../../../utils";
 import type {
   CoinSwapFailureResult,
   CoinSwapStoreInitialData,
@@ -147,7 +143,7 @@ export class CoinSwapStore extends DirectSwapStore {
     ).toFixed();
 
     const coinToTip3Contract = new rpc.Contract(
-      EverAbi.EverToTip3,
+      VenomAbi.EverToTip3,
       VenomToTip3Address
     );
 
@@ -211,7 +207,7 @@ export class CoinSwapStore extends DirectSwapStore {
       })
       .first();
 
-    const weverVault = new rpc.Contract(EverAbi.WeverVault, WVenomVaultAddress);
+    const weverVault = new rpc.Contract(VenomAbi.WeverVault, WVenomVaultAddress);
 
     try {
       await weverVault.methods
@@ -259,7 +255,7 @@ export class CoinSwapStore extends DirectSwapStore {
     this.setState("isSwapping", true);
     this.callbacks?.onSend?.({ callId });
     const tip3ToCoinContract = new rpc.Contract(
-      EverAbi.Tip3ToEver,
+      VenomAbi.Tip3ToEver,
       Tip3ToVenomAddress
     );
 

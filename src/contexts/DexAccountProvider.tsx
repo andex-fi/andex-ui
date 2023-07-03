@@ -6,11 +6,9 @@ import {
   useEffect,
   useState,
 } from "react";
-import { useAccountContext, useRpc } from "../hooks";
+import { useAccountContext } from "../hooks";
+import { useRpc, getFullContractState, DexUtils, DexAccountUtils } from "@andex/sdk";
 import { DexRootAddress } from "../constants/config";
-import { getFullContractState } from "../constants/contracts";
-import { DexUtils } from "../constants/utils/DexUtils";
-import { DexAccountUtils } from "../constants/utils/DexAccountUtils";
 import { Address } from "@andex/provider";
 import { toast } from "react-toastify";
 

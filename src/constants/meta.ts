@@ -1,4 +1,4 @@
-import { PageMeta } from "./types";
+import { PageMeta } from "@andex/sdk";
 
 export const DEFAULT_META: PageMeta = {
     title: 'Andex Protocol',

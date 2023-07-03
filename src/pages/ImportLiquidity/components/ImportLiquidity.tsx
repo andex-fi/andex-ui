@@ -2,7 +2,7 @@
 import { useEffect } from "react";
 import { Observer } from "mobx-react-lite";
 import { reaction } from "mobx";
-
+import { error } from "@andex/sdk";
 import { MdOutlineKeyboardArrowLeft } from "react-icons/md";
 import { FiSettings } from "react-icons/fi";
 import TokenSelector from "../../../components/TokenSelector";
@@ -12,7 +12,6 @@ import { URLTokensParams } from "../../../routes";
 import { useImportLiquidityForm } from "../hooks/useImportLiquidityForm";
 import { useImportLiquidityFormStoreContext } from "../../../contexts";
 import {
-  error,
   formattedTokenAmount,
   isGoodBignumber,
   stripHtmlTags,
