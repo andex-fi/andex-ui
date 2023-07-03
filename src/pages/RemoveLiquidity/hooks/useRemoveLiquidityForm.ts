@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 
 import { isAddressValid } from '../../../constants'
 import { useRemoveLiquidityFormStoreContext } from '../../../contexts'
-import { RemoveLiquidityFormStoreData } from '../../../state/RemoveLiquidityStore'
+import { RemoveLiquidityFormStoreData } from '../../../state/liquidity/RemoveLiquidityStore'
 import { TokenSide } from '../../../components/TokensList'
 import { debounce, error, debug } from '@andex/sdk'
 // import { appRoutes } from '../../../routes'

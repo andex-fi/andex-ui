@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { action, IReactionDisposer, makeAutoObservable, reaction } from "mobx";
-import { Token, WalletService } from "@andex/sdk";
-import { isAddressValid, TokenWallet } from "../../../constants";
+import { Token, TokenWallet, WalletService } from "@andex/sdk";
+import { isAddressValid } from "../../../constants";
 import { BuilderStoreData, BuilderStoreState } from "../types";
 import {
   DEFAULT_BUILDER_STORE_DATA,

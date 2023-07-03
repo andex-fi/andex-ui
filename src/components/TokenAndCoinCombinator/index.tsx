@@ -2,14 +2,13 @@
 import * as React from "react";
 import { observer } from "mobx-react-lite";
 import BigNumber from "bignumber.js";
-import { WalletNativeCoin } from "@andex/sdk";
+import { TokenCache, WalletNativeCoin } from "@andex/sdk";
 import TokenIcon from "../TokenIcon";
 import NativeCoinItem from "../NativeCoinItem";
 import WaypointWrappedItem from "../WaypointWrappedItem";
-import { useTokensCache } from "../../state/TokensCacheService";
+import { useTokensCache } from "../../hooks";
 import { formattedBalance } from "../../utils";
 import type { TokenSide } from "../TokensList";
-import type { TokenCache } from "../../state/TokensCacheService";
 
 
 type Props = {

@@ -10,7 +10,7 @@ import type {
   LiquidityPoolData,
   LiquidityPoolDepositCallbacks,
   LiquidityPoolDepositSuccessResult,
-} from "../../constants/utils";
+} from "@andex/sdk";
 
 export type PoolData = LiquidityPoolData;
 

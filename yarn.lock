@@ -37,10 +37,10 @@
   resolved "https://registry.yarnpkg.com/@andex/provider/-/provider-1.0.0.tgz#bfd4d63fa21b64610fb9e617cf2f975090f8c17c"
   integrity sha512-76zNaulGbHbZ/QOsq8+9WCzMMaju8i+j2avt6i16z7TgVac7b9Uc+cf9qkOx59fmnYRIaWzMtByqj4LViyfpWQ==
 
-"@andex/sdk@^0.1.6":
-  version "0.1.6"
-  resolved "https://registry.yarnpkg.com/@andex/sdk/-/sdk-0.1.6.tgz#9afea578ed269d79648d346f00ef4d3dc5021106"
-  integrity sha512-XC59cJZvt8kvWsys1Frl3MQyLyKp1gTloj6F0HOadaQXiZUDPfGAIENvQ8UB+wPH7UplZptrjWer02T/8V1etw==
+"@andex/sdk@^0.1.8":
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/@andex/sdk/-/sdk-0.1.8.tgz#41e61b45617ead3e90d2a7fcfdb6d007786865a9"
+  integrity sha512-adQkuzLZWHO+JPerBcQhg/G82pZmc5ND9eRug4IM97FocjzpvcDwpVCOj/sBxaoBKS1jBFqFhByjQMgJtxahmQ==
   dependencies:
     "@andex/client" "^1.2.1"
     "@andex/provider" "^1.0.0"

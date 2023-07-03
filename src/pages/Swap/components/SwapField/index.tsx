@@ -1,13 +1,11 @@
 import * as React from "react";
 import classNames from "classnames";
 import { observer } from "mobx-react-lite";
-import { WalletNativeCoin } from "@andex/sdk";
+import { TokenCache, WalletNativeCoin } from "@andex/sdk";
 import { Button } from "../../../../components/Button";
 import TokenIcon from "../../../../components/TokenIcon";
-import { useTokenBalanceWatcher } from "../../../../hooks";
+import { useField, useTokenBalanceWatcher } from "../../../../hooks";
 import TokenIcons from "../../../../components/TokenIcons";
-import { useField } from "../../../../hooks";
-import type { TokenCache } from "../../../../state/TokensCacheService";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 type Props = {
