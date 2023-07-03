@@ -17,7 +17,7 @@ const TokenPage = lazy(() => import('./pages/Builder/Token'))
 const AddLiquidity = lazy(() => import('./pages/AddLiquidity'))
 const Pools = lazy(() => import('./pages/Pools'))
 const ImportLiquidity = lazy(() => import('./pages/ImportLiquidity'))
-const Farms = lazy(() => import('./pages/YeildFarming'))
+const Farms = lazy(() => import('./pages/YieldFarming'))
 
 const App = () => {
   return (

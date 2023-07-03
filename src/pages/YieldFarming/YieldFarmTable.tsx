@@ -1,4 +1,4 @@
-const YeildFarmTableComponent = () => {
+const YieldFarmTableComponent = () => {
   return (
     <div className="relative overflow-x-auto h-[40.5vh] bg-white border border-grey-lightest rounded-lg w-full min-h-screen-xl mt-6 md:mt-8 dark:bg-purple">
       <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
@@ -91,4 +91,4 @@ const YeildFarmTableComponent = () => {
   );
 };
 
-export default YeildFarmTableComponent;
+export default YieldFarmTableComponent;
