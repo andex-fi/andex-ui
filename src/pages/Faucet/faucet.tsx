@@ -14,7 +14,7 @@ const Faucet: FC = () => {
     document.body.style.overflow = "hidden";
   };
   return (
-    <div className="w-full h-screen flex items-center justify-center">
+    <div className="w-full h-screen flex items-center justify-center px-4">
       <div className="bg-white dark:bg-purple-darkest w-full md:w-[30rem] lg:w-[40rem] rounded-lg py-4 border-2 border-[#DFE8F9] font-montserrat">
         <div className="flex items-center justify-between py-2 px-4">
           <div className="flex items-center gap-2">

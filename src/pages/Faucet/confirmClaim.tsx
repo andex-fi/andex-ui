@@ -34,7 +34,6 @@ export const ConfirmClaim: FC<Props> = ({ setClaimModal }) => {
           <p className="text-[#7F8FA9]">
             You can only claim Token once in 24 hours.
           </p>
-          6{" "}
         </div>
         <Button
           btnStyles="w-full flex items-center justify-center bg-purple dark:bg-purple-lightest py-3 rounded-lg text-white mt-4"
