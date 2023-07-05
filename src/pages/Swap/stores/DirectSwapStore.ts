@@ -6,11 +6,9 @@ import BigNumber from "bignumber.js";
 import { Address, Subscriber } from "@andex/provider";
 import * as E from "fp-ts/Either";
 import { computed, makeObservable, toJS } from "mobx";
-import { useRpc, error, WalletService } from "@andex/sdk";
-import { TokenWallet } from "../../../constants";
+import { useRpc, error, WalletService, TokensCacheService, TokenWallet } from "@andex/sdk";
 import { DEFAULT_SWAP_BILL } from "../constants";
 import { BaseSwapStore } from "./BaseSwapStore";
-import { TokensCacheService } from "../../../state/TokensCacheService";
 import { getSafeProcessingId } from "../../../utils";
 import type {
   BaseSwapStoreState,

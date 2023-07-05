@@ -3,7 +3,7 @@ import classNames from "classnames";
 import { toast } from "react-toastify";
 
 import TransactionExplorerLink from "../../../components/TransactionExplorerLink";
-import type { LiquidityPoolCreateCallbacks } from "../../../constants";
+import type { LiquidityPoolCreateCallbacks } from "@andex/sdk";
 import { notify, NotifyType } from "../../../components/Notification";
 import { isMobile, stopEventPropagate } from "../../../utils";
 

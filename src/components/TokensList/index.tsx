@@ -1,12 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import * as React from "react";
-// import getScrollBarSize from "rc-util/es/getScrollBarSize";
-import { WalletNativeCoin } from "@andex/sdk";
+import { TokenCache, WalletNativeCoin } from "@andex/sdk";
 import NativeCoinItem from "../NativeCoinItem";
 import { TokenAndCoinCombinator } from "../TokenAndCoinCombinator";
 import WaypointWrappedItem from "../WaypointWrappedItem";
-import { useTokensCache } from "../../state/TokensCacheService";
-import type { TokenCache } from "../../state/TokensCacheService";
+import { useTokensCache } from "../../hooks";
 import { Dialog } from "@headlessui/react";
 import { AiOutlineClose } from "react-icons/ai";
 

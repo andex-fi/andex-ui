@@ -4,7 +4,7 @@ import type {
   DexPairDepositLiquiditySuccessV2,
   LiquidityPoolDepositCallbacks,
   LiquidityStablePoolData,
-} from "../constants/utils";
+} from "@andex/sdk";
 import type { OhlcvData, Timeframe } from "./chartTypes";
 import type { CommonTokenTransactionReceipt } from "./LiquidityTypes";
 

@@ -1,7 +1,7 @@
 import { observer } from "mobx-react-lite";
 
 import TokenIcon, { TokenIconProps } from "../TokenIcon";
-import { useTokensCache } from "../../state/TokensCacheService";
+import { useTokensCache } from "../../hooks";
 
 type Props = {
   address: string;

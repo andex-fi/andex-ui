@@ -1,14 +1,11 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import * as React from "react";
-
-import { RemoveLiquidityFormStore } from "../state/RemoveLiquidityStore";
+import { RemoveLiquidityFormStore } from "../state/liquidity/RemoveLiquidityStore";
 import { useDexAccount } from "../state/DexAccountService";
 import type { DexAccountService } from "../state/DexAccountService";
-import { useTokensCache } from "../state/TokensCacheService";
-import type { TokensCacheService } from "../state/TokensCacheService";
-import { useWallet } from "../hooks";
-import type { WalletService } from "@andex/sdk";
+import { useTokensCache, useWallet } from "../hooks";
+import type { TokensCacheService, WalletService } from "@andex/sdk";
 
 // @ts-ignore
 export const RemoveLiquidityFormStoreContext =

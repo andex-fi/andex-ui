@@ -1,10 +1,9 @@
 import { Observer } from "mobx-react-lite";
-
+import { TokenCache } from "@andex/sdk";
 import { Button } from "../Button";
 import TokenIcon from "../TokenIcon";
-import { useTokenBalanceWatcher } from "../../hooks/useTokenBalanceWatcher";
+import { useTokenBalanceWatcher, useTokensCache } from "../../hooks";
 import TokenImportPopup from "../TokenImportPopup";
-import { TokenCache, useTokensCache } from "../../state/TokensCacheService";
 
 export type TokenItemProps = {
   disabled?: boolean;

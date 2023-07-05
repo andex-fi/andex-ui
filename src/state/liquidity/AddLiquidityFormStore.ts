@@ -14,17 +14,13 @@ import {
   toJS,
 } from "mobx";
 import type { IReactionDisposer } from "mobx";
-import {
-  LiquidityPoolUtils,
-  PairType,
-  PairUtils,
-} from "../../constants/utils";
 import type {
   LiquidityPoolConnectCallbacks,
   LiquidityPoolCreateCallbacks,
   LiquidityPoolDepositCallbacks,
   LiquidityPoolWithdrawCallbacks,
-} from "../../constants/utils";
+  TokenCache, TokensCacheService
+} from "@andex/sdk";
 import { RECEIPTS } from "./receipt";
 import type {
   DepositLiquidityCallbacks,
@@ -44,12 +40,14 @@ import {
   getFullContractState, 
   debug,
   error,
+  LiquidityPoolUtils,
+  PairType,
+  PairUtils,
   TokenWalletUtils,
   WalletService 
 } from "@andex/sdk";
 
 import type { DexAccountService } from "../DexAccountService";
-import type { TokenCache, TokensCacheService } from "../TokensCacheService";
 import {
   addressesComparer,
   getSafeProcessingId,

@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import * as React from "react";
-
 import { PoolsStore, PoolsStoreCtorParams } from "../state/PoolsStore";
-import { useTokensCache } from "../state/TokensCacheService";
-import { useWallet } from "../hooks";
+import { useTokensCache, useWallet } from "../hooks";
+
+
 export type PoolsStoreProviderProps = React.PropsWithChildren<{
   params?: PoolsStoreCtorParams;
 }>;

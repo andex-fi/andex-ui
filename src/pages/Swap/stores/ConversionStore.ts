@@ -4,8 +4,8 @@ import { Address } from "@andex/provider";
 import { computed, makeObservable } from "mobx";
 
 import { WVenomVaultAddress } from "../../../constants";
-import { BaseStore, useRpc, error, log, TokenAbi, WalletService } from "@andex/sdk";
-import { TokensCacheService } from "../../../state/TokensCacheService";
+import type { TokenCache } from '@andex/sdk'
+import { BaseStore, useRpc, error, log, TokenAbi, TokensCacheService, WalletService } from "@andex/sdk";
 import {
   getSafeProcessingId,
   isGoodBignumber,
@@ -16,7 +16,6 @@ import type {
   ConversionStoreState,
   ConversionTransactionCallbacks,
 } from "../types";
-import type { TokenCache } from "../../../state/TokensCacheService";
 
 const rpc = useRpc();
 
