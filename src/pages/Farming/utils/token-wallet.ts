@@ -7,8 +7,7 @@ import {
 } from "@andex/provider";
 
 import { sliceAddress } from "../../../utils";
-import { SupportedInterfaceDetection } from "../../../constants/supportedInterfaceDetection";
-import { TokenAbi, debug, error, useRpc, useStaticRpc } from "@andex/sdk";
+import { TokenAbi, debug, error, useRpc, useStaticRpc, SupportedInterfaceDetection } from "@andex/sdk";
 
 export type Token = {
   balance?: string;

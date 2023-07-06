@@ -28,6 +28,9 @@ export const WVENOMRootAddress = new AddressLiteral(
 export const MasterChefAddress = new AddressLiteral(
   "0:34a93760e6ad3828895b6d46c2df9af4aaf77705b4941b1781b7cc0b0a876de3"
 );
+export const FaucetFactory = new AddressLiteral(
+  "0:bda506e636b5b5439c6d4ebee276330513f609488445d1cea53a8945ee23bb86"
+);
 
 export const TokenListURI =
   "https://raw.githubusercontent.com/andex-fi/token-lists/master/manifest.json";
