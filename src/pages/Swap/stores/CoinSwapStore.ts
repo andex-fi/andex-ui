@@ -6,14 +6,13 @@ import { Address, Subscriber } from "@andex/provider";
 import * as E from "fp-ts/Either";
 import { computed, makeObservable, override } from "mobx";
 
-import { useRpc, error, TokenAbi, VenomAbi, WalletService } from "@andex/sdk";
+import { useRpc, error, TokenAbi, VenomAbi, TokensCacheService, WalletService } from "@andex/sdk";
 import {
   Tip3ToVenomAddress,
   VenomToTip3Address,
   WVenomVaultAddress,
 } from "../../../constants";
 import { DirectSwapStore } from "./DirectSwapStore";
-import { TokensCacheService } from "../../../state/TokensCacheService";
 import { getSafeProcessingId, isGoodBignumber } from "../../../utils";
 import type {
   CoinSwapFailureResult,

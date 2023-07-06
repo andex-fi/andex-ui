@@ -111,16 +111,16 @@ const ActivityIcon = ({
   );
 };
 
-const Activities = () => {
+const Activities: React.FC = () => {
   return (
     <div className="flex flex-col gap-2 pr-5">
       {Object.keys(activities).map((value: string) => (
-        <div>
+        <div key={value}>
           <h4 className="color-[#7F8FA9] text-[12px] mb-1">{value}</h4>
           <div className="flex flex-col gap-1">
             
-            {activities[value]?.map((data) => (
-              <div className="flex gap-2 text-[13px] justify-between">
+            {activities[value]?.map((data, index) => (
+              <div className="flex gap-2 text-[13px] justify-between" key={index}>
                 <ActivityIcon
                   tokenOutLogo={data?.tokenOutLogo}
                   tokenInLogo={data?.tokenInLogo}

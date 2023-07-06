@@ -10,29 +10,31 @@ import {
     toJS,
 } from 'mobx'
 import type { IReactionDisposer } from 'mobx'
-import {
-    LiquidityPoolUtils,
-    PairType,
-    PairUtils,
-} from '../constants'
-import type { LiquidityPoolWithdrawCallbacks } from '../constants'
-import type { PoolData } from '../types/LiquidityTypes'
+
+import type { 
+    LiquidityPoolWithdrawCallbacks,
+    TokenCache, 
+    TokensCacheService, 
+} from '@andex/sdk'
+import type { PoolData } from '../../types/LiquidityTypes'
 import { 
     BaseStore, 
     DexUtils, 
     getFullContractState, 
     useStaticRpc, 
     debug, 
-    error, 
+    error,
+    LiquidityPoolUtils,
+    PairType,
+    PairUtils,
     TokenWalletUtils, 
     WalletService 
 } from '@andex/sdk'
-import type { DexAccountService } from '../state/DexAccountService'
-import type { TokenCache, TokensCacheService } from '../state/TokensCacheService'
+import type { DexAccountService } from '../DexAccountService'
 import {
     addressesComparer,
     isGoodBignumber,
-} from '../utils'
+} from '../../utils'
 
 
 export type RemoveLiquidityFormStoreData = {

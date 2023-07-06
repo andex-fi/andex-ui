@@ -21,6 +21,7 @@ const Farms = lazy(() => import("./pages/YeildFarming"));
 const CreateFarms = lazy(() => import("./pages/Farming/Create"));
 const Farming = lazy(() => import("./pages/Farming/Farming"));
 const FarmingInfo = lazy(() => import("./pages/Farming/FarmingInfo"));
+const Faucet = lazy(() => import("./pages/Faucet/faucet"));
 
 const App = () => {
   return (
@@ -65,6 +66,7 @@ const App = () => {
             <Route path="createfarm" element={<CreateFarms />}></Route>
             <Route path="farming" element={<Farming />}></Route>
             <Route path="farming/:address" element={<FarmingInfo />}></Route>
+            <Route path="faucet" element={<Faucet />} />
           </Route>
         </Routes>
       </SuspenseWithChunkError>

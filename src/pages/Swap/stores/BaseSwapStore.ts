@@ -15,11 +15,10 @@ import {
   useRpc,
   debug,
   error,
-} from "@andex/sdk";
-import {
+  PairUtils,
   TokenCache,
   TokensCacheService,
-} from "../../../state/TokensCacheService";
+} from "@andex/sdk";
 import {
   formattedBalance,
   isGoodBignumber,
@@ -37,7 +36,7 @@ import {
   getExpectedSpendAmount,
   getSlippageMinExpectedAmount,
 } from "../utils";
-import { DexRootAddress, PairUtils } from "../../../constants";
+import { DexRootAddress } from "../../../constants";
 // import { useSwapApi } from '@/modules/Swap/hooks/useApi'
 
 const rpc = useRpc();

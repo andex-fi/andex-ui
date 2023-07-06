@@ -3,12 +3,8 @@
 import * as React from "react";
 import { AddLiquidityFormStore } from "../state/liquidity/AddLiquidityFormStore";
 import { DexAccountService, useDexAccount } from "../state/DexAccountService";
-import {
-  TokensCacheService,
-  useTokensCache,
-} from "../state/TokensCacheService";
-import { WalletService } from "@andex/sdk";
-import { useWallet } from "../hooks";
+import { TokensCacheService, WalletService } from "@andex/sdk";
+import { useTokensCache, useWallet } from "../hooks";
 
 export const AddLiquidityFormStoreContext =
   // @ts-ignore

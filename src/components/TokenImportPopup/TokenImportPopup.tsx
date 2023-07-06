@@ -3,7 +3,7 @@ import { Observer } from "mobx-react-lite";
 import { Button } from "../Button";
 import { Icon } from "../Icon";
 import TokenIcon from "../TokenIcon";
-import { useTokensCache } from "../../state/TokensCacheService";
+import { useTokensCache } from "../../hooks";
 import ReactDOM from "react-dom";
 import { Dialog } from "@headlessui/react";
 import { AiOutlineClose } from "react-icons/ai";

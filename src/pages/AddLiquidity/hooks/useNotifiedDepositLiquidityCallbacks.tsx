@@ -3,7 +3,7 @@ import BigNumber from "bignumber.js";
 import { toast } from "react-toastify";
 
 import TransactionExplorerLink from "../../../components/TransactionExplorerLink";
-import type { LiquidityPoolDepositCallbacks } from "../../../constants";
+import type { LiquidityPoolDepositCallbacks } from "@andex/sdk";
 import { TokensReceivedSuccess } from "../components/TokensReceivedSuccess";
 import type { DepositLiquidityCallbacks } from "../../../types/LiquidityTypes";
 import { notify, NotifyType } from "../../../components/Notification";

@@ -3,7 +3,7 @@ import * as React from "react";
 import { Button } from "../Button";
 import TokenIcon from "../TokenIcon";
 import TokensList from "../TokensList";
-import { useTokensCache } from "../../state/TokensCacheService";
+import { useTokensCache } from "../../hooks";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { Observer } from "mobx-react-lite";
 

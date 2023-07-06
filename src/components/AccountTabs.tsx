@@ -50,13 +50,14 @@ const Assets = () => {
   );
 };
 
-const AccountTabs: React.FC = () => {
+const AccountTabs = React.forwardRef(() => {
   return (
     <div>
       <Tab.Group>
         <Tab.List className="flex mb-2 space-x-4">
-          {["Activity", "Token"].map((item) => (
+          {["Activity", "Token"].map((item, index) => (
             <Tab
+              key={index}
               className={({ selected }) =>
                 `${
                   selected ? "text-[#52058F] dark:text-white" : "text-[#6D87AC]"
@@ -80,6 +81,6 @@ const AccountTabs: React.FC = () => {
       </Tab.Group>
     </div>
   );
-};
+})
 
 export default AccountTabs;
