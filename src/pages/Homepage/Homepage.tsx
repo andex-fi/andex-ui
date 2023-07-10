@@ -8,7 +8,7 @@ import { Thriving } from "./thriving";
 
 const Homepage: FC = () => {
   return (
-    <div className="w-full">
+    <div className="w-full overflow-hidden">
       <Hero />
       <Seamless />
       <Perpetual />
@@ -19,4 +19,4 @@ const Homepage: FC = () => {
   );
 };
 
-export default Homepage
+export default Homepage;
